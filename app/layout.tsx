@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import "./global.style.css";
+import "./global.scss";
 
-import "@fontsource/poppins/300.css";
-import "@fontsource/poppins/400.css";
-import "@fontsource/poppins/500.css";
-import "@fontsource/poppins/700.css";
+import "@fontsource/poppins"; // Defaults to weight 400
+import "@fontsource/poppins/400.css"; // Specify weight
+import "@fontsource/poppins/400-italic.css"; 
+
+import "@fontsource/averia-serif-libre"; // Defaults to weight 400
+import "@fontsource/averia-serif-libre/400.css"; // Specify weight
+import "@fontsource/averia-serif-libre/400-italic.css"; // Specify weight and style
+
+import "@fontsource/berkshire-swash"; // Defaults to weight 400
+import "@fontsource/berkshire-swash/400.css"; // Specify weight
 
 export const metadata: Metadata = {
   title: "Wedding Invitation App",

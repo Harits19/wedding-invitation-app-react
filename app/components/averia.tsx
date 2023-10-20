@@ -1,4 +1,4 @@
-import { kFontFamily } from "@/constans/text";
+import { kFontFamily } from "@/constans/font-family";
 import { DetailedHTMLProps, HtmlHTMLAttributes } from "react";
 
 export default function Text({

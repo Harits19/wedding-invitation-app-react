@@ -10,7 +10,7 @@ export default function SideTopDecor({
   return (
     <SideAnimationWrapper side={side}>
       <Image
-        src={kPublic.sideBtn}
+        src={kPublic.sideTopDecor}
         alt={"image"}
         width={150}
         height={122}

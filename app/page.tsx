@@ -64,13 +64,18 @@ export default function Home() {
   return (
     <main className="flex flex-row justify-center">
       <div
-        className={`flex flex-col h-[100vh] w-[100vw] overflow-hidden`}
+        className={`flex flex-col h-[100vh] w-[100vw] overflow-hidden relative`}
         style={{
           maxHeight: height,
           maxWidth: width,
-          background: `url(/background-picture-1.webp)`,
         }}
       >
+        <div
+          className="absolute top-0 left-0 right-0 bottom-0"
+          style={{
+            background: `url(/background-picture-1.webp)`,
+          }}
+        />
         <TopDecor />
         <div className="flex flex-1 flex-col relative items-center pt-8">
           <div

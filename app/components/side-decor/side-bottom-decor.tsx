@@ -14,9 +14,6 @@ export default function SideBottomDecor({
         alt={"image"}
         width={150}
         height={210}
-        style={{
-          transform: side === "left" ? "scaleX(-1)" : undefined,
-        }}
       />
     </SideAnimationWrapper>
   );

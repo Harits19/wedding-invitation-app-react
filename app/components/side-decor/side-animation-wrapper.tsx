@@ -15,7 +15,9 @@ export default function SideAnimationWrapper({
         side === "left" ? "animate-wiggle-left" : "animate-wiggle-right"
       }`}
     >
-      {props.children}
+      <div className={`${side === "left" ? "-scale-x-100" : ""}`}>
+        {props.children}
+      </div>
     </div>
   );
 }

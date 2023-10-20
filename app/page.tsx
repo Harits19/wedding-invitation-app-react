@@ -7,10 +7,13 @@ import Text from "./components/averia";
 import Image from "next/image";
 import Wiggle from "./components/wiggle";
 import { kPublic } from "@/constans/public";
+import { useRouter } from "next/navigation";
+import Scaffold from "./components/scaffold";
+import Background from "./components/background";
+import TopDecor from "./components/top-decor";
 
 export default function Home() {
-  const { width, height } = kSize.max.window;
-
+  const router = useRouter();
   const BottomDecor = () => {
     return (
       <div className="flex flex-row justify-between">
@@ -43,7 +46,12 @@ export default function Home() {
         <div className="h-2" />
         <Text>Harits</Text>
         <div className="h-2" />
-        <button className="bg-ae814c py-2 px-12 rounded-sm">
+        <button
+          onClick={() => {
+            router.push("main");
+          }}
+          className="bg-ae814c py-2 px-12 rounded-sm"
+        >
           <Text family="averia" className="text-white">
             Buka Undangan
           </Text>
@@ -52,55 +60,32 @@ export default function Home() {
     );
   };
 
-  const TopDecor = () => {
-    return (
-      <div className="flex flex-row justify-between">
-        <SideTopDecor side="left" />
-        <SideTopDecor />
-      </div>
-    );
-  };
 
-  const Background = ({ className }: { className?: string }) => {
-    return (
-      <Image
-        className={`absolute top-0 left-0 right-0 bottom-0 w-full h-full ${className} object-cover`}
-        src={kPublic.background1}
-        alt="asd"
-      />
-    );
-  };
+
+  
 
   return (
-    <main className="flex flex-row justify-center">
-      <div
-        className={`flex flex-col h-[100vh] w-[100vw] overflow-hidden relative`}
-        style={{
-          maxHeight: height,
-          maxWidth: width,
-        }}
-      >
-        {/* Top */}
-        <Background className="-scale-y-100 -scale-x-100 " />
-        <TopDecor />
+    <Scaffold>
+      {/* Top */}
+      <Background className="-scale-y-100 -scale-x-100 " />
+      <TopDecor />
 
-        <div className="flex flex-1 flex-col relative items-center pt-8">
-          <div
-            className=" absolute z-0 top-0 bottom-0 rounded-t-full w-[400px] self-center overflow-hidden"
-            style={{
-              boxShadow: "0px -10px 9px rgba(0, 0, 0, 0.2)",
-            }}
-          >
-            <Background className="" />
-          </div>
-          <div className="absolute z-20 bottom-0 right-0 left-0">
-            <BottomDecor />
-          </div>
-          <div className="absolute z-40">
-            <Body />
-          </div>
+      <div className="flex flex-1 flex-col relative items-center pt-8">
+        <div
+          className=" absolute z-0 top-0 bottom-0 rounded-t-full w-[400px] self-center overflow-hidden"
+          style={{
+            boxShadow: "0px -10px 9px rgba(0, 0, 0, 0.2)",
+          }}
+        >
+          <Background className="" />
+        </div>
+        <div className="absolute z-20 bottom-0 right-0 left-0">
+          <BottomDecor />
+        </div>
+        <div className="absolute z-40">
+          <Body />
         </div>
       </div>
-    </main>
+    </Scaffold>
   );
 }

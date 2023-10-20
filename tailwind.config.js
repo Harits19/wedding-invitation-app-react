@@ -32,6 +32,9 @@ module.exports = {
         "wiggle-left": 'wiggle-left 3s ease-in-out infinite',
         "wiggle-right": 'wiggle-right 3s ease-in-out infinite',
 
+      },
+      backgroundImage: {
+        'background-picture-1': `url(/background-picture-1.webp)`,
       }
     },
 

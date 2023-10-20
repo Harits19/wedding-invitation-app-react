@@ -6,6 +6,7 @@ import SideBottomDecor from "./components/side-decor/side-bottom-decor";
 import Text from "./components/averia";
 import Image from "next/image";
 import Wiggle from "./components/wiggle";
+import { kPublic } from "@/constans/public";
 
 export default function Home() {
   const { width, height } = kSize.max.window;
@@ -28,7 +29,7 @@ export default function Home() {
         <div className="h-6" />
         <Image
           className="rounded-full w-[216px] h-[216px] bg-303333"
-          src="https://indoinvite.com/nikah/upload/160877/1695397326foto_berdua.jpg"
+          src={kPublic.photoCover}
           alt="image"
           width={216}
           height={216}
@@ -67,7 +68,7 @@ export default function Home() {
         style={{
           maxHeight: height,
           maxWidth: width,
-          background: `url(/background-picture-1.jpeg)`,
+          background: `url(/background-picture-1.webp)`,
         }}
       >
         <TopDecor />

@@ -4,6 +4,6 @@ import background1 from "../public/background-picture-1.jpeg"
 
 export const kPublic = {
   sideBtn,
-  sideTop,
+  sideBottomDecor: sideTop,
   background1,
 };

@@ -1,8 +1,8 @@
 "use client";
 
 import { kSize } from "@/constans/size";
-import SideBtn from "./components/side-btn";
-import SideTop from "./components/side-top";
+import SideTopDecor from "./components/side-decor/side-top-decor";
+import SideBottomDecor from "./components/side-decor/side-bottom-decor";
 import Text from "./components/averia";
 import Image from "next/image";
 import Wiggle from "./components/wiggle";
@@ -10,11 +10,11 @@ import Wiggle from "./components/wiggle";
 export default function Home() {
   const { width, height } = kSize.max.window;
 
-  const Footer = () => {
+  const BottomDecor = () => {
     return (
       <div className="flex flex-row justify-between">
-        <SideTop side="left" />
-        <SideTop />
+        <SideBottomDecor side="left" />
+        <SideBottomDecor />
       </div>
     );
   };
@@ -54,8 +54,8 @@ export default function Home() {
   const TopDecor = () => {
     return (
       <div className="flex flex-row justify-between">
-        <SideBtn side="left" />
-        <SideBtn />
+        <SideTopDecor side="left" />
+        <SideTopDecor />
       </div>
     );
   };
@@ -79,7 +79,7 @@ export default function Home() {
             }}
           />
           <div className="absolute bottom-0 right-0 left-0">
-            <Footer />
+            <BottomDecor />
           </div>
           <div className="absolute z-40">
             <Body />

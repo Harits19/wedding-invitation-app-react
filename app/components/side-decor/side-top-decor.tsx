@@ -1,22 +1,23 @@
 import { kPublic } from "@/constans/public";
 import Image from "next/image";
+import SideAnimationWrapper from "./side-animation-wrapper";
 
-export default function SideTop({
+export default function SideTopDecor({
   side = "right",
 }: {
   side?: "left" | "right";
 }) {
   return (
-    <div className={`animate-wiggle-${side}`}>
+    <SideAnimationWrapper side={side}>
       <Image
-        src={kPublic.sideTop}
+        src={kPublic.sideBtn}
         alt={"image"}
         width={150}
-        height={210}
+        height={122}
         style={{
           transform: side === "left" ? "scaleX(-1)" : undefined,
         }}
       />
-    </div>
+    </SideAnimationWrapper>
   );
 }

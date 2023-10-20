@@ -7,27 +7,23 @@ import Text from "./components/averia";
 import Image from "next/image";
 import Wiggle from "./components/wiggle";
 import { kPublic } from "@/constans/public";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Scaffold from "./components/scaffold";
 import Background from "./components/background";
 import TopDecor from "./components/top-decor";
+import BottomDecor from "./components/bottom-decor";
+import { kText } from "@/constans/text";
+import useToQuery from "./hooks/useToQuery";
 
 export default function Home() {
   const router = useRouter();
-  const BottomDecor = () => {
-    return (
-      <div className="flex flex-row justify-between">
-        <SideBottomDecor side="left" />
-        <SideBottomDecor />
-      </div>
-    );
-  };
+  const to = useToQuery();
 
   const Body = () => {
     return (
       <div className="flex flex-col items-center">
         <Text family="averia" className="text-xl text-303333">
-          The Wedding
+          {kText.coverTitle}
         </Text>
         <div className="h-6" />
         <Image
@@ -39,30 +35,26 @@ export default function Home() {
         />
         <br />
         <Text className="text-3xl text-303333" family="berkshire">
-          Mirza & Yunny
+          {kText.name}
         </Text>
         <br />
-        <Text>Kepada</Text>
+        <Text>{kText.kepada}</Text>
         <div className="h-2" />
-        <Text>Harits</Text>
+        <Text>{to}</Text>
         <div className="h-2" />
         <button
           onClick={() => {
-            router.push("main");
+            router.push(`main?to=${to}`);
           }}
           className="bg-ae814c py-2 px-12 rounded-sm"
         >
           <Text family="averia" className="text-white">
-            Buka Undangan
+            {kText.bukaUndangan}
           </Text>
         </button>
       </div>
     );
   };
-
-
-
-  
 
   return (
     <Scaffold>

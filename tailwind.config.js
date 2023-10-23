@@ -29,7 +29,7 @@ module.exports = {
         },
         "fade-zoom-out": {
           '0%': { transform: 'scale(1.18)', opacity: '1' },
-          '50%': { opacity: '1' },
+          '80%': { opacity: '1' },
           '100%': { transform: 'scale(1)', opacity: '0' },
         },
         "blip": {

@@ -7,6 +7,9 @@ import Scaffold from "../components/scaffold";
 import TopDecor from "../components/top-decor";
 import { kPublic } from "@/constans/public";
 import { useEffect, useState } from "react";
+import Text from "../components/averia";
+import { kText } from "@/constans/text";
+import moment from "moment";
 
 const useTimeout = () => {};
 
@@ -18,30 +21,46 @@ export default function Main() {
 
   return (
     <Scaffold>
-      <Background />
-      <div className="absolute z-10 right-0 left-0">
+      <Background className="z-10" />
+      <div className="absolute z-20 right-0 left-0">
         <TopDecor />
       </div>
       <Image
-        // className="animate-fade-zoom-out absolute"
+        className="z-0 absolute h-[400px] w-full object-cover"
         alt="photo"
-        src={imageList[selectedImage]}
+        height={450}
+        src={imageList[0]}
       />
-      <Image
-        // className="animate-fade-zoom-out absolute"
-        alt="photo"
-        src={imageList[nextImage == imageList.length ? 0 : nextImage]}
-      />
-      <button
-        className="z-50"
-        onClick={() => {
-          setIndexImage((prev) => prev + 1);
-        }}
-      >
-        Next Image
-      </button>
-      <div className="flex flex-1" />
-      <BottomDecor />
+      <div className="absolute z-50 top-0 left-0 right-0 bottom-0 flex flex-col items-center">
+        <Image
+          className=" opacity-0 h-[400px] w-full object-cover"
+          alt="photo"
+          height={450}
+          src={imageList[0]}
+        />
+        <Text className="text-2xl" family="berkshire">
+          {kText.name}
+        </Text>
+        <Text className="text-base" family="averia">
+          {moment(kText.date).format("dddd, DD MMMM YYYY")}
+        </Text>
+        <br />
+        <div className="flex flex-row gap-x-2 animate-blip">
+          {[1, 1, 1, 1].map((e, i) => (
+            <Text
+              family="poppins"
+              className="h-[70px] bg-ae814c text-xl w-[70px] text-white rounded-lg items-center justify-center flex flex-col"
+              key={i}
+            >
+              1<div className="text-xs">Hour</div>
+            </Text>
+          ))}
+        </div>
+      </div>
+
+      <div className="z-20 absolute bottom-0 left-0 right-0">
+        <BottomDecor />
+      </div>
     </Scaffold>
   );
 }

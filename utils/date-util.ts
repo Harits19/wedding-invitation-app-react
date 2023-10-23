@@ -1,4 +1,12 @@
-export function timeBetweenDates(toDate: Date) {
+
+export interface DateDifference{
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+}
+
+export function timeBetweenDates(toDate: Date) : DateDifference  {
   const dateEntered = toDate;
   const now = new Date();
   const difference = dateEntered.getTime() - now.getTime();

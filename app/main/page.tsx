@@ -12,6 +12,7 @@ import { kText } from "@/constans/text";
 import moment from "moment";
 import AudioPlayer from "../components/audio-player";
 import Carousel from "../components/carousel";
+import CountDown from "../components/count-down";
 
 export default function Main() {
   const imageList = [kPublic.photoSlideShow1, kPublic.photoSlideShow2];
@@ -47,17 +48,7 @@ export default function Main() {
         <AudioPlayer src={"/background-music.mp4"} />
 
         <br />
-        <div className="flex flex-row gap-x-2 animate-blip">
-          {[1, 1, 1, 1].map((e, i) => (
-            <Text
-              family="poppins"
-              className="h-[70px] bg-ae814c text-xl w-[70px] text-white rounded-lg items-center justify-center flex flex-col"
-              key={i}
-            >
-              1<div className="text-xs">Hour</div>
-            </Text>
-          ))}
-        </div>
+        <CountDown />
       </div>
 
       <div className="z-20 absolute bottom-0 left-0 right-0">

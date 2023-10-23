@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Background from "../components/background";
 import BottomDecor from "../components/bottom-decor";
 import Scaffold from "../components/scaffold";
@@ -11,34 +11,80 @@ import Text from "../components/averia";
 import { kText } from "@/constans/text";
 import moment from "moment";
 import AudioPlayer from "../components/audio-player";
+import { Fade } from "react-slideshow-image";
 
-const useTimeout = () => {};
+const ImageSlideShow = (props: { src: StaticImageData }) => {
+  useEffect(() => {
+    console.log("image mounted ", props.src.src);
+
+    return () => {
+      console.log("image unmounted ", props.src.src);
+    };
+  }, [props.src.src]);
+  return (
+    <Image
+      className="absolute top-0 w-full object-cover h-[400px]"
+      alt="photo"
+      src={props.src}
+    />
+  );
+};
 
 export default function Main() {
   const [indexImage, setIndexImage] = useState(1);
   const imageList = [kPublic.photoSlideShow1, kPublic.photoSlideShow2];
   const selectedImage = indexImage % imageList.length;
-  const nextImage = selectedImage + 1;
+  let nextImage = selectedImage + 1;
+
+  if (nextImage === imageList.length) {
+    nextImage = 0;
+  }
+
+  useEffect(() => {
+    console.log(`initializing interval`);
+    const interval = setInterval(() => {
+      setIndexImage((prev) => prev + 1);
+    }, 5000);
+
+    return () => {
+      console.log(`clearing interval`);
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <Scaffold>
-      <Background className="z-10" />
+      <Background className="z-20" />
       <div className="absolute z-20 right-0 left-0">
         <TopDecor />
       </div>
+
       <Image
-        className="z-0 absolute h-[400px] w-full object-cover"
+        key={indexImage}
+        className="animate-fade-zoom-out z-10 absolute top-0 w-full object-cover h-[400px]"
         alt="photo"
-        height={450}
-        src={imageList[0]}
+        src={imageList[selectedImage]}
       />
+      <Image
+        className="scale-[1.18] absolute top-0 w-full object-cover h-[400px]"
+        alt="photo"
+        src={imageList[nextImage]}
+      />
+
       <div className="absolute z-50 top-0 left-0 right-0 bottom-0 flex flex-col items-center">
         <Image
-          className=" opacity-0 h-[400px] w-full object-cover"
+          className=" opacity-0 h-[400px] object-cover"
           alt="photo"
           height={450}
           src={imageList[0]}
         />
+        <button
+          onClick={() => {
+            setIndexImage(indexImage + 1);
+          }}
+        >
+          Next
+        </button>
         <Text className="text-2xl" family="berkshire">
           {kText.name}
         </Text>

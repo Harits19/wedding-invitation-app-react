@@ -28,14 +28,14 @@ module.exports = {
           '100%': { transform: 'rotate(0deg) scale(1)' },
         },
         "fade-zoom-out": {
-          '0%': { transform: 'scale(1)', opacity: '1' },
-          '50%': {  opacity: '0.8' },
-          '100%': { transform: 'scale(1.18)', opacity: '0' },
+          '0%': { transform: 'scale(1.18)', opacity: '1' },
+          '50%': { opacity: '1' },
+          '100%': { transform: 'scale(1)', opacity: '0' },
         },
         "blip": {
-          '0%': {  opacity: '1' },
-          '50%': {  opacity: '0.5' },
-          '100%': {  opacity: '1' },
+          '0%': { opacity: '1' },
+          '50%': { opacity: '0.5' },
+          '100%': { opacity: '1' },
 
 
         }
@@ -43,7 +43,7 @@ module.exports = {
       animation: {
         "wiggle-left": 'wiggle-left 3s ease-in-out infinite',
         "wiggle-right": 'wiggle-right 3s ease-in-out infinite',
-        "fade-zoom-out": 'fade-zoom-out 3s ease-in-out infinite',
+        "fade-zoom-out": 'fade-zoom-out 5s linear forwards',
         "blip": 'blip 1s ease-in-out infinite'
 
       },

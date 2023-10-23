@@ -4,8 +4,8 @@ export default function AudioPlayer({ src }: { src: string }) {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    const audio = new Audio(src);
-    audio.play();
+    // const audio = new Audio(src);
+    // audio.play();
   }, [src]);
   // useEffect(() => {
   //   audioRef.current?.play();

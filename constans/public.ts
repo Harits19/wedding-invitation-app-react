@@ -11,5 +11,5 @@ export const kPublic = {
   background1,
   photoCover,
   photoSlideShow1,
-  photoSlideShow2
+  photoSlideShow2,
 };

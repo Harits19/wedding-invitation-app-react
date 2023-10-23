@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import Text from "../components/averia";
 import { kText } from "@/constans/text";
 import moment from "moment";
+import AudioPlayer from "../components/audio-player";
 
 const useTimeout = () => {};
 
@@ -44,6 +45,9 @@ export default function Main() {
         <Text className="text-base" family="averia">
           {moment(kText.date).format("dddd, DD MMMM YYYY")}
         </Text>
+
+        <AudioPlayer src={"/background-music.mp4"} />
+
         <br />
         <div className="flex flex-row gap-x-2 animate-blip">
           {[1, 1, 1, 1].map((e, i) => (

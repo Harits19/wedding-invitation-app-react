@@ -27,7 +27,9 @@ export default function Main() {
       <div className="absolute top-0 w-full">
         <Carousel
           imageList={imageList}
-          renderItem={(val) => <Image alt="image" src={val} />}
+          renderItem={(val) => (
+            <Image className="h-[450px] object-cover" alt="image" src={val} />
+          )}
         />
       </div>
 
@@ -35,7 +37,7 @@ export default function Main() {
         <Image
           className=" opacity-0 h-[400px] object-cover"
           alt="photo"
-          height={450}
+          height={400}
           src={imageList[0]}
         />
         <Text className="text-2xl" family="berkshire">

@@ -1,6 +1,9 @@
-import Icon from "../components/icons";
+import Icon from "../components/Icon";
+import { IconName } from "../components/Icon/icons";
+import Text from "../components/averia";
+import Menu from "../components/menu";
+import Message from "../components/message";
 import Scaffold from "../components/scaffold";
-import Home from "../components/svg/home";
 
 export default function MainLayout({
   children,
@@ -9,10 +12,9 @@ export default function MainLayout({
 }) {
   return (
     <Scaffold>
+      <Message />
       {children}
-      <div className="absolute bottom-0 z-50 bg-ae814c m-8 flex flex-row rounded-full right-0 left-0 p-2 ">
-        <Home />
-      </div>
+      <Menu />
     </Scaffold>
   );
 }

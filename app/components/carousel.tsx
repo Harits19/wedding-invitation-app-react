@@ -32,11 +32,11 @@ export default function Carousel<T>({
     <>
       <div
         key={indexImage}
-        className="animate-fade-zoom-out absolute top-0 z-10 object-cover h-[400px]"
+        className="animate-fade-zoom-out absolute top-0 z-10 object-cover h-[450px]"
       >
         {renderItem(imageList[selectedImage])}
       </div>
-      <div className="scale-[1.18] absolute z-0 top-0 object-cover h-[400px]">
+      <div className="scale-[1.18] absolute z-0 top-0 object-cover h-[450px]">
         {renderItem(imageList[nextImage])}
       </div>
     </>

@@ -36,7 +36,14 @@ module.exports = {
           '0%': { opacity: '1' },
           '50%': { opacity: '0.5' },
           '100%': { opacity: '1' },
-
+        },
+        "message": {
+          '0%': { opacity: '0', marginLeft: '-1000px' },
+          '15%': { opacity: '1', marginLeft: '10px', marginRight: '-10px' },
+          '30%': { opacity: '1', marginLeft: '-10px', marginRight: '0px' },
+          '40%': { opacity: '1', marginLeft: '0px', marginRight: '0px' },
+          '90%': { opacity: '1', marginLeft: '0px', marginRight: '0px' },
+          '100%': { opacity: '0', marginLeft: '-1000px' },
 
         }
       },
@@ -44,7 +51,8 @@ module.exports = {
         "wiggle-left": 'wiggle-left 3s ease-in-out infinite',
         "wiggle-right": 'wiggle-right 3s ease-in-out infinite',
         "fade-zoom-out": 'fade-zoom-out 5s linear forwards',
-        "blip": 'blip 1s ease-in-out infinite'
+        "blip": 'blip 1s ease-in-out infinite',
+        "message": 'message 5s ease-in-out infinite'
 
       },
       backgroundImage: {

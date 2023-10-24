@@ -3,24 +3,33 @@
 import { useGlobalState } from "@/app/hooks/useGlobalState";
 import Icon from "../Icon";
 import { IconName } from "../Icon/icons";
+import { ReactNode } from "react";
+import Home from "@/app/main/components/home";
+
+export type MenuName = IconName;
+export const menus: {
+  name: MenuName;
+  render: ReactNode;
+}[] = [
+  {
+    name: "home",
+    render: <Home />,
+  },
+  {
+    name: "people",
+    render: <Home />,
+  },
+  {
+    name: "collections",
+    render: <Home />,
+  },
+  {
+    name: "place",
+    render: <Home />,
+  },
+];
 
 export default function Menu() {
-  const menus: {
-    name: IconName;
-  }[] = [
-    {
-      name: "home",
-    },
-    {
-      name: "people",
-    },
-    {
-      name: "collections",
-    },
-    {
-      name: "place",
-    },
-  ];
   const { state, setState } = useGlobalState();
   const isMusicOn = state.music_on === true;
   return (

@@ -1,7 +1,14 @@
+"use client";
+
 import { kSize } from "@/constans/size";
 import { ReactNode } from "react";
 
-export default function Scaffold(props: { children?: ReactNode, className?: string }) {
+export default function Scaffold({
+  ...props
+}: {
+  children?: ReactNode;
+  className?: string;
+}) {
   const { width, height } = kSize.max.window;
 
   return (

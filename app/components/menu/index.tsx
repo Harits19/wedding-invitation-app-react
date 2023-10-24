@@ -4,6 +4,9 @@ import { useGlobalState } from "@/app/hooks/useGlobalState";
 import Icon from "../Icon";
 import { IconName } from "../Icon/icons";
 import { ReactNode } from "react";
+import People from "@/app/main/components/people";
+import Collection from "@/app/main/components/collection";
+import Place from "@/app/main/components/place";
 import Home from "@/app/main/components/home";
 
 export type MenuName = IconName;
@@ -17,15 +20,15 @@ export const menus: {
   },
   {
     name: "people",
-    render: <Home />,
+    render: <People />,
   },
   {
     name: "collections",
-    render: <Home />,
+    render: <Collection />,
   },
   {
     name: "place",
-    render: <Home />,
+    render: <Place />,
   },
 ];
 
@@ -36,14 +39,14 @@ export default function Menu() {
     <div className="absolute bottom-0 z-50 bg-ae814c m-8 flex flex-row rounded-full right-0 left-0 p-2 justify-between px-5 ">
       {[
         menus.map((e, index) => {
-          const selectedMenu = false ?? state.activeMenu === e.name;
+          const selectedMenu = false ?? state.activeMenu === index;
 
           return (
             <button
               key={index}
               onClick={() => {
                 setState({
-                  activeMenu: e.name,
+                  activeMenu: index,
                 });
               }}
             >

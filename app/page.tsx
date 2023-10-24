@@ -15,7 +15,7 @@ import BottomDecor from "./components/bottom-decor";
 import { kText } from "@/constans/text";
 import useToQuery from "./hooks/useToQuery";
 
-export default function Home() {
+export default function Cover() {
   const router = useRouter();
   const to = useToQuery();
 

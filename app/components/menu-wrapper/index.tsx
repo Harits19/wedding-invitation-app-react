@@ -5,20 +5,20 @@ import { ReactNode, useEffect, useRef } from "react";
 export type MenuName = IconName;
 
 export default function MenuWrapper({
-  menuName,
+  menuIndex,
   children,
 }: {
-  menuName: MenuName;
+  menuIndex: number;
   children?: ReactNode;
 }) {
   const { state } = useGlobalState();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (menuName !== undefined && menuName === state.activeMenu) {
+    if (menuIndex !== undefined && menuIndex === state.activeMenu) {
       ref.current?.scrollIntoView({ behavior: "smooth" });
     }
-  }, [menuName, state.activeMenu]);
+  }, [menuIndex, state.activeMenu]);
 
   return <div ref={ref}>{children}</div>;
 }

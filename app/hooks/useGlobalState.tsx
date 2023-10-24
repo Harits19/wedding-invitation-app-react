@@ -7,10 +7,9 @@ import {
   useContext,
   useState,
 } from "react";
-import { IconName } from "../components/Icon/icons";
 
 export interface GlobalStateInterface {
-  activeMenu: IconName;
+  activeMenu: number;
   music_on: boolean;
 }
 
@@ -22,7 +21,6 @@ export const GlobalStateContext = createContext({
 export const GlobalStateProvider = ({
   children,
   value = {
-    activeMenu: "home",
     music_on: true,
   } as GlobalStateInterface,
 }: {

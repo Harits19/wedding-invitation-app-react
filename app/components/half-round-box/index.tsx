@@ -3,10 +3,10 @@ import Background from "../background";
 
 export default function HalfRoundBox({
   insideBox,
-  aboveBox
+  aboveBox,
 }: {
   insideBox?: ReactNode;
-  aboveBox?:ReactNode
+  aboveBox?: ReactNode;
 }) {
   return (
     <div className="flex flex-1 flex-col relative items-center pt-8">

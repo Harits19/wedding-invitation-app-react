@@ -4,6 +4,7 @@ import HalfRoundBox from "@/app/components/half-round-box";
 import MenuWrapper from "@/app/components/menu-wrapper";
 import Scaffold from "@/app/components/scaffold";
 import { kPublic } from "@/constans/public";
+import { kSize } from "@/constans/size";
 import { kText } from "@/constans/text";
 import Image from "next/image";
 import { ReactNode } from "react";
@@ -14,16 +15,16 @@ export default function Home() {
       <Text className="text-[13px] animate-fade-zoom">{props.children}</Text>
     );
   };
+  const { width, height } = kSize.max.window;
+
   return (
-    <Scaffold>
-      <Background />
-      <div className="h-[15vh]" />
-      <HalfRoundBox
-        insideBox={
-          <>
-            <Background className="" />
-            <div className="h-20" />
-            <div className="items-center flex flex-col p-12 absolute z-auto text-center overflow-y-auto">
+    <div className="flex flex-row justify-center">
+      <div className="w-[360px] flex-col flex relative overflow-x-hidden">
+        <div className="h-[15vh]" />
+        <Background className="-z-20" />
+        <HalfRoundBox
+          aboveBox={
+            <div className="items-center flex flex-col p-12 text-center">
               <Text>السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</Text>
               <div className="h-6" />
               <Text family="berkshire" className="text-3xl">
@@ -36,7 +37,7 @@ export default function Home() {
               </Desc>
               <div className="h-4" />
               <Image
-                className="rounded-full object-cover w-[205px] h-[205px] overflow-auto animate-fade-zoom"
+                className="rounded-full object-cover w-[205px] h-[205px] animate-fade-zoom"
                 alt="alt"
                 src={kPublic.photoCover}
               />
@@ -47,10 +48,9 @@ export default function Home() {
                 {kText.ayat1Surat}
               </Desc>
             </div>
-          </>
-        }
-        aboveBox={<></>}
-      />
-    </Scaffold>
+          }
+        />
+      </div>
+    </div>
   );
 }

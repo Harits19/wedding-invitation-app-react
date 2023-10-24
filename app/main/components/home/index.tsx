@@ -31,12 +31,7 @@ export default function Home() {
       </div>
 
       <div className="absolute z-50 top-0 left-0 right-0 bottom-0 flex flex-col items-center">
-        <Image
-          className=" opacity-0 h-[400px] object-cover"
-          alt="photo"
-          height={400}
-          src={imageList[0]}
-        />
+        <div className="h-[450px]" />
         <Text className="text-2xl" family="berkshire">
           {kText.name}
         </Text>

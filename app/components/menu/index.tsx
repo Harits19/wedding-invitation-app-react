@@ -36,7 +36,7 @@ export default function Menu() {
     <div className="absolute bottom-0 z-50 bg-ae814c m-8 flex flex-row rounded-full right-0 left-0 p-2 justify-between px-5 ">
       {[
         menus.map((e, index) => {
-          const selectedMenu = state.activeMenu === e.name;
+          const selectedMenu = false ?? state.activeMenu === e.name;
 
           return (
             <button

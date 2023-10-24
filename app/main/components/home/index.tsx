@@ -18,39 +18,37 @@ export default function Home() {
   const { width, height } = kSize.max.window;
 
   return (
-    <div className="flex flex-row justify-center">
-      <div className="w-[360px] flex-col flex relative overflow-x-hidden">
-        <div className="h-[15vh]" />
-        <Background className="-z-20" />
-        <HalfRoundBox
-          aboveBox={
-            <div className="items-center flex flex-col p-12 text-center">
-              <Text>السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</Text>
-              <div className="h-6" />
-              <Text family="berkshire" className="text-3xl">
-                {kText.theWedding}
-              </Text>
-              <div className="h-10" />
-              <Desc>
-                <span>{kText.atasBerkahRahmat}</span>
-                <span> {kText.kamiMengundang}</span>
-              </Desc>
-              <div className="h-4" />
-              <Image
-                className="rounded-full object-cover w-[205px] h-[205px] animate-fade-zoom"
-                alt="alt"
-                src={kPublic.photoCover}
-              />
-              <div className="h-4" />
-              <Desc>
-                {kText.ayat1}
-                {kText.ayat1Arti}
-                {kText.ayat1Surat}
-              </Desc>
-            </div>
-          }
-        />
-      </div>
-    </div>
+    <Scaffold>
+      <div className="h-[15vh]" />
+      <Background className="-z-20" />
+      <HalfRoundBox
+        aboveBox={
+          <div className="items-center flex flex-col p-12 text-center">
+            <Text>السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</Text>
+            <div className="h-6" />
+            <Text family="berkshire" className="text-3xl">
+              {kText.theWedding}
+            </Text>
+            <div className="h-10" />
+            <Desc>
+              <span>{kText.atasBerkahRahmat}</span>
+              <span> {kText.kamiMengundang}</span>
+            </Desc>
+            <div className="h-4" />
+            <Image
+              className="rounded-full object-cover w-[205px] h-[205px] animate-fade-zoom"
+              alt="alt"
+              src={kPublic.photoCover}
+            />
+            <div className="h-4" />
+            <Desc>
+              {kText.ayat1}
+              {kText.ayat1Arti}
+              {kText.ayat1Surat}
+            </Desc>
+          </div>
+        }
+      />{" "}
+    </Scaffold>
   );
 }

@@ -14,9 +14,8 @@ export default function Scaffold({
   return (
     <div className="flex flex-row justify-center">
       <div
-        className={`flex flex-col h-[100vh] w-[100vw] overflow-hidden relative`}
+        className={`flex flex-col min-h-screen w-[100vw] overflow-hidden relative`}
         style={{
-          maxHeight: height,
           maxWidth: width,
         }}
       >

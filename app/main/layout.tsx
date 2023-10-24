@@ -1,6 +1,3 @@
-import Icon from "../components/Icon";
-import { IconName } from "../components/Icon/icons";
-import Text from "../components/averia";
 import Menu from "../components/menu";
 import Message from "../components/message";
 import Scaffold from "../components/scaffold";

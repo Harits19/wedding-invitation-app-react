@@ -15,8 +15,7 @@ export default function Home() {
       <Text className="text-[13px] animate-fade-zoom">{props.children}</Text>
     );
   };
-  const { width, height } = kSize.max.window;
-
+  
   return (
     <Scaffold>
       <div className="h-[15vh]" />

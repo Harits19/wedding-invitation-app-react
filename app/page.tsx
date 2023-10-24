@@ -14,6 +14,7 @@ import TopDecor from "./components/top-decor";
 import BottomDecor from "./components/bottom-decor";
 import { kText } from "@/constans/text";
 import useToQuery from "./hooks/useToQuery";
+import HalfRoundBox from "./components/half-round-box";
 
 export default function Cover() {
   const router = useRouter();
@@ -23,7 +24,7 @@ export default function Cover() {
     return (
       <div className="flex flex-col items-center">
         <Text family="averia" className="text-xl text-303333">
-          {kText.coverTitle}
+          {kText.theWedding}
         </Text>
         <div className="h-6" />
         <Image
@@ -59,25 +60,22 @@ export default function Cover() {
   return (
     <Scaffold>
       {/* Top */}
-      <Background className="-scale-y-100 -scale-x-100 " />
+      <Background className="-scale-y-100 -scale-x-100 z-0" />
       <TopDecor />
 
-      <div className="flex flex-1 flex-col relative items-center pt-8">
-        <div
-          className=" absolute z-0 top-0 bottom-0 rounded-t-full w-[400px] self-center overflow-hidden"
-          style={{
-            boxShadow: "0px -10px 9px rgba(0, 0, 0, 0.2)",
-          }}
-        >
-          <Background className="" />
-        </div>
-        <div className="absolute z-20 bottom-0 right-0 left-0">
-          <BottomDecor />
-        </div>
-        <div className="absolute z-40">
-          <Body />
-        </div>
-      </div>
+      <HalfRoundBox
+        insideBox={<Background className="" />}
+        aboveBox={
+          <>
+            <div className="absolute z-20 bottom-0 right-0 left-0">
+              <BottomDecor />
+            </div>
+            <div className="absolute z-40">
+              <Body />
+            </div>
+          </>
+        }
+      />
     </Scaffold>
   );
 }

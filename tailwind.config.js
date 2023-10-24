@@ -44,7 +44,10 @@ module.exports = {
           '40%': { opacity: '1', marginLeft: '0px', marginRight: '0px' },
           '90%': { opacity: '1', marginLeft: '0px', marginRight: '0px' },
           '100%': { opacity: '0', marginLeft: '-1000px' },
-
+        },
+        'fade-zoom': {
+          '0%': { opacity: '0', transform: 'scale(0)'},
+          '100%': { opacity: '1', transform: 'scale(1)'},
         }
       },
       animation: {
@@ -52,7 +55,8 @@ module.exports = {
         "wiggle-right": 'wiggle-right 3s ease-in-out infinite',
         "fade-zoom-out": 'fade-zoom-out 5s linear forwards',
         "blip": 'blip 1s ease-in-out infinite',
-        "message": 'message 5s ease-in-out infinite'
+        "message": 'message 5s ease-in-out infinite',
+        "fade-zoom": 'fade-zoom 3s',
 
       },
       backgroundImage: {

@@ -9,9 +9,9 @@ export default function MainLayout({
 }) {
   return (
     <Scaffold>
-      <Message />
       {children}
       <Menu />
+      <Message />
     </Scaffold>
   );
 }

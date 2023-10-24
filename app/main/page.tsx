@@ -2,6 +2,7 @@
 
 import { menus } from "../components/menu";
 import MenuWrapper from "../components/menu-wrapper";
+import Home from "./components/home";
 import Opening from "./components/opening";
 
 export default function Main() {

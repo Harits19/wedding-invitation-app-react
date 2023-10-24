@@ -2,7 +2,7 @@ import Text from "../averia";
 
 export default function Message() {
   return (
-    <div className="absolute z-50 top-0 animate-message">
+    <div className="absolute z-[100] top-0 animate-message">
       <div className="bg-white rounded mx-4 mt-2 p-2 ">
         <Text family="poppins">
           <div className="line-clamp-1 text-[10px]">Fulan</div>

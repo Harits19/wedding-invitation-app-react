@@ -1,5 +1,6 @@
 import Text from "@/app/components/averia";
 import Background from "@/app/components/background";
+import BottomDecor from "@/app/components/bottom-decor";
 import HalfRoundBox from "@/app/components/half-round-box";
 import MenuWrapper from "@/app/components/menu-wrapper";
 import Scaffold from "@/app/components/scaffold";
@@ -15,7 +16,7 @@ export default function Home() {
       <Text className="text-[13px] animate-fade-zoom">{props.children}</Text>
     );
   };
-  
+
   return (
     <Scaffold>
       <div className="h-[15vh]" />
@@ -47,7 +48,8 @@ export default function Home() {
             </Desc>
           </div>
         }
-      />{" "}
+      />
+      <BottomDecor />
     </Scaffold>
   );
 }

@@ -13,6 +13,7 @@ export default function Text({
       className={`text-303333 ${props.className}`}
       style={{
         fontFamily: kFontFamily[family],
+        lineHeight: 1.7,
         ...props.style,
       }}
     />

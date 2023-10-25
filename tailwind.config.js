@@ -46,8 +46,12 @@ module.exports = {
           '100%': { opacity: '0', marginLeft: '-1000px' },
         },
         'fade-zoom': {
-          '0%': { opacity: '0', transform: 'scale(0)'},
-          '100%': { opacity: '1', transform: 'scale(1)'},
+          '0%': { opacity: '0', transform: 'scale(0)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        'bottom-top': {
+          '0%': { position: 'relative', top: '100%', opacity: '0' },
+          '100%': { position: 'relative', top: '0%', opacity: '1' }
         }
       },
       animation: {
@@ -57,6 +61,7 @@ module.exports = {
         "blip": 'blip 1s ease-in-out infinite',
         "message": 'message 5s ease-in-out infinite',
         "fade-zoom": 'fade-zoom 3s',
+        "bottom-top": 'bottom-top 2s ease-in-out'
 
       },
       backgroundImage: {

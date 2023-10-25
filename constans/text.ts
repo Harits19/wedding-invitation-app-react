@@ -10,5 +10,18 @@ export const kText = {
   ayat1:
     "وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ",
   ayat1Arti: `"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."`,
-  ayat1Surat: "(QS Ar-Rum: 21)"
+  ayat1Surat: "(QS Ar-Rum: 21)",
+  namaPengantin1: 'Muhammad Fulan Madani, S.Pi.',
+  ayahPengantin1: 'Nama Ayah Pengantin 1',
+  ibuPengantin1: 'Nama Ibu Pengantin 1',
+  anakKePengantin1: 'Pertama',
+  alamatPengantin1: 'Beralamat di Plosokuning III RT 13/05, Minomartani, Ngaglik, Sleman',
+  namaPengantin2: "Aisyah Fulan Fulanah, S.Pd.",
+  ayahPengantin2: 'Fulan',
+  ibuPengantin2: 'Fulanah',
+  alamatPengantin2: 'Beralamat di Plosokuning III RT 13/05, Minomartani, Ngaglik, Sleman',
+  anakKePengantin2: 'Kedua',
+
+
+
 };

@@ -21,6 +21,13 @@ export const kText = {
   ibuPengantin2: 'Fulanah',
   alamatPengantin2: 'Beralamat di Plosokuning III RT 13/05, Minomartani, Ngaglik, Sleman',
   anakKePengantin2: 'Kedua',
+  saveTheDate: "Save The Date",
+  waktuPernikahan: "11:30 WIB - 12:30 WIB",
+  pukul: "Pukul",
+  venue: "Gedung Serbaguna Kalitirto",
+  mapLokasiAcara: "Map Lokasi Acara",
+  merupakanSuatuKehormatan: "Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga, apabila Bapak/Ibu/Saudara/i ​​berkenan hadir dan memberikan doa restu. ",
+  memberikanDoaRestu: "memberikan doa restu. Atas kehadiran dan doa restunya, kami mengucapkan terima kasih.",
 
 
 

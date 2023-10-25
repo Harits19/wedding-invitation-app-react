@@ -24,12 +24,12 @@ export const menus: {
     render: <People />,
   },
   {
-    name: "collections",
-    render: <Collection />,
-  },
-  {
     name: "place",
     render: <Place />,
+  },
+  {
+    name: "collections",
+    render: <Collection />,
   },
 ];
 

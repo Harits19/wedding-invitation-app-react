@@ -4,6 +4,7 @@ import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
 import Carousel from "@/app/components/carousel";
 import CountDown from "@/app/components/count-down";
+import DateText from "@/app/components/date-text";
 import Scaffold from "@/app/components/scaffold";
 import TopDecor from "@/app/components/top-decor";
 import { kPublic } from "@/constans/public";
@@ -31,13 +32,13 @@ export default function Opening() {
           />
         </div>
 
-        <div className="absolute z-50 top-0 left-0 right-0 bottom-0 flex flex-col items-center">
-          <div className="h-[450px]" />
+        <div className="absolute z-50 top-0 left-0 right-0 bottom-0 justify-center flex flex-col items-center">
+          <div className="h-1/3" />
           <Text className="text-2xl" family="berkshire">
             {kText.name}
           </Text>
           <Text className="text-base" family="averia">
-            {moment(kText.date).format("dddd, DD MMMM YYYY")}
+            <DateText />
           </Text>
 
           <AudioPlayer src={"/background-music.mp4"} />

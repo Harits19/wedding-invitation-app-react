@@ -12,12 +12,9 @@ export default function Scaffold({
   const { width, height } = kSize.max.window;
 
   return (
-    <div className="flex flex-row justify-center">
+    <div className="flex flex-row justify-center w-screen">
       <div
-        className={`flex flex-col min-h-screen w-[100vw] overflow-hidden relative`}
-        style={{
-          maxWidth: width,
-        }}
+        className={` max-w-[360px] flex-col flex flex-1 overflow-hidden relative`}
       >
         {props.children}
       </div>

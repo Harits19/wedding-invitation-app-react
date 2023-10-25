@@ -59,23 +59,24 @@ export default function Cover() {
 
   return (
     <Scaffold>
-      {/* Top */}
-      <Background className="-scale-y-100 -scale-x-100 z-0" />
-      <TopDecor />
+      <div className="flex flex-col min-h-screen">
+        <Background className="-scale-y-100 -scale-x-100 z-0" />
+        <TopDecor />
 
-      <HalfRoundBox
-        insideBox={<Background className="" />}
-        aboveBox={
-          <>
-            <div className="absolute z-20 bottom-0 right-0 left-0">
-              <BottomDecor />
-            </div>
-            <div className="absolute z-40">
-              <Body />
-            </div>
-          </>
-        }
-      />
+        <HalfRoundBox
+          insideBox={<Background className="" />}
+          aboveBox={
+            <>
+              <div className="absolute z-20 bottom-0 right-0 left-0">
+                <BottomDecor />
+              </div>
+              <div className="absolute z-40">
+                <Body />
+              </div>
+            </>
+          }
+        />
+      </div>
     </Scaffold>
   );
 }

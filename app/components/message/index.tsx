@@ -3,7 +3,7 @@ import Scaffold from "../scaffold";
 
 export default function Message() {
   return (
-    <div className="absolute z-[100] top-0 animate-message">
+    <div className="fixed overflow-y-hidden z-[100] top-0 animate-message">
       <Scaffold>
         <div className="bg-white rounded mx-4 mt-2 p-2 ">
           <Text family="poppins">

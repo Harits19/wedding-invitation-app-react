@@ -14,7 +14,7 @@ export default function Scaffold({
   return (
     <div className="flex flex-row justify-center w-screen">
       <div
-        className={` max-w-[360px] flex-col flex flex-1 overflow-hidden relative`}
+        className={` max-w-[360px] flex-col flex flex-1 overflow-hidden relative ${props.className}`}
       >
         {props.children}
       </div>

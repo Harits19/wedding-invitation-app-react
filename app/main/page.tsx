@@ -7,7 +7,7 @@ import Opening from "./components/opening";
 
 export default function Main() {
   return (
-    <div className="overflow-y-scroll">
+    <div className="overflow-hidden">
       <Opening />
       {[
         menus.map((e, i) => (

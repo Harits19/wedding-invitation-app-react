@@ -53,21 +53,26 @@ export default function Place() {
         </div>
         <BottomDecor />
       </Scaffold>
-      <Scaffold className="">
+      <Scaffold className=" whitespace-pre-line text-center">
         <TopDecor />
         <Background className="-z-50" />
 
-        <div className="px-11 whitespace-pre-line text-center my-6">
-          <Detail
-            title={kText.acaraAkad}
-            desc={`${kText.hariAcaraAkad}\n${kText.pukul} ${kText.waktuAcaraAkad}`}
-          />
-          <Detail
-            title={kText.acaraResepsi}
-            desc={`${kText.hariAcaraResepsi}\n${kText.pukul} ${kText.waktuAcaraResepsi}`}
-          />
-        </div>
+        <Detail
+          title={kText.acaraAkad}
+          desc={`${kText.hariAcaraAkad}\n${kText.pukul} ${kText.waktuAcaraAkad}`}
+        />
+        <Detail
+          title={kText.acaraResepsi}
+          desc={`${kText.hariAcaraResepsi}\n${kText.pukul} ${kText.waktuAcaraResepsi}`}
+        />
+
         <BottomDecor />
+      </Scaffold>
+      <Scaffold className="text-center">
+        <div className="h-6" />
+        <Text family="berkshire" className="text-3xl">
+          {kText.kehadiran}
+        </Text>
       </Scaffold>
     </div>
   );

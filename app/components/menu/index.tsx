@@ -13,7 +13,7 @@ import { kSize } from "@/constans/size";
 export type MenuName = IconName;
 export const menus: {
   name: MenuName;
-  render: ReactNode;
+  render?: ReactNode;
 }[] = [
   {
     name: "home",
@@ -38,7 +38,7 @@ export default function Menu() {
   const isMusicOn = state.music_on === true;
   const { width } = kSize.max.window;
   return (
-    <div className="absolute bottom-0 z-50 flex flex-row justify-center  right-0 left-0 items-stretch ">
+    <div className="fixed bottom-0 flex flex-row justify-center  right-0 left-0 items-stretch ">
       <div className=" bg-ae814c m-8 flex flex-row rounded-full p-2 justify-between px-5 flex-1  max-w-[296px]">
         {[
           menus.map((e, index) => {

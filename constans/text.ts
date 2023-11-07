@@ -11,24 +11,35 @@ export const kText = {
     "وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ",
   ayat1Arti: `"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."`,
   ayat1Surat: "(QS Ar-Rum: 21)",
-  namaPengantin1: 'Muhammad Fulan Madani, S.Pi.',
-  ayahPengantin1: 'Nama Ayah Pengantin 1',
-  ibuPengantin1: 'Nama Ibu Pengantin 1',
-  anakKePengantin1: 'Pertama',
-  alamatPengantin1: 'Beralamat di Plosokuning III RT 13/05, Minomartani, Ngaglik, Sleman',
+  namaPengantin1: "Muhammad Fulan Madani, S.Pi.",
+  ayahPengantin1: "Nama Ayah Pengantin 1",
+  ibuPengantin1: "Nama Ibu Pengantin 1",
+  anakKePengantin1: "Pertama",
+  alamatPengantin1:
+    "Beralamat di Plosokuning III RT 13/05, Minomartani, Ngaglik, Sleman",
   namaPengantin2: "Aisyah Fulan Fulanah, S.Pd.",
-  ayahPengantin2: 'Fulan',
-  ibuPengantin2: 'Fulanah',
-  alamatPengantin2: 'Beralamat di Plosokuning III RT 13/05, Minomartani, Ngaglik, Sleman',
-  anakKePengantin2: 'Kedua',
+  ayahPengantin2: "Fulan",
+  ibuPengantin2: "Fulanah",
+  alamatPengantin2:
+    "Beralamat di Plosokuning III RT 13/05, Minomartani, Ngaglik, Sleman",
+  anakKePengantin2: "Kedua",
   saveTheDate: "Save The Date",
   waktuPernikahan: "11:30 WIB - 12:30 WIB",
   pukul: "Pukul",
   venue: "Gedung Serbaguna Kalitirto",
   mapLokasiAcara: "Map Lokasi Acara",
-  merupakanSuatuKehormatan: "Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga, apabila Bapak/Ibu/Saudara/i ​​berkenan hadir dan memberikan doa restu. ",
-  memberikanDoaRestu: "memberikan doa restu. Atas kehadiran dan doa restunya, kami mengucapkan terima kasih.",
-
-
+  merupakanSuatuKehormatan:
+    "Merupakan suatu kehormatan dan kebahagiaan bagi kami sekeluarga, apabila Bapak/Ibu/Saudara/i ​​berkenan hadir dan memberikan doa restu. ",
+  memberikanDoaRestu:
+    "memberikan doa restu. Atas kehadiran dan doa restunya, kami mengucapkan terima kasih.",
+  linkMaps: "https://maps.app.goo.gl/ZsafwexTP5KwTCr3A",
+  acaraAkad: "Acara Akad",
+  hariAcaraAkad: "Minggu, 15 Oktober 2023",
+  waktuAcaraAkad: "09.00 - 09.30 WIB",
+  tempatAcaraAkad: "Gedung Serbaguna Kalitirto",
+  acaraResepsi: "Acara Resepsi",
+  hariAcaraResepsi: "Minggu, 15 Oktober 2023",
+  waktuAcaraResepsi: "09.00 - 09.30 WIB",
+  tempatAcaraResepsi: "Gedung Serbaguna Kalitirto",
 
 };

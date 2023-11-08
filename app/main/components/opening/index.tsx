@@ -1,5 +1,5 @@
 import AudioPlayer from "@/app/components/audio-player";
-import Text from "@/app/components/averia";
+import TextDiv from "@/app/components/averia";
 import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
 import Carousel from "@/app/components/carousel";
@@ -34,12 +34,12 @@ export default function Opening() {
 
         <div className="absolute z-50 top-0 left-0 right-0 bottom-0 justify-center flex flex-col items-center">
           <div className="h-1/3" />
-          <Text className="text-2xl" family="berkshire">
+          <TextDiv className="text-2xl" family="berkshire">
             {kText.name}
-          </Text>
-          <Text className="text-base" family="averia">
+          </TextDiv>
+          <TextDiv className="text-base" family="averia">
             <DateText />
-          </Text>
+          </TextDiv>
 
           <AudioPlayer src={"/background-music.mp4"} />
 

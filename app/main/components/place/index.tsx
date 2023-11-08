@@ -1,13 +1,19 @@
-import Text from "@/app/components/averia";
+import TextDiv from "@/app/components/averia";
 import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
 import CountDown from "@/app/components/count-down";
 import DateText from "@/app/components/date-text";
+import Input from "@/app/components/input";
+import InputDecoration from "@/app/components/input-decoration";
 import Scaffold from "@/app/components/scaffold";
+import Select from "@/app/components/select";
+import TextArea from "@/app/components/textarea";
 import TopDecor from "@/app/components/top-decor";
+import useToQuery from "@/app/hooks/useToQuery";
 import { kText } from "@/constans/text";
 
 export default function Place() {
+  const name = useToQuery();
   return (
     <div>
       <Scaffold className="">
@@ -15,25 +21,25 @@ export default function Place() {
         <Background className="-scale-y-100 -z-50" />
         <Background className="-scale-y-100 -z-50" />
         <div className="flex flex-col items-center justify-center text-center  left-0 right-0 px-10">
-          <Text family="berkshire" className="text-3xl">
+          <TextDiv family="berkshire" className="text-3xl">
             {kText.saveTheDate}
-          </Text>
+          </TextDiv>
           <br />
           <div className="h-11" />
-          <Text family="averia" className="text-base">
+          <TextDiv family="averia" className="text-base">
             {kText.theWedding}
-          </Text>
-          <Text family="averia" className="text-2xl">
+          </TextDiv>
+          <TextDiv family="averia" className="text-2xl">
             <DateText />
-          </Text>
+          </TextDiv>
           <div className="h-1" />
-          <Text family="averia" className="text-base">
+          <TextDiv family="averia" className="text-base">
             {kText.pukul} {kText.waktuPernikahan}
-          </Text>
+          </TextDiv>
           <div className="h-1" />
-          <Text family="averia" className="text-sm">
+          <TextDiv family="averia" className="text-sm">
             {kText.venue}
-          </Text>
+          </TextDiv>
           <div className="h-4" />
           <button
             className="px-4 py-2 bg-ae814c text-white rounded-full"
@@ -46,10 +52,10 @@ export default function Place() {
           <br /> <br /> <br />
           <CountDown />
           <div className="h-4" />
-          <Text>
+          <TextDiv>
             {kText.merupakanSuatuKehormatan}
             {kText.memberikanDoaRestu}
-          </Text>
+          </TextDiv>
         </div>
         <BottomDecor />
       </Scaffold>
@@ -68,11 +74,34 @@ export default function Place() {
 
         <BottomDecor />
       </Scaffold>
-      <Scaffold className="text-center">
-        <div className="h-6" />
-        <Text family="berkshire" className="text-3xl">
+      <div className="w-screen flex flex-row justify-center">
+        <div className=" self-center h-16 overflow-y-hidden -mt-16 w-full shadow-2xl  max-w-360  " />
+      </div>
+
+      <Scaffold className="text-center px-8">
+        <div className="h-16" />
+        <TextDiv family="berkshire" className="text-3xl">
           {kText.kehadiran}
-        </Text>
+        </TextDiv>
+        <div className="h-2" />
+        <Input label={kText.nama} defaultValue={name} />
+        <div className="h-4" />
+        <TextArea label={kText.ucapan} rows={5} />
+        <div className="h-4" />
+        <Select value={"Hadir"}>
+          {[kText.hadir, kText.tidakHadir].map((e) => (
+            <option value={e} key={e} label={e}>
+              {e}
+            </option>
+          ))}
+        </Select>
+        <div className="h-8" />
+        <div className="flex flex-row">
+          <button className="bg-ae814c w-fit px-7 py-2 rounded-md">
+            <TextDiv className="text-white">{kText.kirim}</TextDiv>
+          </button>
+        </div>
+        <div className="h-24" />
       </Scaffold>
     </div>
   );
@@ -81,8 +110,8 @@ export default function Place() {
 const Detail = (props: { title: string; desc: string }) => {
   return (
     <>
-      <Text className="font-semibold text-base">{props.title}</Text>
-      <Text>{props.desc}</Text>
+      <TextDiv className="font-semibold text-base">{props.title}</TextDiv>
+      <TextDiv>{props.desc}</TextDiv>
     </>
   );
 };

@@ -16,6 +16,7 @@ export default function Main() {
           </MenuWrapper>
         )),
       ]}
+      <div className="h-20" />
     </div>
   );
 }

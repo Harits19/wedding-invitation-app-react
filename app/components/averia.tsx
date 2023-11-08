@@ -1,7 +1,7 @@
 import { kFontFamily } from "@/constans/font-family";
 import { DetailedHTMLProps, HtmlHTMLAttributes } from "react";
 
-export default function Text({
+export default function TextDiv({
   family = "poppins",
   ...props
 }: DetailedHTMLProps<HtmlHTMLAttributes<HTMLDivElement>, HTMLDivElement> & {

@@ -1,4 +1,4 @@
-import Text from "@/app/components/averia";
+import TextDiv from "@/app/components/averia";
 import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
 import MenuWrapper from "@/app/components/menu-wrapper";
@@ -36,16 +36,16 @@ export default function People() {
           />
         </div>
         <br />
-        <Text family="berkshire" className="text-3xl animate-bottom-top">
+        <TextDiv family="berkshire" className="text-3xl animate-bottom-top">
           {namaPengantin}
-        </Text>
+        </TextDiv>
         <br />
-        <Text family="poppins" className="text-sm animate-bottom-top">
+        <TextDiv family="poppins" className="text-sm animate-bottom-top">
           Anak {anakKe} dari Pasangan
           <br /> {ayahPengantin} & <br />
           {ibuPengantin} <br />
           {kText.alamatPengantin1}
-        </Text>
+        </TextDiv>
       </div>
     );
   };

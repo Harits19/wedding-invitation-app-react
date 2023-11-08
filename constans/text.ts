@@ -41,6 +41,10 @@ export const kText = {
   hariAcaraResepsi: "Minggu, 15 Oktober 2023",
   waktuAcaraResepsi: "09.00 - 09.30 WIB",
   tempatAcaraResepsi: "Gedung Serbaguna Kalitirto",
-  kehadiran: "Kehadiran"
-
+  kehadiran: "Kehadiran",
+  nama: "Nama",
+  ucapan: "Ucapan",
+  kirim: "Kirim",
+  hadir: "Hadir",
+  tidakHadir: "Tidak Hadir",
 };

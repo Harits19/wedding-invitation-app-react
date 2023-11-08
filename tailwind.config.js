@@ -16,6 +16,9 @@ module.exports = {
   theme: {
     extend: {
       colors: kColor,
+      maxWidth: {
+        '360': "360px"
+      },
       keyframes: {
         "wiggle-left": {
           '0%': { transform: 'rotate(0deg) scale(1)' },

@@ -1,5 +1,5 @@
 import { DateDifference, timeBetweenDates } from "@/utils/date-util";
-import Text from "./averia";
+import TextDiv from "./averia";
 import { useEffect, useState } from "react";
 import { kText } from "@/constans/text";
 
@@ -19,14 +19,14 @@ export default function CountDown() {
   return (
     <div className="flex flex-row gap-x-2 animate-blip">
       {Object.entries(diff).map((e, i) => (
-        <Text
+        <TextDiv
           family="poppins"
           className="h-[70px] bg-ae814c text-xl w-[70px] text-white rounded-lg items-center justify-center flex flex-col"
           key={i}
         >
           {e[1]}
           <div className="text-xs">{e[0].toUpperCase()}</div>
-        </Text>
+        </TextDiv>
       ))}
     </div>
   );

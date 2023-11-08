@@ -1,4 +1,4 @@
-import Text from "@/app/components/averia";
+import TextDiv from "@/app/components/averia";
 import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
 import HalfRoundBox from "@/app/components/half-round-box";
@@ -13,7 +13,9 @@ import { ReactNode } from "react";
 export default function Home() {
   const Desc = (props: { children: ReactNode }) => {
     return (
-      <Text className="text-[13px] animate-fade-zoom">{props.children}</Text>
+      <TextDiv className="text-[13px] animate-fade-zoom">
+        {props.children}
+      </TextDiv>
     );
   };
 
@@ -21,13 +23,15 @@ export default function Home() {
     <Scaffold>
       <div className="h-[15vh]" />
       <Background className="-z-20" />
-      <HalfRoundBox insideBox={<Background className="-scale-y-100 h-max" />} />
+      <HalfRoundBox
+        insideBox={<Background className="-scale-y-100 h-max w-max" />}
+      />
       <div className="items-center flex flex-col p-12 text-center z-50 ">
-        <Text>السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</Text>
+        <TextDiv>السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</TextDiv>
         <div className="h-6" />
-        <Text family="berkshire" className="text-3xl">
+        <TextDiv family="berkshire" className="text-3xl">
           {kText.theWedding}
-        </Text>
+        </TextDiv>
         <div className="h-10" />
         <Desc>
           <span>{kText.atasBerkahRahmat}</span>

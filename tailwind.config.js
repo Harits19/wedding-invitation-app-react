@@ -19,6 +19,9 @@ module.exports = {
       maxWidth: {
         '360': "360px"
       },
+      height: {
+        '100': "100px"
+      },
       keyframes: {
         "wiggle-left": {
           '0%': { transform: 'rotate(0deg) scale(1)' },

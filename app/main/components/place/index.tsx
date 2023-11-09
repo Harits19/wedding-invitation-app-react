@@ -11,6 +11,7 @@ import TextArea from "@/app/components/textarea";
 import TopDecor from "@/app/components/top-decor";
 import useToQuery from "@/app/hooks/useToQuery";
 import { kText } from "@/constans/text";
+import Greeting from "../greeting";
 
 export default function Place() {
   const name = useToQuery();
@@ -103,6 +104,7 @@ export default function Place() {
         </div>
         <div className="h-24" />
       </Scaffold>
+      <Greeting />
     </div>
   );
 }

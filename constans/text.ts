@@ -47,4 +47,6 @@ export const kText = {
   kirim: "Kirim",
   hadir: "Hadir",
   tidakHadir: "Tidak Hadir",
+  totalUcapan: "Total Ucapan",
+  orangMenyatakanHadir: "Orang Menyatakan Hadir"
 };

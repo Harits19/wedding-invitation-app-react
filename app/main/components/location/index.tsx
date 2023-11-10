@@ -35,7 +35,7 @@ export default function Location() {
         </TextDiv>
         <div className="h-4" />
         <button
-          className="px-4 py-2 bg-ae814c text-white rounded-full"
+          className="px-4 py-2 bg-driftwood text-white rounded-full"
           onClick={() => {
             window.open(kText.linkMaps, "_blank");
           }}

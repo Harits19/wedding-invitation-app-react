@@ -50,4 +50,8 @@ export const kText = {
   totalUcapan: "Total Ucapan",
   orangMenyatakanHadir: "Orang Menyatakan Hadir",
   ourGallery: "Our Gallery",
+  terimaKasih: "Terimakasih",
+  merupakanSuatuKebahagiaan:
+    "Merupakan Suatu Kebahagiaan dan Kehormatan bagi Kami, Apabila Bapak/Ibu/Saudara/i, Berkenan Hadir di Acara kami",
+  instagramId: "abd.harits19",
 };

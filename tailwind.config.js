@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export const kColor = {
   "303333": "#303333",
-  "ae814c": "#ae814c"
+  "driftwood": "#ae814c"
 }
 
 module.exports = {

@@ -39,7 +39,7 @@ export default function Menu() {
   const { width } = kSize.max.window;
   return (
     <div className="fixed bottom-0 flex flex-row justify-center  right-0 left-0 items-stretch ">
-      <div className=" bg-ae814c m-8 flex flex-row rounded-full p-2 justify-between px-5 flex-1  max-w-[296px]">
+      <div className=" bg-driftwood m-8 flex flex-row rounded-full p-2 justify-between px-5 flex-1 bg-opacity-80 shadow-2xl  max-w-[296px]">
         {[
           menus.map((e, index) => {
             const selectedMenu = false ?? state.activeMenu === index;

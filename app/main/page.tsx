@@ -2,6 +2,8 @@
 
 import { menus } from "../components/menu";
 import MenuWrapper from "../components/menu-wrapper";
+import Scaffold from "../components/scaffold";
+import Closing from "./components/closing";
 import Home from "./components/home";
 import Opening from "./components/opening";
 
@@ -16,7 +18,7 @@ export default function Main() {
           </MenuWrapper>
         )),
       ]}
-      <div className="h-20" />
+      <Closing />
     </div>
   );
 }

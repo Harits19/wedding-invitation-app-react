@@ -12,13 +12,9 @@ export default function Scaffold({
   transparent?: boolean;
 }) {
   return (
-    <div
-      className={`flex flex-row justify-center w-screen ${
-        transparent ? "" : "bg-303333"
-      }`}
-    >
+    <div className={`flex flex-row justify-center w-screen `}>
       <div
-        className={` max-w-[360px] flex-col flex flex-1 overflow-hidden ${!transparent ? `bg-white` : ''} relative ${props.className}`}
+        className={` max-w-[360px] flex-col flex flex-1 overflow-hidden relative ${props.className}`}
         style={{ fontFamily: kFontFamily.poppins }}
       >
         {props.children}

@@ -47,7 +47,7 @@ export default function Cover() {
           onClick={() => {
             router.push(`main?to=${to}`);
           }}
-          className="bg-ae814c py-2 px-12 rounded-sm"
+          className="bg-driftwood py-2 px-12 rounded-sm"
         >
           <TextDiv family="averia" className="text-white">
             {kText.bukaUndangan}

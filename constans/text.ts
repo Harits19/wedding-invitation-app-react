@@ -48,5 +48,6 @@ export const kText = {
   hadir: "Hadir",
   tidakHadir: "Tidak Hadir",
   totalUcapan: "Total Ucapan",
-  orangMenyatakanHadir: "Orang Menyatakan Hadir"
+  orangMenyatakanHadir: "Orang Menyatakan Hadir",
+  ourGallery: "Our Gallery",
 };

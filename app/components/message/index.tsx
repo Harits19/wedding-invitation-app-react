@@ -3,10 +3,9 @@ import Scaffold from "../scaffold";
 
 export default function Message() {
   return (
-    <div className="fixed overflow-y-hidden z-[100] top-0 flex flex-row animate-message w-screen justify-center">
-      <div className="flex flex-1" />
-      <div className="max-w-360 pb-10">
-        <div className="bg-white rounded mx-4 mt-2 p-2 shadow-xl">
+    <div className="fixed overflow-y-hidden z-[100] top-0 animate-message">
+      <Scaffold transparent={true}>
+        <div className="bg-white rounded mx-4 mt-2 p-2 shadow-lg mb-5 ">
           <TextDiv family="poppins">
             <div className="line-clamp-1 text-[10px]">Fulan</div>
             <div className="h-2" />
@@ -17,8 +16,7 @@ export default function Message() {
             </div>
           </TextDiv>
         </div>
-      </div>
-      <div className="flex flex-1" />
+      </Scaffold>
     </div>
   );
 }

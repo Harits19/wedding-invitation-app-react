@@ -7,6 +7,8 @@ import photoSlideShow2 from "../public/photo-slideshow-2.webp";
 import dividerDecor from "../public/divider-decor.webp";
 import photoPengatin1 from "../public/photo-pengantin-1.webp";
 import photoPengatin2 from "../public/photo-pengantin-2.webp";
+import photoGallery1 from "../public/photo-gallery-1.webp";
+import photoGallery2 from "../public/photo-gallery-2.webp";
 
 export const kPublic = {
   sideTopDecor,
@@ -18,4 +20,6 @@ export const kPublic = {
   dividerDecor,
   photoPengatin1,
   photoPengatin2,
+  photoGallery1,
+  photoGallery2,
 };

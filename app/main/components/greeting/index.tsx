@@ -19,7 +19,7 @@ export default function Greeting() {
               Hamba Allah - 2023-10-15 12:08:52
             </div>
             <div className="leading-5">
-              Selamat mirzaaaa, sory bgt gk bisa dateng, beda pulau kitaaa.
+              Selamat, sory bgt gk bisa dateng, beda pulau kitaaa.
               Sukses terusss kedepannya utk memajuan dunia perikanan indonesia.
             </div>
           </div>

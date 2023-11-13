@@ -11,7 +11,7 @@ export default function Message() {
             <div className="h-2" />
 
             <div className="line-clamp-1 text-[10px]">
-              Selamat mirzaaaa, sory bgt gk bisa dateng, beda pulau kitaaa.
+              Selamat, sory bgt gk bisa dateng, beda pulau kitaaa.
               Sukses terusss kedepannya utk memajuan dunia perikanan indonesia.
             </div>
           </TextDiv>

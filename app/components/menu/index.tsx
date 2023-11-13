@@ -40,6 +40,7 @@ export default function Menu() {
   useEffect(() => {
     if (audio) {
       audio.play();
+      audio.loop = true;
       const handlePausePlay = () => {
         setPlay((prev) => !prev);
       };

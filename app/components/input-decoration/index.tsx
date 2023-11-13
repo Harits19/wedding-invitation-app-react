@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import TextDiv from "../averia";
+import TextDiv from "../div";
 
 export interface InputDecorationProps{
   label?: string;

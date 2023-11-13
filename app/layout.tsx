@@ -12,7 +12,7 @@ import "@fontsource/averia-serif-libre/400-italic.css"; // Specify weight and st
 import "@fontsource/berkshire-swash"; // Defaults to weight 400
 import "@fontsource/berkshire-swash/400.css"; // Specify weight
 import { GlobalStateProvider } from "./hooks/useGlobalState";
-import TextDiv from "./components/averia";
+import TextDiv from "./components/div";
 
 export const metadata: Metadata = {
   title: "Wedding Invitation App",

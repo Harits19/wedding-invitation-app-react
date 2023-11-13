@@ -1,4 +1,4 @@
-import TextDiv from "../averia";
+import TextDiv from "../div";
 import Scaffold from "../scaffold";
 
 export default function Message() {

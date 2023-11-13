@@ -1,4 +1,4 @@
-import TextDiv from "@/app/components/averia";
+import TextDiv from "@/app/components/div";
 import MenuWrapper from "@/app/components/menu-wrapper";
 import Scaffold from "@/app/components/scaffold";
 import { kPublic } from "@/constans/public";

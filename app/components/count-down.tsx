@@ -1,5 +1,5 @@
 import { DateDifference, timeBetweenDates } from "@/utils/date-util";
-import TextDiv from "./averia";
+import TextDiv from "./div";
 import { useEffect, useState } from "react";
 import { kText } from "@/constans/text";
 

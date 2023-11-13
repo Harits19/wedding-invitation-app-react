@@ -3,7 +3,7 @@
 import { kSize } from "@/constans/size";
 import SideTopDecor from "./components/side-decor/side-top-decor";
 import SideBottomDecor from "./components/side-decor/side-bottom-decor";
-import TextDiv from "./components/averia";
+import TextDiv from "./components/div";
 import Image from "next/image";
 import Wiggle from "./components/wiggle";
 import { kPublic } from "@/constans/public";

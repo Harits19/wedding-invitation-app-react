@@ -1,4 +1,4 @@
-import TextDiv from "@/app/components/averia";
+import TextDiv from "@/app/components/div";
 import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
 import Carousel from "@/app/components/carousel";

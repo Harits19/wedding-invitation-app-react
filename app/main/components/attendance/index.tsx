@@ -1,4 +1,4 @@
-import TextDiv from "@/app/components/averia";
+import TextDiv from "@/app/components/div";
 import Input from "@/app/components/input";
 import Scaffold from "@/app/components/scaffold";
 import Select from "@/app/components/select";

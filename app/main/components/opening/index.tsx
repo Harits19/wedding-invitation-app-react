@@ -1,4 +1,3 @@
-import AudioPlayer from "@/app/components/audio-player";
 import TextDiv from "@/app/components/averia";
 import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
@@ -41,7 +40,6 @@ export default function Opening() {
             <DateText />
           </TextDiv>
 
-          <AudioPlayer src={"/background-music.mp4"} />
 
           <br />
           <CountDown />

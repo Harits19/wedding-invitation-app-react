@@ -10,7 +10,7 @@ import {
 
 export interface GlobalStateInterface {
   activeMenu: number;
-  music_on: boolean;
+  audio: HTMLAudioElement;
 }
 
 export const GlobalStateContext = createContext({
@@ -21,7 +21,10 @@ export const GlobalStateContext = createContext({
 export const GlobalStateProvider = ({
   children,
   value = {
-    music_on: true,
+    audio:
+      typeof Audio === "undefined"
+        ? undefined
+        : new Audio("/background-music.mp3"),
   } as GlobalStateInterface,
 }: {
   children: React.ReactNode;

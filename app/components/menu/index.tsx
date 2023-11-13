@@ -3,7 +3,7 @@
 import { useGlobalState } from "@/app/hooks/useGlobalState";
 import Icon from "../Icon";
 import { IconName } from "../Icon/icons";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import People from "@/app/main/components/people";
 import Collection from "@/app/main/components/collection";
 import Place from "@/app/main/components/place";
@@ -35,7 +35,26 @@ export const menus: {
 
 export default function Menu() {
   const { state, setState } = useGlobalState();
-  const isMusicOn = state.music_on === true;
+  const [play, setPlay] = useState(true);
+  const audio = state.audio;
+  useEffect(() => {
+    if (audio) {
+      audio.play();
+      const handlePausePlay = () => {
+        setPlay((prev) => !prev);
+      };
+
+      audio.addEventListener("pause", handlePausePlay);
+      audio.addEventListener("play", handlePausePlay);
+      return () => {
+        audio.currentTime = 0;
+        audio.pause();
+        audio.removeEventListener("pause", handlePausePlay);
+        audio.removeEventListener("play", handlePausePlay);
+      };
+    }
+  }, []);
+
   const { width } = kSize.max.window;
   return (
     <div className="fixed bottom-0 flex flex-row justify-center  right-0 left-0 items-stretch ">
@@ -64,12 +83,14 @@ export default function Menu() {
         ]}
         <button
           onClick={() => {
-            setState({
-              music_on: !isMusicOn,
-            });
+            if (!play) {
+              state.audio?.pause();
+            } else {
+              state.audio?.play();
+            }
           }}
         >
-          <Icon name={isMusicOn ? "music" : "music_off"} />
+          <Icon name={!play ? "music" : "music_off"} />
         </button>
       </div>
     </div>

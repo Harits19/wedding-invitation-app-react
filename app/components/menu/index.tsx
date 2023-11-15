@@ -3,7 +3,7 @@
 import { useGlobalState } from "@/app/hooks/useGlobalState";
 import Icon from "../Icon";
 import { IconName } from "../Icon/icons";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, RefObject, useEffect, useState } from "react";
 import People from "@/app/main/components/people";
 import Collection from "@/app/main/components/collection";
 import Place from "@/app/main/components/place";
@@ -33,7 +33,7 @@ export const menus: {
   },
 ];
 
-export default function Menu() {
+export default function Menu({ refs }: { refs: RefObject<HTMLDivElement>[] }) {
   const { state, setState } = useGlobalState();
   const [play, setPlay] = useState(true);
   const audio = state.audio;
@@ -68,9 +68,7 @@ export default function Menu() {
               <button
                 key={index}
                 onClick={() => {
-                  setState({
-                    activeMenu: index,
-                  });
+                  refs[index].current?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
                 <Icon

@@ -1,12 +1,10 @@
 "use client";
 
-import { createRef } from "react";
+import { createRef, useRef } from "react";
 import Menu, { menus } from "../components/menu";
 import MenuWrapper from "../components/menu-wrapper";
 import Closing from "./components/closing";
 import Opening from "./components/opening";
-
-const elRefs = menus.map((e, i) => createRef<HTMLDivElement>());
 
 export default function Main() {
   return (
@@ -16,7 +14,7 @@ export default function Main() {
           <Opening />
           {[
             menus.map((e, i) => (
-              <MenuWrapper key={i} menuIndex={i} ref={elRefs[i]}>
+              <MenuWrapper name={e.name} key={i}>
                 {e.render}
               </MenuWrapper>
             )),
@@ -24,7 +22,7 @@ export default function Main() {
           <Closing />
         </div>
       </div>
-      <Menu refs={elRefs} />
+      <Menu />
     </div>
   );
 }

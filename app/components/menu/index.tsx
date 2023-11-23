@@ -33,7 +33,7 @@ export const menus: {
   },
 ];
 
-export default function Menu({ refs }: { refs: RefObject<HTMLDivElement>[] }) {
+export default function Menu() {
   const { state, setState } = useGlobalState();
   const [play, setPlay] = useState(true);
   const audio = state.audio;
@@ -68,7 +68,11 @@ export default function Menu({ refs }: { refs: RefObject<HTMLDivElement>[] }) {
               <button
                 key={index}
                 onClick={() => {
-                  refs[index].current?.scrollIntoView({ behavior: "smooth" });
+                  document?.getElementById?.(e.name)?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "end",
+                    inline: "nearest",
+                  });
                 }}
               >
                 <Icon

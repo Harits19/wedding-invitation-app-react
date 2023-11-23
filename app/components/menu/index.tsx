@@ -62,7 +62,7 @@ export default function Menu() {
       <div className=" bg-driftwood m-8 flex flex-row rounded-full p-2 justify-between px-5 flex-1 bg-opacity-80 shadow-2xl  max-w-[296px]">
         {[
           menus.map((e, index) => {
-            const selectedMenu = false ?? state.activeMenu === index;
+            const selectedMenu = state.activeMenu === e.name;
 
             return (
               <button

@@ -1,7 +1,6 @@
 import Div from "@/app/components/div";
 import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
-import MenuWrapper from "@/app/components/menu-wrapper";
 import Scaffold from "@/app/components/scaffold";
 import TopDecor from "@/app/components/top-decor";
 import { kPublic } from "@/constans/public";

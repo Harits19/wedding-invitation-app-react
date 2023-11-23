@@ -3,11 +3,13 @@ import BottomDecor from "@/app/components/bottom-decor";
 import Div from "@/app/components/div";
 import Scaffold from "@/app/components/scaffold";
 import TopDecor from "@/app/components/top-decor";
+import useDeselectMenu from "@/app/hooks/useDeselectMenu";
 import { kPublic } from "@/constans/public";
 import { kText } from "@/constans/text";
 import Image from "next/image";
 
 export default function Closing() {
+  const ref = useDeselectMenu();
   return (
     <Scaffold className="">
       <TopDecor />
@@ -20,11 +22,13 @@ export default function Closing() {
           src={kPublic.photoGallery1}
         />
         <div className="h-5" />
-        <div className="text-sm animate-fade-zoom">{kText.merupakanSuatuKebahagiaan}</div>
+        <div className="text-sm animate-fade-zoom">
+          {kText.merupakanSuatuKebahagiaan}
+        </div>
         <div className="h-10" />
         <div className="text-sm animate-fade-zoom">{kText.terimaKasih}</div>
       </Div>
-      <div className="bg-driftwood relative flex flex-col">
+      <div ref={ref} className="bg-driftwood relative flex flex-col">
         <button
           onClick={() => {
             window.open(`https://www.instagram.com/${kText.instagramId}`);

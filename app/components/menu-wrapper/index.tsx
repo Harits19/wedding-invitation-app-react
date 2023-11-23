@@ -2,15 +2,29 @@ import { useGlobalState } from "@/app/hooks/useGlobalState";
 import { IconName } from "../Icon/icons";
 import { ReactNode, RefObject } from "react";
 import { useDebounceFunc } from "@/app/hooks/useDebounce";
-
-export type MenuName = IconName;
+import { useInView } from "react-intersection-observer";
+import { MenuName } from "../menu";
 
 export default function MenuWrapper({
   children,
   name,
 }: {
   children?: ReactNode;
-  name: string;
+  name: MenuName;
 }) {
-  return <div id={name}>{children}</div>;
+  const { setState } = useGlobalState();
+  const { ref } = useInView({
+     rootMargin: "-10px 0px -10px 0px",
+    onChange: (inView) => {
+      if (inView) {
+        console.log({ inView, name });
+        setState({ activeMenu: name });
+      }
+    },
+  });
+  return (
+    <div ref={ref} id={name}>
+      {children}
+    </div>
+  );
 }

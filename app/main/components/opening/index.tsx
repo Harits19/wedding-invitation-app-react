@@ -10,13 +10,17 @@ import { kPublic } from "@/constans/public";
 import { kText } from "@/constans/text";
 import moment from "moment";
 import Image from "next/image";
+import { useInView } from "react-intersection-observer";
+import { useGlobalState } from "@/app/hooks/useGlobalState";
+import useDeselectMenu from "@/app/hooks/useDeselectMenu";
 
 export default function Opening() {
   const imageList = [kPublic.photoSlideShow1, kPublic.photoSlideShow2];
+  const ref = useDeselectMenu();
 
   return (
     <Scaffold>
-      <div className="flex flex-col min-h-screen">
+      <div ref={ref} className="flex flex-col min-h-screen">
         <Background className="z-20" />
         <div className="absolute z-20 right-0 left-0">
           <TopDecor />
@@ -39,7 +43,6 @@ export default function Opening() {
           <Div className="text-base" family="averia">
             <DateText />
           </Div>
-
 
           <br />
           <CountDown />

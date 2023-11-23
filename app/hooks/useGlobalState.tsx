@@ -7,9 +7,10 @@ import {
   useContext,
   useState,
 } from "react";
+import { MenuName } from "../components/menu";
 
 export interface GlobalStateInterface {
-  activeMenu: number;
+  activeMenu?: MenuName;
   audio: HTMLAudioElement;
 }
 

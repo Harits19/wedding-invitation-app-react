@@ -1,11 +1,9 @@
 "use client";
 
-import { RefObject, createRef, useEffect, useState } from "react";
+import { createRef } from "react";
 import Menu, { menus } from "../components/menu";
 import MenuWrapper from "../components/menu-wrapper";
-import Scaffold from "../components/scaffold";
 import Closing from "./components/closing";
-import Home from "./components/home";
 import Opening from "./components/opening";
 
 const elRefs = menus.map((e, i) => createRef<HTMLDivElement>());

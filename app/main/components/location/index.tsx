@@ -14,7 +14,10 @@ export default function Location() {
       <Background className="-scale-y-100 -z-50" />
       <Background className="-scale-y-100 -z-50" />
       <div className="flex flex-col items-center justify-center text-center  left-0 right-0 px-10">
-        <TextDiv family="berkshire" className="text-3xl">
+        <TextDiv
+          family="berkshire"
+          className="text-3xl animate-top-bottom-fade"
+        >
           {kText.saveTheDate}
         </TextDiv>
         <br />
@@ -22,15 +25,15 @@ export default function Location() {
         <TextDiv family="averia" className="text-base">
           {kText.theWedding}
         </TextDiv>
-        <TextDiv family="averia" className="text-2xl">
+        <TextDiv family="averia" className="text-2xl animate-bottom-top">
           <DateText />
         </TextDiv>
         <div className="h-1" />
-        <TextDiv family="averia" className="text-base">
+        <TextDiv family="averia" className="text-base animate-bottom-top">
           {kText.pukul} {kText.waktuPernikahan}
         </TextDiv>
         <div className="h-1" />
-        <TextDiv family="averia" className="text-sm">
+        <TextDiv family="averia" className="text-sm animate-bottom-top">
           {kText.venue}
         </TextDiv>
         <div className="h-4" />
@@ -45,7 +48,7 @@ export default function Location() {
         <br /> <br /> <br />
         <CountDown />
         <div className="h-4" />
-        <TextDiv>
+        <TextDiv className="animate-bottom-top">
           {kText.merupakanSuatuKehormatan}
           {kText.memberikanDoaRestu}
         </TextDiv>

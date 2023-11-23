@@ -60,8 +60,14 @@ module.exports = {
         },
         'bottom-top': {
           '0%': { position: 'relative', top: '100%', opacity: '0' },
+          '50%': { opacity: '0' },
           '100%': { position: 'relative', top: '0%', opacity: '1' }
-        }
+        },
+        'top-bottom-fade': {
+          '0%': { position: 'relative', top: '-30%', transform: 'scale(0.7)', opacity: '0' },
+          '30%': { position: 'relative', opacity: '0' },
+          '100%': { position: 'relative', top: '0', transform: 'scale(1)', opacity: '1' }
+        },
       },
       animation: {
         "wiggle-left": 'wiggle-left 3s ease-in-out infinite',
@@ -70,7 +76,10 @@ module.exports = {
         "blip": 'blip 1s ease-in-out infinite',
         "message": 'message 5s ease-in-out infinite',
         "fade-zoom": 'fade-zoom 3s',
-        "bottom-top": 'bottom-top 2s ease-in-out'
+        "bottom-top": 'bottom-top 2s ease-in-out',
+        "bottom-top-1s": 'bottom-top 1s ease-in-out',
+        "top-bottom-fade": 'top-bottom-fade 2s'
+
 
       },
       backgroundImage: {

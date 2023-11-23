@@ -1,24 +1,22 @@
 import { useGlobalState } from "@/app/hooks/useGlobalState";
 import { IconName } from "../Icon/icons";
-import { ReactNode, RefObject, useEffect, useRef } from "react";
-import { useInView } from "react-intersection-observer";
-import useDebounce, { useDebounceFunc } from "@/app/hooks/useDebounce";
+import { ReactNode, RefObject } from "react";
+import { useDebounceFunc } from "@/app/hooks/useDebounce";
 
 export type MenuName = IconName;
 
 export default function MenuWrapper({
   menuIndex,
   children,
-  ref
+  ref,
 }: {
   menuIndex: number;
   children?: ReactNode;
-  ref: RefObject<HTMLDivElement>
+  ref: RefObject<HTMLDivElement>;
 }) {
   const { state, setState } = useGlobalState();
   // const ref = useRef<HTMLDivElement>(null);
   const debounce = useDebounceFunc();
-  const { ref: inViewRef, inView } = useInView();
 
   // useEffect(() => {
   //   if (menuIndex === state.activeMenu) {
@@ -26,11 +24,5 @@ export default function MenuWrapper({
   //   }
   // }, [menuIndex, state.activeMenu, debounce]);
 
-  return (
-    <div ref={ref}>
-      <div ref={inViewRef}>
-        <div key={`${inView}`}>{children}</div>
-      </div>
-    </div>
-  );
+  return <div ref={ref}>{children}</div>;
 }

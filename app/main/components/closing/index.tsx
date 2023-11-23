@@ -1,5 +1,6 @@
 import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
+import Div from "@/app/components/div";
 import Scaffold from "@/app/components/scaffold";
 import TopDecor from "@/app/components/top-decor";
 import { kPublic } from "@/constans/public";
@@ -10,7 +11,7 @@ export default function Closing() {
   return (
     <Scaffold className="">
       <TopDecor />
-      <div className="items-center flex flex-col -m-5 text-center p-14 ">
+      <Div className="items-center flex flex-col -m-5 text-center p-14 ">
         <Background className="-z-10" />
 
         <Image
@@ -22,7 +23,7 @@ export default function Closing() {
         <div className="text-sm animate-fade-zoom">{kText.merupakanSuatuKebahagiaan}</div>
         <div className="h-10" />
         <div className="text-sm animate-fade-zoom">{kText.terimaKasih}</div>
-      </div>
+      </Div>
       <div className="bg-driftwood relative flex flex-col">
         <button
           onClick={() => {

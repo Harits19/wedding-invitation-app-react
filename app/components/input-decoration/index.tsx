@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import TextDiv from "../div";
+import Div from "../div";
 
 export interface InputDecorationProps{
   label?: string;
@@ -12,7 +12,7 @@ export default function InputDecoration({
 }: InputDecorationProps) {
   const className = `border text-sm px-5 py-2 rounded-sm `;
   return (
-    <TextDiv className="flex flex-col items-stretch">
+    <Div className="flex flex-col items-stretch">
       {label ? (
         <>
           <div className="text-xs text-start">{label}</div>
@@ -20,6 +20,6 @@ export default function InputDecoration({
         </>
       ) : undefined}
       <div className={`${className} flex flex-col`}>{props.children}</div>
-    </TextDiv>
+    </Div>
   );
 }

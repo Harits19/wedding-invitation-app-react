@@ -1,4 +1,4 @@
-import TextDiv from "@/app/components/div";
+import Div from "@/app/components/div";
 import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
 import HalfRoundBox from "@/app/components/half-round-box";
@@ -13,9 +13,7 @@ import { ReactNode } from "react";
 export default function Home() {
   const Desc = (props: { children: ReactNode }) => {
     return (
-      <TextDiv className="text-[13px] animate-fade-zoom">
-        {props.children}
-      </TextDiv>
+      <Div className="text-[13px] animate-fade-zoom">{props.children}</Div>
     );
   };
 
@@ -27,22 +25,24 @@ export default function Home() {
         insideBox={<Background className="-scale-y-100 h-max w-max" />}
       />
       <div className="items-center flex flex-col p-12 text-center z-50 ">
-        <TextDiv>السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</TextDiv>
+        <Div>السَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</Div>
         <div className="h-6" />
-        <TextDiv family="berkshire" className="text-3xl">
+        <Div family="berkshire" className="text-3xl">
           {kText.theWedding}
-        </TextDiv>
+        </Div>
         <div className="h-10" />
         <Desc>
           <span>{kText.atasBerkahRahmat}</span>
           <span> {kText.kamiMengundang}</span>
         </Desc>
         <div className="h-4" />
-        <Image
-          className="rounded-full object-cover w-[205px] h-[205px] animate-fade-zoom"
-          alt="alt"
-          src={kPublic.photoCover}
-        />
+        <Div>
+          <Image
+            className="rounded-full object-cover w-[205px] h-[205px] animate-fade-zoom"
+            alt="alt"
+            src={kPublic.photoCover}
+          />
+        </Div>
         <div className="h-4" />
         <Desc>
           {kText.ayat1} <br />

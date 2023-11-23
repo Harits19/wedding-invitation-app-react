@@ -1,4 +1,4 @@
-import TextDiv from "@/app/components/div";
+import Div from "@/app/components/div";
 import Input from "@/app/components/input";
 import Scaffold from "@/app/components/scaffold";
 import Select from "@/app/components/select";
@@ -11,9 +11,9 @@ export default function Attendance() {
   return (
     <Scaffold className="text-center px-8">
       <div className="h-16" />
-      <TextDiv family="berkshire" className="text-3xl">
+      <Div family="berkshire" className="text-3xl">
         {kText.kehadiran}
-      </TextDiv>
+      </Div>
       <div className="h-2" />
       <Input label={kText.nama} defaultValue={name} />
       <div className="h-4" />
@@ -29,7 +29,7 @@ export default function Attendance() {
       <div className="h-3" />
       <div className="flex flex-row">
         <button className="bg-driftwood w-fit px-7 py-2 rounded-md">
-          <TextDiv className="text-white">{kText.kirim}</TextDiv>
+          <Div className="text-white">{kText.kirim}</Div>
         </button>
       </div>
       <div className="h-24" />

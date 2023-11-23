@@ -1,4 +1,4 @@
-import TextDiv from "@/app/components/div";
+import Div from "@/app/components/div";
 import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
 import Scaffold from "@/app/components/scaffold";
@@ -11,7 +11,7 @@ export default function DetailLocation() {
       <TopDecor />
       <Background className="-z-50" />
 
-      <div className="animate-fade-zoom">
+      <Div className="animate-fade-zoom">
         <Detail
           title={kText.acaraAkad}
           desc={`${kText.hariAcaraAkad}\n${kText.pukul} ${kText.waktuAcaraAkad}`}
@@ -20,7 +20,7 @@ export default function DetailLocation() {
           title={kText.acaraResepsi}
           desc={`${kText.hariAcaraResepsi}\n${kText.pukul} ${kText.waktuAcaraResepsi}`}
         />
-      </div>
+      </Div>
       <BottomDecor />
     </Scaffold>
   );
@@ -29,8 +29,8 @@ export default function DetailLocation() {
 const Detail = (props: { title: string; desc: string }) => {
   return (
     <>
-      <TextDiv className="font-semibold text-base">{props.title}</TextDiv>
-      <TextDiv>{props.desc}</TextDiv>
+      <Div className="font-semibold text-base">{props.title}</Div>
+      <Div>{props.desc}</Div>
     </>
   );
 };

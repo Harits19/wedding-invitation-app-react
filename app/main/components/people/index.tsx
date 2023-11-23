@@ -1,4 +1,4 @@
-import TextDiv from "@/app/components/div";
+import Div from "@/app/components/div";
 import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
 import MenuWrapper from "@/app/components/menu-wrapper";
@@ -36,16 +36,16 @@ export default function People() {
           />
         </div>
         <br />
-        <TextDiv family="berkshire" className="text-3xl animate-bottom-top">
+        <Div family="berkshire" className="text-3xl animate-bottom-top">
           {namaPengantin}
-        </TextDiv>
+        </Div>
         <br />
-        <TextDiv family="poppins" className="text-sm animate-bottom-top">
+        <Div family="poppins" className="text-sm animate-bottom-top">
           Anak {anakKe} dari Pasangan
           <br /> {ayahPengantin} & <br />
           {ibuPengantin} <br />
           {kText.alamatPengantin1}
-        </TextDiv>
+        </Div>
       </div>
     );
   };

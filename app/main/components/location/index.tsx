@@ -1,4 +1,4 @@
-import TextDiv from "@/app/components/div";
+import Div from "@/app/components/div";
 import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
 import CountDown from "@/app/components/count-down";
@@ -14,28 +14,28 @@ export default function Location() {
       <Background className="-scale-y-100 -z-50" />
       <Background className="-scale-y-100 -z-50" />
       <div className="flex flex-col items-center justify-center text-center  left-0 right-0 px-10">
-        <TextDiv
+        <Div
           family="berkshire"
           className="text-3xl animate-top-bottom-fade"
         >
           {kText.saveTheDate}
-        </TextDiv>
+        </Div>
         <br />
         <div className="h-11" />
-        <TextDiv family="averia" className="text-base">
+        <Div family="averia" className="text-base">
           {kText.theWedding}
-        </TextDiv>
-        <TextDiv family="averia" className="text-2xl animate-bottom-top">
+        </Div>
+        <Div family="averia" className="text-2xl animate-bottom-top">
           <DateText />
-        </TextDiv>
+        </Div>
         <div className="h-1" />
-        <TextDiv family="averia" className="text-base animate-bottom-top">
+        <Div family="averia" className="text-base animate-bottom-top">
           {kText.pukul} {kText.waktuPernikahan}
-        </TextDiv>
+        </Div>
         <div className="h-1" />
-        <TextDiv family="averia" className="text-sm animate-bottom-top">
+        <Div family="averia" className="text-sm animate-bottom-top">
           {kText.venue}
-        </TextDiv>
+        </Div>
         <div className="h-4" />
         <button
           className="px-4 py-2 bg-driftwood text-white rounded-full"
@@ -48,10 +48,10 @@ export default function Location() {
         <br /> <br /> <br />
         <CountDown />
         <div className="h-4" />
-        <TextDiv className="animate-bottom-top">
+        <Div className="animate-bottom-top">
           {kText.merupakanSuatuKehormatan}
           {kText.memberikanDoaRestu}
-        </TextDiv>
+        </Div>
       </div>
       <BottomDecor />
     </Scaffold>

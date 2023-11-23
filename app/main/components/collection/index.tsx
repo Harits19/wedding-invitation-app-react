@@ -1,4 +1,4 @@
-import TextDiv from "@/app/components/div";
+import Div from "@/app/components/div";
 import MenuWrapper from "@/app/components/menu-wrapper";
 import Scaffold from "@/app/components/scaffold";
 import { kPublic } from "@/constans/public";
@@ -9,9 +9,9 @@ export default function Collection() {
   const listImage = [kPublic.photoGallery1, kPublic.photoGallery2];
   return (
     <Scaffold className="items-center">
-      <TextDiv family="berkshire" className="text-3xl">
+      <Div family="berkshire" className="text-3xl">
         {kText.ourGallery}
-      </TextDiv>
+      </Div>
       <div className="h-[100px]" />
       {listImage.map((e) => (
         <Image

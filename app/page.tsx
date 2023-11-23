@@ -3,7 +3,7 @@
 import { kSize } from "@/constans/size";
 import SideTopDecor from "./components/side-decor/side-top-decor";
 import SideBottomDecor from "./components/side-decor/side-bottom-decor";
-import TextDiv from "./components/div";
+import Div from "./components/div";
 import Image from "next/image";
 import Wiggle from "./components/wiggle";
 import { kPublic } from "@/constans/public";
@@ -23,9 +23,9 @@ export default function Cover() {
   const Body = () => {
     return (
       <div className="flex flex-col items-center">
-        <TextDiv family="averia" className="text-xl text-303333">
+        <Div family="averia" className="text-xl text-303333">
           {kText.theWedding}
-        </TextDiv>
+        </Div>
         <div className="h-6" />
         <Image
           className="rounded-full w-[216px] h-[216px] bg-303333"
@@ -35,13 +35,13 @@ export default function Cover() {
           height={216}
         />
         <br />
-        <TextDiv className="text-3xl text-303333" family="berkshire">
+        <Div className="text-3xl text-303333" family="berkshire">
           {kText.name}
-        </TextDiv>
+        </Div>
         <br />
-        <TextDiv>{kText.kepada}</TextDiv>
+        <Div>{kText.kepada}</Div>
         <div className="h-2" />
-        <TextDiv>{to}</TextDiv>
+        <Div>{to}</Div>
         <div className="h-2" />
         <button
           onClick={() => {
@@ -49,9 +49,9 @@ export default function Cover() {
           }}
           className="bg-driftwood py-2 px-12 rounded-sm"
         >
-          <TextDiv family="averia" className="text-white">
+          <Div family="averia" className="text-white">
             {kText.bukaUndangan}
-          </TextDiv>
+          </Div>
         </button>
       </div>
     );

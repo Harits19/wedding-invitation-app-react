@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect, ReactNode } from "react";
+import Div from "./div";
 
 export default function Carousel<T>({
   imageList,

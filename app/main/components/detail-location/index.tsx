@@ -11,15 +11,16 @@ export default function DetailLocation() {
       <TopDecor />
       <Background className="-z-50" />
 
-      <Detail
-        title={kText.acaraAkad}
-        desc={`${kText.hariAcaraAkad}\n${kText.pukul} ${kText.waktuAcaraAkad}`}
-      />
-      <Detail
-        title={kText.acaraResepsi}
-        desc={`${kText.hariAcaraResepsi}\n${kText.pukul} ${kText.waktuAcaraResepsi}`}
-      />
-
+      <div className="animate-fade-zoom">
+        <Detail
+          title={kText.acaraAkad}
+          desc={`${kText.hariAcaraAkad}\n${kText.pukul} ${kText.waktuAcaraAkad}`}
+        />
+        <Detail
+          title={kText.acaraResepsi}
+          desc={`${kText.hariAcaraResepsi}\n${kText.pukul} ${kText.waktuAcaraResepsi}`}
+        />
+      </div>
       <BottomDecor />
     </Scaffold>
   );

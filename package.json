@@ -13,6 +13,7 @@
     "@fontsource/berkshire-swash": "^5.0.15",
     "@fontsource/poppins": "^5.0.8",
     "@vercel/postgres": "^0.5.1",
+    "axios": "^1.6.2",
     "babel-preset-es2015": "^6.24.1",
     "cssesc": "^3.0.0",
     "moment": "^2.29.4",

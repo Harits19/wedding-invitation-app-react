@@ -1,58 +1,31 @@
 import { NextResponse } from "next/server";
-import { createKysely } from "@vercel/postgres-kysely";
-import { Database } from "./model/greeting";
 import { HttpStatusCode } from "axios";
-import { sql } from "kysely";
-const db = createKysely<Database>();
+import GreetingRepository from "./repository/greeting-repository";
+import WeddingRepository from "./repository/wedding-repository";
 
-export async function GET(request: Request) {
-  console.log("create database");
+const listRepository = [GreetingRepository, WeddingRepository];
+
+export const GET = async (request: Request) => {
   try {
-    await createGreetingDatabase();
-    const resultInsert = await db
-      .insertInto("greeting")
-      .values([
-        {
-          message: "test 1",
-          name: "test 1",
-          wedding_id: 1,
-        },
-        {
-          message: "test 2",
-          name: "test 2",
-          wedding_id: 1,
-        },
-      ])
-      .execute();
-
-    console.log("result insert", resultInsert);
-
-    const resultGet = await db.selectFrom("greeting").selectAll().execute();
-    console.log("result get", resultGet);
-
+    await Promise.all(listRepository.map((item) => item.dropTable()));
+    await Promise.all(listRepository.map((item) => item.createTable()));
     return NextResponse.json(
-      { result: resultGet },
+      { message: "success migrate database" },
       { status: HttpStatusCode.Ok }
     );
   } catch (error) {
-    console.error("error", error);
     return NextResponse.json({ error }, { status: 500 });
   }
-}
+};
 
-const createGreetingDatabase = async () => {
-  const resultDropGreeting = await db.schema.dropTable("greeting").execute();
-  console.info("resultDrop", resultDropGreeting);
-  const result = await db.schema
-    .createTable("greeting")
-    .addColumn("id", "serial", (col) => col.primaryKey())
-    .addColumn("name", "varchar", (col) => col.notNull())
-    .addColumn("message", "varchar", (col) => col.notNull())
-    .addColumn("wedding_id", "integer", (col) => col.notNull())
-    .addColumn("created_at", "timestamp", (col) =>
-      col.defaultTo(sql`now()`).notNull()
-    )
-    .execute();
-
-  console.info("createGreetingDatabase", result);
+export const DELETE = async (request: Request) => {
+  try {
+    await Promise.all(listRepository.map((item) => item.dropTable()));
+    return NextResponse.json(
+      { message: "success drop database" },
+      { status: HttpStatusCode.Ok }
+    );
+  } catch (error) {
+    return NextResponse.json({ error }, { status: 500 });
+  }
 };

@@ -1,30 +1,25 @@
-import { createKysely } from "@vercel/postgres-kysely";
 import { greetingKey } from "../model/greeting-model";
-import { Database } from "../model";
 import { sql } from "kysely";
-import vercelDb from ".";
+import vercelDb, { DatabaseMigration } from ".";
 
-const createTable = async () => {
-  await vercelDb.schema
-    .createTable(greetingKey.table)
-    .addColumn(greetingKey.id, "serial", (col) => col.primaryKey())
-    .addColumn(greetingKey.name, "varchar", (col) => col.notNull())
-    .addColumn(greetingKey.message, "varchar", (col) => col.notNull())
-    .addColumn(greetingKey.weddingId, "integer", (col) => col.notNull())
-    .addColumn(greetingKey.attendance, "varchar", (col) => col.notNull())
-    .addColumn(greetingKey.createdAt, "timestamp", (col) =>
-      col.defaultTo(sql`now()`).notNull()
-    )
-    .execute();
-};
+interface GreetingRepository extends DatabaseMigration {}
 
-const dropTable = async () => {
-  await vercelDb.schema.dropTable(greetingKey.table).execute();
-};
+export class GreetingRepositoryHandler implements GreetingRepository {
+  createTable = async () => {
+    await vercelDb.schema
+      .createTable(greetingKey.table)
+      .addColumn(greetingKey.id, "serial", (col) => col.primaryKey())
+      .addColumn(greetingKey.name, "varchar", (col) => col.notNull())
+      .addColumn(greetingKey.message, "varchar", (col) => col.notNull())
+      .addColumn(greetingKey.weddingId, "integer", (col) => col.notNull())
+      .addColumn(greetingKey.attendance, "varchar", (col) => col.notNull())
+      .addColumn(greetingKey.createdAt, "timestamp", (col) =>
+        col.defaultTo(sql`now()`).notNull()
+      )
+      .execute();
+  };
 
-const GreetingRepository = {
-  createTable,
-  dropTable,
-};
-
-export default GreetingRepository;
+  dropTable = async () => {
+    await vercelDb.schema.dropTable(greetingKey.table).execute();
+  };
+}

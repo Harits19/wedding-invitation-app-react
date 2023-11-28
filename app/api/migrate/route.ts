@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
 import { HttpStatusCode } from "axios";
-import GreetingRepository from "./repository/greeting-repository";
-import WeddingRepository from "./repository/wedding-repository";
+import { greetingRepository, weddingRepository } from "./dependency";
 
-const listRepository = [GreetingRepository, WeddingRepository];
+const listRepository = [greetingRepository, weddingRepository];
 
 export const GET = async (request: Request) => {
   try {
-    await Promise.all(listRepository.map((item) => item.dropTable()));
+    try {
+      await Promise.all(listRepository.map((item) => item.dropTable()));
+    } catch (error) {}
     await Promise.all(listRepository.map((item) => item.createTable()));
     return NextResponse.json(
       { message: "success migrate database" },

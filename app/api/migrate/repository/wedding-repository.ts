@@ -1,8 +1,10 @@
-import { weddingKey } from "../model/wedding-model";
+import { WeddingModel, weddingKey } from "../model/wedding-model";
 import { sql } from "kysely";
 import vercelDb, { DatabaseMigration } from ".";
 
-interface WeddingRepository extends DatabaseMigration {}
+interface WeddingRepository extends DatabaseMigration {
+  addWedding(val: Partial<WeddingModel>): Promise<void>;
+}
 
 export class WeddingRepositoryHandler implements WeddingRepository {
   createTable = async () => {
@@ -24,4 +26,6 @@ export class WeddingRepositoryHandler implements WeddingRepository {
   dropTable = async () => {
     await vercelDb.schema.dropTable(weddingKey.table).execute();
   };
+
+  addWedding = async (val: Partial<WeddingModel>) => {};
 }

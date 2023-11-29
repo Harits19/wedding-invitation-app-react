@@ -1,14 +1,20 @@
 import { WeddingModel, weddingKey } from "../model/wedding-model";
-import { sql } from "kysely";
-import vercelDb, { DatabaseMigration } from ".";
+import { Kysely, sql } from "kysely";
+import { DatabaseMigration, DatabaseModel } from "../model";
 
 interface WeddingRepository extends DatabaseMigration {
   addWedding(val: Partial<WeddingModel>): Promise<void>;
 }
 
 export class WeddingRepositoryHandler implements WeddingRepository {
+  vercelDb: Kysely<DatabaseModel>;
+
+  constructor({ vercelDb }: { vercelDb: Kysely<DatabaseModel> }) {
+    this.vercelDb = vercelDb;
+  }
+
   createTable = async () => {
-    await vercelDb.schema
+    await this.vercelDb.schema
       .createTable(weddingKey.table)
       .addColumn(weddingKey.id, "serial", (col) => col.primaryKey())
       .addColumn(weddingKey.date, "timestamp", (col) =>
@@ -24,8 +30,10 @@ export class WeddingRepositoryHandler implements WeddingRepository {
   };
 
   dropTable = async () => {
-    await vercelDb.schema.dropTable(weddingKey.table).execute();
+    await this.vercelDb.schema.dropTable(weddingKey.table).execute();
   };
 
-  addWedding = async (val: Partial<WeddingModel>) => {};
+  addWedding = async (val: Omit<WeddingModel, "id" | "date">) => {
+    await this.vercelDb.insertInto("wedding").values(val).execute();
+  };
 }

@@ -1,12 +1,18 @@
 import { greetingKey } from "../model/greeting-model";
-import { sql } from "kysely";
-import vercelDb, { DatabaseMigration } from ".";
+import { Kysely, sql } from "kysely";
+import { DatabaseMigration, DatabaseModel } from "../model";
 
 interface GreetingRepository extends DatabaseMigration {}
 
 export class GreetingRepositoryHandler implements GreetingRepository {
+  vercelDb: Kysely<DatabaseModel>;
+
+  constructor({ vercelDb }: { vercelDb: Kysely<DatabaseModel> }) {
+    this.vercelDb = vercelDb;
+  }
+
   createTable = async () => {
-    await vercelDb.schema
+    await this.vercelDb.schema
       .createTable(greetingKey.table)
       .addColumn(greetingKey.id, "serial", (col) => col.primaryKey())
       .addColumn(greetingKey.name, "varchar", (col) => col.notNull())
@@ -20,6 +26,6 @@ export class GreetingRepositoryHandler implements GreetingRepository {
   };
 
   dropTable = async () => {
-    await vercelDb.schema.dropTable(greetingKey.table).execute();
+    await this.vercelDb.schema.dropTable(greetingKey.table).execute();
   };
 }

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { HttpStatusCode } from "axios";
-import { greetingRepository, weddingRepository } from "./dependency";
+import { greetingRepository, weddingRepository } from "../../dependency";
 
 const listRepository = [greetingRepository, weddingRepository];
 

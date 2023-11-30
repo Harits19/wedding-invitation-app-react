@@ -1,32 +1,46 @@
 import { NextResponse } from "next/server";
 import { HttpStatusCode } from "axios";
 import { greetingRepository, weddingRepository } from "../../dependency";
+import ResponseUtil from "@/utils/response-util";
 
 const listRepository = [greetingRepository, weddingRepository];
 
-export const GET = async (request: Request) => {
+export const GET = async (req: Request) => {
   try {
     try {
       await Promise.all(listRepository.map((item) => item.dropTable()));
     } catch (error) {}
     await Promise.all(listRepository.map((item) => item.createTable()));
-    return NextResponse.json(
-      { message: "success migrate database" },
-      { status: HttpStatusCode.Ok }
-    );
+
+    return ResponseUtil.success({
+      payload: {
+        message: "success migrate database",
+      },
+    });
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    return ResponseUtil.error({
+      payload: {
+        message: "error migrate database",
+        error: error,
+      },
+    });
   }
 };
 
-export const DELETE = async (request: Request) => {
+export const DELETE = async (req: Request) => {
   try {
     await Promise.all(listRepository.map((item) => item.dropTable()));
-    return NextResponse.json(
-      { message: "success drop database" },
-      { status: HttpStatusCode.Ok }
-    );
+    return ResponseUtil.success({
+      payload: {
+        message: "success drop database",
+      },
+    });
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    return ResponseUtil.error({
+      payload: {
+        message: "error drop database",
+        error: error,
+      },
+    });
   }
 };

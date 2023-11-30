@@ -1,32 +1,38 @@
 import { ColumnType, Generated } from "kysely";
+import { InferType, array, date, object, string } from "yup";
 
-export interface BrideGroom {
-  name: string;
-  titles: string[];
-  photo: string;
-  father: string;
-  mother: string;
-  address: string;
-}
+export const brideGroomSchema = object({
+  name: string().required(),
+  titles: array(string().required()).required().min(1),
+  photo: string().required(),
+  father: string().required(),
+  mother: string().required(),
+  address: string().required(),
+});
 
-export interface WeddingModel {
+export const weddingSchema = object({
+  date: date().required(),
+  photo: object({
+    cover: string().required(),
+    carousel: array(string().required()).required().min(2),
+    opening: string().required(),
+    gallery: array(string().required()).required().min(1),
+    closing: string().required(),
+  }).required(),
+  place: object({
+    text: string().required(),
+    url: string().required(),
+  }).required(),
+  music: string().required(),
+  password: string().required(),
+  bride: brideGroomSchema,
+  groom: brideGroomSchema,
+});
+
+export interface BrideGroom extends InferType<typeof brideGroomSchema> {}
+
+export interface WeddingModel extends InferType<typeof weddingSchema> {
   id: Generated<number>;
-  date: ColumnType<Date, string | undefined, never>;
-  photo: {
-    cover: string;
-    carousel: string[];
-    opening: string;
-    gallery: string[];
-    closing: string;
-  };
-  place: {
-    text: string;
-    url: string;
-  };
-  music: string;
-  password: string;
-  bride: BrideGroom;
-  groom: BrideGroom;
 }
 
 export const weddingKey = {

@@ -33,7 +33,7 @@ export class WeddingRepositoryHandler implements WeddingRepository {
     await this.vercelDb.schema.dropTable(weddingKey.table).execute();
   };
 
-  addWedding = async (val: Omit<WeddingModel, "id" | "date">) => {
+  addWedding = async (val: Omit<WeddingModel, "id">) => {
     await this.vercelDb.insertInto("wedding").values(val).execute();
   };
 }

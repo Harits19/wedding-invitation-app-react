@@ -1,20 +1,38 @@
 import { weddingRepository } from "@/app/dependency";
 import { WeddingModel, weddingSchema } from "@/app/model/wedding-model";
-import ResponseUtil from "@/utils/response-util";
+import { EncryptUtil } from "@/utils/encrypt-util";
+import { ResponseUtil } from "@/utils/response-util";
+import { HttpStatusCode } from "axios";
+import { headers } from "next/headers";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 export const POST = async (req: Request) => {
   try {
-    const body = await req.json();
-    const result = await weddingSchema.validate(body, { abortEarly: false });
+    const headerApiKey = headers().get("x-api-key");
+    const envApiKey = process.env.API_KEY;
 
-    await weddingRepository.addWedding(result);
+    if (headerApiKey !== envApiKey) {
+      return ResponseUtil.error({
+        code: HttpStatusCode.BadRequest,
+        payload: {
+          message: "wrong api key",
+        },
+      });
+    }
+
+    const body = await req.json();
+    const validatedBody = await weddingSchema.validate(body, {
+      abortEarly: false,
+    });
+    const hashPassword = await EncryptUtil.encryptPassword(validatedBody.password);
+    validatedBody.password = hashPassword;
+
+    await weddingRepository.addWedding(validatedBody);
 
     return ResponseUtil.success({
       payload: {
         message: "success post wedding",
-        data: body,
       },
     });
   } catch (error) {

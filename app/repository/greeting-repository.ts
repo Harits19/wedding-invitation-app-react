@@ -1,6 +1,8 @@
 import { greetingKey } from "../model/greeting-model";
 import { Kysely, sql } from "kysely";
 import { DatabaseMigration, DatabaseModel } from "../model";
+import { v4 as uuidv4 } from 'uuid';
+
 
 interface GreetingRepository extends DatabaseMigration {}
 
@@ -14,7 +16,7 @@ export class GreetingRepositoryHandler implements GreetingRepository {
   createTable = async () => {
     await this.vercelDb.schema
       .createTable(greetingKey.table)
-      .addColumn(greetingKey.id, "serial", (col) => col.primaryKey())
+      .addColumn(greetingKey.id, "varchar", (col) => col.primaryKey().defaultTo(uuidv4()))
       .addColumn(greetingKey.name, "varchar", (col) => col.notNull())
       .addColumn(greetingKey.message, "varchar", (col) => col.notNull())
       .addColumn(greetingKey.weddingId, "integer", (col) => col.notNull())

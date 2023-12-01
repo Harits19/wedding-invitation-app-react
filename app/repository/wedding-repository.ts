@@ -1,6 +1,12 @@
-import { WeddingModel, weddingKey } from "../model/wedding-model";
+import {
+  WeddingLoginModel,
+  WeddingModel,
+  weddingKey,
+} from "../model/wedding-model";
 import { Kysely, sql } from "kysely";
 import { DatabaseMigration, DatabaseModel } from "../model";
+import { v4 as uuidv4 } from "uuid";
+import { EncryptUtil } from "@/utils/encrypt-util";
 
 interface WeddingRepository extends DatabaseMigration {
   addWedding(val: Partial<WeddingModel>): Promise<void>;
@@ -16,7 +22,7 @@ export class WeddingRepositoryHandler implements WeddingRepository {
   createTable = async () => {
     await this.vercelDb.schema
       .createTable(weddingKey.table)
-      .addColumn(weddingKey.id, "serial", (col) => col.primaryKey())
+      .addColumn(weddingKey.id, "varchar", (col) => col.primaryKey().notNull())
       .addColumn(weddingKey.date, "timestamp", (col) =>
         col.defaultTo(sql`now()`).notNull()
       )
@@ -26,6 +32,7 @@ export class WeddingRepositoryHandler implements WeddingRepository {
       .addColumn(weddingKey.password, "varchar", (col) => col.notNull())
       .addColumn(weddingKey.bride, "json", (col) => col.notNull())
       .addColumn(weddingKey.groom, "json", (col) => col.notNull())
+      .addColumn(weddingKey.name, "varchar", (col) => col.notNull().unique())
       .execute();
   };
 
@@ -34,6 +41,32 @@ export class WeddingRepositoryHandler implements WeddingRepository {
   };
 
   addWedding = async (val: Omit<WeddingModel, "id">) => {
-    await this.vercelDb.insertInto("wedding").values(val).execute();
+    await this.vercelDb
+      .insertInto("wedding")
+      .values({
+        id: uuidv4(),
+        ...val,
+      })
+      .execute();
+  };
+
+  login = async (val: WeddingLoginModel) => {
+    const result = await this.vercelDb
+      .selectFrom("wedding")
+      .selectAll()
+      .where("name", "=", val.name)
+      .executeTakeFirst();
+    if (!result) {
+      throw "empty username";
+    }
+    const hashPassword = result.password;
+
+    const isPasswordCorrect = await EncryptUtil.comparePassword(
+      hashPassword,
+      val.password
+    );
+    if (!isPasswordCorrect) {
+      throw "wrong password";
+    }
   };
 }

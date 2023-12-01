@@ -12,7 +12,7 @@ export const greetingKey = {
 export const attendanceTypeList = ["present", "no_present"] as const;
 export type AttendanceType = (typeof attendanceTypeList)[number];
 export interface GreetingModel {
-  id: Generated<number>;
+  id: string;
   wedding_id: number;
   name: string;
   message: string;

@@ -12,6 +12,7 @@ export const brideGroomSchema = object({
 
 export const weddingSchema = object({
   date: date().required(),
+  name: string().required(),
   photo: object({
     cover: string().required(),
     carousel: array(string().required()).required().min(2),
@@ -29,10 +30,18 @@ export const weddingSchema = object({
   groom: brideGroomSchema,
 });
 
+export const weddingLoginSchema = object({
+  name: string().required(),
+  password: string().required(),
+});
+
+export interface WeddingLoginModel
+  extends InferType<typeof weddingLoginSchema> {}
+
 export interface BrideGroom extends InferType<typeof brideGroomSchema> {}
 
 export interface WeddingModel extends InferType<typeof weddingSchema> {
-  id: Generated<number>;
+  id: string;
 }
 
 export const weddingKey = {
@@ -40,6 +49,7 @@ export const weddingKey = {
   id: "id",
   date: "date",
   photo: "photo",
+  name: "name",
   photoKey: {
     cover: "cover",
     carousel: "carousel",

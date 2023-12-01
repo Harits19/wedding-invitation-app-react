@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { HttpStatusCode } from "axios";
 import { greetingRepository, weddingRepository } from "../../dependency";
-import ResponseUtil from "@/utils/response-util";
+import { ResponseUtil } from "@/utils/response-util";
 
 const listRepository = [greetingRepository, weddingRepository];
 

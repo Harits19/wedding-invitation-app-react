@@ -42,6 +42,7 @@ export interface BrideGroom extends InferType<typeof brideGroomSchema> {}
 
 export interface WeddingModel extends InferType<typeof weddingSchema> {
   id: string;
+  authExpiredAt: string;
 }
 
 export const weddingKey = {
@@ -62,6 +63,7 @@ export const weddingKey = {
   bride: "bride",
   groom: "groom",
   password: "password",
+  authExpiredAt: "auth_expired_at",
   brideGroomKey: {
     name: "name",
     titles: "titles",

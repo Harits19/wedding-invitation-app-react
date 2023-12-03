@@ -26,6 +26,7 @@ export class WeddingRepositoryHandler implements WeddingRepository {
       .addColumn(weddingKey.date, "timestamp", (col) =>
         col.defaultTo(sql`now()`).notNull()
       )
+      .addColumn(weddingKey.authExpiredAt, "timestamp")
       .addColumn(weddingKey.photo, "json", (col) => col.notNull())
       .addColumn(weddingKey.place, "json", (col) => col.notNull())
       .addColumn(weddingKey.music, "varchar", (col) => col.notNull())

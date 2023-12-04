@@ -11,8 +11,10 @@ export const brideGroomSchema = object({
 });
 
 export const weddingSchema = object({
-  date: date().required(),
   name: string().required(),
+  password: string().required(),
+  date: date().required(),
+  music: string().required(),
   photo: object({
     cover: string().required(),
     carousel: array(string().required()).required().min(2),
@@ -24,8 +26,6 @@ export const weddingSchema = object({
     text: string().required(),
     url: string().required(),
   }).required(),
-  music: string().required(),
-  password: string().required(),
   bride: brideGroomSchema,
   groom: brideGroomSchema,
 });

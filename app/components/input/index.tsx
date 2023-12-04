@@ -3,12 +3,23 @@ export type InputRawProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 >;
-export default function Input(
-  props: Omit<InputDecorationProps, "children"> & InputRawProps
-) {
+export default function Input({
+  withLabel = false,
+  ...props
+}: Omit<InputDecorationProps, "children"> &
+  InputRawProps & {
+    withLabel?: boolean;
+    onChangeVal?: (val: any) => void;
+  }) {
   return (
-    <InputDecoration {...props}>
-      <input className="rounded-none outline-none" {...props} />
+    <InputDecoration
+      label={withLabel ? props.placeholder : undefined}
+      {...props}
+    >
+      <input className="rounded-none outline-none" {...props} onChange={(val) => {
+        props.onChange?.(val);
+        props.onChangeVal?.(val.target.value);
+      }} />
     </InputDecoration>
   );
 }

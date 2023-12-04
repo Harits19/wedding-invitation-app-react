@@ -25,7 +25,9 @@ export const POST = async (req: Request) => {
     const validatedBody = await weddingSchema.validate(body, {
       abortEarly: false,
     });
-    const hashPassword = await EncryptUtil.encryptPassword(validatedBody.password);
+    const hashPassword = await EncryptUtil.encryptPassword(
+      validatedBody.password
+    );
     validatedBody.password = hashPassword;
 
     await weddingRepository.addWedding(validatedBody);
@@ -39,6 +41,31 @@ export const POST = async (req: Request) => {
     return ResponseUtil.error({
       payload: {
         message: "error post wedding",
+        error: error,
+      },
+    });
+  }
+};
+
+export const PATCH = async (req: Request) => {
+  try {
+    const body = await req.json();
+    const validatedBody = await weddingSchema.validate(body, {
+      abortEarly: false,
+    });
+
+    await weddingRepository.checkAuth(validatedBody);
+    await weddingRepository.update(validatedBody);
+
+    return ResponseUtil.success({
+      payload: {
+        message: "success patch wedding",
+      },
+    });
+  } catch (error) {
+    return ResponseUtil.error({
+      payload: {
+        message: "error patch wedding",
         error: error,
       },
     });

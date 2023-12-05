@@ -106,7 +106,6 @@ export default function Auth() {
           </div>
           <div className="h-6" />
           <Button
-            className="bg-blue-500 text-white p-2 rounded-lg"
             disabled={!formState.isValid}
             onClick={() => {}}
           >

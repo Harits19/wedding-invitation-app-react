@@ -1,25 +1,61 @@
 import InputDecoration, { InputDecorationProps } from "../input-decoration";
+import {
+  ControllerProps,
+  FieldValues,
+  Path,
+  RegisterOptions,
+  UseControllerProps,
+  UseFormRegister,
+  useController,
+  useFormContext,
+} from "react-hook-form";
 export type InputRawProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 >;
-export default function Input({
+
+export default function Input<TFieldValue extends FieldValues>({
   withLabel = false,
+  name,
+  option,
+  required,
   ...props
 }: Omit<InputDecorationProps, "children"> &
-  InputRawProps & {
+  Omit<InputRawProps, "name"> & {
     withLabel?: boolean;
-    onChangeVal?: (val: any) => void;
+    name?: Path<TFieldValue>;
+    required?: boolean;
+    option?: Omit<UseControllerProps<TFieldValue>, "control" | "name">;
   }) {
+  const { register, control } = useFormContext<TFieldValue>();
+  const { field } =
+    (name &&
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useController({
+        control,
+        name,
+        ...option,
+        rules: {
+          required: required,
+          ...option?.rules,
+        },
+      })) ??
+    {};
   return (
     <InputDecoration
       label={withLabel ? props.placeholder : undefined}
       {...props}
     >
-      <input className="rounded-none outline-none" {...props} onChange={(val) => {
-        props.onChange?.(val);
-        props.onChangeVal?.(val.target.value);
-      }} />
+      <input
+        className="rounded-none outline-none"
+        name={name}
+        {...props}
+        onChange={(val) => {
+          const newValue = val.target.value;
+          props.onChange?.(val);
+          field?.onChange?.(newValue);
+        }}
+      />
     </InputDecoration>
   );
 }

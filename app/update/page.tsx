@@ -10,6 +10,7 @@ import {
   useFormContext,
 } from "react-hook-form";
 import { WeddingModel } from "../model/wedding-model";
+import Button from "../components/button";
 
 export default function Auth() {
   const methods = useForm<WeddingModel>({
@@ -22,11 +23,11 @@ export default function Auth() {
       },
     },
   });
-  const { register, watch, setValue } = methods;
+  const { register, watch, setValue, formState } = methods;
 
   // const { onChange } = register("bride");
 
-  console.log({ state: watch() });
+  console.log("name", watch("name"));
   return (
     <FormProvider {...methods}>
       <Div className=" w-screen flex flex-col justify-center items-center bg-gray-50">
@@ -34,88 +35,91 @@ export default function Auth() {
           <h1>Update Page</h1>
           <div className="h-6" />
           <div className="gap-y-2 flex flex-col">
-            <Input
+            <Input<WeddingModel>
+              name="name"
               withLabel
+              required
               placeholder="Wedding Name"
-              {...register("name", { required: true })}
-              onChangeVal={(val) => setValue("name", val)}
             />
-            <Input
+            <Input<WeddingModel>
+              name="password"
               withLabel
+              required
               placeholder="Password"
               type="password"
-              {...register("password", { required: true })}
-              onChangeVal={(val) => setValue("password", val)}
             />
-            <Input
+            <Input<WeddingModel>
               withLabel
+              name="date"
               placeholder="Date"
               type="date"
-              {...register("date", { required: true })}
-              onChangeVal={(val) => setValue("date", val)}
+              required
             />
-            <Input
+            <Input<WeddingModel>
               withLabel
               placeholder="Music"
-              {...register("music", { required: true })}
-              onChangeVal={(val) => setValue("music", val)}
+              name="music"
+              required
             />
             <NestedItem title="Photo">
-              <Input
+              <Input<WeddingModel>
                 label="Cover"
                 type="file"
-                {...register("photo.cover", { required: true })}
-                onChangeVal={(val) => setValue("photo.cover", val)}
+                name="photo.cover"
+                required
               />
-              <Input
+              <Input<WeddingModel>
                 label="Carousel"
                 type="file"
                 multiple
-                {...register("photo.carousel", { required: true })}
-                onChangeVal={(val) => setValue("photo.carousel", val)}
+                name="photo.carousel"
+                required
               />
-              <Input
+              <Input<WeddingModel>
                 label="Opening"
                 type="file"
-                {...register("photo.opening", { required: true })}
-                onChangeVal={(val) => setValue("photo.opening", val)}
+                name="photo.opening"
+                required
               />
-              <Input
+              <Input<WeddingModel>
                 label="Gallery"
                 type="file"
                 multiple
-                {...register("photo.gallery", { required: true })}
-                onChangeVal={(val) => setValue("photo.gallery", val)}
+                name="photo.gallery"
+                required
               />
-              <Input
+              <Input<WeddingModel>
                 label="Closing"
                 type="file"
-                {...register("photo.closing", { required: true })}
-                onChangeVal={(val) => setValue("photo.closing", val)}
+                name="photo.closing"
+                required
               />
             </NestedItem>
             <NestedItem title="Place">
-              <Input
+              <Input<WeddingModel>
                 withLabel
                 placeholder="Text"
-                onChangeVal={(val) => setValue("place.text", val)}
+                name="place.text"
+                required
               />
-              <Input
+              <Input<WeddingModel>
                 withLabel
                 placeholder="Url"
-                onChangeVal={(val) => setValue("place.url", val)}
+                name="place.url"
+                required
               />
             </NestedItem>
             <BrideGroom type="bride" title="Bride" />
             <BrideGroom type="groom" title="Groom" />
           </div>
           <div className="h-6" />
-          <button
+          <Button
             className="bg-blue-500 text-white p-2 rounded-lg"
+            disabled={!formState.isValid}
             onClick={() => {}}
           >
             Update
-          </button>
+          </Button>
         </div>
       </Div>
     </FormProvider>
@@ -150,10 +154,11 @@ const BrideGroom = ({
   const titles = value.titles;
   return (
     <NestedItem title={props.title}>
-      <Input
+      <Input<WeddingModel>
         withLabel
         placeholder="Name"
-        onChangeVal={(val) => setValue(`${type}.name`, val)}
+        name={`${type}.name`}
+        required
       />
       <NestedItem
         title="Titles"
@@ -192,38 +197,41 @@ const BrideGroom = ({
                 Delete
               </button>
               <div className="flex flex-1 flex-col ">
-                <Input
+                <Input<WeddingModel>
                   value={title}
                   withLabel
                   placeholder={`Title ${index + 1}`}
-                  onChangeVal={(val) =>
-                    setValue(`${type}.titles.${index}`, val)
-                  }
+                  name={`${type}.titles.${index}`}
+                  required
                 />
               </div>
             </div>
           );
         })}
       </NestedItem>
-      <Input
+      <Input<WeddingModel>
         withLabel
         placeholder="Photo"
-        onChangeVal={(val) => setValue(`${type}.photo`, val)}
+        name={`${type}.photo`}
+        required
       />
-      <Input
+      <Input<WeddingModel>
         withLabel
         placeholder="Father"
-        onChangeVal={(val) => setValue(`${type}.father`, val)}
+        name={`${type}.father`}
+        required
       />
-      <Input
+      <Input<WeddingModel>
         withLabel
         placeholder="Mother"
-        onChangeVal={(val) => setValue(`${type}.mother`, val)}
+        name={`${type}.mother`}
+        required
       />
-      <Input
+      <Input<WeddingModel>
         withLabel
         placeholder="Address"
-        onChangeVal={(val) => setValue(`${type}.address`, val)}
+        name={`${type}.address`}
+        required
       />
     </NestedItem>
   );

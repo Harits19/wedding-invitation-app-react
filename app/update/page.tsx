@@ -3,12 +3,7 @@
 import { ReactNode } from "react";
 import Div from "../components/div";
 import Input from "../components/input";
-import {
-  FormProvider,
-  useFieldArray,
-  useForm,
-  useFormContext,
-} from "react-hook-form";
+import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import { WeddingModel } from "../model/wedding-model";
 import Button from "../components/button";
 
@@ -23,11 +18,8 @@ export default function Auth() {
       },
     },
   });
-  const { register, watch, setValue, formState } = methods;
+  const { formState } = methods;
 
-  // const { onChange } = register("bride");
-
-  console.log("name", watch("name"));
   return (
     <FormProvider {...methods}>
       <Div className=" w-screen flex flex-col justify-center items-center bg-gray-50">

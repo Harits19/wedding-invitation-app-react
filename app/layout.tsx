@@ -13,11 +13,14 @@ import "@fontsource/berkshire-swash"; // Defaults to weight 400
 import "@fontsource/berkshire-swash/400.css"; // Specify weight
 import { GlobalStateProvider } from "./hooks/useGlobalState";
 import Div from "./components/div";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 export const metadata: Metadata = {
   title: "Wedding Invitation App",
   description: "Wedding invitation app with Next.js",
 };
+
+const queryClient = new QueryClient();
 
 export default function RootLayout({
   children,
@@ -27,11 +30,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {
+        <QueryClientProvider client={queryClient}>
           <GlobalStateProvider>
             <Div>{children}</Div>
           </GlobalStateProvider>
-        }
+        </QueryClientProvider>
       </body>
     </html>
   );

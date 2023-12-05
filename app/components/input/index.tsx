@@ -27,7 +27,7 @@ export default function Input<TFieldValue extends FieldValues>({
     required?: boolean;
     option?: Omit<UseControllerProps<TFieldValue>, "control" | "name">;
   }) {
-  const { register, control } = useFormContext<TFieldValue>();
+  const { control } = useFormContext<TFieldValue>();
   const { field } =
     (name &&
       // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -47,6 +47,7 @@ export default function Input<TFieldValue extends FieldValues>({
       {...props}
     >
       <input
+        value={field?.value}
         className="rounded-none outline-none"
         name={name}
         {...props}

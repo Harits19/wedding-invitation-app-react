@@ -1,11 +1,11 @@
 "use client";
 
 import { ReactNode } from "react";
-import Div from "../components/div";
-import Input from "../components/input";
+import Div from "../../components/div";
+import Input from "../../components/input";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
-import { WeddingModel } from "../model/wedding-model";
-import Button from "../components/button";
+import { WeddingModel } from "../../model/wedding-model";
+import Button from "../../components/button";
 
 export default function Auth() {
   const methods = useForm<WeddingModel>({

@@ -9,16 +9,9 @@ export const dynamic = "force-dynamic";
 
 export const POST = async (req: Request) => {
   try {
-    const headerApiKey = headers().get("x-api-key");
-    const envApiKey = process.env.API_KEY;
-
-    if (headerApiKey !== envApiKey) {
-      return ResponseUtil.error({
-        code: HttpStatusCode.BadRequest,
-        payload: {
-          message: "wrong api key",
-        },
-      });
+    const response = await checkApiKey();
+    if (response) {
+      return response;
     }
 
     const body = await req.json();
@@ -67,6 +60,43 @@ export const PATCH = async (req: Request) => {
       payload: {
         message: "error patch wedding",
         error: error,
+      },
+    });
+  }
+};
+
+export const GET = async (req: Request) => {
+  try {
+    const response = await checkApiKey();
+    if (response) {
+      return response;
+    }
+    const result = await weddingRepository.getAllWedding();
+    return ResponseUtil.success({
+      payload: {
+        message: "success get all wedding",
+        data: result,
+      },
+    });
+  } catch (error) {
+    return ResponseUtil.error({
+      payload: {
+        message: "error patch wedding",
+        error: error,
+      },
+    });
+  }
+};
+
+const checkApiKey = () => {
+  const headerApiKey = headers().get("x-api-key");
+  const envApiKey = process.env.API_KEY;
+
+  if (headerApiKey !== envApiKey) {
+    return ResponseUtil.error({
+      code: HttpStatusCode.BadRequest,
+      payload: {
+        message: "wrong api key",
       },
     });
   }

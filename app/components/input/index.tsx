@@ -26,8 +26,17 @@ export default function Input<TFieldValue extends FieldValues>({
     name?: Path<TFieldValue>;
     required?: boolean;
     option?: Omit<UseControllerProps<TFieldValue>, "control" | "name">;
+    onChangeText?: (val: string) => void;
   }) {
-  const { control } = useFormContext<TFieldValue>();
+  const { control } =
+    (() => {
+      try {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        return useFormContext<TFieldValue>();
+      } catch (error) {
+        return undefined;
+      }
+    })() ?? {};
   const { field } =
     (name &&
       // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -55,6 +64,7 @@ export default function Input<TFieldValue extends FieldValues>({
           const newValue = val.target.value;
           props.onChange?.(val);
           field?.onChange?.(newValue);
+          props.onChangeText?.(newValue);
         }}
       />
     </InputDecoration>

@@ -9,7 +9,7 @@ export default function Button(props: Props) {
       {...props}
       className={`${props.disabled ? "opacity-30" : ""} ${
         props.className
-      } bg-blue-500 text-white p-2 rounded-lg text-sm
+      } bg-blue-500 text-white p-2 rounded-lg text-sm w-fit
       `}
     />
   );

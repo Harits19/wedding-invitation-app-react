@@ -1,5 +1,6 @@
 import InputDecoration, { InputDecorationProps } from "../input-decoration";
 import {
+  Controller,
   ControllerProps,
   FieldValues,
   Path,
@@ -14,59 +15,57 @@ export type InputRawProps = React.DetailedHTMLProps<
   HTMLInputElement
 >;
 
-export default function Input<TFieldValue extends FieldValues>({
-  withLabel = false,
-  name,
-  option,
-  required,
-  ...props
-}: Omit<InputDecorationProps, "children"> &
-  Omit<InputRawProps, "name"> & {
-    withLabel?: boolean;
-    name?: Path<TFieldValue>;
-    required?: boolean;
-    option?: Omit<UseControllerProps<TFieldValue>, "control" | "name">;
-    onChangeText?: (val: string) => void;
-  }) {
-  const { control } =
-    (() => {
-      try {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        return useFormContext<TFieldValue>();
-      } catch (error) {
-        return undefined;
-      }
-    })() ?? {};
-  const { field } =
-    (name &&
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      useController({
-        control,
-        name,
-        ...option,
-        rules: {
-          required: required,
-          ...option?.rules,
-        },
-      })) ??
-    {};
+interface RawInputProps
+  extends Omit<InputDecorationProps, "children">,
+    InputRawProps {
+  withLabel?: boolean;
+  onChangeText?: (val: string) => void;
+}
+
+function RawInput({ withLabel = false, ...props }: RawInputProps) {
   return (
     <InputDecoration
       label={withLabel ? props.placeholder : undefined}
       {...props}
     >
       <input
-        value={field?.value}
         className="rounded-none outline-none"
-        name={name}
         {...props}
         onChange={(val) => {
-          const newValue = val.target.value;
           props.onChange?.(val);
-          field?.onChange?.(newValue);
-          props.onChangeText?.(newValue);
+          props.onChangeText?.(val.target.value);
         }}
       />
     </InputDecoration>
   );
+}
+
+export default function Input<TFieldValue extends FieldValues>({
+  controller,
+  required,
+  ...props
+}: RawInputProps & {
+  controller?: Omit<ControllerProps<TFieldValue>, "render">;
+}) {
+  if (controller) {
+    return (
+      <Controller
+        {...controller}
+        rules={{
+          required,
+          ...controller.rules,
+        }}
+        render={({ field }) => (
+          <RawInput
+            {...props}
+            onChange={(val) => {
+              field.onChange(val.target.value);
+              props.onChange?.(val);
+            }}
+          />
+        )}
+      />
+    );
+  }
+  return <RawInput {...props} />;
 }

@@ -26,14 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <QueryProvider>
-          <GlobalStateProvider>
+    <GlobalStateProvider>
+      <html lang="en">
+        <body>
+          <QueryProvider>
             <Div>{children}</Div>
-          </GlobalStateProvider>
-        </QueryProvider>
-      </body>
-    </html>
+          </QueryProvider>
+        </body>
+      </html>
+    </GlobalStateProvider>
   );
 }

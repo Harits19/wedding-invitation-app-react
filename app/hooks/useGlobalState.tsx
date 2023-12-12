@@ -12,6 +12,7 @@ import { MenuName } from "../components/menu";
 export interface GlobalStateInterface {
   activeMenu?: MenuName;
   audio: HTMLAudioElement;
+  apiKey?: string;
 }
 
 export const GlobalStateContext = createContext({

@@ -17,7 +17,7 @@ export const weddingSchema = object({
   music: string().required(),
   photo: object({
     cover: string().required(),
-    carousel: array(string().required()).required().min(2),
+    carousel: array(string().required()).required().min(1),
     opening: string().required(),
     gallery: array(string().required()).required().min(1),
     closing: string().required(),

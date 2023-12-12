@@ -2,16 +2,8 @@ import Table from "@/app/components/table";
 import { useQueryGetListWedding } from "@/app/wedding/hooks/use-query-get-list-wedding";
 import { useRouter } from "next/navigation";
 
-interface Props {
-  apiKey: string;
-}
-
-export default function ListWedding({ apiKey }: Props) {
-  const {
-    data: listWedding = [],
-    error,
-    isLoading,
-  } = useQueryGetListWedding({ apiKey });
+export default function ListWedding() {
+  const { data: listWedding = [], error, isLoading } = useQueryGetListWedding();
   const router = useRouter();
 
   return (

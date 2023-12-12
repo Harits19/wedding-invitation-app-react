@@ -9,16 +9,47 @@ import Button from "../../components/button";
 import BrideGroom from "./bride-groom";
 import NestedItem from "./nested-item";
 
-export default function UpdateCreateWedding() {
+export default function UpdateCreateWedding({
+  onSubmit,
+  loading = false,
+}: {
+  onSubmit?: (value: WeddingModel) => void;
+  loading?: boolean;
+}) {
   const methods = useForm<WeddingModel>({
     criteriaMode: "all",
     reValidateMode: "onChange",
     defaultValues: {
+      date: new Date(),
+      music: "music",
+      name: "Wedding Name",
+      password: "password",
+      photo: {
+        carousel: ["carousel"],
+        closing: "closing",
+        cover: "cover",
+        gallery: ["gallery"],
+        opening: "opening",
+      },
+      place: {
+        text: "place",
+        url: "place url",
+      },
       bride: {
-        titles: [""],
+        titles: ["title"],
+        address: "address",
+        father: "father",
+        mother: "mother",
+        name: "name",
+        photo: "photo",
       },
       groom: {
-        titles: [""],
+        titles: ["title"],
+        address: "address",
+        father: "father",
+        mother: "mother",
+        name: "name",
+        photo: "photo",
       },
     },
   });
@@ -111,12 +142,13 @@ export default function UpdateCreateWedding() {
           </div>
           <div className="h-6" />
           <Button
+            loading={loading}
             disabled={!formState.isValid}
             onClick={() => {
-              console.log(watch(), "formState ", formState.isValid);
+              onSubmit?.(watch());
             }}
           >
-            Update
+            Save
           </Button>
         </div>
       </Div>

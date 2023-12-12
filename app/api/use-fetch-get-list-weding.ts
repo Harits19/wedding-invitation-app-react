@@ -1,11 +1,13 @@
 import axios, { AxiosError } from "axios";
-import { ListWeddingRequest, ListWeddingResponse } from "../model/list-wedding-model";
 import { ResponseModel } from "../model/response-model";
+import { ListWeddingResponse } from "../model/list-wedding-response-model";
+import useFetch from "../hooks/use-fetch";
 
-export const fetchGetListTemplate = async ({ apiKey }: ListWeddingRequest) => {
+export const useFetchGetListTemplate = async () => {
   try {
-    const result = await axios.get<ListWeddingResponse>("/api/wedding", {
-      headers: { "x-api-key": apiKey },
+    const result = await useFetch<ListWeddingResponse>({
+      baseURL: "/api/wedding",
+      method: "GET",
     });
     return result.data.data;
   } catch (error) {
@@ -17,6 +19,6 @@ export const fetchGetListTemplate = async ({ apiKey }: ListWeddingRequest) => {
       console.log({ errorMessage: errorMessage.message });
       throw errorMessage;
     }
-    throw `unexpected error ${JSON.stringify(error)}`;
+    throw `unexpected error ${JSON.stringify(error)} ${error}`;
   }
 };

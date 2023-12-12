@@ -5,10 +5,10 @@ import Input from "../components/input";
 import { useState } from "react";
 import ListWedding from "./components/list-wedding";
 import { useRouter } from "next/navigation";
+import { useGlobalState } from "../hooks/useGlobalState";
 
 export default function Wedding() {
-  const [apiKeyText, setApiKey] = useState("");
-  const [apiKeySubmitted, setApiKeySubmitted] = useState(false);
+  const { state, setState } = useGlobalState();
   const router = useRouter();
 
   return (
@@ -23,17 +23,16 @@ export default function Wedding() {
           Add Wedding
         </Button>
         <div className="h-2" />
-        <Input label="API KEY" placeholder="API KEY" onChangeText={setApiKey} />
+        <Input
+          value={state.apiKey}
+          label="API KEY"
+          placeholder="API KEY"
+          onChangeText={(val) => setState({ apiKey: val })}
+        />
         <div className="h-2" />
-        <Button
-          onClick={() => {
-            setApiKeySubmitted((prev) => !prev);
-          }}
-        >
-          {apiKeySubmitted ? "Remove Api Key" : "Submit Api Key"}
-        </Button>
+
         <div className="h-2" />
-        {apiKeySubmitted ? <ListWedding apiKey={apiKeyText} /> : undefined}
+        <ListWedding />
       </div>
     </div>
   );

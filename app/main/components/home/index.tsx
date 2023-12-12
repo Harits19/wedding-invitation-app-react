@@ -3,8 +3,8 @@ import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
 import HalfRoundBox from "@/app/components/half-round-box";
 import Scaffold from "@/app/components/scaffold";
-import { kPublic } from "@/constans/public";
-import { kText } from "@/constans/text";
+import { kPublic } from "@/app/constans/public";
+import { kText } from "@/app/constans/text";
 import Image from "next/image";
 import { ReactNode } from "react";
 

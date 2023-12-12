@@ -1,6 +1,6 @@
 "use client";
 
-import { kFontFamily } from "@/constans/fontFamily";
+import { kFontFamily } from "@/app/constans/font-family";
 import { ReactNode } from "react";
 
 export default function Scaffold({

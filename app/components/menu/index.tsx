@@ -8,7 +8,7 @@ import People from "@/app/main/components/people";
 import Collection from "@/app/main/components/collection";
 import Place from "@/app/main/components/place";
 import Home from "@/app/main/components/home";
-import { kSize } from "@/constans/size";
+import { kSize } from "@/app/constans/size";
 
 export type MenuName = IconName;
 export const menus: {

@@ -57,6 +57,7 @@ export default function Input<TFieldValue extends FieldValues>({
         }}
         render={({ field }) => (
           <RawInput
+            value={props.type === "file" ? props.value : field.value}
             {...props}
             onChange={(val) => {
               field.onChange(val.target.value);

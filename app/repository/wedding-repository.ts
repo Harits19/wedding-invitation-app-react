@@ -2,7 +2,7 @@ import { WeddingModel, weddingKey } from "../model/wedding-model";
 import { Kysely } from "kysely";
 import { DatabaseMigration, DatabaseModel } from "../model";
 import { v4 as uuidv4 } from "uuid";
-import { EncryptUtil } from "@/utils/encrypt-util";
+import { EncryptUtil } from "@/app/utils/encrypt-util";
 
 export class WeddingRepositoryHandler implements DatabaseMigration {
   vercelDb: Kysely<DatabaseModel>;

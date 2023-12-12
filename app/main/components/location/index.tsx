@@ -5,7 +5,7 @@ import CountDown from "@/app/components/count-down";
 import DateText from "@/app/components/date-text";
 import Scaffold from "@/app/components/scaffold";
 import TopDecor from "@/app/components/top-decor";
-import { kText } from "@/constans/text";
+import { kText } from "@/app/constans/text";
 
 export default function Location() {
   return (

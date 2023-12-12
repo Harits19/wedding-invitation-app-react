@@ -1,7 +1,7 @@
 import { weddingRepository } from "@/app/dependency";
 import { WeddingModel, weddingSchema } from "@/app/model/wedding-model";
-import { EncryptUtil } from "@/utils/encrypt-util";
-import { ResponseUtil } from "@/utils/response-util";
+import { EncryptUtil } from "@/app/utils/encrypt-util";
+import { ResponseUtil } from "@/app/utils/response-util";
 import { HttpStatusCode } from "axios";
 import { headers } from "next/headers";
 

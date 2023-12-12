@@ -1,5 +1,5 @@
 import Table from "@/app/components/table";
-import { useQueryGetListWedding } from "@/app/state/useQueryGetListWedding";
+import { useQueryGetListWedding } from "@/app/wedding/hooks/use-query-get-list-wedding";
 import { useRouter } from "next/navigation";
 
 interface Props {

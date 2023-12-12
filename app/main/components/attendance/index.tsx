@@ -4,7 +4,7 @@ import Scaffold from "@/app/components/scaffold";
 import Select from "@/app/components/select";
 import TextArea from "@/app/components/textarea";
 import useToQuery from "@/app/hooks/useToQuery";
-import { kText } from "@/constans/text";
+import { kText } from "@/app/constans/text";
 
 export default function Attendance() {
   const name = useToQuery();

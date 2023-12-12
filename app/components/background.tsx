@@ -1,5 +1,5 @@
-import { kPublic } from "@/constans/public";
-import { kSize } from "@/constans/size";
+import { kPublic } from "@/app/constans/public";
+import { kSize } from "@/app/constans/size";
 import Image from "next/image";
 
 export default function Background({ className }: { className?: string }) {

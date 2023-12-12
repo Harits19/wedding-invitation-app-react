@@ -3,8 +3,8 @@ import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
 import Scaffold from "@/app/components/scaffold";
 import TopDecor from "@/app/components/top-decor";
-import { kPublic } from "@/constans/public";
-import { kText } from "@/constans/text";
+import { kPublic } from "@/app/constans/public";
+import { kText } from "@/app/constans/text";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 

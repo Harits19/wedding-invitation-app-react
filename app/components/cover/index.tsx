@@ -1,7 +1,7 @@
-import { kText } from "@/constans/text";
+import { kText } from "@/app/constans/text";
 import Div from "../div";
 import Image from "next/image";
-import { kPublic } from "@/constans/public";
+import { kPublic } from "@/app/constans/public";
 import Scaffold from "../scaffold";
 import Background from "../background";
 import TopDecor from "../top-decor";

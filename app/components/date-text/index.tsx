@@ -1,4 +1,4 @@
-import { kText } from "@/constans/text";
+import { kText } from "@/app/constans/text";
 import moment from "moment";
 
 export default function DateText() {

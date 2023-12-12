@@ -1,6 +1,6 @@
 import Background from "@/app/components/background";
 import Scaffold from "@/app/components/scaffold";
-import { kText } from "@/constans/text";
+import { kText } from "@/app/constans/text";
 
 export default function Greeting() {
   return (

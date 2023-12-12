@@ -1,7 +1,7 @@
-import { DateDifference, timeBetweenDates } from "@/utils/date-util";
+import { DateDifference, timeBetweenDates } from "@/app/utils/date-util";
 import Div from "./div";
 import { useEffect, useState } from "react";
-import { kText } from "@/constans/text";
+import { kText } from "@/app/constans/text";
 
 export default function CountDown() {
   const [diff, setDiff] = useState(timeBetweenDates(kText.date));

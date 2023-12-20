@@ -88,7 +88,7 @@ export const GET = async (req: Request) => {
   }
 };
 
-const checkApiKey = () => {
+export const checkApiKey = () => {
   const headerApiKey = headers().get("x-api-key");
   const envApiKey = process.env.API_KEY;
 

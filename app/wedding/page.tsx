@@ -27,7 +27,7 @@ export default function Wedding() {
           value={state.apiKey}
           label="API KEY"
           type="password"
-          placeholder="API KEY"
+          placeholder="API KEY" 
           onChangeText={(val) => setState({ apiKey: val })}
         />
         <div className="h-2" />

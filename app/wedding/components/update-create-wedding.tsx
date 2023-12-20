@@ -12,14 +12,16 @@ import NestedItem from "./nested-item";
 export default function UpdateCreateWedding({
   onSubmit,
   loading = false,
+  initialValue,
 }: {
   onSubmit?: (value: WeddingModel) => void;
   loading?: boolean;
+  initialValue?: Partial<WeddingModel>;
 }) {
   const methods = useForm<WeddingModel>({
     criteriaMode: "all",
     reValidateMode: "onChange",
-    defaultValues: {
+    defaultValues: initialValue ?? {
       date: new Date(),
       music: "music",
       name: "Wedding Name",
@@ -54,13 +56,14 @@ export default function UpdateCreateWedding({
     },
   });
   const { formState, control, watch } = methods;
-  console.log(watch());
+
+  const isUpdateFlow = Boolean(initialValue);
 
   return (
     <FormProvider {...methods}>
       <Div className=" w-screen flex flex-col justify-center items-center bg-gray-50">
         <div className="p-4 bg-white rounded-2xl w-1/2 flex flex-col m-6">
-          <h1>Create Page</h1>
+          <h1>{isUpdateFlow ? "Update" : "Create"} Page</h1>
           <div className="h-6" />
           <div className="gap-y-2 flex flex-col">
             <Input
@@ -69,13 +72,15 @@ export default function UpdateCreateWedding({
               required
               placeholder="Wedding Name"
             />
-            <Input
-              controller={{ control, name: "password" }}
-              withLabel
-              required
-              placeholder="Password"
-              type="password"
-            />
+            {!isUpdateFlow && (
+              <Input
+                controller={{ control, name: "password" }}
+                withLabel
+                required
+                placeholder="Password"
+                type="password"
+              />
+            )}
             <Input
               controller={{ control, name: "date" }}
               withLabel

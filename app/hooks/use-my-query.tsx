@@ -8,7 +8,7 @@ import {
   useQueryClient,
 } from "react-query";
 
-const QueryKeyList = ["useQueryGetListWedding"] as const;
+const QueryKeyList = ["useQueryGetListWedding", "useQueryGetDetailWedding"] as const;
 export type MyQueryKey = (typeof QueryKeyList)[number];
 
 export function useMyQuery<

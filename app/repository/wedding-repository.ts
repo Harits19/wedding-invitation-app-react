@@ -73,9 +73,16 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
   };
 
   getAllWedding = async () => {
-    return await this.vercelDb
+    return this.vercelDb.selectFrom("wedding").select(["id", "name"]).execute();
+  };
+
+  getDetailWedding = async (
+    id: string
+  ): Promise<Partial<WeddingModel> | undefined> => {
+    return this.vercelDb
       .selectFrom("wedding")
-      .select(["id", "name"])
-      .execute();
+      .selectAll()
+      .where("id", "=", id)
+      .executeTakeFirst();
   };
 }

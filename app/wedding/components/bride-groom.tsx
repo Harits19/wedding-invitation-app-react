@@ -15,7 +15,15 @@ export default function BrideGroom({
   const titles = value.titles;
   return (
     <NestedItem title={props.title}>
-      <Input withLabel placeholder="Name" name={`${type}.name`} required />
+      <Input
+        withLabel
+        placeholder="Name"
+        controller={{
+          name: `${type}.name`,
+          control: control,
+        }}
+        required
+      />
       <NestedItem
         title="Titles"
         action={

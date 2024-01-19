@@ -26,7 +26,7 @@ export default function ListWedding() {
           },
         ])}
       />
-      {error && <div>{error.message}</div>}
+      {error && <div>{JSON.stringify(error)}</div>}
       <div>{isLoading ? "isLoading" : "isComplete"}</div>
     </>
   );

@@ -2,11 +2,7 @@ import { ResponseUtil } from "@/app/utils/response-util";
 import { checkApiKey } from "../route";
 import { weddingRepository } from "@/app/dependency";
 import { HttpStatusCode } from "axios";
-import {
-  WeddingModel,
-  weddingSchemaCreate,
-  weddingSchemaUpdate,
-} from "@/app/model/wedding-model";
+import { weddingSchema } from "@/app/model/wedding-model";
 
 export const GET = async (
   req: Request,
@@ -53,11 +49,11 @@ export const PATCH = async (
       ...(await req.json()),
       id,
     };
-    const validatedBody = await weddingSchemaUpdate.validate(body, {
+    const validatedBody = await weddingSchema.validate(body, {
       abortEarly: false,
     });
 
-    console.log('patch wedding body',)
+    console.log("patch wedding body");
 
     await checkApiKey();
     await weddingRepository.update(validatedBody);

@@ -1,4 +1,3 @@
-import { Kysely } from "kysely";
 import { WeddingTable } from "./wedding";
 import { GreetingTable } from "./greeting";
 
@@ -8,7 +7,6 @@ export interface Database {
 }
 
 export interface DatabaseMigration {
-  db: Kysely<Database>;
   createTable(): Promise<void>;
   dropTable(): Promise<void>;
 }

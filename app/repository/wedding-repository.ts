@@ -1,21 +1,16 @@
 import { WeddingTable, weddingKey } from "../model/database/wedding";
-import { Kysely } from "kysely";
 import { v4 as uuidv4 } from "uuid";
 import { EncryptUtil } from "@/app/utils/encrypt-util";
 import { Database, DatabaseMigration } from "../model/database";
-import { db, mysql2 } from "../config/mysql";
+import { mysql2, mysql2Config } from "../config/mysql";
 
 export class WeddingRepositoryHandler implements DatabaseMigration {
-  db: Kysely<Database>;
-
-  constructor({ db }: { db: Kysely<Database> }) {
-    this.db = db;
-  }
-
+  private db: any = {};
+  private tableName = `${mysql2Config.database}.wedding`;
   createTable = async () => {
     console.info("start create wedding table table");
     await mysql2.execute(`
-    CREATE TABLE abdullah28_invitation.wedding (
+    CREATE TABLE ${this.tableName} (
       id varchar(100) NOT NULL,
       date TIMESTAMP NOT NULL,
       photo json NOT NULL,
@@ -32,7 +27,9 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
 
   dropTable = async () => {
     console.info("start drop wedding table table");
-    await this.db.schema.dropTable(weddingKey.table).execute();
+    await mysql2.execute(`
+    DROP TABLE ${this.tableName}
+    `);
   };
 
   addWedding = async (val: Omit<WeddingTable, "id">) => {
@@ -92,6 +89,4 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
   };
 }
 
-export const weddingRepository = new WeddingRepositoryHandler({
-  db: db,
-});
+export const weddingRepository = new WeddingRepositoryHandler();

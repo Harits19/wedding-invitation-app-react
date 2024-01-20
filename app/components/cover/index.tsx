@@ -41,6 +41,7 @@ export default function Cover(props: { children: ReactNode }) {
         <div className="h-2" />
         <button
           onClick={() => {
+            console.log("bukaUndangan");
             setShowCover(false);
           }}
           className="bg-driftwood py-2 px-12 rounded-sm"

@@ -8,9 +8,9 @@ const listRepository = [greetingRepository, weddingRepository];
 
 export const GET = async (req: Request) => {
   try {
-    try {
-      await Promise.all(listRepository.map((item) => item.dropTable()));
-    } catch (error) {}
+    // try {
+    //   await Promise.all(listRepository.map((item) => item.dropTable()));
+    // } catch (error) {}
     await Promise.all(listRepository.map((item) => item.createTable()));
 
     return ResponseUtil.success({

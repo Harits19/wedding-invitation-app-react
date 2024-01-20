@@ -3,7 +3,7 @@ import { Kysely } from "kysely";
 import { v4 as uuidv4 } from "uuid";
 import { EncryptUtil } from "@/app/utils/encrypt-util";
 import { Database, DatabaseMigration } from "../model/database";
-import { db } from "../config/mysql";
+import { db, mysql2 } from "../config/mysql";
 
 export class WeddingRepositoryHandler implements DatabaseMigration {
   db: Kysely<Database>;
@@ -13,22 +13,25 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
   }
 
   createTable = async () => {
-    console.info('start create wedding table table');
-    await this.db.schema
-      .createTable(weddingKey.table)
-      .addColumn(weddingKey.id, "varchar", (col) => col.primaryKey().notNull())
-      .addColumn(weddingKey.date, "timestamp", (col) => col.notNull())
-      .addColumn(weddingKey.photo, "json", (col) => col.notNull())
-      .addColumn(weddingKey.place, "json", (col) => col.notNull())
-      .addColumn(weddingKey.music, "varchar", (col) => col.notNull())
-      .addColumn(weddingKey.password, "varchar", (col) => col.notNull())
-      .addColumn(weddingKey.bride, "json", (col) => col.notNull())
-      .addColumn(weddingKey.groom, "json", (col) => col.notNull())
-      .addColumn(weddingKey.name, "varchar", (col) => col.notNull().unique())
-      .execute();
+    console.info("start create wedding table table");
+    await mysql2.execute(`
+    CREATE TABLE abdullah28_invitation.wedding (
+      id varchar(100) NOT NULL,
+      date TIMESTAMP NOT NULL,
+      photo json NOT NULL,
+      place json NOT NULL,
+      music varchar(100) NOT NULL,
+      password varchar(100) NOT NULL,
+      bride json NOT NULL,
+      groom json NOT NULL,
+      name varchar(100) NOT NULL,
+      CONSTRAINT wedding_pk PRIMARY KEY (id)
+    )
+    `);
   };
 
   dropTable = async () => {
+    console.info("start drop wedding table table");
     await this.db.schema.dropTable(weddingKey.table).execute();
   };
 

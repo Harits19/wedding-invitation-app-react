@@ -25,14 +25,6 @@ export default function Base() {
   };
   return (
     <Cover>
-      <button
-        onClick={() => {
-          console.log("onClick");
-          getListGreeting();
-        }}
-      >
-        testing get
-      </button>
       <Main />
     </Cover>
   );

@@ -1,4 +1,10 @@
-import { Generated, ColumnType } from "kysely";
+import {
+  Generated,
+  ColumnType,
+  Selectable,
+  Insertable,
+  Updateable,
+} from "kysely";
 
 export const greetingKey = {
   table: "greeting",
@@ -11,7 +17,7 @@ export const greetingKey = {
 };
 export const attendanceTypeList = ["present", "no_present"] as const;
 export type AttendanceType = (typeof attendanceTypeList)[number];
-export interface GreetingModel {
+export interface GreetingTable {
   id: string;
   wedding_id: number;
   name: string;
@@ -19,3 +25,7 @@ export interface GreetingModel {
   attendance: AttendanceType;
   created_at: ColumnType<Date, string | undefined, never>;
 }
+
+export interface Greeting extends Selectable<GreetingTable> {}
+export interface GreetingCreate extends Insertable<GreetingTable> {}
+export interface GreetingUpdate extends Updateable<GreetingTable> {}

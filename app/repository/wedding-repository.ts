@@ -6,14 +6,15 @@ import { Database, DatabaseMigration } from "../model/database";
 import { db } from "../config/mysql";
 
 export class WeddingRepositoryHandler implements DatabaseMigration {
-  vercelDb: Kysely<Database>;
+  db: Kysely<Database>;
 
-  constructor({ vercelDb }: { vercelDb: Kysely<Database> }) {
-    this.vercelDb = vercelDb;
+  constructor({ db }: { db: Kysely<Database> }) {
+    this.db = db;
   }
 
   createTable = async () => {
-    await this.vercelDb.schema
+    console.info('start create wedding table table');
+    await this.db.schema
       .createTable(weddingKey.table)
       .addColumn(weddingKey.id, "varchar", (col) => col.primaryKey().notNull())
       .addColumn(weddingKey.date, "timestamp", (col) => col.notNull())
@@ -28,11 +29,11 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
   };
 
   dropTable = async () => {
-    await this.vercelDb.schema.dropTable(weddingKey.table).execute();
+    await this.db.schema.dropTable(weddingKey.table).execute();
   };
 
   addWedding = async (val: Omit<WeddingTable, "id">) => {
-    await this.vercelDb
+    await this.db
       .insertInto("wedding")
       .values({
         id: uuidv4(),
@@ -42,7 +43,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
   };
 
   checkAuth = async (val: Pick<WeddingTable, "password" | "name">) => {
-    const result = await this.vercelDb
+    const result = await this.db
       .selectFrom("wedding")
       .selectAll()
       .where("name", "=", val.name)
@@ -62,7 +63,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
   };
 
   update = async (val: Omit<WeddingTable, "id">) => {
-    await this.vercelDb
+    await this.db
       .updateTable("wedding")
       .set({
         ...val,
@@ -74,13 +75,13 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
   };
 
   getAllWedding = async () => {
-    return this.vercelDb.selectFrom("wedding").select(["id", "name"]).execute();
+    return this.db.selectFrom("wedding").select(["id", "name"]).execute();
   };
 
   getDetailWedding = async (
     id: string
   ): Promise<Partial<WeddingTable> | undefined> => {
-    return this.vercelDb
+    return this.db
       .selectFrom("wedding")
       .selectAll()
       .where("id", "=", id)
@@ -89,5 +90,5 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
 }
 
 export const weddingRepository = new WeddingRepositoryHandler({
-  vercelDb: db,
+  db: db,
 });

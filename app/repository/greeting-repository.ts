@@ -1,18 +1,19 @@
-import { greetingKey } from "../model/greeting-model";
+import { greetingKey } from "../model/database/greeting";
 import { Kysely, sql } from "kysely";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "../config/mysql";
 import { Database, DatabaseMigration } from "../model/database";
 
 export class GreetingRepositoryHandler implements DatabaseMigration {
-  vercelDb: Kysely<Database>;
+  db: Kysely<Database>;
 
-  constructor({ vercelDb }: { vercelDb: Kysely<Database> }) {
-    this.vercelDb = vercelDb;
+  constructor({ db }: { db: Kysely<Database> }) {
+    this.db = db;
   }
 
   createTable = async () => {
-    await this.vercelDb.schema
+    console.info("start create greeting table");
+    await this.db.schema
       .createTable(greetingKey.table)
       .addColumn(greetingKey.id, "varchar", (col) =>
         col.primaryKey().defaultTo(uuidv4())
@@ -28,10 +29,10 @@ export class GreetingRepositoryHandler implements DatabaseMigration {
   };
 
   dropTable = async () => {
-    await this.vercelDb.schema.dropTable(greetingKey.table).execute();
+    await this.db.schema.dropTable(greetingKey.table).execute();
   };
 }
 
 export const greetingRepository = new GreetingRepositoryHandler({
-  vercelDb: db,
+  db: db,
 });

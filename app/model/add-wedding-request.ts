@@ -1,5 +1,5 @@
-import { WeddingModel } from "./wedding-model";
+import { WeddingTable } from "./database/wedding";
 
-export interface AddWeddingRequest extends WeddingModel {
+export interface AddWeddingRequest extends WeddingTable {
   apiKey: string;
 }

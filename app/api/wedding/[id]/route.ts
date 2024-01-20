@@ -1,8 +1,8 @@
 import { ResponseUtil } from "@/app/utils/response-util";
 import { checkApiKey } from "../route";
-import { weddingRepository } from "@/app/dependency";
 import { HttpStatusCode } from "axios";
-import { weddingSchema } from "@/app/model/wedding-model";
+import { weddingSchema } from "@/app/model/database/wedding";
+import { weddingRepository } from "@/app/repository/wedding-repository";
 
 export const GET = async (
   req: Request,

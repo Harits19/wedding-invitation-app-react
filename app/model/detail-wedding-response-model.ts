@@ -1,5 +1,5 @@
 import { ResponseModel } from "./response-model";
-import { WeddingModel } from "./wedding-model";
+import { WeddingTable } from "./database/wedding";
 
 export interface DetailWeddingResponseModel
-  extends ResponseModel<WeddingModel, string> {}
+  extends ResponseModel<WeddingTable, string> {}

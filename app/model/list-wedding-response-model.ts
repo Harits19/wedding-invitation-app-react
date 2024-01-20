@@ -1,5 +1,5 @@
 import { ResponseModel } from "./response-model";
-import { WeddingModel } from "./wedding-model";
+import { WeddingTable } from "./database/wedding";
 
 export interface ListWeddingResponse
-  extends ResponseModel<Partial<WeddingModel>[], string> {}
+  extends ResponseModel<Partial<WeddingTable>[], string> {}

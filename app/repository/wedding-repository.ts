@@ -1,13 +1,14 @@
-import { WeddingModel, weddingKey } from "../model/wedding-model";
+import { WeddingTable, weddingKey } from "../model/database/wedding";
 import { Kysely } from "kysely";
-import { DatabaseMigration, DatabaseModel } from "../model";
 import { v4 as uuidv4 } from "uuid";
 import { EncryptUtil } from "@/app/utils/encrypt-util";
+import { Database, DatabaseMigration } from "../model/database";
+import { db } from "../config/mysql";
 
 export class WeddingRepositoryHandler implements DatabaseMigration {
-  vercelDb: Kysely<DatabaseModel>;
+  vercelDb: Kysely<Database>;
 
-  constructor({ vercelDb }: { vercelDb: Kysely<DatabaseModel> }) {
+  constructor({ vercelDb }: { vercelDb: Kysely<Database> }) {
     this.vercelDb = vercelDb;
   }
 
@@ -30,7 +31,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
     await this.vercelDb.schema.dropTable(weddingKey.table).execute();
   };
 
-  addWedding = async (val: Omit<WeddingModel, "id">) => {
+  addWedding = async (val: Omit<WeddingTable, "id">) => {
     await this.vercelDb
       .insertInto("wedding")
       .values({
@@ -40,7 +41,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
       .execute();
   };
 
-  checkAuth = async (val: Pick<WeddingModel, "password" | "name">) => {
+  checkAuth = async (val: Pick<WeddingTable, "password" | "name">) => {
     const result = await this.vercelDb
       .selectFrom("wedding")
       .selectAll()
@@ -60,7 +61,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
     }
   };
 
-  update = async (val: Omit<WeddingModel, "id">) => {
+  update = async (val: Omit<WeddingTable, "id">) => {
     await this.vercelDb
       .updateTable("wedding")
       .set({
@@ -78,7 +79,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
 
   getDetailWedding = async (
     id: string
-  ): Promise<Partial<WeddingModel> | undefined> => {
+  ): Promise<Partial<WeddingTable> | undefined> => {
     return this.vercelDb
       .selectFrom("wedding")
       .selectAll()
@@ -86,3 +87,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
       .executeTakeFirst();
   };
 }
+
+export const weddingRepository = new WeddingRepositoryHandler({
+  vercelDb: db,
+});

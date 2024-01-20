@@ -1,9 +1,9 @@
 import { AxiosError } from "axios";
 import useFetch from "../hooks/use-fetch";
 import { ResponseModel } from "../model/response-model";
-import { WeddingModel } from "../model/wedding-model";
+import { WeddingTable } from "../model/database/wedding";
 
-export const useFetchPutWedding = async (props: WeddingModel) => {
+export const useFetchPutWedding = async (props: WeddingTable) => {
   console.log("calledUseFetchPutWedding", props);
   try {
     const result = await useFetch({

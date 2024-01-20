@@ -1,12 +1,13 @@
 import { greetingKey } from "../model/greeting-model";
 import { Kysely, sql } from "kysely";
-import { DatabaseMigration, DatabaseModel } from "../model";
 import { v4 as uuidv4 } from "uuid";
+import { db } from "../config/mysql";
+import { Database, DatabaseMigration } from "../model/database";
 
 export class GreetingRepositoryHandler implements DatabaseMigration {
-  vercelDb: Kysely<DatabaseModel>;
+  vercelDb: Kysely<Database>;
 
-  constructor({ vercelDb }: { vercelDb: Kysely<DatabaseModel> }) {
+  constructor({ vercelDb }: { vercelDb: Kysely<Database> }) {
     this.vercelDb = vercelDb;
   }
 
@@ -30,3 +31,7 @@ export class GreetingRepositoryHandler implements DatabaseMigration {
     await this.vercelDb.schema.dropTable(greetingKey.table).execute();
   };
 }
+
+export const greetingRepository = new GreetingRepositoryHandler({
+  vercelDb: db,
+});

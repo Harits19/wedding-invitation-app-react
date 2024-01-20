@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import Div from "../../components/div";
 import Input from "../../components/input";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
-import { WeddingModel } from "../../model/wedding-model";
+import { WeddingTable } from "../../model/database/wedding";
 import Button from "../../components/button";
 import BrideGroom from "./bride-groom";
 import NestedItem from "./nested-item";
@@ -14,11 +14,11 @@ export default function UpdateCreateWedding({
   loading = false,
   initialValue,
 }: {
-  onSubmit?: (value: WeddingModel) => void;
+  onSubmit?: (value: WeddingTable) => void;
   loading?: boolean;
-  initialValue?: Partial<WeddingModel>;
+  initialValue?: Partial<WeddingTable>;
 }) {
-  const methods = useForm<WeddingModel>({
+  const methods = useForm<WeddingTable>({
     criteriaMode: "all",
     reValidateMode: "onChange",
     defaultValues: initialValue ?? {

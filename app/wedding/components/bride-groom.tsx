@@ -1,4 +1,4 @@
-import { WeddingModel } from "@/app/model/wedding-model";
+import { WeddingTable } from "@/app/model/database/wedding";
 import { useFormContext } from "react-hook-form";
 import NestedItem from "./nested-item";
 import Input from "@/app/components/input";
@@ -10,7 +10,7 @@ export default function BrideGroom({
   title: string;
   type: "bride" | "groom";
 }) {
-  const { watch, control, setValue } = useFormContext<WeddingModel>();
+  const { watch, control, setValue } = useFormContext<WeddingTable>();
   const value = watch(type);
   const titles = value.titles;
   return (

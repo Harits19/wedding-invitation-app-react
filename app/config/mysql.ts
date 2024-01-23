@@ -1,5 +1,4 @@
-import { createConnection, createPool } from "mysql2";
-import { Database } from "../model/database";
+import { createConnection, createPool } from "mysql2/promise";
 
 export const mysql2Config = {
   database: "abdullah28_invitation",
@@ -10,4 +9,6 @@ export const mysql2Config = {
   connectTimeout: 1000000,
 };
 
-export const mysql2 = createConnection(mysql2Config);
+export const mysql2 = await (async () => {
+  return await createConnection(mysql2Config);
+})();

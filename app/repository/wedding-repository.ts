@@ -7,21 +7,37 @@ import { mysql2, mysql2Config } from "../config/mysql";
 export class WeddingRepositoryHandler implements DatabaseMigration {
   private db: any = {};
   private tableName = `${mysql2Config.database}.wedding`;
+  
   createTable = async () => {
     console.info("start create wedding table table");
-    await mysql2.execute(`
-    CREATE TABLE ${this.tableName} (
-      id varchar(100) NOT NULL,
-      date TIMESTAMP NOT NULL,
-      photo json NOT NULL,
-      place json NOT NULL,
-      music varchar(100) NOT NULL,
-      password varchar(100) NOT NULL,
-      bride json NOT NULL,
-      groom json NOT NULL,
-      name varchar(100) NOT NULL,
-      CONSTRAINT wedding_pk PRIMARY KEY (id)
-    )
+    try {
+      await mysql2.query(`
+      CREATE TABLE ${this.tableName} (
+        id varchar(100) NOT NULL,
+        date TIMESTAMP NOT NULL,
+        photo json NOT NULL,
+        place json NOT NULL,
+        music varchar(100) NOT NULL,
+        password varchar(100) NOT NULL,
+        bride json NOT NULL,
+        groom json NOT NULL,
+        name varchar(100) NOT NULL,
+        CONSTRAINT wedding_pk PRIMARY KEY (id)
+      )
+      `);
+    } catch (error) {
+      console.error("error ", error);
+    }
+    await this.alterTable();
+  };
+
+  alterTable = async () => {
+    console.log("start alter table");
+    await mysql2.query(`
+    ALTER TABLE ${this.tableName}
+      ADD created_at varchar(100) NOT NULL,
+      ADD updated_at varchar(100) NOT NULL,
+      ADD phone_number varchar(100) NOT NULL;
     `);
   };
 

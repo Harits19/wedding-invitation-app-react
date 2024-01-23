@@ -1,9 +1,10 @@
-const envKeyListNumber = ["PORT", "DUMMY_NUMBER"] as const;
+const envKeyListNumber = ["PORT"] as const;
 const envKeyListString = ["API_KEY"] as const;
 type EnvKeyString = (typeof envKeyListString)[number];
 type EnvKeyNumber = (typeof envKeyListNumber)[number];
 
 const getEnvValue = () => {
+  console.log("start getEnvValue");
   const envValueObject: {
     string: {
       [key in EnvKeyString]?: string;
@@ -33,10 +34,12 @@ const getEnvValue = () => {
 
   return envValueObject as {
     string: {
-      [key in EnvKeyString]?: string;
+      [key in EnvKeyString]: string;
     };
     number: {
-      [key in EnvKeyNumber]?: number;
+      [key in EnvKeyNumber]: number;
     };
   };
 };
+
+export const env = getEnvValue();

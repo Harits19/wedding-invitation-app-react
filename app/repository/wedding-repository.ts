@@ -34,12 +34,20 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
 
   alterTable = async () => {
     console.log("start alter table");
-    await mysql2.query(`
-    ALTER TABLE ${this.tableName}
-      ADD created_at varchar(100) NOT NULL,
-      ADD updated_at varchar(100) NOT NULL,
-      ADD phone_number varchar(100) NOT NULL;
-    `);
+    const prefix = `ALTER TABLE ${this.tableName} `;
+    const listAlter = [
+      `ADD created_at varchar(100) NOT NULL`,
+      `ADD updated_at varchar(100) NOT NULL`,
+      `ADD phone_number varchar(100) NOT NULL`,
+      `MODIFY name varchar(100) NOT NULL UNIQUE`,
+    ];
+    for (const alter of listAlter) {
+      try {
+        await mysql2.execute(`${prefix} ${alter}`);
+      } catch (error) {
+        console.log("error when alter table at query ", alter, error);
+      }
+    }
   };
 
   dropTable = async () => {
@@ -50,11 +58,11 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
   };
 
   addWedding = async (val: Omit<WeddingTable, "id">) => {
-    await mysql2.execute(
-      `INSERT INTO abdullah28_invitation.wedding
-    (id, 'date', photo, place, music, password, bride, groom, name, created_at, updated_at, phone_number)
-    VALUES
-    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`,
+    const [result, fields] = await mysql2.execute(
+      `INSERT INTO abdullah28_invitation.wedding 
+        (id, date, photo, place, music, password, bride, groom, name, created_at, updated_at, phone_number) 
+       VALUES 
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`,
       [
         uuidv4(),
         val.date,

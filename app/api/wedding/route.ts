@@ -60,7 +60,7 @@ export const PATCH = async (req: Request) => {
     return ResponseUtil.error({
       payload: {
         message: "error patch wedding",
-        error: error,
+        error: `${error || JSON.stringify(error)}`,
       },
     });
   }

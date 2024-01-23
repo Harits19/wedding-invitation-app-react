@@ -80,20 +80,18 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
     );
   };
 
-  checkAuth = async (val: Pick<WeddingTable, "password" | "name">) => {
-    const result = await this.db
-      .selectFrom("wedding")
-      .selectAll()
-      .where("name", "=", val.name)
-      .executeTakeFirst();
+  checkAuth = async (
+    val: Partial<Pick<WeddingTable, "password" | "name" | "id">>
+  ) => {
+    const result = await this.getDetailWedding(val);
     if (!result) {
       throw "wrong username";
     }
     const hashPassword = result.password;
 
     const isPasswordCorrect = await EncryptUtil.comparePassword(
-      hashPassword,
-      val.password
+      hashPassword ?? "",
+      val.password ?? ""
     );
     if (!isPasswordCorrect) {
       throw "wrong password";
@@ -101,15 +99,28 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
   };
 
   update = async (val: Omit<WeddingTable, "id">) => {
-    await this.db
-      .updateTable("wedding")
-      .set({
-        ...val,
-        password: undefined,
-        name: undefined,
-      })
-      .where("name", "=", val.name)
-      .executeTakeFirst();
+    console.log("start update ");
+    console.log("dateNow", getDateNow());
+    console.log("now", val.date);
+    await mysql2.execute(
+      `
+    UPDATE 
+      abdullah28_invitation.wedding 
+    SET 
+      date='?', photo='?', place='?', music='?', bride='?', groom='?', updated_at='?', phone_number='?'
+    WHERE 
+      name=?;`,
+      [
+        new Date(val.date).toISOString(),
+        val.photo,
+        val.place,
+        val.music,
+        val.bride,
+        val.groom,
+        getDateNow(),
+        val.phone_number,
+      ]
+    );
   };
 
   getAllWedding = async () => {
@@ -117,13 +128,34 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
   };
 
   getDetailWedding = async (
-    id: string
+    val: Partial<Pick<WeddingTable, "id" | "name">>
   ): Promise<Partial<WeddingTable> | undefined> => {
-    return this.db
-      .selectFrom("wedding")
-      .selectAll()
-      .where("id", "=", id)
-      .executeTakeFirst();
+    console.log("start get detail wedding");
+    const conditions = Object.entries({ id: val.id, name: val.name })
+      .filter(([key, value]) => {
+        return Boolean(value);
+      })
+      .map(([key, value]) => {
+        return `${key}='${value}'`;
+      })
+      .join("OR");
+
+    console.log("conditions", conditions);
+
+    const [rows, field] = await mysql2.query(
+      `
+    SELECT 
+      * 
+    FROM 
+      ${this.tableName}
+    WHERE 
+     ${conditions}
+    `
+    );
+
+    if (rows instanceof Array) {
+      return rows.pop() as WeddingTable;
+    }
   };
 }
 

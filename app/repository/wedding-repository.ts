@@ -3,11 +3,12 @@ import { v4 as uuidv4 } from "uuid";
 import { EncryptUtil } from "@/app/utils/encrypt-util";
 import { Database, DatabaseMigration } from "../model/database";
 import { mysql2, mysql2Config } from "../config/mysql";
+import { getDateNow } from "../utils/date-util";
 
 export class WeddingRepositoryHandler implements DatabaseMigration {
   private db: any = {};
   private tableName = `${mysql2Config.database}.wedding`;
-  
+
   createTable = async () => {
     console.info("start create wedding table table");
     try {
@@ -49,13 +50,26 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
   };
 
   addWedding = async (val: Omit<WeddingTable, "id">) => {
-    await this.db
-      .insertInto("wedding")
-      .values({
-        id: uuidv4(),
-        ...val,
-      })
-      .execute();
+    await mysql2.execute(
+      `INSERT INTO abdullah28_invitation.wedding
+    (id, 'date', photo, place, music, password, bride, groom, name, created_at, updated_at, phone_number)
+    VALUES
+    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`,
+      [
+        uuidv4(),
+        val.date,
+        val.photo,
+        val.place,
+        val.music,
+        val.password,
+        val.bride,
+        val.groom,
+        val.name,
+        getDateNow(),
+        getDateNow(),
+        val.phone_number,
+      ]
+    );
   };
 
   checkAuth = async (val: Pick<WeddingTable, "password" | "name">) => {

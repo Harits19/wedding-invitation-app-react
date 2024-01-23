@@ -21,3 +21,5 @@ export function timeBetweenDates(toDate: Date): DateDifference {
     seconds,
   };
 }
+
+export const getDateNow = () => new Date().toISOString();

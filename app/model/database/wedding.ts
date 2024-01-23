@@ -1,10 +1,3 @@
-import {
-  ColumnType,
-  Generated,
-  Insertable,
-  Selectable,
-  Updateable,
-} from "kysely";
 import { InferType, array, date, object, string } from "yup";
 
 export const brideGroomSchema = object({
@@ -21,6 +14,7 @@ export const weddingSchema = object({
   password: string().required(),
   date: date().required(),
   music: string().required(),
+  phone_number: string().required(),
   photo: object({
     cover: string().required(),
     carousel: array(string().required()).required().min(1),
@@ -42,9 +36,9 @@ export interface WeddingTable extends InferType<typeof weddingSchema> {
   id: string;
 }
 
-export interface Wedding extends Selectable<WeddingTable> {}
-export interface WeddingCreate extends Insertable<WeddingTable> {}
-export interface WeddingUpdate extends Updateable<WeddingTable> {}
+export interface Wedding extends WeddingTable {}
+export interface WeddingCreate extends WeddingTable {}
+export interface WeddingUpdate extends WeddingTable {}
 
 export const weddingKey = {
   table: "wedding",

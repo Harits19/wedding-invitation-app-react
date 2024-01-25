@@ -1,46 +1,46 @@
 import MyTable from "@/app/components/table";
 import { WeddingTable } from "@/app/model/database/wedding";
 import { useQueryGetListWedding } from "@/app/wedding/hooks/use-query-get-list-wedding";
+import { Box, Button, LoadingOverlay } from "@mantine/core";
 import { useRouter } from "next/navigation";
 
-export default function ListWedding() {
-  const {
-    data: listWedding = [],
-    error,
-    isLoading,
-  } = ({} as any) ?? useQueryGetListWedding();
-  const listWeddingDummy: Partial<WeddingTable>[] = [
-    {
-      name: "Dummy 1",
-    },
-    {
-      name: "Dummy 1",
-    },
-  ];
+export default function ListWedding({
+  list: listWedding,
+}: {
+  list: Partial<WeddingTable>[];
+}) {
   const router = useRouter();
 
   return (
     <>
       <MyTable
-        items={listWeddingDummy.map((item, index) => [
+        items={listWedding.map((item, index) => [
           { header: "No", value: index + 1, className: "w-0 " },
           { header: "Wedding Name", value: item.name },
           {
             header: "Action",
             value: (
-              <button
-                onClick={() => {
-                  router.push(`/wedding/${item.id ?? ""}`);
-                }}
-              >
-                Edit
-              </button>
+              <div className="flex flex-row gap-x-1">
+                <Button
+                  onClick={() => {
+                    router.push(`/wedding/${item.id ?? ""}`);
+                  }}
+                >
+                  Edit
+                </Button>
+                <Button
+                  onClick={() => {
+                    router.push(`/wedding/${item.id ?? ""}`);
+                  }}
+                >
+                  Greeting
+                </Button>
+              </div>
             ),
           },
         ])}
       />
       {/* {error && <div>{JSON.stringify(error)}</div>} */}
-      <div>{isLoading ? "isLoading" : "isComplete"}</div>
     </>
   );
 }

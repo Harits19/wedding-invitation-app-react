@@ -74,6 +74,7 @@ export const GET = async (req: Request) => {
       return response;
     }
     const result = await weddingRepository.getAllWedding();
+    throw "Test error";
     return ResponseUtil.success({
       payload: {
         message: "success get all wedding",

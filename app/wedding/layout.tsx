@@ -4,6 +4,7 @@ import { Button, NavLink, Text } from "@mantine/core";
 import { ReactNode, useState } from "react";
 import MantineProviderComponent from "../components/mantine-provider";
 import "@mantine/core/styles.css";
+import '@mantine/notifications/styles.css';
 
 export default function Layout({ children }: { children: ReactNode }) {
   const [activeMenu, setActiveMenu] = useState(0);

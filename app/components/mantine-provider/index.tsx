@@ -1,4 +1,5 @@
 import { MantineProvider, createTheme } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 import { ReactNode } from "react";
 
 export default function MantineProviderComponent({
@@ -7,5 +8,10 @@ export default function MantineProviderComponent({
   children: ReactNode;
 }) {
   const theme = createTheme({});
-  return <MantineProvider theme={theme}>{children}</MantineProvider>;
+  return (
+    <MantineProvider theme={theme}>
+      <Notifications position="top-right" />
+      {children}
+    </MantineProvider>
+  );
 }

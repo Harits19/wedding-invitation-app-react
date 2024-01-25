@@ -57,6 +57,7 @@ export const PATCH = async (req: Request) => {
       },
     });
   } catch (error) {
+    console.log("error when patch wedding", error);
     return ResponseUtil.error({
       payload: {
         message: "error patch wedding",
@@ -80,6 +81,7 @@ export const GET = async (req: Request) => {
       },
     });
   } catch (error) {
+    console.error("error when get list wedding", error);
     return ResponseUtil.error({
       payload: {
         message: "error patch wedding",

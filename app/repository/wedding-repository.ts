@@ -6,7 +6,6 @@ import { mysql2, mysql2Config } from "../config/mysql";
 import { getDateNow } from "../utils/date-util";
 
 export class WeddingRepositoryHandler implements DatabaseMigration {
-  private db: any = {};
   private tableName = `${mysql2Config.database}.wedding`;
 
   createTable = async () => {
@@ -40,6 +39,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
       `ADD updated_at varchar(100) NOT NULL`,
       `ADD phone_number varchar(100) NOT NULL`,
       `MODIFY name varchar(100) NOT NULL UNIQUE`,
+      `MODIFY date varchar(100) NOT NULL`,
     ];
     for (const alter of listAlter) {
       try {
@@ -107,7 +107,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
     UPDATE 
       abdullah28_invitation.wedding 
     SET 
-      date='?', photo='?', place='?', music='?', bride='?', groom='?', updated_at='?', phone_number='?'
+      date=?, photo=?, place=?, music=?, bride=?, groom=?, updated_at=?, phone_number=?
     WHERE 
       name=?;`,
       [
@@ -119,12 +119,20 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
         val.groom,
         getDateNow(),
         val.phone_number,
+        val.name,
       ]
     );
   };
 
   getAllWedding = async () => {
-    return this.db.selectFrom("wedding").select(["id", "name"]).execute();
+    const [result] = await mysql2.query(`
+   SELECT
+    * 
+   FROM
+    ${this.tableName}
+   `);
+
+    return result as WeddingTable[];
   };
 
   getDetailWedding = async (

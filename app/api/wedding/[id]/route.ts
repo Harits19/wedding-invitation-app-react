@@ -13,7 +13,7 @@ export const GET = async (
     if (response) {
       return response;
     }
-    const result = await weddingRepository.getDetailWedding(id);
+    const result = await weddingRepository.getDetailWedding({ id });
     if (result) {
       result.password = undefined;
       return ResponseUtil.success({

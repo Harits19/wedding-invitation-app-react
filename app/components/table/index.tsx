@@ -1,3 +1,4 @@
+import { Table } from "@mantine/core";
 import { ReactNode } from "react";
 
 interface Props {
@@ -8,8 +9,28 @@ interface Props {
   }[][];
 }
 
-export default function Table({ items }: Props) {
+export default function MyTable({ items }: Props) {
   const defaultTableColumn = `border  text-left p-2 `;
+  return (
+    <Table>
+      <Table.Thead>
+        <Table.Tr>
+          {items[0]?.map((item, index) => (
+            <Table.Th key={index}>{item.header}</Table.Th>
+          ))}
+        </Table.Tr>
+      </Table.Thead>
+      <Table.Tbody>
+        {items.map((value, idx1) => (
+          <Table.Tr key={idx1}>
+            {value?.map((item, idx2) => {
+              return <Table.Td key={idx2}>{item.value}</Table.Td>;
+            })}
+          </Table.Tr>
+        ))}
+      </Table.Tbody>
+    </Table>
+  );
   return (
     <table className=" rounded-xl border">
       <thead>

@@ -4,6 +4,7 @@ import { EncryptUtil } from "@/app/utils/encrypt-util";
 import { Database, DatabaseMigration } from "../model/database";
 import { mysql2, mysql2Config } from "../config/mysql";
 import { getDateNow } from "../utils/date-util";
+import { SqlUtil } from "../utils/sql-util";
 
 export class WeddingRepositoryHandler implements DatabaseMigration {
   private tableName = `${mysql2Config.database}.wedding`;
@@ -139,14 +140,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
     val: Partial<Pick<WeddingTable, "id" | "name">>
   ): Promise<Partial<WeddingTable> | undefined> => {
     console.log("start get detail wedding");
-    const conditions = Object.entries({ id: val.id, name: val.name })
-      .filter(([key, value]) => {
-        return Boolean(value);
-      })
-      .map(([key, value]) => {
-        return `${key}='${value}'`;
-      })
-      .join("OR");
+    const conditions = SqlUtil.generateOrCondition(val);
 
     console.log("conditions", conditions);
 

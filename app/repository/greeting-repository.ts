@@ -1,5 +1,9 @@
 import { mysql2, mysql2Config } from "../config/mysql";
 import { DatabaseMigration } from "../model/database";
+import { v4 as uuidv4 } from "uuid";
+import { GreetingTable } from "../model/database/greeting";
+import { getDateNow } from "../utils/date-util";
+import { SqlUtil } from "../utils/sql-util";
 
 export class GreetingRepositoryHandler implements DatabaseMigration {
   private tableName = `${mysql2Config.database}.greeting`;
@@ -27,6 +31,43 @@ export class GreetingRepositoryHandler implements DatabaseMigration {
     await mysql2.execute(`
     DROP TABLE ${this.tableName}
     `);
+  };
+
+  insertGreeting = async (value: GreetingTable) => {
+    await mysql2.execute(
+      `
+    INSERT INTO abdullah28_invitation.greeting
+      (id, name, message, weddingId, attendance, createdAt)
+    VALUES
+      (?, ?, ?, ?, ?, ?);
+    `,
+      [
+        uuidv4(),
+        value.name,
+        value.message,
+        value.wedding_id,
+        value.attendance,
+        getDateNow(),
+      ]
+    );
+  };
+
+  getAllGreetingByWeddingId = async (filter: Record<string, unknown>) => {
+    const conditions = SqlUtil.generateOrCondition(filter);
+    const [rows, field] = await mysql2.query(
+      `
+    SELECT 
+      * 
+    FROM 
+      ${this.tableName}
+    WHERE 
+     ${conditions}
+    `
+    );
+
+    if (rows instanceof Array) {
+      return rows.pop() as GreetingTable;
+    }
   };
 }
 

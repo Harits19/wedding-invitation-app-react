@@ -1,4 +1,4 @@
-import { useFetchGetDetailWedding } from "@/app/api/use-fetch-get-detail-wedding";
+import { useFetchGetDetailWedding } from "@/app/services/use-fetch-get-detail-wedding";
 import { useMyQuery } from "@/app/hooks/use-my-query";
 import { DetailWeddingRequestModel } from "@/app/model/detail-wedding-request-model";
 

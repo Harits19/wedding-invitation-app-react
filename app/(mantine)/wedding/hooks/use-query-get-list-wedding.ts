@@ -1,4 +1,4 @@
-import { useFetchGetListTemplate } from "@/app/api/use-fetch-get-list-weding";
+import { useFetchGetListTemplate } from "@/app/services/use-fetch-get-list-weding";
 import { useGlobalState } from "@/app/hooks/useGlobalState";
 import { useMyQuery } from "@/app/hooks/use-my-query";
 

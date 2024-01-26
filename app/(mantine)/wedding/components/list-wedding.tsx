@@ -1,6 +1,6 @@
 import MyTable from "@/app/components/table";
 import { WeddingTable } from "@/app/model/database/wedding";
-import { useQueryGetListWedding } from "@/app/wedding/hooks/use-query-get-list-wedding";
+import { useQueryGetListWedding } from "@/app/(mantine)/wedding/hooks/use-query-get-list-wedding";
 import { Box, Button, LoadingOverlay } from "@mantine/core";
 import { useRouter } from "next/navigation";
 

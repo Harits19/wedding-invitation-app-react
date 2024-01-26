@@ -3,7 +3,7 @@
 import { useState } from "react";
 import ListWedding from "./components/list-wedding";
 import { useRouter } from "next/navigation";
-import { useGlobalState } from "../hooks/useGlobalState";
+import { useGlobalState } from "../../hooks/useGlobalState";
 import {
   Box,
   Button,
@@ -19,6 +19,7 @@ export default function Wedding() {
   const router = useRouter();
   const { data: listWedding = [], isLoading } = useQueryGetListWedding({
     onError: (value) => {
+      console.log("show error ", value);
       notifications.show({
         color: "red",
         title: "Error!",

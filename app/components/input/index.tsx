@@ -1,15 +1,6 @@
+import { TextInput, TextInputProps } from "@mantine/core";
 import InputDecoration, { InputDecorationProps } from "../input-decoration";
-import {
-  Controller,
-  ControllerProps,
-  FieldValues,
-  Path,
-  RegisterOptions,
-  UseControllerProps,
-  UseFormRegister,
-  useController,
-  useFormContext,
-} from "react-hook-form";
+import { Controller, ControllerProps, FieldValues } from "react-hook-form";
 export type InputRawProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
@@ -17,26 +8,21 @@ export type InputRawProps = React.DetailedHTMLProps<
 
 interface RawInputProps
   extends Omit<InputDecorationProps, "children">,
-    InputRawProps {
+    TextInputProps {
   withLabel?: boolean;
   onChangeText?: (val: string) => void;
 }
 
 function RawInput({ withLabel = false, ...props }: RawInputProps) {
   return (
-    <InputDecoration
-      label={withLabel ? props.placeholder : undefined}
+    <TextInput
+      className="rounded-none outline-none"
       {...props}
-    >
-      <input
-        className="rounded-none outline-none"
-        {...props}
-        onChange={(val) => {
-          props.onChange?.(val);
-          props.onChangeText?.(val.target.value);
-        }}
-      />
-    </InputDecoration>
+      onChange={(val) => {
+        props.onChange?.(val);
+        props.onChangeText?.(val.target.value);
+      }}
+    />
   );
 }
 
@@ -55,19 +41,26 @@ export default function Input<TFieldValue extends FieldValues>({
           required,
           ...controller.rules,
         }}
-        render={({ field }) => {
+        render={({ field, fieldState }) => {
           let value = props.type === "file" ? props.value : field.value;
           if (props.type === "date" && typeof value === "string") {
-            value = new Date(value).toISOString().split(':')[0].substring(0, 10);
+            value = new Date(value)
+              .toISOString()
+              .split(":")[0]
+              .substring(0, 10);
           }
+          const error = fieldState.error?.message;
+          console.log("error ", error);
+
           return (
             <RawInput
-              value={value}
               {...props}
+              {...field}
               onChange={(val) => {
                 field.onChange(val.target.value);
                 props.onChange?.(val);
               }}
+              error={error}
             />
           );
         }}

@@ -1,10 +1,10 @@
-import { WeddingTable, weddingKey } from "../model/database/wedding";
+import { WeddingTable, weddingKey } from "../../../model/database/wedding";
 import { v4 as uuidv4 } from "uuid";
 import { EncryptUtil } from "@/app/utils/encrypt-util";
-import { Database, DatabaseMigration } from "../model/database";
+import { Database, DatabaseMigration } from "../../../model/database";
 import { mysql2, mysql2Config } from "../config/mysql";
-import { getDateNow } from "../utils/date-util";
-import { SqlUtil } from "../utils/sql-util";
+import { getDateNow } from "../../../utils/date-util";
+import { SqlUtil } from "../../../utils/sql-util";
 
 export class WeddingRepositoryHandler implements DatabaseMigration {
   private tableName = `${mysql2Config.database}.wedding`;

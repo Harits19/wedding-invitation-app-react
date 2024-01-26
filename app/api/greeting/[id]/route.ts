@@ -1,4 +1,4 @@
-import { greetingRepository } from "@/app/repository/greeting-repository";
+import { greetingRepository } from "@/app/api/core/repository/greeting-repository";
 import { ResponseUtil } from "@/app/utils/response-util";
 import { HttpStatusCode } from "axios";
 

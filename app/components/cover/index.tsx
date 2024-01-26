@@ -7,7 +7,7 @@ import Background from "../background";
 import TopDecor from "../top-decor";
 import HalfRoundBox from "../half-round-box";
 import BottomDecor from "../bottom-decor";
-import useToQuery from "@/app/hooks/useToQuery";
+import useToQuery from "@/app/hooks/use-to-query";
 import { ReactNode, useState } from "react";
 
 export default function Cover(props: { children: ReactNode }) {

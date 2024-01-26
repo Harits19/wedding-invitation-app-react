@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import { useGlobalState } from "./useGlobalState";
+import { useGlobalState } from "./use-global-state";
 
 export default function useFetch<
   TData = unknown,

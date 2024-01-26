@@ -11,7 +11,7 @@ import "@fontsource/averia-serif-libre/400-italic.css"; // Specify weight and st
 
 import "@fontsource/berkshire-swash"; // Defaults to weight 400
 import "@fontsource/berkshire-swash/400.css"; // Specify weight
-import { GlobalStateProvider } from "./hooks/useGlobalState";
+import { GlobalStateProvider } from "./hooks/use-global-state";
 import Div from "./components/div";
 import QueryProvider from "./components/query-provider";
 

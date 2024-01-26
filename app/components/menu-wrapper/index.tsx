@@ -1,7 +1,7 @@
-import { useGlobalState } from "@/app/hooks/useGlobalState";
+import { useGlobalState } from "@/app/hooks/use-global-state";
 import { IconName } from "../Icon/icons";
 import { ReactNode, RefObject } from "react";
-import { useDebounceFunc } from "@/app/hooks/useDebounce";
+import { useDebounceFunc } from "@/app/hooks/use-debounce";
 import { useInView } from "react-intersection-observer";
 import { MenuName } from "../menu";
 

@@ -1,5 +1,5 @@
 import { useInView } from "react-intersection-observer";
-import { useGlobalState } from "./useGlobalState";
+import { useGlobalState } from "./use-global-state";
 
 
 

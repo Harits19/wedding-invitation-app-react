@@ -3,7 +3,7 @@ import Input from "@/app/components/input";
 import Scaffold from "@/app/components/scaffold";
 import Select from "@/app/components/select";
 import TextArea from "@/app/components/textarea";
-import useToQuery from "@/app/hooks/useToQuery";
+import useToQuery from "@/app/hooks/use-to-query";
 import { kText } from "@/app/constans/text";
 
 export default function Attendance() {

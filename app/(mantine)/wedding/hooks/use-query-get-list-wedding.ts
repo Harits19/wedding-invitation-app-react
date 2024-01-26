@@ -1,5 +1,5 @@
 import { useFetchGetListTemplate } from "@/app/services/use-fetch-get-list-weding";
-import { useGlobalState } from "@/app/hooks/useGlobalState";
+import { useGlobalState } from "@/app/hooks/use-global-state";
 import { useMyQuery } from "@/app/hooks/use-my-query";
 
 export const useQueryGetListWedding = ({

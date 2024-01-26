@@ -2,7 +2,7 @@ import { ResponseUtil } from "@/app/utils/response-util";
 import { checkApiKey } from "../route";
 import { HttpStatusCode } from "axios";
 import { weddingSchema } from "@/app/model/database/wedding";
-import { weddingRepository } from "@/app/repository/wedding-repository";
+import { weddingRepository } from "@/app/api/core/repository/wedding-repository";
 
 export const GET = async (
   req: Request,

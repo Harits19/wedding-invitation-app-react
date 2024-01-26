@@ -1,6 +1,6 @@
 "use client";
 
-import { useGlobalState } from "@/app/hooks/useGlobalState";
+import { useGlobalState } from "@/app/hooks/use-global-state";
 import Icon from "../Icon";
 import { IconName } from "../Icon/icons";
 import { ReactNode, RefObject, useEffect, useState } from "react";

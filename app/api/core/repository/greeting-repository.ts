@@ -1,9 +1,9 @@
 import { mysql2, mysql2Config } from "../config/mysql";
-import { DatabaseMigration } from "../model/database";
+import { DatabaseMigration } from "../../../model/database";
 import { v4 as uuidv4 } from "uuid";
-import { GreetingTable } from "../model/database/greeting";
-import { getDateNow } from "../utils/date-util";
-import { SqlUtil } from "../utils/sql-util";
+import { GreetingTable } from "../../../model/database/greeting";
+import { getDateNow } from "../../../utils/date-util";
+import { SqlUtil } from "../../../utils/sql-util";
 
 export class GreetingRepositoryHandler implements DatabaseMigration {
   private tableName = `${mysql2Config.database}.greeting`;

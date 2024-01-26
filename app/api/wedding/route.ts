@@ -1,6 +1,6 @@
-import { env } from "@/app/config/env";
+import { env } from "@/app/api/core/config/env";
 import { weddingSchema } from "@/app/model/database/wedding";
-import { weddingRepository } from "@/app/repository/wedding-repository";
+import { weddingRepository } from "@/app/api/core/repository/wedding-repository";
 import { EncryptUtil } from "@/app/utils/encrypt-util";
 import { ResponseUtil } from "@/app/utils/response-util";
 import { HttpStatusCode } from "axios";

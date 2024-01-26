@@ -11,8 +11,8 @@ import { kText } from "@/app/constans/text";
 import moment from "moment";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
-import { useGlobalState } from "@/app/hooks/useGlobalState";
-import useDeselectMenu from "@/app/hooks/useDeselectMenu";
+import { useGlobalState } from "@/app/hooks/use-global-state";
+import useDeselectMenu from "@/app/hooks/use-deselect-menu";
 
 export default function Opening() {
   const imageList = [kPublic.photoSlideShow1, kPublic.photoSlideShow2];

@@ -3,7 +3,7 @@ import BottomDecor from "@/app/components/bottom-decor";
 import Div from "@/app/components/div";
 import Scaffold from "@/app/components/scaffold";
 import TopDecor from "@/app/components/top-decor";
-import useDeselectMenu from "@/app/hooks/useDeselectMenu";
+import useDeselectMenu from "@/app/hooks/use-deselect-menu";
 import { kPublic } from "@/app/constans/public";
 import { kText } from "@/app/constans/text";
 import Image from "next/image";

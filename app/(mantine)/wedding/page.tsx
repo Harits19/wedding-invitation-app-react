@@ -3,7 +3,7 @@
 import { useState } from "react";
 import ListWedding from "./components/list-wedding";
 import { useRouter } from "next/navigation";
-import { useGlobalState } from "../../hooks/useGlobalState";
+import { useGlobalState } from "../../hooks/use-global-state";
 import {
   Box,
   Button,

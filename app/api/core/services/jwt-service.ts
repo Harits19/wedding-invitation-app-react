@@ -4,7 +4,7 @@ import fs from "fs";
 import jwt, { SignOptions } from "jsonwebtoken";
 
 export default class JwtService {
-  public static generateAccessToken = (wedding: WeddingTable) => {
+  public static generateAccessToken = (wedding: Pick<WeddingTable, "name">) => {
     const token = this.generateToken(
       {
         type: "access",
@@ -21,22 +21,24 @@ export default class JwtService {
         type: "refresh",
         name: wedding.name,
       },
-      { expiresIn: "1 days" }
+      { expiresIn: "7d" }
     );
     return token;
   };
 
   private static generateToken = (payload: JwtModel, option: SignOptions) => {
     const privateKey = fs.readFileSync("private.key");
-    jwt.sign(payload, privateKey, {
+    const token = jwt.sign(payload, privateKey, {
       algorithm: "RS256",
       ...option,
     });
+    return token;
   };
 
   public static checkToken = (token: string) => {
     const publicKey = fs.readFileSync("public.key");
     const decoded = jwt.verify(token, publicKey);
-    console.log("decoded", decoded);
+
+    return decoded as JwtModel;
   };
 }

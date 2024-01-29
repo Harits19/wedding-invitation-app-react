@@ -84,7 +84,9 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
   checkAuth = async (
     val: Partial<Pick<WeddingTable, "password" | "name" | "id">>
   ) => {
-    const result = await this.getDetailWedding(val);
+    const result = await this.getDetailWedding({
+      name: val.name,
+    });
     if (!result) {
       throw "wrong username";
     }
@@ -97,6 +99,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
     if (!isPasswordCorrect) {
       throw "wrong password";
     }
+    return result;
   };
 
   update = async (val: Omit<WeddingTable, "id">) => {
@@ -138,7 +141,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
 
   getDetailWedding = async (
     val: Partial<Pick<WeddingTable, "id" | "name">>
-  ): Promise<Partial<WeddingTable> | undefined> => {
+  ): Promise<WeddingTable | undefined> => {
     console.log("start get detail wedding");
     const conditions = SqlUtil.generateOrCondition(val);
 

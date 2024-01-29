@@ -8,10 +8,11 @@ export const brideGroomSchema = object({
   mother: string().required(),
   address: string().required(),
 });
-
-export const weddingSchema = object({
+export const weddingLoginSchema = object({
   name: string().required(),
   password: string().required(),
+});
+export const weddingSchema = object({
   date: date().required(),
   music: string().required(),
   phone_number: string().required(),
@@ -28,13 +29,15 @@ export const weddingSchema = object({
   }).required(),
   bride: brideGroomSchema,
   groom: brideGroomSchema,
-});
+}).concat(weddingLoginSchema);
 
 export interface BrideGroom extends InferType<typeof brideGroomSchema> {}
 
 export interface WeddingTable extends InferType<typeof weddingSchema> {
   id: string;
 }
+
+export interface WeddingLogin extends InferType<typeof weddingLoginSchema> {}
 
 export interface Wedding extends WeddingTable {}
 export interface WeddingCreate extends WeddingTable {}

@@ -50,7 +50,6 @@ export default function Input<TFieldValue extends FieldValues>({
               .substring(0, 10);
           }
           const error = fieldState.error?.message;
-          console.log("error ", error);
 
           return (
             <RawInput

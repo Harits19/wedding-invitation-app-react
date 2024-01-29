@@ -1,21 +1,26 @@
 "use client";
 
 import Input from "@/app/components/input";
-import { LoginModel } from "@/app/model/login-model";
+import { LoginRequestModel } from "@/app/model/login-model";
 import { Button, TextInput } from "@mantine/core";
 import { useForm } from "react-hook-form";
 import useMutationPostLogin from "./hooks/use-mutation-post-login";
 
 export default function Login() {
-  const { control, watch, formState, handleSubmit } = useForm<LoginModel>({});
-  const { mutate, isLoading } = useMutationPostLogin();
+  const { control, watch, formState, handleSubmit } =
+    useForm<LoginRequestModel>({});
+  const { mutate, isLoading } = useMutationPostLogin({
+    onSuccess: (value) => {
+      console.log("onSuccess", value);
+    },
+  });
   return (
     <div className="h-screen w-screen items-center justify-center flex flex-col ">
       <div className=" w-1/3 self-center p-6 rounded-2xl rounded-2 shadow-2xl flex flex-col">
         <Input
           controller={{
             control,
-            name: "username",
+            name: "name",
             rules: { required: "required" },
           }}
           label="Username"

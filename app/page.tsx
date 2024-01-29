@@ -4,7 +4,6 @@ import axios from "axios";
 import Cover from "./components/cover";
 import Main from "./main/page";
 
-
 /* 
 TODO 
 
@@ -20,9 +19,7 @@ export default function Base() {
       console.log("start fetch");
       const result = await axios.get("api/migrate");
       console.log("result", result);
-    } catch (error) {
-      console.log("error", error);
-    }
+    } catch (error) {}
   };
   return (
     <Cover>

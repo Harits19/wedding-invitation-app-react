@@ -2,16 +2,18 @@
 
 import Input from "@/app/components/input";
 import { LoginRequestModel } from "@/app/model/login-model";
-import { Button, TextInput } from "@mantine/core";
+import { Button, PasswordInput } from "@mantine/core";
 import { useForm } from "react-hook-form";
 import useMutationPostLogin from "./hooks/use-mutation-post-login";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
-  const { control, watch, formState, handleSubmit } =
-    useForm<LoginRequestModel>({});
+  const { control, handleSubmit } = useForm<LoginRequestModel>({});
+  const router = useRouter();
   const { mutate, isLoading } = useMutationPostLogin({
     onSuccess: (value) => {
       console.log("onSuccess", value);
+      router.push("/admin");
     },
   });
   return (

@@ -1,12 +1,7 @@
 import { weddingLoginSchema } from "@/app/model/database/wedding";
 import { weddingRepository } from "../core/repository/wedding-repository";
 import { ResponseUtil } from "@/app/utils/response-util";
-import jwt, { JsonWebTokenError } from "jsonwebtoken";
-import fs from "fs";
 import JwtService from "../core/services/jwt-service";
-import ErrorResponse from "@/app/model/error-response";
-import { env } from "process";
-import { environment } from "../core/config/env";
 import AdminService from "../core/services/admin-service";
 
 export const POST = async (req: Request) => {

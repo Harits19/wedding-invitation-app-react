@@ -1,6 +1,12 @@
-import { TextInput, TextInputProps } from "@mantine/core";
-import InputDecoration, { InputDecorationProps } from "../input-decoration";
+import {
+  PasswordInput,
+  PasswordInputProps,
+  TextInput,
+  TextInputProps,
+} from "@mantine/core";
+import { InputDecorationProps } from "../input-decoration";
 import { Controller, ControllerProps, FieldValues } from "react-hook-form";
+import React from "react";
 export type InputRawProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
@@ -8,19 +14,20 @@ export type InputRawProps = React.DetailedHTMLProps<
 
 interface RawInputProps
   extends Omit<InputDecorationProps, "children">,
-    TextInputProps {
+    PasswordInputProps {
   withLabel?: boolean;
   onChangeText?: (val: string) => void;
 }
 
-function RawInput({ withLabel = false, ...props }: RawInputProps) {
+function RawInput({ onChangeText, ...props }: RawInputProps) {
   return (
-    <TextInput
+    <PasswordInput
       className="rounded-none outline-none"
+      visibilityToggleIcon={() => <></>}
       {...props}
       onChange={(val) => {
         props.onChange?.(val);
-        props.onChangeText?.(val.target.value);
+        onChangeText?.(val.target.value);
       }}
     />
   );

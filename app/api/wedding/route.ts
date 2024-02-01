@@ -1,4 +1,4 @@
-import { env } from "@/app/api/core/config/env";
+import { environment } from "@/app/api/core/config/env";
 import { weddingSchema } from "@/app/model/database/wedding";
 import { weddingRepository } from "@/app/api/core/repository/wedding-repository";
 import { EncryptUtil } from "@/app/utils/encrypt-util";
@@ -94,7 +94,7 @@ export const GET = async (req: Request) => {
 
 export const checkApiKey = () => {
   const headerApiKey = headers().get("x-api-key");
-  const envApiKey = env.string.API_KEY;
+  const envApiKey = environment.string.API_KEY;
 
   if (headerApiKey !== envApiKey) {
     return ResponseUtil.error({

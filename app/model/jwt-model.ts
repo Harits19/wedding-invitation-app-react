@@ -1,9 +1,14 @@
 import { InferType, object, string } from "yup";
 import { WeddingTable } from "./database/wedding";
 
+export type JwtType = "refresh" | "access";
 export interface JwtModel {
-  type: "refresh" | "access";
+  type: JwtType;
   name: WeddingTable["name"];
+}
+
+export interface JwtAdmin {
+  type: JwtType;
 }
 
 export const jwtRefreshSchema = object({

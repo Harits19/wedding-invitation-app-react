@@ -5,6 +5,9 @@ import jwt, { JsonWebTokenError } from "jsonwebtoken";
 import fs from "fs";
 import JwtService from "../core/services/jwt-service";
 import ErrorResponse from "@/app/model/error-response";
+import { env } from "process";
+import { environment } from "../core/config/env";
+import AdminService from "../core/services/admin-service";
 
 export const POST = async (req: Request) => {
   try {
@@ -13,9 +16,19 @@ export const POST = async (req: Request) => {
       abortEarly: false,
     });
 
-    const wedding = await weddingRepository.checkAuth(validatedBody);
-    const accessToken = JwtService.generateAccessToken(wedding);
-    const refreshToken = JwtService.generateRefreshToken(wedding);
+    const isAdmin = AdminService.checkIsAdmin({ name: validatedBody.name });
+    const payload = await (async () => {
+      if (isAdmin) {
+        return AdminService.checkIsPasswordCorrect({
+          password: validatedBody.password,
+        });
+      } else {
+        return weddingRepository.checkAuth(validatedBody);
+      }
+    })();
+
+    const accessToken = JwtService.generateAccessToken(payload);
+    const refreshToken = JwtService.generateRefreshToken(payload);
 
     return ResponseUtil.success({
       payload: {

@@ -1,5 +1,11 @@
 const envKeyListNumber = ["PORT"] as const;
-const envKeyListString = ["API_KEY"] as const;
+const envKeyListString = [
+  "API_KEY",
+  "ADMIN_USERNAME",
+  "ADMIN_PASSWORD",
+  "ACCESS_TOKEN_TTL",
+  "REFRESH_TOKEN_TTL",
+] as const;
 type EnvKeyString = (typeof envKeyListString)[number];
 type EnvKeyNumber = (typeof envKeyListNumber)[number];
 
@@ -34,12 +40,12 @@ const getEnvValue = () => {
 
   return envValueObject as {
     string: {
-      [key in EnvKeyString]: string;
+      readonly [key in EnvKeyString]: string;
     };
     number: {
-      [key in EnvKeyNumber]: number;
+      readonly [key in EnvKeyNumber]: number;
     };
   };
 };
 
-export const env = getEnvValue();
+export const environment = getEnvValue();

@@ -2,31 +2,40 @@ import { WeddingTable } from "@/app/model/database/wedding";
 import { JwtModel } from "@/app/model/jwt-model";
 import fs from "fs";
 import jwt, { SignOptions } from "jsonwebtoken";
+import { environment } from "../config/env";
 
 export default class JwtService {
-  public static generateAccessToken = (wedding: Pick<WeddingTable, "name">) => {
+  private static readonly accessTtl = environment.string.ACCESS_TOKEN_TTL;
+  private static readonly refreshTtl = environment.string.REFRESH_TOKEN_TTL;
+
+  public static generateAccessToken = (payload: Pick<WeddingTable, "name">) => {
     const token = this.generateToken(
       {
         type: "access",
-        name: wedding.name,
+        name: payload.name,
       },
-      { expiresIn: "1 days" }
+      { expiresIn: this.accessTtl }
     );
     return token;
   };
 
-  public static generateRefreshToken = (wedding: WeddingTable) => {
+  public static generateRefreshToken = (
+    payload: Pick<WeddingTable, "name">
+  ) => {
     const token = this.generateToken(
       {
         type: "refresh",
-        name: wedding.name,
+        name: payload.name,
       },
-      { expiresIn: "7d" }
+      { expiresIn: this.refreshTtl }
     );
     return token;
   };
 
-  private static generateToken = (payload: JwtModel, option: SignOptions) => {
+  private static generateToken = <TJwtModel extends object>(
+    payload: TJwtModel,
+    option: SignOptions
+  ) => {
     const privateKey = fs.readFileSync("private.key");
     const token = jwt.sign(payload, privateKey, {
       algorithm: "RS256",

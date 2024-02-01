@@ -1,11 +1,11 @@
 "use client";
 
 import { ReactNode } from "react";
-import Div from "../../../components/div";
-import Input from "../../../components/input";
+import Div from "../../../../../components/div";
+import Input from "../../../../../components/input";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
-import { WeddingTable } from "../../../model/database/wedding";
-import Button from "../../../components/button";
+import { WeddingTable } from "../../../../../model/database/wedding";
+import Button from "../../../../../components/button";
 import BrideGroom from "./bride-groom";
 import NestedItem from "./nested-item";
 

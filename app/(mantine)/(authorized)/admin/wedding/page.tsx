@@ -1,21 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import ListWedding from "./components/list-wedding";
 import { useRouter } from "next/navigation";
-import { useGlobalState } from "../../hooks/use-global-state";
-import {
-  Box,
-  Button,
-  Input,
-  LoadingOverlay,
-  Notification,
-} from "@mantine/core";
+import { Box, Button, Divider, LoadingOverlay } from "@mantine/core";
 import { useQueryGetListWedding } from "./hooks/use-query-get-list-wedding";
 import { notifications } from "@mantine/notifications";
 
 export default function Wedding() {
-  const { state, setState } = useGlobalState();
   const router = useRouter();
   const { data: listWedding = [], isLoading } = useQueryGetListWedding({
     onError: (value) => {
@@ -41,22 +32,17 @@ export default function Wedding() {
       />
 
       <div className="bg-white rounded-2xl overflow-hidden flex flex-1 p-6 flex-col">
-        <Button
-          onClick={() => {
-            router.push("/wedding/create");
-          }}
-        >
-          Add Wedding
-        </Button>
+        <div className="flex flex-row justify-end">
+          <Button
+            onClick={() => {
+              router.push("wedding/create");
+            }}
+          >
+            Add Wedding
+          </Button>
+        </div>
         <div className="h-2" />
-        <Input
-          value={state.apiKey}
-          type="password"
-          placeholder="API KEY"
-          onChange={(val) => setState({ apiKey: val.target.value })}
-        />
-        <div className="h-2" />
-
+        <Divider />
         <div className="h-2" />
         <ListWedding list={listWedding} />
       </div>

@@ -12,18 +12,23 @@ export type InputRawProps = React.DetailedHTMLProps<
   HTMLInputElement
 >;
 
-interface RawInputProps
-  extends Omit<InputDecorationProps, "children">,
-    PasswordInputProps {
-  withLabel?: boolean;
-  onChangeText?: (val: string) => void;
-}
+type RawInputProps = Omit<InputDecorationProps, "children"> &
+  TextInputProps &
+  PasswordInputProps & {
+    withLabel?: boolean;
+    onChangeText?: (value: string) => void;
+  };
 
 function RawInput({ onChangeText, ...props }: RawInputProps) {
+  const SelectedInput = (() => {
+    if (props.type === "password") {
+      return PasswordInput;
+    }
+    return TextInput;
+  })();
   return (
-    <PasswordInput
+    <SelectedInput
       className="rounded-none outline-none"
-      visibilityToggleIcon={() => <></>}
       {...props}
       onChange={(val) => {
         props.onChange?.(val);

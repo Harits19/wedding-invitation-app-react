@@ -77,12 +77,12 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
         getDateNow(),
         getDateNow(),
         val.phone_number,
-      ]
+      ],
     );
   };
 
   checkAuth = async (
-    val: Partial<Pick<WeddingTable, "password" | "name" | "id">>
+    val: Partial<Pick<WeddingTable, "password" | "name" | "id">>,
   ) => {
     const result = await this.getDetailWedding({
       name: val.name,
@@ -94,7 +94,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
 
     const isPasswordCorrect = await EncryptUtil.comparePassword(
       hashPassword ?? "",
-      val.password ?? ""
+      val.password ?? "",
     );
     if (!isPasswordCorrect) {
       throw "wrong password";
@@ -124,7 +124,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
         getDateNow(),
         val.phone_number,
         val.name,
-      ]
+      ],
     );
   };
 
@@ -140,7 +140,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
   };
 
   getDetailWedding = async (
-    val: Partial<Pick<WeddingTable, "id" | "name">>
+    val: Partial<Pick<WeddingTable, "id" | "name">>,
   ): Promise<WeddingTable | undefined> => {
     console.log("start get detail wedding");
     const conditions = SqlUtil.generateOrCondition(val);
@@ -155,7 +155,7 @@ export class WeddingRepositoryHandler implements DatabaseMigration {
       ${this.tableName}
     WHERE 
      ${conditions}
-    `
+    `,
     );
 
     if (rows instanceof Array) {

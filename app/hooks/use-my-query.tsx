@@ -8,13 +8,16 @@ import {
   useQueryClient,
 } from "react-query";
 
-const QueryKeyList = ["useQueryGetListWedding", "useQueryGetDetailWedding"] as const;
+const QueryKeyList = [
+  "useQueryGetListWedding",
+  "useQueryGetDetailWedding",
+] as const;
 export type MyQueryKey = (typeof QueryKeyList)[number];
 
 export function useMyQuery<
   TQueryFnData = unknown,
   TError = unknown,
-  TData = TQueryFnData
+  TData = TQueryFnData,
 >({
   queryKey,
   ...options
@@ -33,7 +36,7 @@ export function useMyQueryClient() {
   function myInvalidateQueries<TPageData = unknown>(
     queryKey?: [key1: MyQueryKey, ...val2: string[]],
     filters?: InvalidateQueryFilters<TPageData>,
-    options?: InvalidateOptions
+    options?: InvalidateOptions,
   ): Promise<void> {
     console.log({ queryKey });
     return invalidateQueries({

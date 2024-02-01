@@ -4,7 +4,7 @@ export type TextareaRawProps = React.DetailedHTMLProps<
   HTMLTextAreaElement
 >;
 export default function TextArea(
-  props: Omit<InputDecorationProps, "children"> & TextareaRawProps
+  props: Omit<InputDecorationProps, "children"> & TextareaRawProps,
 ) {
   return (
     <InputDecoration {...props}>

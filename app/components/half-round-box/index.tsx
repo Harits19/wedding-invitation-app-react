@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import Background from "../background";
 
-export default function  HalfRoundBox({
+export default function HalfRoundBox({
   insideBox,
   aboveBox,
 }: {

@@ -31,9 +31,9 @@ export const useDebounceFunc = () => {
     setTimer(
       setTimeout(() => {
         callback();
-      }, delay)
+      }, delay),
     );
   };
 
-  return debounce
+  return debounce;
 };

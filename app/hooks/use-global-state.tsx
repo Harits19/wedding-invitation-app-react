@@ -34,7 +34,7 @@ export const GlobalStateProvider = ({
 }) => {
   const [state, setStateBase] = useState(value);
   const setState = (
-    newValue: SetStateAction<Partial<GlobalStateInterface>>
+    newValue: SetStateAction<Partial<GlobalStateInterface>>,
   ) => {
     setStateBase((prev) => ({
       ...prev,

@@ -14,27 +14,27 @@ export default class JwtService {
         type: "access",
         name: payload.name,
       },
-      { expiresIn: this.accessTtl }
+      { expiresIn: this.accessTtl },
     );
     return token;
   };
 
   public static generateRefreshToken = (
-    payload: Pick<WeddingTable, "name">
+    payload: Pick<WeddingTable, "name">,
   ) => {
     const token = this.generateToken(
       {
         type: "refresh",
         name: payload.name,
       },
-      { expiresIn: this.refreshTtl }
+      { expiresIn: this.refreshTtl },
     );
     return token;
   };
 
   private static generateToken = <TJwtModel extends object>(
     payload: TJwtModel,
-    option: SignOptions
+    option: SignOptions,
   ) => {
     const privateKey = fs.readFileSync("private.key");
     const token = jwt.sign(payload, privateKey, {

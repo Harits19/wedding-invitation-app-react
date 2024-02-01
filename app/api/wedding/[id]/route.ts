@@ -6,7 +6,7 @@ import { weddingRepository } from "@/app/api/core/repository/wedding-repository"
 
 export const GET = async (
   req: Request,
-  { params: { id } }: { params: { id: string } }
+  { params: { id } }: { params: { id: string } },
 ) => {
   try {
     const response = await checkApiKey();
@@ -42,7 +42,7 @@ export const GET = async (
 
 export const PATCH = async (
   req: Request,
-  { params: { id } }: { params: { id: string } }
+  { params: { id } }: { params: { id: string } },
 ) => {
   try {
     const body = {

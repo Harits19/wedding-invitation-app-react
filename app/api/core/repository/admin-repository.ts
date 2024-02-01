@@ -34,11 +34,11 @@ export class AdminRepository implements DatabaseMigration {
 
   //   const [rows, field] = await mysql2.query(
   //     `
-  //   SELECT 
-  //     * 
-  //   FROM 
+  //   SELECT
+  //     *
+  //   FROM
   //     ${this.tableName}
-  //   WHERE 
+  //   WHERE
   //    ${conditions}
   //   `
   //   );

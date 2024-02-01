@@ -4,7 +4,7 @@ import { HttpStatusCode } from "axios";
 
 export const GET = async (
   req: Request,
-  { params: { id } }: { params: { id: string } }
+  { params: { id } }: { params: { id: string } },
 ) => {
   try {
     const result = await greetingRepository.getAllGreetingByWeddingId({ id });
@@ -35,7 +35,7 @@ export const GET = async (
 
 export const POST = async (
   req: Request,
-  { params: { id } }: { params: { id: string } }
+  { params: { id } }: { params: { id: string } },
 ) => {
   try {
     const body = await req.json();

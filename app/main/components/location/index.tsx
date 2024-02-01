@@ -14,10 +14,7 @@ export default function Location() {
       <Background className="-scale-y-100 -z-50" />
       <Background className="-scale-y-100 -z-50" />
       <div className="flex flex-col items-center justify-center text-center  left-0 right-0 px-10">
-        <Div
-          family="berkshire"
-          className="text-3xl animate-top-bottom-fade"
-        >
+        <Div family="berkshire" className="text-3xl animate-top-bottom-fade">
           {kText.saveTheDate}
         </Div>
         <br />

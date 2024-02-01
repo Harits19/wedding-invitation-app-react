@@ -11,7 +11,7 @@ export class EncryptUtil {
 
   static comparePassword = async (
     hashPassword: string,
-    plainPassword: string
+    plainPassword: string,
   ) => {
     const isSame = await bcrypt.compare(plainPassword, hashPassword);
     return isSame;

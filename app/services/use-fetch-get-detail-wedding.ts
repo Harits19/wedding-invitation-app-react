@@ -5,7 +5,7 @@ import { DetailWeddingResponseModel } from "../model/detail-wedding-response-mod
 import { ResponseModel } from "../model/response-model";
 
 export const useFetchGetDetailWedding = async (
-  props: DetailWeddingRequestModel
+  props: DetailWeddingRequestModel,
 ) => {
   try {
     const result = await useFetch<DetailWeddingResponseModel>({

@@ -8,6 +8,6 @@ export default function Icon({
   name: IconName;
 }) {
   const Icon = icons[name];
-  
+
   return <Icon {...props} />;
 }

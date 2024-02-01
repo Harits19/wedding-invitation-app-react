@@ -14,7 +14,7 @@ export const POST = async (req: Request) => {
         refreshToken,
         accessToken,
       },
-      { abortEarly: false }
+      { abortEarly: false },
     );
 
     const generateNewAccessToken = async () => {
@@ -25,7 +25,7 @@ export const POST = async (req: Request) => {
         if (error instanceof TokenExpiredError) {
           console.log("access token expired");
           const payload = await JwtService.checkToken(
-            validatedBody.refreshToken
+            validatedBody.refreshToken,
           );
           const newAccessToken = await JwtService.generateAccessToken(payload);
           return newAccessToken;

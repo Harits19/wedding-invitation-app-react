@@ -48,7 +48,7 @@ export class GreetingRepositoryHandler implements DatabaseMigration {
         value.wedding_id,
         value.attendance,
         getDateNow(),
-      ]
+      ],
     );
   };
 
@@ -62,7 +62,7 @@ export class GreetingRepositoryHandler implements DatabaseMigration {
       ${this.tableName}
     WHERE 
      ${conditions}
-    `
+    `,
     );
 
     if (rows instanceof Array) {

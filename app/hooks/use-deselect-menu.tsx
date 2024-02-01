@@ -1,10 +1,7 @@
 import { useInView } from "react-intersection-observer";
 import { useGlobalState } from "./use-global-state";
 
-
-
-export default function useDeselectMenu(){
-
+export default function useDeselectMenu() {
   const { setState } = useGlobalState();
 
   const { ref } = useInView({

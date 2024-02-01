@@ -20,7 +20,7 @@ export const POST = async (req: Request) => {
       abortEarly: false,
     });
     const hashPassword = await EncryptUtil.encryptPassword(
-      validatedBody.password
+      validatedBody.password,
     );
     validatedBody.password = hashPassword;
 

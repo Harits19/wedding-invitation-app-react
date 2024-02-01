@@ -1,9 +1,5 @@
-import { useMutation } from "react-query"
-
-
+import { useMutation } from "react-query";
 
 export const useMutationPutWedding = () => {
-  return useMutation({
-    
-  });
-}
+  return useMutation({});
+};

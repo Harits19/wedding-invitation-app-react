@@ -55,7 +55,7 @@ export default function UpdateCreateWedding({
       },
     },
   });
-  const { formState, control, watch, } = methods;
+  const { formState, control, watch } = methods;
 
   const isUpdateFlow = Boolean(initialValue);
 

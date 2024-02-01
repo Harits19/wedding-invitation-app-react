@@ -14,7 +14,7 @@ export default function MenuWrapper({
 }) {
   const { setState } = useGlobalState();
   const { ref } = useInView({
-     rootMargin: "-10px 0px -10px 0px",
+    rootMargin: "-10px 0px -10px 0px",
     onChange: (inView) => {
       if (inView) {
         console.log({ inView, name });

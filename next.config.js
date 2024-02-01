@@ -4,12 +4,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
     remotePatterns: [
-
       {
         hostname: "*",
       },
     ],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

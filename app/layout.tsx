@@ -14,17 +14,14 @@ import "@fontsource/berkshire-swash/400.css"; // Specify weight
 import { GlobalStateProvider } from "./hooks/use-global-state";
 import Div from "./components/div";
 import QueryProvider from "./components/query-provider";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "Wedding Invitation App",
   description: "Wedding invitation app with Next.js",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <GlobalStateProvider>
       <html lang="en">

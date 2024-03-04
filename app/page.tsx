@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "axios";
 import Cover from "./components/cover";
 import Main from "./main/page";
 
@@ -14,13 +13,6 @@ TODO
 */
 
 export default function Base() {
-  const getListGreeting = async () => {
-    try {
-      console.log("start fetch");
-      const result = await axios.get("api/migrate");
-      console.log("result", result);
-    } catch (error) {}
-  };
   return (
     <Cover>
       <Main />

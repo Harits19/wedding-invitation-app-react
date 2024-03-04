@@ -9,12 +9,19 @@ import HalfRoundBox from "../half-round-box";
 import BottomDecor from "../bottom-decor";
 import useToQuery from "@/app/hooks/use-to-query";
 import { ReactNode, useState } from "react";
+import { InvitationResponse } from "@/app/model/invitation-model";
 
-export default function Cover(props: { children: ReactNode }) {
+export default function Cover({
+  data,
+  children,
+}: {
+  children: ReactNode;
+  data?: InvitationResponse;
+}) {
   const to = useToQuery();
   const [showCover, setShowCover] = useState(true);
   if (!showCover) {
-    return props.children;
+    return children;
   }
   const Body = () => {
     return (
@@ -32,7 +39,7 @@ export default function Cover(props: { children: ReactNode }) {
         />
         <br />
         <Div className="text-3xl text-303333" family="berkshire">
-          {kText.name}
+          {data?.initial}
         </Div>
         <br />
         <Div>{kText.kepada}</Div>

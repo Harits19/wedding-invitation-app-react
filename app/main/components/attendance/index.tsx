@@ -1,5 +1,4 @@
 import Div from "@/app/components/div";
-import Input from "@/app/components/input";
 import Scaffold from "@/app/components/scaffold";
 import Select from "@/app/components/select";
 import TextArea from "@/app/components/textarea";
@@ -15,7 +14,7 @@ export default function Attendance() {
         {kText.kehadiran}
       </Div>
       <div className="h-2" />
-      <Input label={kText.nama} defaultValue={name} />
+      <input defaultValue={name} />
       <div className="h-4" />
       <TextArea label={kText.ucapan} rows={5} />
       <div className="h-4" />

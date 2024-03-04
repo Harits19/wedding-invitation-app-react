@@ -1,5 +1,4 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
-import { useGlobalState } from "./use-global-state";
 
 export default function useFetch<
   TData = unknown,
@@ -8,8 +7,8 @@ export default function useFetch<
 >(config: AxiosRequestConfig<TBody>) {
   // const { state } = useGlobalState();
   return axios<TData, TResponse, TBody>({
+    baseURL: "http://localhost:8080",
     headers: {
-      "x-api-key": "ah5V5XHU71V1oSRhW6jZSNqDddVmFfit",
       ...config.headers,
     },
     ...config,

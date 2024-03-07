@@ -1,6 +1,6 @@
 import Image from "next/image";
 import SideAnimationWrapper, { Position } from "./side-animation-wrapper";
-import { useInvitationDetailState } from "@/app/[name]/hooks/use-invitation-detail";
+import { useInvitationDetailProvider } from "@/app/[name]/hooks/use-invitation-detail";
 import { concatBaseUrl } from "@/app/[name]/utils/string-util";
 
 export default function SideBottomDecor({
@@ -8,7 +8,7 @@ export default function SideBottomDecor({
 }: {
   side?: Position;
 }) {
-  const data = useInvitationDetailState();
+  const { data } = useInvitationDetailProvider()
 
   return (
     <SideAnimationWrapper side={side}>

@@ -9,12 +9,12 @@ import TopDecor from "@/app/[name]/components/top-decor";
 import { kText } from "@/app/[name]/constans/text";
 import Image from "next/image";
 import useDeselectMenu from "@/app/[name]/hooks/use-deselect-menu";
-import { useInvitationDetailState } from "@/app/[name]/hooks/use-invitation-detail";
+import { useInvitationDetailProvider } from "@/app/[name]/hooks/use-invitation-detail";
 import { concatBaseUrl } from "@/app/[name]/utils/string-util";
 import { kSize } from "@/app/[name]/constans/size";
 
 export default function Opening() {
-  const data = useInvitationDetailState();
+  const { data } = useInvitationDetailProvider()
   const imageList = (data?.photo.slide ?? []).map((image) =>
     concatBaseUrl(image),
   );

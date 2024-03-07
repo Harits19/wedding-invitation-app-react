@@ -1,12 +1,12 @@
 import { kSize } from "@/app/[name]/constans/size";
 import Image from "next/image";
-import { useInvitationDetailState } from "../hooks/use-invitation-detail";
+import { useInvitationDetailProvider } from "../hooks/use-invitation-detail";
 import { concatBaseUrl } from "../utils/string-util";
 
 export default function Background({ className }: { className?: string }) {
   const { width } = kSize.max.window;
   const { innerHeight: height } = window;
-  const data = useInvitationDetailState();
+  const { data } = useInvitationDetailProvider();
 
   return (
     <Image

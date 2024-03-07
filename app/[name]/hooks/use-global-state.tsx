@@ -8,7 +8,7 @@ import React, {
   useState,
 } from "react";
 import { MenuName } from "../components/menu";
-import { useInvitationDetailState } from "./use-invitation-detail";
+import { useInvitationDetailProvider } from "./use-invitation-detail";
 import { concatBaseUrl } from "../utils/string-util";
 
 export interface GlobalStateInterface {
@@ -27,7 +27,7 @@ export const GlobalStateProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const data = useInvitationDetailState();
+  const { data } = useInvitationDetailProvider()
   const value: Partial<GlobalStateInterface> = {
     audio:
       typeof Audio === "undefined" && !data?.music

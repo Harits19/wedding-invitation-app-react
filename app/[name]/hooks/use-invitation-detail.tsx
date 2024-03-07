@@ -4,22 +4,37 @@ import {
   InvitationResponseModel,
 } from "../model/invitation-model";
 import { useAxios } from "./use-axios";
-import { ReactNode, createContext, useContext } from "react";
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  createContext,
+  useContext,
+  useState,
+} from "react";
 import { AxiosError } from "axios";
 
-export const useInvitationDetail = (name: string) => {
-  const axios = useAxios();
-  const fetcher = (url: string) =>
-    axios.get<InvitationResponseModel>(url).then((res) => res.data.data);
-  return useSWR(`/invitation/${name}`, fetcher);
+// const invitationDetailAction = (
+
+export interface InvitationDetailState {
+  state?: InvitationResponse;
+  setState?: Dispatch<SetStateAction<InvitationResponse>>;
+}
+
+export const InvitationDetailContext = createContext<InvitationDetailState>({});
+
+export const useInvitationDetailProvider = () => {
+  const { setState, state } = useContext(InvitationDetailContext);
+  return {
+    data: state,
+    setInitialName: (value: string) => {
+      setState?.((prev) => ({
+        ...prev,
+        initial: value,
+      }));
+    },
+  };
 };
-
-export const InvitationDetailContext = createContext<
-  InvitationResponse | undefined
->(undefined);
-
-export const useInvitationDetailState = () =>
-  useContext(InvitationDetailContext);
 
 export const InvitationDetailProvider = ({
   children,
@@ -28,7 +43,11 @@ export const InvitationDetailProvider = ({
   children: ReactNode;
   name: string;
 }) => {
-  const { data, error, isLoading } = useInvitationDetail(name);
+  const axios = useAxios();
+  const fetcher = (url: string) =>
+    axios.get<InvitationResponseModel>(url).then((res) => res.data.data);
+
+  const { data, error, isLoading } = useSWR(`/invitation/${name}`, fetcher);
 
   if (isLoading) {
     return <div>isLoading</div>;
@@ -47,8 +66,30 @@ export const InvitationDetailProvider = ({
     return <div>{error.toString() || JSON.stringify(error)}</div>;
   }
 
+  if (!data) return <div>Data empty</div>;
   return (
-    <InvitationDetailContext.Provider value={data}>
+    <InvitationDetailContextView data={data}>
+      {children}
+    </InvitationDetailContextView>
+  );
+};
+
+const InvitationDetailContextView = ({
+  data,
+  children,
+}: {
+  data: InvitationResponse;
+  children: ReactNode;
+}) => {
+  const [state, setState] = useState(data);
+
+  return (
+    <InvitationDetailContext.Provider
+      value={{
+        state,
+        setState,
+      }}
+    >
       {children}
     </InvitationDetailContext.Provider>
   );

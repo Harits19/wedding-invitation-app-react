@@ -4,12 +4,12 @@ import BottomDecor from "@/app/[name]/components/bottom-decor";
 import Scaffold from "@/app/[name]/components/scaffold";
 import TopDecor from "@/app/[name]/components/top-decor";
 import Image from "next/image";
-import { useInvitationDetailState } from "@/app/[name]/hooks/use-invitation-detail";
+import { useInvitationDetailProvider } from "@/app/[name]/hooks/use-invitation-detail";
 import { concatBaseUrl } from "@/app/[name]/utils/string-util";
 import { BrideGroom } from "@/app/[name]/model/invitation-model";
 
 export default function People() {
-  const data = useInvitationDetailState();
+  const { data } = useInvitationDetailProvider()
 
   const Bride = ({ item }: { item?: BrideGroom }) => {
     return (

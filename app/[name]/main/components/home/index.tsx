@@ -6,11 +6,11 @@ import Scaffold from "@/app/[name]/components/scaffold";
 import { kText } from "@/app/[name]/constans/text";
 import Image from "next/image";
 import { ReactNode } from "react";
-import { useInvitationDetailState } from "@/app/[name]/hooks/use-invitation-detail";
+import { useInvitationDetailProvider } from "@/app/[name]/hooks/use-invitation-detail";
 import { concatBaseUrl } from "@/app/[name]/utils/string-util";
 
 export default function Home() {
-  const data = useInvitationDetailState();
+  const { data } = useInvitationDetailProvider()
   const Desc = (props: { children: ReactNode }) => {
     return (
       <Div className="text-[13px] animate-fade-zoom">{props.children}</Div>

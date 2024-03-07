@@ -6,12 +6,12 @@ import TopDecor from "@/app/[name]/components/top-decor";
 import useDeselectMenu from "@/app/[name]/hooks/use-deselect-menu";
 import { kText } from "@/app/[name]/constans/text";
 import Image from "next/image";
-import { useInvitationDetailState } from "@/app/[name]/hooks/use-invitation-detail";
+import { useInvitationDetailProvider } from "@/app/[name]/hooks/use-invitation-detail";
 import { concatBaseUrl } from "@/app/[name]/utils/string-util";
 
 export default function Closing() {
   const ref = useDeselectMenu();
-  const data = useInvitationDetailState();
+  const { data } = useInvitationDetailProvider()
   return (
     <Scaffold className="">
       <TopDecor />

@@ -1,12 +1,12 @@
 import Div from "@/app/[name]/components/div";
 import Scaffold from "@/app/[name]/components/scaffold";
 import { kText } from "@/app/[name]/constans/text";
-import { useInvitationDetailState } from "@/app/[name]/hooks/use-invitation-detail";
+import { useInvitationDetailProvider } from "@/app/[name]/hooks/use-invitation-detail";
 import { concatBaseUrl } from "@/app/[name]/utils/string-util";
 import Image from "next/image";
 
 export default function Collection() {
-  const data = useInvitationDetailState();
+  const { data } = useInvitationDetailProvider()
   const listImage = (data?.photo?.gallery ?? []).map((item) =>
     concatBaseUrl(item),
   );

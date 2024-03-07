@@ -3,12 +3,11 @@
 import { useGlobalState } from "@/app/[name]/hooks/use-global-state";
 import Icon from "../Icon";
 import { IconName } from "../Icon/icons";
-import { ReactNode, RefObject, useEffect, useState } from "react";
+import { ReactNode } from "react";
 import People from "@/app/[name]/main/components/people";
 import Collection from "@/app/[name]/main/components/collection";
 import Place from "@/app/[name]/main/components/place";
 import Home from "@/app/[name]/main/components/home";
-import { kSize } from "@/app/[name]/constans/size";
 
 export type MenuName = IconName;
 export const menus: {
@@ -34,29 +33,10 @@ export const menus: {
 ];
 
 export default function Menu() {
-  const { state, setState } = useGlobalState();
-  const [play, setPlay] = useState(true);
-  const audio = state.audio;
-  useEffect(() => {
-    if (audio) {
-      audio.play();
-      audio.loop = true;
-      const handlePausePlay = () => {
-        setPlay((prev) => !prev);
-      };
+  const {
+    state: { audioPlay = false, audioRef, ...state },
+  } = useGlobalState();
 
-      audio.addEventListener("pause", handlePausePlay);
-      audio.addEventListener("play", handlePausePlay);
-      return () => {
-        audio.currentTime = 0;
-        audio.pause();
-        audio.removeEventListener("pause", handlePausePlay);
-        audio.removeEventListener("play", handlePausePlay);
-      };
-    }
-  }, []);
-
-  const { width } = kSize.max.window;
   return (
     <div className="fixed bottom-0 flex flex-row justify-center  right-0 left-0 items-stretch ">
       <div className=" bg-driftwood m-8 flex flex-row rounded-full p-2 justify-between px-5 flex-1 bg-opacity-80 shadow-2xl  max-w-[296px]">
@@ -86,14 +66,17 @@ export default function Menu() {
         ]}
         <button
           onClick={() => {
-            if (!play) {
-              state.audio?.pause();
+            if (!audioPlay) {
+              console.log("play audio");
+              audioRef?.current?.play();
             } else {
-              state.audio?.play();
+              console.log("pause audio");
+
+              audioRef?.current?.pause();
             }
           }}
         >
-          <Icon name={!play ? "music" : "music_off"} />
+          <Icon name={audioPlay ? "music" : "music_off"} />
         </button>
       </div>
     </div>

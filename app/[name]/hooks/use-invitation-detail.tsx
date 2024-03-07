@@ -25,14 +25,18 @@ export const InvitationDetailContext = createContext<InvitationDetailState>({});
 
 export const useInvitationDetailProvider = () => {
   const { setState, state } = useContext(InvitationDetailContext);
+
   return {
     data: state,
     setInitialName: (value: string) => {
-      setState?.((prev) => ({
-        ...prev,
-        initial: value,
-      }));
+      setState?.((prev) => {
+        return {
+          ...prev,
+          initial: value,
+        };
+      });
     },
+    setStateAll: setState,
   };
 };
 
@@ -86,7 +90,7 @@ const InvitationDetailContextView = ({
   return (
     <InvitationDetailContext.Provider
       value={{
-        state,
+        state: state,
         setState,
       }}
     >

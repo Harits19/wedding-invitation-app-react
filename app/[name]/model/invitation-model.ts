@@ -7,6 +7,7 @@ export interface InvitationResponse {
   id: string;
   name: string;
   music: string;
+  musicLocal: File;
   initial: string;
   date: string;
   groom: BrideGroom;

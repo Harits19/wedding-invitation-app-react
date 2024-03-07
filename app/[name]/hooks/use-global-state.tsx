@@ -2,18 +2,18 @@
 
 import React, {
   Dispatch,
+  RefObject,
   SetStateAction,
   createContext,
   useContext,
   useState,
 } from "react";
 import { MenuName } from "../components/menu";
-import { useInvitationDetailProvider } from "./use-invitation-detail";
-import { concatBaseUrl } from "../utils/string-util";
 
 export interface GlobalStateInterface {
   activeMenu?: MenuName;
-  audio: HTMLAudioElement;
+  audioPlay: boolean;
+  audioRef: RefObject<HTMLAudioElement>;
   apiKey?: string;
 }
 
@@ -27,12 +27,8 @@ export const GlobalStateProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const { data } = useInvitationDetailProvider()
   const value: Partial<GlobalStateInterface> = {
-    audio:
-      typeof Audio === "undefined" && !data?.music
-        ? undefined
-        : new Audio(concatBaseUrl(data?.music)),
+    audioPlay: false,
   };
   const [state, setStateBase] = useState(value);
   const setState = (

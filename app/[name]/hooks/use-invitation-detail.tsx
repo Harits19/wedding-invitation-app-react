@@ -17,9 +17,13 @@ import {
 import { AxiosError } from "axios";
 import { concatBaseUrl } from "../utils/string-util";
 
+interface BaseState extends InvitationResponse {
+  playing: boolean;
+}
+
 export interface InvitationDetailState {
-  invitationDetail?: InvitationResponse;
-  setInvitationDetail?: Dispatch<SetStateAction<InvitationResponse>>;
+  invitationDetail?: BaseState;
+  setInvitationDetail?: Dispatch<SetStateAction<BaseState>>;
   playing: boolean;
   setPlaying: () => void;
 }
@@ -98,10 +102,13 @@ const InvitationDetailContextView = ({
   data: InvitationResponse;
   children: ReactNode;
 }) => {
-  const [invitationDetail, setInvitationDetail] = useState(data);
-  const [playing, setPlaying] = useState(false);
-  const music = invitationDetail?.music;
-  const musicLocal = invitationDetail?.musicLocal;
+  const [state, setState] = useState<BaseState>({
+    ...data,
+    playing: false,
+  });
+  const playing = state.playing;
+  const music = state?.music;
+  const musicLocal = state?.musicLocal;
   const audio = useMemo(() => {
     return new Audio(
       musicLocal ? URL.createObjectURL(musicLocal) : concatBaseUrl(music),
@@ -132,12 +139,15 @@ const InvitationDetailContextView = ({
   return (
     <InvitationDetailContext.Provider
       value={{
-        invitationDetail,
-        setInvitationDetail,
+        invitationDetail: state,
+        setInvitationDetail: setState,
         playing,
         setPlaying: () => {
-          setPlaying((prev) => {
-            return !prev;
+          setState((prev) => {
+            return {
+              ...prev,
+              playing: !prev.playing,
+            };
           });
         },
       }}

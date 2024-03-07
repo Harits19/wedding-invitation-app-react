@@ -35,10 +35,10 @@ export const menus: {
 
 export default function Menu() {
   const {
-    state: { audioPlay = false, ...state },
+    state: { ...state },
   } = useGlobalState();
 
-  const { setPlaying } = useInvitationDetailProvider();
+  const { setPlaying, playing } = useInvitationDetailProvider();
 
   return (
     <div className="fixed bottom-0 flex flex-row justify-center  right-0 left-0 items-stretch ">
@@ -72,7 +72,7 @@ export default function Menu() {
             setPlaying?.();
           }}
         >
-          <Icon name={audioPlay ? "music" : "music_off"} />
+          <Icon name={playing ? "music" : "music_off"} />
         </button>
       </div>
     </div>

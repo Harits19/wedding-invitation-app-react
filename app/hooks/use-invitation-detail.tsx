@@ -4,7 +4,7 @@ import {
   InvitationResponseModel,
 } from "../model/invitation-model";
 import { useAxios } from "./use-axios";
-import { ReactNode, createContext } from "react";
+import { ReactNode, createContext, useContext } from "react";
 
 export const useInvitationDetail = (name: string) => {
   const axios = useAxios();
@@ -16,6 +16,9 @@ export const useInvitationDetail = (name: string) => {
 export const InvitationDetailContext = createContext<
   InvitationResponse | undefined
 >(undefined);
+
+export const useInvitationDetailState = () =>
+  useContext(InvitationDetailContext);
 
 export const InvitationDetailProvider = ({
   children,

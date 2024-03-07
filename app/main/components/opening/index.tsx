@@ -6,16 +6,18 @@ import CountDown from "@/app/components/count-down";
 import DateText from "@/app/components/date-text";
 import Scaffold from "@/app/components/scaffold";
 import TopDecor from "@/app/components/top-decor";
-import { kPublic } from "@/app/constans/public";
 import { kText } from "@/app/constans/text";
-import moment from "moment";
 import Image from "next/image";
-import { useInView } from "react-intersection-observer";
-import { useGlobalState } from "@/app/hooks/use-global-state";
 import useDeselectMenu from "@/app/hooks/use-deselect-menu";
+import { useInvitationDetailState } from "@/app/hooks/use-invitation-detail";
+import { concatBaseUrl } from "@/app/utils/string-util";
+import { kSize } from "@/app/constans/size";
 
 export default function Opening() {
-  const imageList = [kPublic.photoSlideShow1, kPublic.photoSlideShow2];
+  const data = useInvitationDetailState();
+  const imageList = (data?.photo.slide ?? []).map((image) =>
+    concatBaseUrl(image),
+  );
   const ref = useDeselectMenu();
 
   return (
@@ -30,7 +32,13 @@ export default function Opening() {
           <Carousel
             imageList={imageList}
             renderItem={(val) => (
-              <Image className="h-[450px] object-cover" alt="image" src={val} />
+              <Image
+                className="h-[450px] object-cover"
+                alt="image"
+                src={val}
+                height={450}
+                width={kSize.max.window.width}
+              />
             )}
           />
         </div>

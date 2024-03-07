@@ -7,13 +7,13 @@ import TopDecor from "../top-decor";
 import HalfRoundBox from "../half-round-box";
 import BottomDecor from "../bottom-decor";
 import useToQuery from "@/app/hooks/use-to-query";
-import { ReactNode, useContext, useState } from "react";
-import { kEnv } from "@/app/constans/env";
-import { InvitationDetailContext } from "@/app/hooks/use-invitation-detail";
+import { ReactNode, useState } from "react";
+import { useInvitationDetailState } from "@/app/hooks/use-invitation-detail";
+import { concatBaseUrl } from "@/app/utils/string-util";
 
 export default function Cover({ children }: { children: ReactNode }) {
   const to = useToQuery();
-  const data = useContext(InvitationDetailContext);
+  const data = useInvitationDetailState();
   const [showCover, setShowCover] = useState(true);
   if (!showCover) {
     return children;
@@ -27,7 +27,7 @@ export default function Cover({ children }: { children: ReactNode }) {
         <div className="h-6" />
         <Image
           className="rounded-full w-[216px] h-[216px] bg-303333"
-          src={kEnv.NEXT_PUBLIC_BASE_URL + data?.photo.cover ?? ""}
+          src={concatBaseUrl(data?.photo.cover)}
           alt="image"
           width={216}
           height={216}

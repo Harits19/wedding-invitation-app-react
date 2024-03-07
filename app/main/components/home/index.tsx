@@ -3,12 +3,14 @@ import Background from "@/app/components/background";
 import BottomDecor from "@/app/components/bottom-decor";
 import HalfRoundBox from "@/app/components/half-round-box";
 import Scaffold from "@/app/components/scaffold";
-import { kPublic } from "@/app/constans/public";
 import { kText } from "@/app/constans/text";
 import Image from "next/image";
 import { ReactNode } from "react";
+import { useInvitationDetailState } from "@/app/hooks/use-invitation-detail";
+import { concatBaseUrl } from "@/app/utils/string-util";
 
 export default function Home() {
+  const data = useInvitationDetailState();
   const Desc = (props: { children: ReactNode }) => {
     return (
       <Div className="text-[13px] animate-fade-zoom">{props.children}</Div>
@@ -38,7 +40,9 @@ export default function Home() {
           <Image
             className="rounded-full object-cover w-[205px] h-[205px] animate-fade-zoom"
             alt="alt"
-            src={kPublic.photoCover}
+            src={concatBaseUrl(data?.photo.cover)}
+            width={205}
+            height={205}
           />
         </Div>
         <div className="h-4" />

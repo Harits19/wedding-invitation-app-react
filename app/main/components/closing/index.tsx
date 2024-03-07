@@ -4,12 +4,14 @@ import Div from "@/app/components/div";
 import Scaffold from "@/app/components/scaffold";
 import TopDecor from "@/app/components/top-decor";
 import useDeselectMenu from "@/app/hooks/use-deselect-menu";
-import { kPublic } from "@/app/constans/public";
 import { kText } from "@/app/constans/text";
 import Image from "next/image";
+import { useInvitationDetailState } from "@/app/hooks/use-invitation-detail";
+import { concatBaseUrl } from "@/app/utils/string-util";
 
 export default function Closing() {
   const ref = useDeselectMenu();
+  const data = useInvitationDetailState();
   return (
     <Scaffold className="">
       <TopDecor />
@@ -19,7 +21,9 @@ export default function Closing() {
         <Image
           alt="closing photo"
           className="border-driftwood border-4 rounded-md w-[219px] h-[219px] animate-fade-zoom"
-          src={kPublic.photoGallery1}
+          width={219}
+          height={219}
+          src={concatBaseUrl(data?.photo.gallery.at(0))}
         />
         <div className="h-5" />
         <div className="text-sm animate-fade-zoom">

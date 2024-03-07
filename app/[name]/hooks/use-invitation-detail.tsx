@@ -43,7 +43,7 @@ export const useInvitationDetailProvider = () => {
     setPlaying,
     setInvitationDetail: (value: Partial<InvitationResponse>) => {
       setInvitationDetail?.((prev) => {
-        return { ...prev, value };
+        return { ...prev, ...value };
       });
     },
     setInitialName: (value: string) => {
@@ -115,20 +115,12 @@ const InvitationDetailContextView = ({
     );
   }, [music, musicLocal]);
 
-  const handlePlay = () => {};
-  const handlePause = () => {};
-
   console.log("called useInvitationDetailProvider");
 
   useEffect(() => {
-    // audio.loop = true;
-    audio.addEventListener("play", handlePlay);
-    audio.addEventListener("pause", handlePause);
+    audio.loop = true;
     return () => {
-      // setPlaying(false);
       audio.pause();
-      audio.removeEventListener("play", handlePlay);
-      audio.removeEventListener("pause", handlePause);
     };
   }, [audio]);
 

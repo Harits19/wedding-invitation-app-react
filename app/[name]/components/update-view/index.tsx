@@ -60,7 +60,23 @@ export default function UpdateView() {
           control={control}
           name="date"
           render={({ field }) => (
-            <Input {...field} type="date" value={undefined} />
+            <div>
+              <div>{new Date(field.value).toISOString()}</div>
+              <Input {...field} type="date" value={undefined} />
+              <Input
+                {...field}
+                type="time"
+                value={undefined}
+                onChange={(value) => {
+                  const time = value.target.value;
+                  const [hour, minute] = time.split(":");
+                  const newDate = new Date(field.value);
+                  newDate.setHours(Number(hour));
+                  newDate.setMinutes(Number(minute));
+                  field.onChange(newDate);
+                }}
+              />
+            </div>
           )}
         />
         <div className="h-4" />

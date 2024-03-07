@@ -8,11 +8,15 @@ import Closing from "./components/closing";
 import Opening from "./components/opening";
 
 export default function Main() {
-  const isTrue = false;
+  const isEditFlow = true;
 
   return (
     <div className=" relative flex flex-row justify-center items-center ">
-      <div className="flex flex-1 bg-slate-50 h-screen" />
+      {!isEditFlow ? (
+        <div className="flex flex-1 bg-slate-50 h-screen" />
+      ) : (
+        <div />
+      )}
       <div className="w-[360px] ">
         <Cover>
           <div className="relative">
@@ -38,7 +42,9 @@ export default function Main() {
         </Cover>
       </div>
 
-      <div className="flex flex-1 bg-slate-50 h-screen" />
+      <div className="flex flex-1 bg-slate-50 h-screen p-4">
+        {isEditFlow ? <UpdateView /> : <div />}
+      </div>
     </div>
   );
 }

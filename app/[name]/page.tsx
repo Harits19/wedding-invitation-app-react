@@ -1,6 +1,5 @@
 "use client";
 
-import Cover from "./components/cover";
 import { GlobalStateProvider } from "./hooks/use-global-state";
 import { InvitationDetailProvider } from "./hooks/use-invitation-detail";
 import Main from "./main/page";
@@ -22,9 +21,7 @@ export default function Base({
   return (
     <GlobalStateProvider>
       <InvitationDetailProvider name={name}>
-        <Cover>
-          <Main />
-        </Cover>
+        <Main />
       </InvitationDetailProvider>
     </GlobalStateProvider>
   );

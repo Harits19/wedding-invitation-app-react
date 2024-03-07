@@ -15,6 +15,7 @@ export default function Cover({ children }: { children: ReactNode }) {
   const to = useToQuery();
   const { data } = useInvitationDetailProvider();
   const [showCover, setShowCover] = useState(true);
+
   if (!showCover) {
     return children;
   }
@@ -56,8 +57,8 @@ export default function Cover({ children }: { children: ReactNode }) {
   };
 
   return (
-    <Scaffold>
-      <div className="flex flex-col min-h-screen">
+    <Scaffold className="w-full">
+      <div className="flex flex-col h-screen">
         <Background className="-scale-y-100 -scale-x-100 z-0" />
         <TopDecor />
 

@@ -1,18 +1,23 @@
 import { useInvitationDetailProvider } from "../../hooks/use-invitation-detail";
+import { Button } from "../ui/button";
+import { Label } from "../ui/label";
 
 export default function MyAudio({ className }: { className?: string }) {
-  const { setPlaying, playing } = useInvitationDetailProvider();
+  const { setPlaying, playing, data } = useInvitationDetailProvider();
 
   return (
     <>
-      <button
-        className={className}
-        onClick={() => {
-          setPlaying();
-        }}
-      >
-        {playing ? "Stop" : "Play"}
-      </button>
+      <div className={className}>
+        <Label>{data?.music}</Label>
+        <br />
+        <Button
+          onClick={() => {
+            setPlaying();
+          }}
+        >
+          {playing ? "Stop" : "Play"}
+        </Button>
+      </div>
     </>
   );
 }

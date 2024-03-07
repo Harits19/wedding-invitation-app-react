@@ -1,27 +1,44 @@
 "use client";
 
+import Cover from "../components/cover";
 import Menu, { menus } from "../components/menu";
 import MenuWrapper from "../components/menu-wrapper";
+import UpdateView from "../components/update-view";
 import Closing from "./components/closing";
 import Opening from "./components/opening";
 
 export default function Main() {
+  const isTrue = false;
+
   return (
-    <div className="relative h-screen w-screen overflow-hidden">
-      <div className="absolute top-0 bottom-0 left-0 right-0 z-0 overflow-y-scroll">
-        <div className="overflow-hidden">
-          <Opening />
-          {[
-            menus.map((e, i) => (
-              <MenuWrapper name={e.name} key={i}>
-                {e.render}
-              </MenuWrapper>
-            )),
-          ]}
-          <Closing />
-        </div>
+    <div className=" relative flex flex-row justify-center items-center ">
+      <div className="flex flex-1 bg-slate-50 h-screen" />
+      <div className="w-[360px] ">
+        <Cover>
+          <div className="relative">
+            <div className=" absolute z-[100] bottom-0  right-0 left-0 flex flex-row justify-center items-center p-4">
+              <Menu />
+            </div>
+            <div className="relative  h-screen overflow-y-scroll flex flex-col">
+              <div className="h-screen">
+                <Opening />
+              </div>
+              {[
+                menus.map((e, i) => (
+                  <MenuWrapper name={e.name} key={i}>
+                    {e.render}
+                  </MenuWrapper>
+                )),
+              ]}
+              <div className="h-screen">
+                <Closing />
+              </div>
+            </div>
+          </div>
+        </Cover>
       </div>
-      <Menu />
+
+      <div className="flex flex-1 bg-slate-50 h-screen" />
     </div>
   );
 }

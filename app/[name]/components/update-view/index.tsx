@@ -11,7 +11,7 @@ export default function UpdateView() {
   const form = useForm({
     defaultValues: data,
   });
-  const { handleSubmit } = form;
+  const { handleSubmit, control } = form;
   const onSubmit = (value: InvitationResponse) => {
     console.log("before", value?.musicLocal);
   };
@@ -19,24 +19,18 @@ export default function UpdateView() {
   return (
     <FormProvider {...form}>
       <Form
-        // {...form}
         className="flex flex-1 flex-col gap-y-4"
         onSubmit={() => handleSubmit(onSubmit)}
       >
         <FormField
-          control={form.control}
+          control={control}
           name={"name"}
           render={({ field }) => <Input {...field} readOnly />}
         />
 
-        <FormField
-          control={form.control}
-          name={"initial"}
-          render={({ field }) => <Input {...field} />}
-        />
         <MyAudio className="visible" />
         <FormField
-          control={form.control}
+          control={control}
           name={"musicLocal"}
           render={({ field }) => (
             <div>
@@ -55,6 +49,18 @@ export default function UpdateView() {
                 }}
               />
             </div>
+          )}
+        />
+        <FormField
+          control={control}
+          name={"initial"}
+          render={({ field }) => <Input {...field} />}
+        />
+        <FormField
+          control={control}
+          name="date"
+          render={({ field }) => (
+            <Input {...field} type="date" value={undefined} />
           )}
         />
         <div className="h-4" />

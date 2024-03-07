@@ -9,7 +9,7 @@ export interface InvitationResponse {
   music: string;
   musicLocal: File;
   initial: string;
-  date: string;
+  date: Date;
   groom: BrideGroom;
   bride: BrideGroom;
   address: Address;

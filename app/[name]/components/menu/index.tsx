@@ -41,40 +41,38 @@ export default function Menu() {
   const { setPlaying, playing } = useInvitationDetailProvider();
 
   return (
-    <div className="fixed bottom-0 flex flex-row justify-center  right-0 left-0 items-stretch ">
-      <div className=" bg-driftwood m-8 flex flex-row rounded-full p-2 justify-between px-5 flex-1 bg-opacity-80 shadow-2xl  max-w-[296px]">
-        {[
-          menus.map((e, index) => {
-            const selectedMenu = state.activeMenu === e.name;
+    <div className=" bg-driftwood flex flex-row rounded-full p-2 justify-between px-5 flex-1 bg-opacity-80 shadow-2xl  w-[296px]">
+      {[
+        menus.map((e, index) => {
+          const selectedMenu = state.activeMenu === e.name;
 
-            return (
-              <button
+          return (
+            <button
+              key={index}
+              onClick={() => {
+                document?.getElementById?.(e.name)?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "end",
+                  inline: "nearest",
+                });
+              }}
+            >
+              <Icon
                 key={index}
-                onClick={() => {
-                  document?.getElementById?.(e.name)?.scrollIntoView({
-                    behavior: "smooth",
-                    block: "end",
-                    inline: "nearest",
-                  });
-                }}
-              >
-                <Icon
-                  key={index}
-                  name={e.name}
-                  fill={selectedMenu ? "white" : undefined}
-                />
-              </button>
-            );
-          }),
-        ]}
-        <button
-          onClick={() => {
-            setPlaying?.();
-          }}
-        >
-          <Icon name={playing ? "music" : "music_off"} />
-        </button>
-      </div>
+                name={e.name}
+                fill={selectedMenu ? "white" : undefined}
+              />
+            </button>
+          );
+        }),
+      ]}
+      <button
+        onClick={() => {
+          setPlaying?.();
+        }}
+      >
+        <Icon name={playing ? "music" : "music_off"} />
+      </button>
     </div>
   );
 }

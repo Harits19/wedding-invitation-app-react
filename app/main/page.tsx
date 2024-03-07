@@ -1,6 +1,5 @@
 "use client";
 
-import { createRef, useRef } from "react";
 import Menu, { menus } from "../components/menu";
 import MenuWrapper from "../components/menu-wrapper";
 import Closing from "./components/closing";

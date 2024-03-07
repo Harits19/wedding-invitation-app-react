@@ -9,29 +9,37 @@ export interface InvitationResponse {
   music: string;
   initial: string;
   date: string;
-  groom: Groom;
-  bride: Bride;
+  groom: BrideGroom;
+  bride: BrideGroom;
   address: Address;
+  photo: Photo;
 }
 
-export interface Groom {
+export interface BrideGroom {
   name: string;
   father_name: string;
   mother_name: string;
   address: string;
   instagram: string;
-}
-
-export interface Bride {
-  name: string;
-  father_name: string;
-  mother_name: string;
-  address: string;
-  instagram: string;
+  photo: string;
 }
 
 export interface Address {
   detail: string;
   latitude: string;
   longitude: string;
+}
+
+export interface Photo {
+  cover: string;
+  side: Side;
+  background: string;
+  slide: string[];
+  divider: string;
+  gallery: string[];
+}
+
+export interface Side {
+  top: string;
+  bottom: string;
 }

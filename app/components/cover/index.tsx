@@ -1,24 +1,19 @@
 import { kText } from "@/app/constans/text";
 import Div from "../div";
 import Image from "next/image";
-import { kPublic } from "@/app/constans/public";
 import Scaffold from "../scaffold";
 import Background from "../background";
 import TopDecor from "../top-decor";
 import HalfRoundBox from "../half-round-box";
 import BottomDecor from "../bottom-decor";
 import useToQuery from "@/app/hooks/use-to-query";
-import { ReactNode, useState } from "react";
-import { InvitationResponse } from "@/app/model/invitation-model";
+import { ReactNode, useContext, useState } from "react";
+import { kEnv } from "@/app/constans/env";
+import { InvitationDetailContext } from "@/app/hooks/use-invitation-detail";
 
-export default function Cover({
-  data,
-  children,
-}: {
-  children: ReactNode;
-  data?: InvitationResponse;
-}) {
+export default function Cover({ children }: { children: ReactNode }) {
   const to = useToQuery();
+  const data = useContext(InvitationDetailContext);
   const [showCover, setShowCover] = useState(true);
   if (!showCover) {
     return children;
@@ -32,7 +27,7 @@ export default function Cover({
         <div className="h-6" />
         <Image
           className="rounded-full w-[216px] h-[216px] bg-303333"
-          src={kPublic.photoCover}
+          src={kEnv.NEXT_PUBLIC_BASE_URL + data?.photo.cover ?? ""}
           alt="image"
           width={216}
           height={216}
@@ -48,7 +43,6 @@ export default function Cover({
         <div className="h-2" />
         <button
           onClick={() => {
-            console.log("bukaUndangan");
             setShowCover(false);
           }}
           className="bg-driftwood py-2 px-12 rounded-sm"

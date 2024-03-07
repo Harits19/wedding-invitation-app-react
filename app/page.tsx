@@ -1,6 +1,7 @@
 "use client";
 
 import Cover from "./components/cover";
+import { GlobalStateProvider } from "./hooks/use-global-state";
 import { InvitationDetailProvider } from "./hooks/use-invitation-detail";
 import Main from "./main/page";
 
@@ -16,9 +17,11 @@ TODO
 export default function Base() {
   return (
     <InvitationDetailProvider name="fulan&fulanah">
-      <Cover>
-        <Main />
-      </Cover>
+      <GlobalStateProvider>
+        <Cover>
+          <Main />
+        </Cover>
+      </GlobalStateProvider>
     </InvitationDetailProvider>
   );
 }

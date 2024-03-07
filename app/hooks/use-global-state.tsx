@@ -8,6 +8,8 @@ import React, {
   useState,
 } from "react";
 import { MenuName } from "../components/menu";
+import { useInvitationDetailState } from "./use-invitation-detail";
+import { concatBaseUrl } from "../utils/string-util";
 
 export interface GlobalStateInterface {
   activeMenu?: MenuName;
@@ -22,16 +24,16 @@ export const GlobalStateContext = createContext({
 
 export const GlobalStateProvider = ({
   children,
-  value = {
-    audio:
-      typeof Audio === "undefined"
-        ? undefined
-        : new Audio("/background-music.mp3"),
-  } as GlobalStateInterface,
 }: {
   children: React.ReactNode;
-  value?: Partial<GlobalStateInterface>;
 }) => {
+  const data = useInvitationDetailState();
+  const value: Partial<GlobalStateInterface> = {
+    audio:
+      typeof Audio === "undefined" && !data?.music
+        ? undefined
+        : new Audio(concatBaseUrl(data?.music)),
+  };
   const [state, setStateBase] = useState(value);
   const setState = (
     newValue: SetStateAction<Partial<GlobalStateInterface>>,

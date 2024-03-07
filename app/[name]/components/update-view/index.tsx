@@ -7,16 +7,13 @@ import Button from "../button";
 import MyAudio from "../audio";
 
 export default function UpdateView() {
-  const { data, setStateAll } = useInvitationDetailProvider();
+  const { data, setInvitationDetail } = useInvitationDetailProvider();
   const form = useForm({
     defaultValues: data,
   });
   const { handleSubmit } = form;
   const onSubmit = (value: InvitationResponse) => {
-    console.log("before", data?.musicLocal);
-
-    setStateAll?.((prev) => ({ ...prev, ...value }));
-    console.log("after", data?.musicLocal);
+    console.log("before", value?.musicLocal);
   };
   if (!data) return <div />;
   return (
@@ -24,7 +21,7 @@ export default function UpdateView() {
       <Form
         // {...form}
         className="flex flex-1 flex-col gap-y-4"
-        onSubmit={() => handleSubmit(onSubmit)()}
+        onSubmit={() => handleSubmit(onSubmit)}
       >
         <FormField
           control={form.control}
@@ -51,7 +48,9 @@ export default function UpdateView() {
                 onChange={(event) => {
                   const file = event.target.files?.item(0);
                   if (!file) return;
-                  setStateAll?.((prev) => ({ ...prev, musicLocal: file }));
+                  setInvitationDetail({
+                    musicLocal: file,
+                  });
                   field.onChange(file);
                 }}
               />

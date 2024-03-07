@@ -8,6 +8,7 @@ import People from "@/app/[name]/main/components/people";
 import Collection from "@/app/[name]/main/components/collection";
 import Place from "@/app/[name]/main/components/place";
 import Home from "@/app/[name]/main/components/home";
+import { useInvitationDetailProvider } from "../../hooks/use-invitation-detail";
 
 export type MenuName = IconName;
 export const menus: {
@@ -34,8 +35,10 @@ export const menus: {
 
 export default function Menu() {
   const {
-    state: { audioPlay = false, audioRef, ...state },
+    state: { audioPlay = false, ...state },
   } = useGlobalState();
+
+  const { setPlaying } = useInvitationDetailProvider();
 
   return (
     <div className="fixed bottom-0 flex flex-row justify-center  right-0 left-0 items-stretch ">
@@ -66,14 +69,7 @@ export default function Menu() {
         ]}
         <button
           onClick={() => {
-            if (!audioPlay) {
-              console.log("play audio");
-              audioRef?.current?.play();
-            } else {
-              console.log("pause audio");
-
-              audioRef?.current?.pause();
-            }
+            setPlaying?.();
           }}
         >
           <Icon name={audioPlay ? "music" : "music_off"} />

@@ -10,33 +10,46 @@ import {
   SetStateAction,
   createContext,
   useContext,
+  useEffect,
+  useMemo,
   useState,
 } from "react";
 import { AxiosError } from "axios";
-
-// const invitationDetailAction = (
+import { concatBaseUrl } from "../utils/string-util";
 
 export interface InvitationDetailState {
-  state?: InvitationResponse;
-  setState?: Dispatch<SetStateAction<InvitationResponse>>;
+  invitationDetail?: InvitationResponse;
+  setInvitationDetail?: Dispatch<SetStateAction<InvitationResponse>>;
+  playing: boolean;
+  setPlaying: () => void;
 }
 
-export const InvitationDetailContext = createContext<InvitationDetailState>({});
+export const InvitationDetailContext = createContext<InvitationDetailState>({
+  playing: false,
+  setPlaying: () => {},
+});
 
 export const useInvitationDetailProvider = () => {
-  const { setState, state } = useContext(InvitationDetailContext);
+  const { invitationDetail, setInvitationDetail, playing, setPlaying } =
+    useContext(InvitationDetailContext);
 
   return {
-    data: state,
+    data: invitationDetail,
+    playing,
+    setPlaying,
+    setInvitationDetail: (value: Partial<InvitationResponse>) => {
+      setInvitationDetail?.((prev) => {
+        return { ...prev, value };
+      });
+    },
     setInitialName: (value: string) => {
-      setState?.((prev) => {
+      setInvitationDetail?.((prev) => {
         return {
           ...prev,
           initial: value,
         };
       });
     },
-    setStateAll: setState,
   };
 };
 
@@ -85,13 +98,48 @@ const InvitationDetailContextView = ({
   data: InvitationResponse;
   children: ReactNode;
 }) => {
-  const [state, setState] = useState(data);
+  const [invitationDetail, setInvitationDetail] = useState(data);
+  const [playing, setPlaying] = useState(false);
+  const music = invitationDetail?.music;
+  const musicLocal = invitationDetail?.musicLocal;
+  const audio = useMemo(() => {
+    return new Audio(
+      musicLocal ? URL.createObjectURL(musicLocal) : concatBaseUrl(music),
+    );
+  }, [music, musicLocal]);
+
+  const handlePlay = () => {};
+  const handlePause = () => {};
+
+  console.log("called useInvitationDetailProvider");
+
+  useEffect(() => {
+    // audio.loop = true;
+    audio.addEventListener("play", handlePlay);
+    audio.addEventListener("pause", handlePause);
+    return () => {
+      // setPlaying(false);
+      audio.pause();
+      audio.removeEventListener("play", handlePlay);
+      audio.removeEventListener("pause", handlePause);
+    };
+  }, [audio]);
+
+  useEffect(() => {
+    playing ? audio.play() : audio.pause();
+  }, [audio, playing]);
 
   return (
     <InvitationDetailContext.Provider
       value={{
-        state: state,
-        setState,
+        invitationDetail,
+        setInvitationDetail,
+        playing,
+        setPlaying: () => {
+          setPlaying((prev) => {
+            return !prev;
+          });
+        },
       }}
     >
       {children}

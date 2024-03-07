@@ -20,12 +20,12 @@ export default function Base({
   params: { name: string };
 }) {
   return (
-    <InvitationDetailProvider name={name}>
-      <GlobalStateProvider>
+    <GlobalStateProvider>
+      <InvitationDetailProvider name={name}>
         <Cover>
           <Main />
         </Cover>
-      </GlobalStateProvider>
-    </InvitationDetailProvider>
+      </InvitationDetailProvider>
+    </GlobalStateProvider>
   );
 }

@@ -5,6 +5,7 @@ export default function Carousel<T>({
   renderItem,
 }: {
   imageList: T[];
+  // eslint-disable-next-line no-unused-vars
   renderItem: (val: T) => ReactNode;
 }) {
   const [indexImage, setIndexImage] = useState(1);

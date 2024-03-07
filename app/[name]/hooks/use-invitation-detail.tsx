@@ -5,6 +5,7 @@ import {
 } from "../model/invitation-model";
 import { useAxios } from "./use-axios";
 import { ReactNode, createContext, useContext } from "react";
+import { AxiosError } from "axios";
 
 export const useInvitationDetail = (name: string) => {
   const axios = useAxios();
@@ -34,7 +35,16 @@ export const InvitationDetailProvider = ({
   }
 
   if (error) {
-    return <div>{error || JSON.stringify(error)}</div>;
+    if (error instanceof AxiosError) {
+      return (
+        <div>
+          {error.response?.status}
+          <br />
+          {JSON.stringify(error.response?.data)}
+        </div>
+      );
+    }
+    return <div>{error.toString() || JSON.stringify(error)}</div>;
   }
 
   return (

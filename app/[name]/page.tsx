@@ -14,9 +14,13 @@ TODO
 
 */
 
-export default function Base() {
+export default function Base({
+  params: { name },
+}: {
+  params: { name: string };
+}) {
   return (
-    <InvitationDetailProvider name="fulan&fulanah">
+    <InvitationDetailProvider name={name}>
       <GlobalStateProvider>
         <Cover>
           <Main />

@@ -11,8 +11,8 @@ import "@fontsource/averia-serif-libre/400-italic.css"; // Specify weight and st
 
 import "@fontsource/berkshire-swash"; // Defaults to weight 400
 import "@fontsource/berkshire-swash/400.css"; // Specify weight
-import Div from "./components/div";
-import QueryProvider from "./components/query-provider";
+import Div from "./[name]/components/div";
+import QueryProvider from "./[name]/components/query-provider";
 import { ReactNode } from "react";
 
 export const metadata: Metadata = {

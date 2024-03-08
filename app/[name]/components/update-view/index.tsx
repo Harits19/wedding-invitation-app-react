@@ -5,6 +5,7 @@ import { InvitationResponse } from "../../model/invitation-model";
 import { FormField } from "../ui/form";
 import Button from "../button";
 import MyAudio from "../audio";
+import BrideGroomView from "./bride-groom-view";
 
 export default function UpdateView() {
   const { data, setInvitationDetail } = useInvitationDetailProvider();
@@ -19,7 +20,7 @@ export default function UpdateView() {
   return (
     <FormProvider {...form}>
       <Form
-        className="flex flex-1 flex-col gap-y-4"
+        className="flex flex-1 flex-col gap-y-4 h-screen overflow-y-scroll"
         onSubmit={() => handleSubmit(onSubmit)}
       >
         <FormField
@@ -27,7 +28,6 @@ export default function UpdateView() {
           name={"name"}
           render={({ field }) => <Input {...field} readOnly />}
         />
-
         <MyAudio className="visible" />
         <FormField
           control={control}
@@ -79,6 +79,8 @@ export default function UpdateView() {
             </div>
           )}
         />
+        <BrideGroomView name="groom" />
+        <BrideGroomView name="bride" />
         <div className="h-4" />
         <Button type="submit">Submit</Button>
       </Form>

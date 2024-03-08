@@ -10,9 +10,7 @@ export default function TitleView({
   return (
     <div>
       <span className="capitalize">{title}</span>
-      <div className="ml-8">
-        {children}
-      </div>
+      <div className="ml-8 gap-y-4 flex flex-col">{children}</div>
     </div>
   );
 }

@@ -16,6 +16,10 @@ export interface InvitationResponse {
   photo: Photo;
 }
 
+export interface InvitationState extends Omit<InvitationResponse, "photo"> {
+  photo: PhotoSrc;
+}
+
 export interface BrideGroom {
   name: string;
   father_name: string;
@@ -31,6 +35,11 @@ export interface Address {
   longitude: string;
 }
 
+interface ImageSrc {
+  link?: string;
+  local?: File;
+}
+
 export interface Photo {
   cover: string;
   side: Side;
@@ -38,6 +47,15 @@ export interface Photo {
   slide: string[];
   divider: string;
   gallery: string[];
+}
+
+export interface PhotoSrc {
+  cover: ImageSrc;
+  side: Side;
+  background: ImageSrc;
+  slide: ImageSrc[];
+  divider: ImageSrc;
+  gallery: ImageSrc[];
 }
 
 export interface Side {

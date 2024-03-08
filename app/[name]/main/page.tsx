@@ -42,7 +42,7 @@ export default function Main() {
         </Cover>
       </div>
 
-      <div className="flex flex-1 bg-slate-50 h-screen p-4">
+      <div className="flex flex-1 bg-slate-50 ">
         {isEditFlow ? <UpdateView /> : <div />}
       </div>
     </div>

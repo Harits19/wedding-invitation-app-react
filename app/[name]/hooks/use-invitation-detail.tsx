@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import {
-  InvitationResponse,
   InvitationResponseModel,
+  InvitationState,
 } from "../model/invitation-model";
 import { useAxios } from "./use-axios";
 import {
@@ -17,7 +17,7 @@ import {
 import { AxiosError } from "axios";
 import { concatBaseUrl } from "../utils/string-util";
 
-interface BaseState extends InvitationResponse {
+interface BaseState extends InvitationState {
   playing: boolean;
 }
 
@@ -41,7 +41,7 @@ export const useInvitationDetailProvider = () => {
     data: invitationDetail,
     playing,
     setPlaying,
-    setInvitationDetail: (value: Partial<InvitationResponse>) => {
+    setInvitationDetail: (value: Partial<InvitationState>) => {
       setInvitationDetail?.((prev) => {
         return { ...prev, ...value };
       });
@@ -66,7 +66,33 @@ export const InvitationDetailProvider = ({
 }) => {
   const axios = useAxios();
   const fetcher = (url: string) =>
-    axios.get<InvitationResponseModel>(url).then((res) => res.data.data);
+    axios.get<InvitationResponseModel>(url).then((res) => {
+      const data = res.data.data;
+      const photo = data.photo;
+      const mappedResponse: InvitationState = {
+        ...data,
+        photo: {
+          background: {
+            link: photo.background,
+          },
+          cover: {
+            link: photo.cover,
+          },
+          divider: {
+            link: photo.divider,
+          },
+          gallery: photo.gallery.map((item) => ({
+            link: item,
+          })),
+          side: photo.side,
+          slide: photo.slide.map((item) => ({
+            link: item,
+          })),
+        },
+      };
+
+      return mappedResponse;
+    });
 
   const { data, error, isLoading } = useSWR(`/invitation/${name}`, fetcher);
 
@@ -99,7 +125,7 @@ const InvitationDetailContextView = ({
   data,
   children,
 }: {
-  data: InvitationResponse;
+  data: InvitationState;
   children: ReactNode;
 }) => {
   const [state, setState] = useState<BaseState>({

@@ -1,4 +1,5 @@
 import { useInvitationDetailProvider } from "../../hooks/use-invitation-detail";
+import { concatBaseUrl } from "../../utils/string-util";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 
@@ -8,7 +9,7 @@ export default function MyAudio({ className }: { className?: string }) {
   return (
     <>
       <div className={className}>
-        <Label>{data?.music}</Label>
+        <Label>{concatBaseUrl(data?.music)}</Label>
         <br />
         <Button
           onClick={() => {

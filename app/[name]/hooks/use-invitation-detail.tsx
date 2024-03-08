@@ -71,6 +71,21 @@ export const InvitationDetailProvider = ({
       const photo = data.photo;
       const mappedResponse: InvitationState = {
         ...data,
+        music: {
+          link: data.music,
+        },
+        bride: {
+          ...data.bride,
+          photo: {
+            link: data.bride.photo,
+          },
+        },
+        groom: {
+          ...data.groom,
+          photo: {
+            link: data.groom.photo,
+          },
+        },
         photo: {
           background: {
             link: photo.background,
@@ -84,7 +99,14 @@ export const InvitationDetailProvider = ({
           gallery: photo.gallery.map((item) => ({
             link: item,
           })),
-          side: photo.side,
+          side: {
+            bottom: {
+              link: photo.side.bottom,
+            },
+            top: {
+              link: photo.side.top,
+            },
+          },
           slide: photo.slide.map((item) => ({
             link: item,
           })),
@@ -134,12 +156,9 @@ const InvitationDetailContextView = ({
   });
   const playing = state.playing;
   const music = state?.music;
-  const musicLocal = state?.musicLocal;
   const audio = useMemo(() => {
-    return new Audio(
-      musicLocal ? URL.createObjectURL(musicLocal) : concatBaseUrl(music),
-    );
-  }, [music, musicLocal]);
+    return new Audio(concatBaseUrl(music));
+  }, [music]);
 
   console.log("called useInvitationDetailProvider");
 

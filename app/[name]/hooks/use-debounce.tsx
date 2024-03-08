@@ -25,6 +25,7 @@ export default function useDebounce<T>({
 }
 
 export const useDebounceFunc = () => {
+  // eslint-disable-next-line no-undef
   const [timer, setTimer] = useState<NodeJS.Timeout>();
   const debounce = (callback: Function, delay: number) => {
     clearTimeout(timer);

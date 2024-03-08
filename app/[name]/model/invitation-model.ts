@@ -7,7 +7,6 @@ export interface InvitationResponse {
   id: string;
   name: string;
   music: string;
-  musicLocal: File;
   initial: string;
   date: Date;
   groom: BrideGroom;
@@ -16,8 +15,16 @@ export interface InvitationResponse {
   photo: Photo;
 }
 
-export interface InvitationState extends Omit<InvitationResponse, "photo"> {
+export interface BrideGroomSrc extends Omit<BrideGroom, "photo"> {
+  photo: ImageSrc;
+}
+
+export interface InvitationState
+  extends Omit<InvitationResponse, "photo" | "groom" | "bride" | "music"> {
   photo: PhotoSrc;
+  music: ImageSrc;
+  groom: BrideGroomSrc;
+  bride: BrideGroomSrc;
 }
 
 export interface BrideGroom {
@@ -35,7 +42,7 @@ export interface Address {
   longitude: string;
 }
 
-interface ImageSrc {
+export interface ImageSrc {
   link?: string;
   local?: File;
 }
@@ -51,7 +58,7 @@ export interface Photo {
 
 export interface PhotoSrc {
   cover: ImageSrc;
-  side: Side;
+  side: SideSrc;
   background: ImageSrc;
   slide: ImageSrc[];
   divider: ImageSrc;
@@ -61,4 +68,9 @@ export interface PhotoSrc {
 export interface Side {
   top: string;
   bottom: string;
+}
+
+export interface SideSrc {
+  top: ImageSrc;
+  bottom: ImageSrc;
 }

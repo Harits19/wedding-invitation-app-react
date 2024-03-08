@@ -2,7 +2,6 @@
 
 import { kFontFamily } from "@/app/[name]/constans/font-family";
 import { ReactNode } from "react";
-import UpdateView from "./update-view";
 
 export default function Scaffold({
   ...props

@@ -1,7 +1,6 @@
 import {
   InvalidateOptions,
   InvalidateQueryFilters,
-  QueryKey,
   UseQueryOptions,
   UseQueryResult,
   useQuery,

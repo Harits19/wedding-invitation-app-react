@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import  { AxiosError } from "axios";
 import { ResponseModel } from "../model/response-model";
 import { ListWeddingResponse } from "../model/list-wedding-response-model";
 import useFetch from "../hooks/use-fetch";

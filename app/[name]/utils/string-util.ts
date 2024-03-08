@@ -1,6 +1,8 @@
 import { kEnv } from "../constans/env";
+import { ImageSrc } from "../model/invitation-model";
 
-export const concatBaseUrl = (text?: string) => {
-  if (!text) return '';
-  return kEnv.NEXT_PUBLIC_BASE_URL + text;
+export const concatBaseUrl = (src?: ImageSrc) => {
+  if (src?.local) return URL.createObjectURL(src.local);
+  if (src?.link) return kEnv.NEXT_PUBLIC_BASE_URL + src.link;
+  return "";
 };

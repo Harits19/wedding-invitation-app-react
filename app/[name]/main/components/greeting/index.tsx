@@ -1,4 +1,3 @@
-import Background from "@/app/[name]/components/background";
 import Scaffold from "@/app/[name]/components/scaffold";
 import { kText } from "@/app/[name]/constans/text";
 

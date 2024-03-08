@@ -6,12 +6,12 @@ import TopDecor from "@/app/[name]/components/top-decor";
 import Image from "next/image";
 import { useInvitationDetailProvider } from "@/app/[name]/hooks/use-invitation-detail";
 import { concatBaseUrl } from "@/app/[name]/utils/string-util";
-import { BrideGroom } from "@/app/[name]/model/invitation-model";
+import { BrideGroomSrc } from "@/app/[name]/model/invitation-model";
 
 export default function People() {
-  const { data } = useInvitationDetailProvider()
+  const { data } = useInvitationDetailProvider();
 
-  const Bride = ({ item }: { item?: BrideGroom }) => {
+  const Bride = ({ item }: { item?: BrideGroomSrc }) => {
     return (
       <div className="rounded-xl text-center relative flex flex-col flex-1 overflow-hidden   items-center px-5 py-14 shadow-2xl mx-4">
         <Background className="-z-10 h-screen w-screen -scale-y-100" />

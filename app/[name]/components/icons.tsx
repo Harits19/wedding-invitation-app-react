@@ -1,4 +1,4 @@
-import React, { SVGProps } from "react";
+import { SVGProps } from "react";
 import home from "../../public/home.svg"; // Path to your icons.svg
 import music from "../../public/music.svg"; // Path to your icons.svg
 import people from "../../public/people.svg"; // Path to your icons.svg
@@ -19,8 +19,6 @@ export type iconName = keyof typeof icons;
 
 const Icon = ({
   name,
-  color,
-  size,
 }: SVGProps<SVGElement> & {
   size: number;
   name: iconName;

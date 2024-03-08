@@ -17,7 +17,7 @@ export default function UpdateView() {
   });
   const { handleSubmit, control } = form;
   const onSubmit = (value: InvitationState) => {
-    console.log("before", value?.musicLocal);
+    console.log(value);
   };
   if (!data) return <div />;
   return (
@@ -34,7 +34,7 @@ export default function UpdateView() {
         <MyAudio className="visible" />
         <FormField
           control={control}
-          name={"musicLocal"}
+          name={"music"}
           render={({ field }) => (
             <div>
               <Input
@@ -46,7 +46,10 @@ export default function UpdateView() {
                   const file = event.target.files?.item(0);
                   if (!file) return;
                   setInvitationDetail({
-                    musicLocal: file,
+                    music: {
+                      ...field.value,
+                      local: file,
+                    },
                   });
                   field.onChange(file);
                 }}
@@ -115,12 +118,12 @@ export default function UpdateView() {
           <TitleView title="Photo.Side">
             <FormField
               control={control}
-              name="photo.side.top"
+              name="photo.side.top.link"
               render={({ field }) => <Input {...field} />}
             />
             <FormField
               control={control}
-              name="photo.side.bottom"
+              name="photo.side.bottom.link"
               render={({ field }) => <Input {...field} />}
             />
           </TitleView>
@@ -145,9 +148,7 @@ export default function UpdateView() {
                     </Button>
                   </div>
                   {field.value.map((item, index) => {
-                    const src = item.local
-                      ? URL.createObjectURL(item.local)
-                      : concatBaseUrl(item.link);
+                    const src = concatBaseUrl(item);
                     return (
                       <div key={src}>
                         <Image

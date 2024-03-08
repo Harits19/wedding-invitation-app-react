@@ -1,7 +1,7 @@
 export class SqlUtil {
   static generateOrCondition = (val: Record<string, unknown>) => {
     const conditions = Object.entries(val)
-      .filter(([key, value]) => {
+      .filter(([, value]) => {
         return Boolean(value);
       })
       .map(([key, value]) => {

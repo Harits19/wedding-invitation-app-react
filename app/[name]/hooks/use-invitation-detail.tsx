@@ -17,7 +17,7 @@ import {
 import { AxiosError } from "axios";
 import { concatBaseUrl } from "../utils/string-util";
 
-interface BaseState extends InvitationState {
+export interface BaseState extends InvitationState {
   playing: boolean;
 }
 

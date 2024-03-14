@@ -12,6 +12,7 @@ import {
 
 import { cn } from "@/app/[name]/utils/utils";
 import { Label } from "@/app/[name]/components/ui/label";
+import Card from "../card";
 
 const Form = FormProvider;
 
@@ -38,11 +39,13 @@ const FormField = <
         {...props}
         render={(renderProps) => {
           return (
-            <FormItem>
-              <FormLabel />
-              <FormControl>{props.render(renderProps)}</FormControl>
-              <FormMessage />
-            </FormItem>
+            <Card>
+              <FormItem>
+                <FormLabel />
+                <FormControl>{props.render(renderProps)}</FormControl>
+                <FormMessage />
+              </FormItem>
+            </Card>
           );
         }}
       />

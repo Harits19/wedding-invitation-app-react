@@ -7,8 +7,7 @@ import MyAudio from "../audio";
 import BrideGroomView from "./bride-groom-view";
 import TitleView from "../title-view";
 import { Button } from "../ui/button";
-import { concatBaseUrl } from "../../utils/string-util";
-import Image from "next/image";
+import UpdateImageView from "./components/update-image-view";
 
 export default function UpdateView() {
   const { data, setInvitationDetail } = useInvitationDetailProvider();
@@ -110,34 +109,16 @@ export default function UpdateView() {
         </TitleView>
         <div className="h-4" />
         <TitleView title="Photo">
-          <FormField
-            control={control}
-            name="photo.cover"
-            render={({ field }) => <Input {...field} value={undefined} />}
-          />
-          <TitleView title="Photo.Side">
-            <FormField
-              control={control}
-              name="photo.side.top.link"
-              render={({ field }) => <Input {...field} />}
-            />
-            <FormField
-              control={control}
-              name="photo.side.bottom.link"
-              render={({ field }) => <Input {...field} />}
-            />
-          </TitleView>
-          <FormField
-            control={control}
-            name="photo.background"
-            render={({ field }) => <Input {...field} value={undefined} />}
-          />
+          <UpdateImageView control={control} name="photo.cover" />
+          <UpdateImageView control={control} name="photo.side.top" />
+          <UpdateImageView control={control} name="photo.side.bottom" />
+          <UpdateImageView control={control} name="photo.background" />
           <Controller
             control={control}
             name="photo.slide"
             render={({ field }) => {
               return (
-                <TitleView title={field.name}>
+                <>
                   <div className="flex flex-row ">
                     <Button
                       onClick={() => {
@@ -148,32 +129,15 @@ export default function UpdateView() {
                     </Button>
                   </div>
                   {field.value.map((item, index) => {
-                    const src = concatBaseUrl(item);
                     return (
-                      <div key={src}>
-                        <Image
-                          key={src}
-                          alt=""
-                          src={src}
-                          width={200}
-                          height={200}
-                        />
-                        <Input
-                          type="file"
-                          accept="image/*"
-                          value={undefined}
-                          onChange={(event) => {
-                            const file = event.target.files?.item(0);
-                            console.log("selectedFile", file);
-                            if (!file) return;
-                            field.value[index].local = file;
-                            field.onChange([...field.value]);
-                          }}
-                        />
-                      </div>
+                      <UpdateImageView
+                        control={control}
+                        name={`${field.name}.${index}`}
+                        key={item.link}
+                      />
                     );
                   })}
-                </TitleView>
+                </>
               );
             }}
           />

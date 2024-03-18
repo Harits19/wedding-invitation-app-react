@@ -13,7 +13,7 @@ import { concatBaseUrl } from "@/app/[name]/utils/string-util";
 
 export default function Cover({ children }: { children: ReactNode }) {
   const to = useToQuery();
-  const { data } = useInvitationDetailProvider();
+  const { data, setPlaying } = useInvitationDetailProvider();
   const [showCover, setShowCover] = useState(true);
 
   if (!showCover) {
@@ -45,6 +45,7 @@ export default function Cover({ children }: { children: ReactNode }) {
         <button
           onClick={() => {
             setShowCover(false);
+            setPlaying();
           }}
           className="bg-driftwood py-2 px-12 rounded-sm"
         >

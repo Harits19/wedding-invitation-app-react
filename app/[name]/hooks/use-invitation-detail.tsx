@@ -4,23 +4,25 @@ import {
   InvitationState,
 } from "../model/invitation-model";
 import { useAxios } from "./use-axios";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useMemo } from "react";
 import { AxiosError } from "axios";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
+import { concatBaseUrl } from "../utils/string-util";
 
 export interface BaseState extends InvitationState {
   playing: boolean;
 }
 
 export const useInvitationDetailProvider = () => {
-  const { watch } = useFormContext<BaseState>();
+  const { watch, setValue } = useFormContext<BaseState>();
+  const playing = watch("playing");
 
   return {
     data: watch(),
-    playing: false,
-    setPlaying: () => {},
-    setInvitationDetail: () => {},
-    setInitialName: () => {},
+    playing,
+    setPlaying: () => {
+      setValue("playing", !playing);
+    },
   };
 };
 
@@ -118,28 +120,33 @@ const InvitationDetailContextView = ({
   data: InvitationState;
   children: ReactNode;
 }) => {
-  const form = useForm({
-    defaultValues: data,
+  const form = useForm<BaseState>({
+    defaultValues: {
+      ...data,
+      playing: false,
+    },
   });
+  const { watch } = form;
+  const state = watch();
 
-  // const playing = state.playing;
-  // const music = state?.music;
-  // const audio = useMemo(() => {
-  //   return new Audio(concatBaseUrl(music));
-  // }, [music]);
+  const playing = state.playing;
+  const music = state?.music;
+  const audio = useMemo(() => {
+    return new Audio(concatBaseUrl(music));
+  }, [music]);
 
-  // console.log("called useInvitationDetailProvider");
+  console.log("called useInvitationDetailProvider");
 
-  // useEffect(() => {
-  //   audio.loop = true;
-  //   return () => {
-  //     audio.pause();
-  //   };
-  // }, [audio]);
+  useEffect(() => {
+    audio.loop = true;
+    return () => {
+      audio.pause();
+    };
+  }, [audio]);
 
-  // useEffect(() => {
-  //   playing ? audio.play() : audio.pause();
-  // }, [audio, playing]);
+  useEffect(() => {
+    playing ? audio.play() : audio.pause();
+  }, [audio, playing]);
 
   return <FormProvider {...form}>{children}</FormProvider>;
 };

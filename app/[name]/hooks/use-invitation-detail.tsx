@@ -4,56 +4,23 @@ import {
   InvitationState,
 } from "../model/invitation-model";
 import { useAxios } from "./use-axios";
-import {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { ReactNode } from "react";
 import { AxiosError } from "axios";
-import { concatBaseUrl } from "../utils/string-util";
+import { FormProvider, useForm, useFormContext } from "react-hook-form";
 
 export interface BaseState extends InvitationState {
   playing: boolean;
 }
 
-export interface InvitationDetailState {
-  invitationDetail?: BaseState;
-  setInvitationDetail?: Dispatch<SetStateAction<BaseState>>;
-  playing: boolean;
-  setPlaying: () => void;
-}
-
-export const InvitationDetailContext = createContext<InvitationDetailState>({
-  playing: false,
-  setPlaying: () => {},
-});
-
 export const useInvitationDetailProvider = () => {
-  const { invitationDetail, setInvitationDetail, playing, setPlaying } =
-    useContext(InvitationDetailContext);
+  const { watch } = useFormContext<BaseState>();
 
   return {
-    data: invitationDetail,
-    playing,
-    setPlaying,
-    setInvitationDetail: (value: Partial<InvitationState>) => {
-      setInvitationDetail?.((prev) => {
-        return { ...prev, ...value };
-      });
-    },
-    setInitialName: (value: string) => {
-      setInvitationDetail?.((prev) => {
-        return {
-          ...prev,
-          initial: value,
-        };
-      });
-    },
+    data: watch(),
+    playing: false,
+    setPlaying: () => {},
+    setInvitationDetail: () => {},
+    setInitialName: () => {},
   };
 };
 
@@ -136,6 +103,7 @@ export const InvitationDetailProvider = ({
   }
 
   if (!data) return <div>Data empty</div>;
+
   return (
     <InvitationDetailContextView data={data}>
       {children}
@@ -150,46 +118,28 @@ const InvitationDetailContextView = ({
   data: InvitationState;
   children: ReactNode;
 }) => {
-  const [state, setState] = useState<BaseState>({
-    ...data,
-    playing: false,
+  const form = useForm({
+    defaultValues: data,
   });
-  const playing = state.playing;
-  const music = state?.music;
-  const audio = useMemo(() => {
-    return new Audio(concatBaseUrl(music));
-  }, [music]);
 
-  console.log("called useInvitationDetailProvider");
+  // const playing = state.playing;
+  // const music = state?.music;
+  // const audio = useMemo(() => {
+  //   return new Audio(concatBaseUrl(music));
+  // }, [music]);
 
-  useEffect(() => {
-    audio.loop = true;
-    return () => {
-      audio.pause();
-    };
-  }, [audio]);
+  // console.log("called useInvitationDetailProvider");
 
-  useEffect(() => {
-    playing ? audio.play() : audio.pause();
-  }, [audio, playing]);
+  // useEffect(() => {
+  //   audio.loop = true;
+  //   return () => {
+  //     audio.pause();
+  //   };
+  // }, [audio]);
 
-  return (
-    <InvitationDetailContext.Provider
-      value={{
-        invitationDetail: state,
-        setInvitationDetail: setState,
-        playing,
-        setPlaying: () => {
-          setState((prev) => {
-            return {
-              ...prev,
-              playing: !prev.playing,
-            };
-          });
-        },
-      }}
-    >
-      {children}
-    </InvitationDetailContext.Provider>
-  );
+  // useEffect(() => {
+  //   playing ? audio.play() : audio.pause();
+  // }, [audio, playing]);
+
+  return <FormProvider {...form}>{children}</FormProvider>;
 };

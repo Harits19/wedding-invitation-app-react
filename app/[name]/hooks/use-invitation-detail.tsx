@@ -1,13 +1,10 @@
 import useSWR from "swr";
-import {
-  InvitationResponseModel,
-  InvitationState,
-} from "../model/invitation-model";
-import { useAxios } from "./use-axios";
+import { InvitationState } from "../model/invitation-model";
 import { ReactNode, useEffect, useMemo } from "react";
 import { AxiosError } from "axios";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import { concatBaseUrl } from "../utils/string-util";
+import { getInvitation } from "../services/invitation-service";
 
 export interface BaseState extends InvitationState {
   playing: boolean;
@@ -33,59 +30,7 @@ export const InvitationDetailProvider = ({
   children: ReactNode;
   name: string;
 }) => {
-  const axios = useAxios();
-  const fetcher = (url: string) =>
-    axios.get<InvitationResponseModel>(url).then((res) => {
-      const data = res.data.data;
-      const photo = data.photo;
-      const mappedResponse: InvitationState = {
-        ...data,
-        music: {
-          link: data.music,
-        },
-        bride: {
-          ...data.bride,
-          photo: {
-            link: data.bride.photo,
-          },
-        },
-        groom: {
-          ...data.groom,
-          photo: {
-            link: data.groom.photo,
-          },
-        },
-        photo: {
-          background: {
-            link: photo.background,
-          },
-          cover: {
-            link: photo.cover,
-          },
-          divider: {
-            link: photo.divider,
-          },
-          gallery: photo.gallery.map((item) => ({
-            link: item,
-          })),
-          side: {
-            bottom: {
-              link: photo.side.bottom,
-            },
-            top: {
-              link: photo.side.top,
-            },
-          },
-          slide: photo.slide.map((item) => ({
-            link: item,
-          })),
-        },
-      };
-
-      return mappedResponse;
-    });
-
-  const { data, error, isLoading } = useSWR(`/invitation/${name}`, fetcher);
+  const { data, error, isLoading } = useSWR(name, getInvitation);
 
   if (isLoading) {
     return <div>isLoading</div>;

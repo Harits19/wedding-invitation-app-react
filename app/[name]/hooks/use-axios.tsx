@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const useAxios = () => {
+export const axiosInstance = () => {
   const apiEndPoint = "http://localhost:8080";
   axios.defaults.baseURL = apiEndPoint;
 

@@ -4,29 +4,27 @@ import {
   useInvitationDetailProvider,
 } from "../../hooks/use-invitation-detail";
 import { Input } from "../ui/input";
-import { InvitationState } from "../../model/invitation-model";
 import { FormField } from "../ui/form";
 import MyAudio from "../audio";
 import BrideGroomView from "./bride-groom-view";
 import TitleView from "../title-view";
 import { Button } from "../ui/button";
 import UpdateImageView from "./components/update-image-view";
+import useSWR from "swr";
+import { putInvitationDetail } from "../../services/invitation-service";
 
 export default function UpdateView() {
   const { data } = useInvitationDetailProvider();
 
+  const { isLoading } = useSWR(data, putInvitationDetail);
+
   const form = useFormContext<BaseState>();
 
   const { handleSubmit, control } = form;
-  const onSubmit = (value: InvitationState) => {
-    console.log(value);
-  };
+
   if (!data) return <div />;
   return (
-    <Form
-      className="flex flex-1 flex-col gap-y-4 h-screen overflow-y-scroll p-8"
-      onSubmit={() => handleSubmit(onSubmit)}
-    >
+    <Form className="flex flex-1 flex-col gap-y-4 h-screen overflow-y-scroll p-8">
       <FormField
         control={control}
         name={"name"}
@@ -140,7 +138,16 @@ export default function UpdateView() {
       </TitleView>
 
       <div>
-        <Button type="submit">Submit</Button>
+        <Button
+          isLoading={isLoading}
+          onClick={() => {
+            handleSubmit((data) => {
+              console.log("data", data);
+            });
+          }}
+        >
+          Submit
+        </Button>
       </div>
     </Form>
   );

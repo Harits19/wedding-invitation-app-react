@@ -66,8 +66,14 @@ export const getInvitation = async (name: string) => {
 
 export const putInvitationDetail = async (data: InvitationState) => {
   const form = new FormData();
+  const dataTemp: InvitationState = JSON.parse(JSON.stringify(data));
 
-  form.append("json", JSON.stringify(data));
+  delete dataTemp.music;
+  delete dataTemp.photo;
+  delete dataTemp.groom.photo;
+  delete dataTemp.bride.photo;
+
+  form.append("json", JSON.stringify(dataTemp));
   const allPath = paths(data);
 
   for (const key of allPath) {
@@ -82,17 +88,7 @@ export const putInvitationDetail = async (data: InvitationState) => {
       }
     }
   }
-  const result = await axios.put(
-    `/invitation`,
-    {
-      data: form,
-    },
-    {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    },
-  );
+  const result = await axios.put(`/invitation/`, form);
 
   return result;
 };

@@ -21,9 +21,13 @@ export interface BrideGroomSrc extends Omit<BrideGroom, "photo"> {
 
 export interface InvitationState
   extends Omit<InvitationResponse, "photo" | "groom" | "bride" | "music"> {
+  photoOri: Photo;
   photo?: PhotoSrc;
+  musicOri: string;
   music?: ImageSrc;
+  groomOri: BrideGroom;
   groom: BrideGroomSrc;
+  brideOri: BrideGroom;
   bride: BrideGroomSrc;
 }
 

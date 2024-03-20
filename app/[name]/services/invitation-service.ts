@@ -16,21 +16,25 @@ export const getInvitation = async (name: string) => {
       const photo = data.photo;
       const mappedResponse: InvitationState = {
         ...data,
+        musicOri: data.music,
         music: {
           link: data.music,
         },
+        brideOri: data.bride,
         bride: {
           ...data.bride,
           photo: {
             link: data.bride.photo,
           },
         },
+        groomOri: data.groom,
         groom: {
           ...data.groom,
           photo: {
             link: data.groom.photo,
           },
         },
+        photoOri: data.photo,
         photo: {
           background: {
             link: photo.background,
@@ -73,7 +77,22 @@ export const putInvitationDetail = async (data: InvitationState) => {
   delete dataTemp.groom.photo;
   delete dataTemp.bride.photo;
 
-  form.append("json", JSON.stringify(dataTemp));
+  form.append(
+    "json",
+    JSON.stringify({
+      ...dataTemp,
+      music: dataTemp.musicOri,
+      photo: dataTemp.photoOri,
+      groom: {
+        ...dataTemp.groom,
+        photo: dataTemp.groomOri.photo,
+      },
+      bride: {
+        ...dataTemp.bride,
+        photo: dataTemp.brideOri.photo,
+      },
+    }),
+  );
   const allPath = paths(data);
 
   for (const key of allPath) {

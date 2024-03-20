@@ -15,7 +15,7 @@ jobs:
       - name: Deploy Using ssh
         uses: appleboy/ssh-action@master
         with:
-          host: http://38.47.180.46/
+          host: 38.47.180.46
           username: root
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22

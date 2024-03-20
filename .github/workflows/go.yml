@@ -1,0 +1,33 @@
+name: cd
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+    environment: SSH
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Deploy Using ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: http://38.47.180.46/
+          username: root
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: 22
+          script: |
+            mkdir -p ~/app/invitation-frontend
+            cd ~/app/invitation-frontend
+            git pull origin master
+            git status
+            # docker build -t invitation-backend-image .
+            # docker container stop invitation-backend-container
+            # docker container rm invitation-backend-container
+            # docker container ls
+            # docker container create --name invitation-backend-container -e PORT=8080 -e INSTANCE_ID="invitation-backend-instance" -p 8080:8080 --restart always invitation-backend-image
+            # docker container start invitation-backend-container
+            # docker container ls

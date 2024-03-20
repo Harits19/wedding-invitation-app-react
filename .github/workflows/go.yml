@@ -22,6 +22,9 @@ jobs:
           script: |
             mkdir -p ~/app/invitation-frontend
             cd ~/app/invitation-frontend
+            git init
+            git clone https://github.com/Harits19/wedding-invitation-app-react.git
+            git remote add origin https://github.com/Harits19/wedding-invitation-app-react.git
             git pull origin master
             git status
             # docker build -t invitation-backend-image .

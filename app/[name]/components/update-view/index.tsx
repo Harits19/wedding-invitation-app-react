@@ -12,16 +12,24 @@ import TitleView from "../title-view";
 import { Button } from "../ui/button";
 import UpdateImageView from "./components/update-image-view";
 import { putInvitationDetail } from "../../services/invitation-service";
+import useSwrMutation from "swr/mutation";
 
 export default function UpdateView() {
   const { data } = useInvitationDetailProvider();
+  const { trigger, isMutating, reset } = useSwrMutation<
+    any,
+    any,
+    string,
+    InvitationState
+  >(data.name, (key, { arg }) => putInvitationDetail(arg));
 
   const form = useFormContext<BaseState>();
 
   const { handleSubmit, control } = form;
-  const onSubmit = (value: InvitationState) => {
+  const onSubmit = async (value: InvitationState) => {
     console.log(value);
-    putInvitationDetail(value);
+    reset();
+    trigger(value);
   };
   if (!data) return <div />;
   return (
@@ -142,7 +150,7 @@ export default function UpdateView() {
       </TitleView>
 
       <div>
-        <Button isLoading={false} type="submit">
+        <Button isLoading={isMutating} type="submit">
           Submit
         </Button>
       </div>

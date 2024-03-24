@@ -28,7 +28,7 @@ export default function Cover({ children }: { children: ReactNode }) {
         <div className="h-6" />
         <Image
           className="rounded-full w-[216px] h-[216px] bg-303333"
-          src={concatBaseUrl(data?.photo.cover)}
+          src={concatBaseUrl(data?.photo?.cover)}
           alt="image"
           width={216}
           height={216}

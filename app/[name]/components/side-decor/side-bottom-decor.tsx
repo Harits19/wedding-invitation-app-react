@@ -13,7 +13,7 @@ export default function SideBottomDecor({
   return (
     <SideAnimationWrapper side={side}>
       <Image
-        src={concatBaseUrl(data?.photo.side.bottom)}
+        src={concatBaseUrl(data?.photo?.side.bottom)}
         alt={"image"}
         width={150}
         height={210}

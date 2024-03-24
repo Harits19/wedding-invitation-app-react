@@ -85,29 +85,42 @@ export const putInvitationDetail = async (data: InvitationState) => {
       photo: dataTemp.photoOri,
       groom: {
         ...dataTemp.groom,
-        photo: dataTemp.groomOri.photo,
+        photo: dataTemp.groomOri.photo ?? "",
       },
       bride: {
         ...dataTemp.bride,
-        photo: dataTemp.brideOri.photo,
+        photo: dataTemp.brideOri.photo ?? "",
       },
     }),
   );
   const allPath = paths(data);
 
+  console.log("allPath", allPath);
+
   for (const key of allPath) {
     const value = _.get(data, key);
+
     if (value instanceof File) {
-      form.append(key, value);
+      form.append(key.replace(".local", ""), value);
     } else if (Array.isArray(value)) {
       for (const item of value) {
+        if (Object.hasOwn(item, "local")) {
+          if (key === "photo.slide" || key === "photoOri.slide") {
+            console.log("key", key, "type ", typeof item);
+          }
+
+          const local = item.local;
+          if (local instanceof File) {
+            form.append(key.replace(".local", ""), local);
+          }
+        }
         if (item instanceof File) {
-          form.append(key, item);
+          form.append(key.replace(".local", ""), item);
         }
       }
     }
   }
-  const result = await axios.put(`/invitation/`, form);
+  const result = await axios.patch(`/invitation/`, form);
 
   return result;
 };

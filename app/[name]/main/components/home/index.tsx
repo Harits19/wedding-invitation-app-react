@@ -40,7 +40,7 @@ export default function Home() {
           <Image
             className="rounded-full object-cover w-[205px] h-[205px] animate-fade-zoom"
             alt="alt"
-            src={concatBaseUrl(data?.photo.cover)}
+            src={concatBaseUrl(data?.photo?.cover)}
             width={205}
             height={205}
           />

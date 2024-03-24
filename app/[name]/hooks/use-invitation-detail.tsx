@@ -1,4 +1,4 @@
-import useSWR from "swr";
+import useSWR, { KeyedMutator } from "swr";
 import { InvitationState } from "../model/invitation-model";
 import { ReactNode, useEffect, useMemo } from "react";
 import { AxiosError } from "axios";
@@ -8,6 +8,7 @@ import { getInvitation } from "../services/invitation-service";
 
 export interface BaseState extends InvitationState {
   playing: boolean;
+  mutate: KeyedMutator<InvitationState>;
 }
 
 export const useInvitationDetailProvider = () => {
@@ -30,7 +31,7 @@ export const InvitationDetailProvider = ({
   children: ReactNode;
   name: string;
 }) => {
-  const { data, error, isLoading } = useSWR(name, getInvitation);
+  const { data, error, isLoading, mutate } = useSWR(name, getInvitation);
 
   if (isLoading) {
     return <div>isLoading</div>;
@@ -52,7 +53,7 @@ export const InvitationDetailProvider = ({
   if (!data) return <div>Data empty</div>;
 
   return (
-    <InvitationDetailContextView data={data}>
+    <InvitationDetailContextView data={data} mutate={mutate}>
       {children}
     </InvitationDetailContextView>
   );
@@ -61,14 +62,17 @@ export const InvitationDetailProvider = ({
 const InvitationDetailContextView = ({
   data,
   children,
+  mutate,
 }: {
   data: InvitationState;
   children: ReactNode;
+  mutate: KeyedMutator<InvitationState>;
 }) => {
   const form = useForm<BaseState>({
     defaultValues: {
       ...data,
       playing: false,
+      mutate,
     },
   });
   const { watch } = form;

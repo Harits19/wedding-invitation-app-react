@@ -15,7 +15,7 @@ import { kSize } from "@/app/[name]/constans/size";
 
 export default function Opening() {
   const { data } = useInvitationDetailProvider()
-  const imageList = (data?.photo.slide ?? []).map((image) =>
+  const imageList = (data?.photo?.slide ?? []).map((image) =>
     concatBaseUrl(image),
   );
   const ref = useDeselectMenu();

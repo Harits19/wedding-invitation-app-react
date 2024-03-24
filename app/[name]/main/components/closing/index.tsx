@@ -23,7 +23,7 @@ export default function Closing() {
           className="border-driftwood border-4 rounded-md w-[219px] h-[219px] animate-fade-zoom"
           width={219}
           height={219}
-          src={concatBaseUrl(data?.photo.gallery.at(0))}
+          src={concatBaseUrl(data?.photo?.gallery.at(0))}
         />
         <div className="h-5" />
         <div className="text-sm animate-fade-zoom">

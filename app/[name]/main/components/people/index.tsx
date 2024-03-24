@@ -52,7 +52,7 @@ export default function People() {
         alt="divider"
         width={100}
         height={100}
-        src={concatBaseUrl(data?.photo.divider)}
+        src={concatBaseUrl(data?.photo?.divider)}
       />
       <br />
       <Bride item={data?.bride} />

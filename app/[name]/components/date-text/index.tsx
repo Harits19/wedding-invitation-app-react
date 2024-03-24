@@ -1,6 +1,10 @@
-import { kText } from "@/app/[name]/constans/text";
 import moment from "moment";
+import { useInvitationDetailProvider } from "../../hooks/use-invitation-detail";
 
 export default function DateText() {
-  return <>{moment(kText.date).format("dddd, DD MMMM YYYY")}</>;
+  const {
+    data: { date },
+  } = useInvitationDetailProvider();
+
+  return <>{moment(date).format("dddd, DD MMMM YYYY")}</>;
 }

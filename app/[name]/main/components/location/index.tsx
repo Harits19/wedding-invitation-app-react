@@ -6,8 +6,15 @@ import DateText from "@/app/[name]/components/date-text";
 import Scaffold from "@/app/[name]/components/scaffold";
 import TopDecor from "@/app/[name]/components/top-decor";
 import { kText } from "@/app/[name]/constans/text";
+import { useInvitationDetailProvider } from "@/app/[name]/hooks/use-invitation-detail";
+import moment from "moment";
 
 export default function Location() {
+  const { data } = useInvitationDetailProvider();
+
+  const waktuPernikahan = moment(data.date).format("HH:mm - HH:mm "); // TODO add to invitation detail
+
+  const venue = data.address.detail;
   return (
     <Scaffold className="">
       <TopDecor />
@@ -27,11 +34,11 @@ export default function Location() {
         </Div>
         <div className="h-1" />
         <Div family="averia" className="text-base animate-bottom-top">
-          {kText.pukul} {kText.waktuPernikahan}
+          {kText.pukul} {waktuPernikahan}
         </Div>
         <div className="h-1" />
         <Div family="averia" className="text-sm animate-bottom-top">
-          {kText.venue}
+          {venue}
         </Div>
         <div className="h-4" />
         <button

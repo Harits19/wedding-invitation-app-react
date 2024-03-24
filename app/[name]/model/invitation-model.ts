@@ -8,7 +8,7 @@ export interface InvitationResponse {
   name: string;
   music: string;
   initial: string;
-  date: Date;
+  date: string;
   groom: BrideGroom;
   bride: BrideGroom;
   address: Address;

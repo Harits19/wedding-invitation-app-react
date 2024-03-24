@@ -6,7 +6,6 @@ import CountDown from "@/app/[name]/components/count-down";
 import DateText from "@/app/[name]/components/date-text";
 import Scaffold from "@/app/[name]/components/scaffold";
 import TopDecor from "@/app/[name]/components/top-decor";
-import { kText } from "@/app/[name]/hooks/text";
 import Image from "next/image";
 import useDeselectMenu from "@/app/[name]/hooks/use-deselect-menu";
 import { useInvitationDetailProvider } from "@/app/[name]/hooks/use-invitation-detail";
@@ -14,7 +13,7 @@ import { concatBaseUrl } from "@/app/[name]/utils/string-util";
 import { kSize } from "@/app/[name]/constans/size";
 
 export default function Opening() {
-  const { data } = useInvitationDetailProvider()
+  const { data } = useInvitationDetailProvider();
   const imageList = (data?.photo?.slide ?? []).map((image) =>
     concatBaseUrl(image),
   );
@@ -46,7 +45,7 @@ export default function Opening() {
         <div className="absolute z-50 top-0 left-0 right-0 bottom-0 justify-center flex flex-col items-center">
           <div className="h-1/3" />
           <Div className="text-2xl" family="berkshire">
-            {kText.name}
+            {data.name}
           </Div>
           <Div className="text-base" family="averia">
             <DateText />

@@ -1,4 +1,4 @@
-import { kText } from "@/app/[name]/hooks/text";
+import { kText } from "@/app/[name]/constans/text";
 import Div from "../div";
 import Image from "next/image";
 import Scaffold from "../scaffold";

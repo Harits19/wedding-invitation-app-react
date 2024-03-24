@@ -1,5 +1,5 @@
 import Scaffold from "@/app/[name]/components/scaffold";
-import { kText } from "@/app/[name]/hooks/text";
+import { kText } from "@/app/[name]/constans/text";
 
 export default function Greeting() {
   return (

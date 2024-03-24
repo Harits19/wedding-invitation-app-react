@@ -3,7 +3,7 @@ import Background from "@/app/[name]/components/background";
 import BottomDecor from "@/app/[name]/components/bottom-decor";
 import HalfRoundBox from "@/app/[name]/components/half-round-box";
 import Scaffold from "@/app/[name]/components/scaffold";
-import { kText } from "@/app/[name]/constans/text";
+import { kText } from "@/app/[name]/hooks/text";
 import Image from "next/image";
 import { ReactNode } from "react";
 import { useInvitationDetailProvider } from "@/app/[name]/hooks/use-invitation-detail";

@@ -73,7 +73,7 @@ export default function UpdateView() {
         name="date"
         render={({ field }) => (
           <div>
-            <div>{new Date(field.value).toISOString()}</div>
+            <div>{new Date(field.value).toString()}</div>
             <Input {...field} type="date" value={undefined} />
             <Input
               {...field}

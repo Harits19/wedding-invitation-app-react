@@ -1,28 +1,7 @@
 "use client";
 
-import { GlobalStateProvider } from "./hooks/use-global-state";
-import { InvitationDetailProvider } from "./hooks/use-invitation-detail";
-import Main from "./main/page";
+import EditFlowWrapperView from "./components/edit-flow-wrapper-view";
 
-/* 
-TODO 
-
-- enable eslint
-- implement create wedding
-- implement update wedding
-
-*/
-
-export default function Base({
-  params: { name },
-}: {
-  params: { name: string };
-}) {
-  return (
-    <GlobalStateProvider>
-      <InvitationDetailProvider name={name}>
-        <Main />
-      </InvitationDetailProvider>
-    </GlobalStateProvider>
-  );
+export default function Base() {
+  return <EditFlowWrapperView isEditFlow={false} />;
 }

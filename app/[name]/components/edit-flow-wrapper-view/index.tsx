@@ -1,15 +1,13 @@
 "use client";
 
-import Cover from "../components/cover";
-import Menu, { menus } from "../components/menu";
-import MenuWrapper from "../components/menu-wrapper";
-import UpdateView from "../components/update-view";
-import Closing from "./components/closing";
-import Opening from "./components/opening";
+import Closing from "../../main/components/closing";
+import Opening from "../../main/components/opening";
+import Cover from "../cover";
+import Menu, { menus } from "../menu";
+import MenuWrapper from "../menu-wrapper";
+import UpdateView from "../update-view";
 
-export default function Main() {
-  const isEditFlow = true;
-
+export default function EditFlowWrapperView({ isEditFlow }: { isEditFlow: boolean }) {
   return (
     <div className=" relative flex flex-row justify-center items-center ">
       {!isEditFlow ? (

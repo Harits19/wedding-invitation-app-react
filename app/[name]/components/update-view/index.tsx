@@ -1,4 +1,4 @@
-import { Controller, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import {
   BaseState,
   useInvitationDetailProvider,
@@ -13,6 +13,7 @@ import { Button } from "../ui/button";
 import UpdateImageView from "./components/update-image-view";
 import { putInvitationDetail } from "../../services/invitation-service";
 import useSwrMutation from "swr/mutation";
+import UpdateArrayImageView from "./components/update-array-image-view";
 
 export default function UpdateView() {
   const { data } = useInvitationDetailProvider();
@@ -119,34 +120,8 @@ export default function UpdateView() {
         <UpdateImageView control={control} name="photo.side.top" />
         <UpdateImageView control={control} name="photo.side.bottom" />
         <UpdateImageView control={control} name="photo.background" />
-        <Controller
-          control={control}
-          name="photo.slide"
-          render={({ field }) => {
-            return (
-              <>
-                <div className="flex flex-row ">
-                  <Button
-                    onClick={() => {
-                      field.onChange([...field.value, {}]);
-                    }}
-                  >
-                    Add Slide
-                  </Button>
-                </div>
-                {field.value.map((item, index) => {
-                  return (
-                    <UpdateImageView
-                      control={control}
-                      name={`${field.name}.${index}`}
-                      key={item.link}
-                    />
-                  );
-                })}
-              </>
-            );
-          }}
-        />
+        <UpdateArrayImageView control={control} name="photo.slide" />
+        <UpdateArrayImageView control={control} name="photo.gallery" />
       </TitleView>
 
       <div>

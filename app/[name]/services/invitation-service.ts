@@ -82,7 +82,15 @@ export const putInvitationDetail = async (data: InvitationState) => {
     JSON.stringify({
       ...dataTemp,
       music: dataTemp.musicOri,
-      photo: dataTemp.photoOri,
+      photo: {
+        ...dataTemp.photoOri,
+        gallery: data.photo?.gallery?.map((e) => {
+          return e.local?.name || e.link;
+        }),
+        slide: data.photo?.slide?.map((e) => {
+          return e.local?.name || e.link;
+        }),
+      },
       groom: {
         ...dataTemp.groom,
         photo: dataTemp.groomOri.photo ?? "",
@@ -97,13 +105,17 @@ export const putInvitationDetail = async (data: InvitationState) => {
 
   console.log("allPath", allPath);
 
+  const appendFile = (local: File, key: string, index: number) => {
+    form.append(`${key.replace(".local", "")}.${index}`, local);
+  };
+
   for (const key of allPath) {
     const value = _.get(data, key);
 
     if (value instanceof File) {
       form.append(key.replace(".local", ""), value);
     } else if (Array.isArray(value)) {
-      for (const item of value) {
+      for (const [index, item] of value.entries()) {
         if (Object.hasOwn(item, "local")) {
           if (key === "photo.slide" || key === "photoOri.slide") {
             console.log("key", key, "type ", typeof item);
@@ -111,11 +123,10 @@ export const putInvitationDetail = async (data: InvitationState) => {
 
           const local = item.local;
           if (local instanceof File) {
-            form.append(key.replace(".local", ""), local);
+            appendFile(local, key, index);
           }
-        }
-        if (item instanceof File) {
-          form.append(key.replace(".local", ""), item);
+        } else if (item instanceof File) {
+          appendFile(item, key, index);
         }
       }
     }

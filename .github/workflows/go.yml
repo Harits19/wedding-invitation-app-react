@@ -17,6 +17,7 @@ jobs:
         with:
           host: 38.47.180.46
           username: root
+          password: ${{ secrets.PASSWORD }}
           key: ${{ secrets.PRIVATE_KEY }}
           port: 22
           script: |

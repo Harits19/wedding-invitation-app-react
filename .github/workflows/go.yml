@@ -29,6 +29,10 @@ jobs:
             git branch --set-upstream-to=origin/master master
             git pull origin master
             git status
+            # docker container create --name invitation-frontend-container -e PORT=8080 -e INSTANCE_ID="invitation-frontend-instance" -p 8080:8080 --restart always invitation-frontend-image
+            # docker container start invitation-frontend-container
+            # docker container ls
             # npm run build
             # kill $(lsof -t -i:3000)
             # npm run start & npx wait-on http://localhost:3000
+            # sudo ufw allow 3000

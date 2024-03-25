@@ -11,18 +11,12 @@ import BrideGroomView from "./bride-groom-view";
 import TitleView from "../title-view";
 import { Button } from "../ui/button";
 import UpdateImageView from "./components/update-image-view";
-import { putInvitationDetail } from "../../services/invitation-service";
-import useSwrMutation from "swr/mutation";
+import { usePatchInvitationDetail } from "../../services/use-invitation-service";
 import UpdateArrayImageView from "./components/update-array-image-view";
 
 export default function UpdateView() {
   const { data } = useInvitationDetailProvider();
-  const { trigger, isMutating, reset } = useSwrMutation<
-    any,
-    any,
-    string,
-    InvitationState
-  >(data.name, (key, { arg }) => putInvitationDetail(arg));
+  const { trigger, isMutating, reset } = usePatchInvitationDetail(data.name);
 
   const form = useFormContext<BaseState>();
 

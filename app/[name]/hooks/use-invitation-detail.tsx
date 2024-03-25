@@ -1,14 +1,12 @@
-import useSWR, { KeyedMutator } from "swr";
 import { InvitationState } from "../model/invitation-model";
 import { ReactNode, useEffect, useMemo } from "react";
 import { AxiosError } from "axios";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
 import { concatBaseUrl } from "../utils/string-util";
-import { getInvitation } from "../services/invitation-service";
+import { useGetInvitationDetail } from "../services/use-invitation-service";
 
 export interface BaseState extends InvitationState {
   playing: boolean;
-  mutate: KeyedMutator<InvitationState>;
 }
 
 export const useInvitationDetailProvider = () => {
@@ -31,7 +29,7 @@ export const InvitationDetailProvider = ({
   children: ReactNode;
   name: string;
 }) => {
-  const { data, error, isLoading, mutate } = useSWR(name, getInvitation);
+  const { data, error, isLoading } = useGetInvitationDetail(name);
 
   if (isLoading) {
     return <div>isLoading</div>;
@@ -53,7 +51,7 @@ export const InvitationDetailProvider = ({
   if (!data) return <div>Data empty</div>;
 
   return (
-    <InvitationDetailContextView data={data} mutate={mutate}>
+    <InvitationDetailContextView data={data}>
       {children}
     </InvitationDetailContextView>
   );
@@ -62,17 +60,14 @@ export const InvitationDetailProvider = ({
 const InvitationDetailContextView = ({
   data,
   children,
-  mutate,
 }: {
   data: InvitationState;
   children: ReactNode;
-  mutate: KeyedMutator<InvitationState>;
 }) => {
   const form = useForm<BaseState>({
     defaultValues: {
       ...data,
       playing: false,
-      mutate,
     },
   });
   const { watch } = form;
@@ -83,8 +78,6 @@ const InvitationDetailContextView = ({
   const audio = useMemo(() => {
     return new Audio(concatBaseUrl(music));
   }, [music]);
-
-  console.log("called useInvitationDetailProvider");
 
   useEffect(() => {
     audio.loop = true;

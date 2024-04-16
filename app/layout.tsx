@@ -25,6 +25,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body>
         <QueryProvider>
+          test update
           <Div>{children}</Div>
         </QueryProvider>
       </body>

@@ -3,7 +3,7 @@ import Background from "@/app/[name]/components/background";
 import BottomDecor from "@/app/[name]/components/bottom-decor";
 import Scaffold from "@/app/[name]/components/scaffold";
 import TopDecor from "@/app/[name]/components/top-decor";
-import { kText } from "@/app/[name]/constans/text";
+import { kText } from "@/app/constans/text";
 
 export default function DetailLocation() {
   return (

@@ -5,7 +5,7 @@ import CountDown from "@/app/[name]/components/count-down";
 import DateText from "@/app/[name]/components/date-text";
 import Scaffold from "@/app/[name]/components/scaffold";
 import TopDecor from "@/app/[name]/components/top-decor";
-import { kText } from "@/app/[name]/constans/text";
+import { kText } from "@/app/constans/text";
 import { useInvitationDetailProvider } from "@/app/[name]/hooks/use-invitation-detail";
 import moment from "moment";
 

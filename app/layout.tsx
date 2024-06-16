@@ -11,13 +11,11 @@ import "@fontsource/averia-serif-libre/400-italic.css"; // Specify weight and st
 
 import "@fontsource/berkshire-swash"; // Defaults to weight 400
 import "@fontsource/berkshire-swash/400.css"; // Specify weight
-import Div from "./[name]/components/div";
 import QueryProvider from "./[name]/components/query-provider";
 import { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "Wedding Invitation App",
-  description: "Wedding invitation app with Next.js",
+  title: "The Wedding of Harits & Fia",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -25,8 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body>
         <QueryProvider>
-          test update
-          <Div>{children}</Div>
+          <div>{children}</div>
         </QueryProvider>
       </body>
     </html>

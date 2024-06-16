@@ -1,5 +1,5 @@
 "use client";
-import { kFontFamily } from "@/app/[name]/constans/font-family";
+import { kFontFamily } from "@/app/constans/font-family";
 import { DetailedHTMLProps, HtmlHTMLAttributes } from "react";
 import { useInView } from "react-intersection-observer";
 

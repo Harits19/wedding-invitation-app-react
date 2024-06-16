@@ -19,6 +19,14 @@ module.exports = {
   ],
   prefix: "",
   theme: {
+    fontFamily: {
+      brittany: ["Brittany", 'sans-serif'],
+      italiana: ["Italiana", 'sans-serif'],
+      cormorant: ["Cormorant", 'sans-serif'],
+      gallery: ["Gallery", 'sans-serif']
+
+
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -35,6 +43,11 @@ module.exports = {
       },
       height: {
         100: "100px",
+        "mobile": "760px"
+
+      },
+      width: {
+        "mobile": "360px",
       },
       colors: {
         ...kColor,
@@ -43,6 +56,7 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        "#3C471F": "#3C471F",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

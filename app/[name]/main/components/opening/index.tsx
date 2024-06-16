@@ -10,7 +10,7 @@ import Image from "next/image";
 import useDeselectMenu from "@/app/[name]/hooks/use-deselect-menu";
 import { useInvitationDetailProvider } from "@/app/[name]/hooks/use-invitation-detail";
 import { concatBaseUrl } from "@/app/[name]/utils/string-util";
-import { kSize } from "@/app/[name]/constans/size";
+import { kSize } from "@/app/constans/size";
 
 export default function Opening() {
   const { data } = useInvitationDetailProvider();

@@ -4,7 +4,7 @@ import Div from "@/app/[name]/components/div";
 import Scaffold from "@/app/[name]/components/scaffold";
 import TopDecor from "@/app/[name]/components/top-decor";
 import useDeselectMenu from "@/app/[name]/hooks/use-deselect-menu";
-import { kText } from "@/app/[name]/constans/text";
+import { kText } from "@/app/constans/text";
 import Image from "next/image";
 import { useInvitationDetailProvider } from "@/app/[name]/hooks/use-invitation-detail";
 import { concatBaseUrl } from "@/app/[name]/utils/string-util";

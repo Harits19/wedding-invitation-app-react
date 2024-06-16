@@ -5,7 +5,7 @@ export default function WelcomePage() {
   const text = useText();
 
   return (
-    <div className="font-italiana text-#3C471F h-screen flex flex-col  bg-green-100">
+    <div className="font-italiana text-#3C471F min-h-screen flex flex-col  bg-green-100">
       <Snowfall />
       <div className=" flex flex-1" />
       <div className="px-4 flex flex-col justify-center gap-y-6">

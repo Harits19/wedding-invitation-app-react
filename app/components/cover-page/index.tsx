@@ -7,7 +7,7 @@ export default function CoverPage() {
   const guest = useGuest();
   const { setShowCover } = useWeddingState();
   return (
-    <div className="absolute bg-white top-0 bottom-0 left-0 right-0 flex flex-col justify-center items-center">
+    <div className="absolute bg-green-100 bg-cover top-0 bottom-0 left-0 right-0 flex flex-col justify-center items-center">
       <div className="font-brittany text-[50px]">{brideAndGroom}</div>
       <div className="font-cormorant">{weddingDate}</div>
       <div className="h-[200px]" />

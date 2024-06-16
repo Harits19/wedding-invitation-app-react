@@ -9,5 +9,8 @@ export const useText = () => {
     dear: "Dear",
     youAreInvited: "You Are Invited",
     bukaUndangan: "Buka Undangan",
+    theWeddingOf: "The Wedding Of",
+    brideName: "Harits",
+    groomName: "Fia",
   };
 };

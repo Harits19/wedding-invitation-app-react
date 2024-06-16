@@ -6,7 +6,7 @@ import WelcomePage from "./components/welcome-page";
 import { WeddingContext } from "./hooks/useWeddingProvider";
 
 export default function Page() {
-  const [showCover, setShowCover] = useState(true);
+  const [showCover, setShowCover] = useState(false);
   return (
     <WeddingContext.Provider
       value={{

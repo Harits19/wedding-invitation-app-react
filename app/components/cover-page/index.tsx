@@ -1,6 +1,7 @@
 import { useGuest } from "@/app/hooks/useGuest";
 import { useText } from "@/app/hooks/useText";
 import { useWeddingState } from "@/app/hooks/useWeddingProvider";
+import { FaRegEnvelopeOpen } from "react-icons/fa";
 
 export default function CoverPage() {
   const { brideAndGroom, weddingDate, ...kText } = useText();
@@ -19,8 +20,9 @@ export default function CoverPage() {
         onClick={() => {
           setShowCover(false);
         }}
-        className="border border-#3C471F text-#3C471F px-3 py-1 font-cormorant rounded-tr-lg rounded-tl-lg"
+        className="border border-#3C471F text-#3C471F px-3 py-1 font-cormorant rounded-tr-lg rounded-tl-lg flex flex-row items-center gap-x-2"
       >
+        <FaRegEnvelopeOpen />
         {kText.bukaUndangan}
       </button>
     </div>

@@ -10,7 +10,7 @@ export default function CoverPage() {
   const guest = useGuest();
   const { setShowCover } = useWeddingState();
   const RenderName = ({ text }: { text: string }) => {
-    return <span className="font-cardo text-3xl">{text}</span>;
+    return <span className="font-cardo text-3xl ">{text}</span>;
   };
   const Background1 = ({ className = "" }: { className?: string }) => {
     return (
@@ -30,26 +30,34 @@ export default function CoverPage() {
       <Background1 className="rotate-180 h-fit" />
 
       <div className="absolute text-#434343  bg-cover top-0 bottom-0 left-0 right-0 flex flex-col justify-center items-center">
-        <span className="font-arizona  text-xl">{kText.theWeddingOf}</span>
-        <RenderName text={kText.brideName} />
-        <div className="font-arizona text-[32px] -my-2">{kText.and}</div>
-        <RenderName text={kText.groomName} />
-        <div className=" my-6">{weddingDate}</div>
-        <div>{kText.kepadaYth}</div>
-        <div>{kText.bapakIbuSaudara}</div>
-        <div className="my-2 font-poppins font-extrabold text-xl">
-          {guest.name}
+        <div className="animate-top-bottom-fade flex flex-col items-center">
+          <span className="font-arizona  text-xl">{kText.theWeddingOf}</span>
+          <RenderName text={kText.brideName} />
+          <div className="font-arizona text-[32px] -my-2">{kText.and}</div>
+          <RenderName text={kText.groomName} />
         </div>
-        <div className="h-2" />
-        <button
-          onClick={() => {
-            setShowCover(false);
-          }}
-          className="border border-#CB2F2FC7 bg-#E97777C7 text-white px-3 py-1 font-cardo rounded-lg flex flex-row items-center gap-x-2"
-        >
-          <FaRegEnvelopeOpen />
-          {kText.bukaUndangan}
-        </button>
+
+        <div className=" animate-fade-in my-6">{weddingDate}</div>
+
+        <div className="animate-bottom-top-fade flex flex-col items-center">
+          <div className="animate-fade-in-bottom-top">{kText.kepadaYth}</div>
+          <div className="animate-fade-in-bottom-top">
+            {kText.bapakIbuSaudara}
+          </div>
+          <div className="my-2 animate-fade-in-bottom-top font-poppins font-extrabold text-xl">
+            {guest.name}
+          </div>
+          <div className="h-2" />
+          <button
+            onClick={() => {
+              setShowCover(false);
+            }}
+            className="border animate-fade-in-bottom-top border-#CB2F2FC7 bg-#E97777C7 text-white px-3 py-1 font-cardo rounded-lg flex flex-row items-center gap-x-2"
+          >
+            <FaRegEnvelopeOpen />
+            {kText.bukaUndangan}
+          </button>
+        </div>
       </div>
     </div>
   );

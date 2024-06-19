@@ -139,6 +139,18 @@ module.exports = {
           "0%": { opacity: "0", transform: "scale(0)" },
           "100%": { opacity: "1", transform: "scale(1)" },
         },
+        "fade-in-top-bottom": {
+          "0%": { opacity: "0", marginTop: -10 },
+          "100%": { opacity: "1", marginTop: 0 },
+        },
+        "fade-in-bottom-top": {
+          "0%": { opacity: "0", marginTop: 10 },
+          "100%": { opacity: "1", marginTop: 0 },
+        },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
         "bottom-top": {
           "0%": { position: "relative", top: "100%", opacity: "0" },
           "50%": { opacity: "0" },
@@ -159,6 +171,21 @@ module.exports = {
             opacity: "1",
           },
         },
+        "bottom-top-fade": {
+          "0%": {
+            position: "relative",
+            bottom: "-30%",
+            transform: "scale(0.7)",
+            opacity: "0",
+          },
+          "30%": { position: "relative", opacity: "0" },
+          "100%": {
+            position: "relative",
+            bottom: "0",
+            transform: "scale(1)",
+            opacity: "1",
+          },
+        },
 
       },
       animation: {
@@ -171,9 +198,14 @@ module.exports = {
         blip: "blip 1s ease-in-out infinite",
         message: "message 5s ease-in-out infinite",
         "fade-zoom": "fade-zoom 3s",
+        "fade-in-top-bottom": "fade-in-top-bottom 3s",
+        "fade-in-bottom-top": "fade-in-bottom-top 3s",
+        "fade-in": "fade-in 3s",
         "bottom-top": "bottom-top 2s ease-in-out",
         "bottom-top-1s": "bottom-top 1s ease-in-out",
         "top-bottom-fade": "top-bottom-fade 2s",
+        "bottom-top-fade": "bottom-top-fade 2s",
+
 
       },
       backgroundImage: {

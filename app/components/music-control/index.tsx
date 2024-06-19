@@ -1,15 +1,36 @@
 import { useWeddingState } from "@/app/hooks/useWeddingProvider";
-import { FaMicrophoneAltSlash, FaMusic } from "react-icons/fa";
+import { FaArrowUp, FaMicrophoneAltSlash, FaMusic } from "react-icons/fa";
+import { IconType } from "react-icons/lib";
 
 export default function MusicControl() {
-  const { musicIsPlaying, setMusicIsPlaying } = useWeddingState();
+  const { musicIsPlaying, setMusicIsPlaying, scrollToTop } = useWeddingState();
   const IconControl = musicIsPlaying ? FaMusic : FaMicrophoneAltSlash;
-  return (
-    <div className="border-2 mb-20 border-#E97777C7 bg-white rounded p-1 flex flex-col h-min">
-      <IconControl
+  const IconButton = ({
+    iconType: RenderIconType,
+    onClick,
+  }: {
+    iconType: IconType;
+    onClick: () => void;
+  }) => (
+    <div className="border-2 border-#E97777C7 bg-white rounded p-1 flex flex-col h-min">
+      <RenderIconType
         className=" text-[16px]  text-#E97777C7"
+        onClick={onClick}
+      />
+    </div>
+  );
+  return (
+    <div className="gap-y-4 flex flex-col">
+      <IconButton
+        iconType={IconControl}
         onClick={() => {
           setMusicIsPlaying(!musicIsPlaying);
+        }}
+      />
+      <IconButton
+        iconType={FaArrowUp}
+        onClick={() => {
+          scrollToTop();
         }}
       />
     </div>

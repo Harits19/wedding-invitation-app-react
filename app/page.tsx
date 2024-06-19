@@ -36,6 +36,8 @@ export default function Page() {
     }
   }, [audio, musicIsPlaying]);
 
+  const topComponent = "top-component";
+
   return (
     <WeddingContext.Provider
       value={{
@@ -48,19 +50,25 @@ export default function Page() {
         showCover,
         musicIsPlaying,
         setMusicIsPlaying,
+        scrollToTop: () => {
+          document
+            .getElementById(topComponent)
+            ?.scrollIntoView({ behavior: "smooth" });
+        },
       }}
     >
       <div className="bg-gray-50   w-screen h-screen flex flex-row justify-center font-cormorant">
         <div
           className={`flex flex-col relative w-mobile ${showCover ? "overflow-y-hidden" : "overflow-y-scroll"} h-screen`}
         >
+          <div id={topComponent} />
           <CoverPage />
           <WelcomePage />
           <IntroductionPage />
           <WelcomePage />
 
           {!showCover && (
-            <div className="fixed  flex flex-row justify-end w-mobile bottom-0">
+            <div className="fixed w-min mb-20  flex flex-row justify-end self-end bottom-0">
               <MusicControl />
             </div>
           )}

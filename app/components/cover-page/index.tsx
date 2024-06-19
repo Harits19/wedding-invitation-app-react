@@ -25,7 +25,7 @@ export default function CoverPage() {
   };
   return (
     <div
-      className={`bg-white absolute top-0 bottom-0 z-10 left-0 right-0 ${!showCover ? "animate-fade-out-bottom-top" : ""}`}
+      className={`bg-white absolute top-0 h-screen z-10 left-0 right-0 ${!showCover ? "animate-fade-out-bottom-top" : ""}`}
     >
       <Background1 className="h-full" />
       <Background1 className="h-fit bottom-0" />

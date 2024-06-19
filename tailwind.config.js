@@ -188,12 +188,12 @@ module.exports = {
         },
         "fade-out-bottom-top": {
           "0%": {
-            marginTop: "0%",
+            top: "0%",
             opacity: "1",
           },
           "100%": {
-            marginTop: "-100%",
-            opacity: "0",
+            top: "-100%",
+            opacity: "1",
           },
         },
       },

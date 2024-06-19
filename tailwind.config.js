@@ -2,6 +2,8 @@
 export const kColor = {
   303333: "#303333",
   driftwood: "#ae814c",
+  "#E97777C7": "#E97777C7",
+  "#CB2F2FC7": "#CB2F2FC7",
 };
 module.exports = {
   darkMode: ["class"],
@@ -23,7 +25,10 @@ module.exports = {
       brittany: ["Brittany", 'sans-serif'],
       italiana: ["Italiana", 'sans-serif'],
       cormorant: ["Cormorant", 'sans-serif'],
-      gallery: ["Gallery", 'sans-serif']
+      gallery: ["Gallery", 'sans-serif'],
+      arizona: ["Arizona", 'sans-serif'],
+      cardo: ["Cardo", 'sans-serif'],
+      poppins: ["Poppins", 'sans-serif']
 
 
     },
@@ -58,6 +63,7 @@ module.exports = {
         foreground: "hsl(var(--foreground))",
         "#3C471F": "#3C471F",
         "#717E74": "#717E74",
+        "#434343": "#434343",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

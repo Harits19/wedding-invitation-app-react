@@ -12,5 +12,9 @@ export const useText = () => {
     theWeddingOf: "The Wedding Of",
     brideName: "Harits",
     groomName: "Fia",
+    and: "dan",
+    kepadaYth: "Kepada Yth.",
+    bapakIbuSaudara: "Bapak/Ibu/Saudara/i",
+    
   };
 };

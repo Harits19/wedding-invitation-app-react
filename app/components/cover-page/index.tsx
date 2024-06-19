@@ -8,7 +8,7 @@ import { FaRegEnvelopeOpen } from "react-icons/fa";
 export default function CoverPage() {
   const { weddingDate, ...kText } = useText();
   const guest = useGuest();
-  const { setShowCover } = useWeddingState();
+  const { setShowCover, showCover } = useWeddingState();
   const RenderName = ({ text }: { text: string }) => {
     return <span className="font-cardo text-3xl ">{text}</span>;
   };
@@ -24,7 +24,9 @@ export default function CoverPage() {
     );
   };
   return (
-    <div className="bg-white absolute top-0 bottom-0 z-10 left-0 right-0">
+    <div
+      className={`bg-white absolute top-0 bottom-0 z-10 left-0 right-0 ${!showCover ? "animate-fade-out-bottom-top" : ""}`}
+    >
       <Background1 className="h-full" />
       <Background1 className="h-fit bottom-0" />
       <Background1 className="rotate-180 h-fit" />

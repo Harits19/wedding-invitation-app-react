@@ -186,8 +186,18 @@ module.exports = {
             opacity: "1",
           },
         },
-
+        "fade-out-bottom-top": {
+          "0%": {
+            marginTop: "0%",
+            opacity: "1",
+          },
+          "100%": {
+            marginTop: "-100%",
+            opacity: "0",
+          },
+        },
       },
+
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
@@ -205,6 +215,7 @@ module.exports = {
         "bottom-top-1s": "bottom-top 1s ease-in-out",
         "top-bottom-fade": "top-bottom-fade 2s",
         "bottom-top-fade": "bottom-top-fade 2s",
+        "fade-out-bottom-top": "fade-out-bottom-top 2s forwards",
 
 
       },

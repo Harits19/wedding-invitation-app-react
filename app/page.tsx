@@ -6,6 +6,7 @@ import WelcomePage from "./components/welcome-page";
 import { WeddingContext } from "./hooks/useWeddingProvider";
 import MusicControl from "./components/music-control";
 import { kPublic } from "./constans/public";
+import IntroductionPage from "./components/introduction-page";
 
 export default function Page() {
   const [showCover, setShowCover] = useState(true);
@@ -50,12 +51,13 @@ export default function Page() {
       }}
     >
       <div className="bg-gray-50   w-screen h-screen flex flex-row justify-center font-cormorant">
-        <div className="flex flex-col relative w-mobile overflow-y-scroll h-screen">
+        <div
+          className={`flex flex-col relative w-mobile ${showCover ? "overflow-y-hidden" : "overflow-y-scroll"} h-screen`}
+        >
           <CoverPage />
           <WelcomePage />
+          <IntroductionPage />
           <WelcomePage />
-          <WelcomePage />
-
 
           {!showCover && (
             <div className="fixed  flex flex-row justify-end w-mobile bottom-0">

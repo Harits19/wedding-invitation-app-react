@@ -7,6 +7,7 @@ export const kColor = {
   "primary-color": "#B48570",
   "background-color": "#DBC0AD",
   "background-color-light": "#F1E7E0",
+  "white-linen": "#FAEFEB"
 };
 module.exports = {
   darkMode: ["class"],
@@ -58,7 +59,7 @@ module.exports = {
 
       },
       width: {
-        "mobile": "360px",
+        "mobile": "412px",
       },
       colors: {
         ...kColor,
@@ -147,12 +148,16 @@ module.exports = {
           "100%": { opacity: "1", transform: "scale(1)" },
         },
         "fade-in-top-bottom": {
-          "0%": { opacity: "0", marginTop: -10 },
-          "100%": { opacity: "1", marginTop: 0 },
+          "0%": {
+            opacity: "0", top: "-10%", position: "relative"
+          },
+          "100%": { opacity: "1", top: "0%", position: "relative" },
         },
         "fade-in-bottom-top": {
-          "0%": { opacity: "0", marginTop: 10 },
-          "100%": { opacity: "1", marginTop: 0 },
+          "0%": {
+            opacity: "0", top: "10%", position: "relative"
+          },
+          "100%": { opacity: "1", top: "0%", position: "relative" },
         },
         "fade-in": {
           "0%": { opacity: "0" },

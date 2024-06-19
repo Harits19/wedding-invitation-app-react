@@ -46,20 +46,6 @@ export default function WelcomePage() {
           <div className="font-cardo text-base">{text.weddingDate}</div>
         </InViewWrapper>
       </div>
-
-      {/* <div className=" flex flex-1" />
-      <div className="px-4 flex flex-col justify-center gap-y-6">
-        <div className="text-[24px]">{text.theWeddingOf}</div>
-        <div className="font-brittany text-[64px]  text-right">
-          {text.brideName}
-          <br />
-          &
-          <br />
-          {text.groomName}
-        </div>
-        <div className="text-[24px]">{text.weddingDate}</div>
-      </div>
-      <div className=" flex flex-1" /> */}
     </div>
   );
 }

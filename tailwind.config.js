@@ -203,6 +203,24 @@ module.exports = {
             opacity: "1",
           },
         },
+        "left-right": {
+          "0%": {
+            marginLeft: -100,
+            opacity: "0",
+          },
+          "100%": {
+            opacity: "1",
+          },
+        },
+        "right-left": {
+          "0%": {
+            marginRight: -100,
+            opacity: "0",
+          },
+          "100%": {
+            opacity: "1",
+          },
+        },
       },
 
       animation: {
@@ -223,6 +241,9 @@ module.exports = {
         "top-bottom-fade": "top-bottom-fade 2s",
         "bottom-top-fade": "bottom-top-fade 2s",
         "fade-out-bottom-top": "fade-out-bottom-top 2s forwards",
+        "left-right": "left-right 2s forwards",
+        "right-left": "right-left 2s forwards",
+
 
 
       },

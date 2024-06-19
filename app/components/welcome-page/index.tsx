@@ -1,6 +1,7 @@
 import { kPublic } from "@/app/constans/public";
 import { useText } from "@/app/hooks/useText";
 import Image from "next/image";
+import InViewWrapper from "../inview-wrapper";
 
 export default function WelcomePage() {
   const text = useText();
@@ -16,7 +17,7 @@ export default function WelcomePage() {
   );
 
   return (
-    <div className=" h-screen relative overflow-hidden flex flex-col bg-background-color-light font-cardo text-primary-color">
+    <div className=" min-h-screen relative overflow-hidden flex flex-col bg-background-color-light font-cardo text-primary-color">
       <Image
         alt=""
         src={kPublic.background1}
@@ -28,7 +29,7 @@ export default function WelcomePage() {
       <SideFlower className="top-0 rotate-180 left-0 -ml-10 -mt-20" />
       <div className="flex flex-col absolute top-0 bottom-0 left-0 right-0 z-auto">
         <div className="h-14" />
-        <div className="flex flex-row justify-end">
+        <InViewWrapper className="flex flex-row justify-end animate-right-left">
           <Image
             className="rounded-full overflow-hidden border-8 w-1/2 mr-8 shadow-3xl"
             alt=""
@@ -36,14 +37,14 @@ export default function WelcomePage() {
             width={214}
             height={317}
           />
-        </div>
+        </InViewWrapper>
         <div className="h-10" />
-        <div className="text-[29px] ml-4">
+        <InViewWrapper className="text-[29px] ml-4 animate-left-right">
           <div>{text.groomName}</div>
           <div className="-mt-2">&</div>
           <div className="-mt-2">{text.brideName}</div>
           <div className="font-cardo text-base">{text.weddingDate}</div>
-        </div>
+        </InViewWrapper>
       </div>
 
       {/* <div className=" flex flex-1" />

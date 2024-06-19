@@ -53,6 +53,9 @@ export default function Page() {
         <div className="flex flex-col relative w-mobile overflow-y-scroll h-screen">
           <CoverPage />
           <WelcomePage />
+          <WelcomePage />
+          <WelcomePage />
+
 
           {!showCover && (
             <div className="fixed  flex flex-row justify-end w-mobile bottom-0">

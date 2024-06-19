@@ -1,15 +1,17 @@
 import { useWeddingState } from "@/app/hooks/useWeddingProvider";
-import { FaMusic, FaStopCircle } from "react-icons/fa";
+import { FaMicrophoneAltSlash, FaMusic } from "react-icons/fa";
 
 export default function MusicControl() {
   const { musicIsPlaying, setMusicIsPlaying } = useWeddingState();
-  const IconControl = musicIsPlaying ? FaStopCircle : FaMusic;
+  const IconControl = musicIsPlaying ? FaMusic : FaMicrophoneAltSlash;
   return (
-    <IconControl
-      className=" text-[32px] ml-4 mb-6 text-#717E74"
-      onClick={() => {
-        setMusicIsPlaying(!musicIsPlaying);
-      }}
-    />
+    <div className="border-2 mb-20 border-#E97777C7 bg-white rounded p-1 flex flex-col h-min">
+      <IconControl
+        className=" text-[16px]  text-#E97777C7"
+        onClick={() => {
+          setMusicIsPlaying(!musicIsPlaying);
+        }}
+      />
+    </div>
   );
 }

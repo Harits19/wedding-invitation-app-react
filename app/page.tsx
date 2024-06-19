@@ -1,19 +1,44 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CoverPage from "./components/cover-page";
 import WelcomePage from "./components/welcome-page";
 import { WeddingContext } from "./hooks/useWeddingProvider";
 import MusicControl from "./components/music-control";
+import { kPublic } from "./constans/public";
 
 export default function Page() {
   const [showCover, setShowCover] = useState(true);
   const [musicIsPlaying, setMusicIsPlaying] = useState(false);
+  const audio = useMemo(
+    () => new Audio(kPublic.backgroundMusic),
+    [],
+  );
+
+  useEffect(() => {
+    audio.loop = true;
+    return () => {
+      audio.pause();
+    };
+  }, [audio]);
+
+  useEffect(() => {
+    if (musicIsPlaying) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }, [audio, musicIsPlaying]);
 
   return (
     <WeddingContext.Provider
       value={{
-        setShowCover,
+        setShowCover: (value) => {
+          setShowCover(value);
+          if (value === false) {
+            setMusicIsPlaying(true);
+          }
+        },
         showCover,
         musicIsPlaying,
         setMusicIsPlaying,
@@ -25,7 +50,7 @@ export default function Page() {
           <WelcomePage />
 
           {!showCover && (
-            <div className="fixed bottom-0">
+            <div className="fixed  flex flex-row justify-end w-mobile bottom-0">
               <MusicControl />
             </div>
           )}

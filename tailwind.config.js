@@ -4,6 +4,8 @@ export const kColor = {
   driftwood: "#ae814c",
   "#E97777C7": "#E97777C7",
   "#CB2F2FC7": "#CB2F2FC7",
+  "primary-color": "#725641",
+  "background-color": "#DBC0AD",
 };
 module.exports = {
   darkMode: ["class"],
@@ -64,6 +66,7 @@ module.exports = {
         "#3C471F": "#3C471F",
         "#717E74": "#717E74",
         "#434343": "#434343",
+        "#F1E7E0": "#F1E7E0",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

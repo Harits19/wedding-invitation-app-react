@@ -6,6 +6,7 @@ export const kColor = {
   "#CB2F2FC7": "#CB2F2FC7",
   "primary-color": "#725641",
   "background-color": "#DBC0AD",
+  "background-color-light": "#F1E7E0"
 };
 module.exports = {
   darkMode: ["class"],
@@ -42,6 +43,9 @@ module.exports = {
       },
     },
     extend: {
+      boxShadow: {
+        '3xl': '13px 7px 10px 0px rgba(0,0,0,0.5)',
+      },
       maxWidth: {
         360: "360px",
       },

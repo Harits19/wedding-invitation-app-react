@@ -10,12 +10,16 @@ import { kPublic } from "./constans/public";
 export default function Page() {
   const [showCover, setShowCover] = useState(true);
   const [musicIsPlaying, setMusicIsPlaying] = useState(false);
-  const audio = useMemo(
-    () => new Audio(kPublic.backgroundMusic),
-    [],
-  );
+  const audio = useMemo(() => {
+    try {
+      return new Audio(kPublic.backgroundMusic ?? "");
+    } catch (error) {
+      return undefined;
+    }
+  }, []);
 
   useEffect(() => {
+    if (!audio) return;
     audio.loop = true;
     return () => {
       audio.pause();
@@ -23,6 +27,7 @@ export default function Page() {
   }, [audio]);
 
   useEffect(() => {
+    if (!audio) return;
     if (musicIsPlaying) {
       audio.play();
     } else {

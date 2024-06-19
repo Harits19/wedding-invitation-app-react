@@ -4,9 +4,9 @@ export const kColor = {
   driftwood: "#ae814c",
   "#E97777C7": "#E97777C7",
   "#CB2F2FC7": "#CB2F2FC7",
-  "primary-color": "#725641",
+  "primary-color": "#B48570",
   "background-color": "#DBC0AD",
-  "background-color-light": "#F1E7E0"
+  "background-color-light": "#F1E7E0",
 };
 module.exports = {
   darkMode: ["class"],

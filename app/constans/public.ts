@@ -7,7 +7,8 @@ export const kPublic = {
 
 
   backgroundMusic: "/audio/background-music.webm",
-  brideGroom1: "/images/bride-groom1.jpeg",
+  // brideGroom1: "/images/bride-groom1.jpeg",
+  brideGroom1: "/images/bride-groom1-dummy.jpeg",
   sideFlower1: "/images/side-flower1.png",
   sideFlower2: "/images/side-flower2.png",
   background1: "/images/background1.png",

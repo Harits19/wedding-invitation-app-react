@@ -7,11 +7,13 @@ import { WeddingContext } from "./hooks/useWeddingProvider";
 import MusicControl from "./components/music-control";
 import { kPublic } from "./constans/public";
 import IntroductionPage from "./components/introduction-page";
+import SchedulePage from "./components/schedule-page";
 
 export default function Page() {
   const [showCover, setShowCover] = useState(true);
   const [musicIsPlaying, setMusicIsPlaying] = useState(false);
   const audio = useMemo(() => {
+    return undefined;
     try {
       return new Audio(kPublic.backgroundMusic ?? "");
     } catch (error) {
@@ -63,6 +65,7 @@ export default function Page() {
         >
           <div id={topComponent} />
           <CoverPage />
+          <SchedulePage />
           <WelcomePage />
           <IntroductionPage />
           <WelcomePage />

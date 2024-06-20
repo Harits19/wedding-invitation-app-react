@@ -9,6 +9,7 @@ import { kPublic } from "./constans/public";
 import IntroductionPage from "./components/introduction-page";
 import SchedulePage from "./components/schedule-page";
 import GalleryPage from "./components/gallery-page";
+import StoryPage from "./components/story-page";
 
 export default function Page() {
   const [showCover, setShowCover] = useState(true);
@@ -66,11 +67,12 @@ export default function Page() {
           className={`flex flex-col relative w-mobile ${showCover ? "overflow-y-hidden" : "overflow-y-scroll"} h-screen`}
         >
           <div id={topComponent} />
-          <GalleryPage />
+          <StoryPage />
           <CoverPage />
           <WelcomePage />
           <IntroductionPage />
           <SchedulePage />
+          <GalleryPage />
 
           {!showCover && (
             <div className="fixed w-min mb-20  flex flex-row justify-end self-end bottom-0">

@@ -4,6 +4,8 @@ import moment from "moment";
 export const useText = () => {
   const date = new Date();
   const formatedDate = moment(date).format("dddd, DD MMMM YYYY");
+  const dummyLoveStory =
+    "Hai Mei, Terima kasih telah menjadi bulan bahagia yang mempertemukan saya dan dia. Di sebuah ruangan, bos saya memperkenalkannya sebagai karyawan baru di perusahaan kami. Ya, itulah pertama kali kami bertemu. Tidak ada yang istimewa dengan ini. Biasa aja di awal.";
 
   const dummyData = {
     brideAndGroom: "Fulan & Fulanah",
@@ -51,6 +53,13 @@ export const useText = () => {
     bertempatDi: "Bertempat di",
     lihatLokasi: "Lihat Lokasi",
     gallery: "Gallery",
+    loveStory: {
+      title: "Love Story",
+      value: [1, 1, 1, 1].map(() => ({
+        date: formatedDate,
+        text: dummyLoveStory,
+      })),
+    },
   };
 
   return {

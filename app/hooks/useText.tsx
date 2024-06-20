@@ -50,6 +50,7 @@ export const useText = () => {
     pukul: "Pukul",
     bertempatDi: "Bertempat di",
     lihatLokasi: "Lihat Lokasi",
+    gallery: "Gallery",
   };
 
   return {

@@ -8,12 +8,14 @@ import MusicControl from "./components/music-control";
 import { kPublic } from "./constans/public";
 import IntroductionPage from "./components/introduction-page";
 import SchedulePage from "./components/schedule-page";
+import GalleryPage from "./components/gallery-page";
 
 export default function Page() {
   const [showCover, setShowCover] = useState(true);
   const [musicIsPlaying, setMusicIsPlaying] = useState(false);
   const audio = useMemo(() => {
     return undefined;
+    // eslint-disable-next-line no-unreachable
     try {
       return new Audio(kPublic.backgroundMusic ?? "");
     } catch (error) {
@@ -64,6 +66,7 @@ export default function Page() {
           className={`flex flex-col relative w-mobile ${showCover ? "overflow-y-hidden" : "overflow-y-scroll"} h-screen`}
         >
           <div id={topComponent} />
+          <GalleryPage />
           <CoverPage />
           <WelcomePage />
           <IntroductionPage />

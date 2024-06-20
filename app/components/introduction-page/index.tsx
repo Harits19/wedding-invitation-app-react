@@ -2,18 +2,10 @@ import { kPublic } from "@/app/constans/public";
 import { useText } from "@/app/hooks/useText";
 import Image from "next/image";
 import InViewWrapper from "../inview-wrapper";
+import Background2 from "../background-2";
 
 export default function IntroductionPage() {
   const text = useText();
-  const Background = ({ className = "" }: { className?: string }) => (
-    <Image
-      alt=""
-      src={kPublic.flower5}
-      width={100}
-      height={100}
-      className={`h-1/2 w-full blur-sm absolute bottom-0 object-cover z-auto ${className}`}
-    />
-  );
   const RenderCoupleName = ({
     value: { fullName, parentName, sonOrder },
   }: {
@@ -31,11 +23,10 @@ export default function IntroductionPage() {
   );
 
   const Divider = () => <div className=" flex flex-1 h-0.5 bg-black w-full" />;
+
   return (
-    <div className="min-h-screen w-full relative bg-white-linen font-cardo text-center ">
-      <Background />
-      <Background className="rotate-180 top-0" />
-      <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col z-auto bg-opacity-50 bg-white rounded-xl m-4 p-4 justify-center items-center">
+    <Background2>
+      <div className="bg-opacity-50 bg-white rounded-xl p-4 justify-center items-center flex flex-col flex-1">
         <InViewWrapper className="font-semibold text-[20px] animate-fade-in-top-bottom">
           {text.assalamualaikum}
         </InViewWrapper>
@@ -71,6 +62,6 @@ export default function IntroductionPage() {
           <RenderCoupleName value={text.bride} />
         </InViewWrapper>
       </div>
-    </div>
+    </Background2>
   );
 }

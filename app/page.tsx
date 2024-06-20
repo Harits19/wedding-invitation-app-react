@@ -65,10 +65,9 @@ export default function Page() {
         >
           <div id={topComponent} />
           <CoverPage />
-          <SchedulePage />
           <WelcomePage />
           <IntroductionPage />
-          <WelcomePage />
+          <SchedulePage />
 
           {!showCover && (
             <div className="fixed w-min mb-20  flex flex-row justify-end self-end bottom-0">

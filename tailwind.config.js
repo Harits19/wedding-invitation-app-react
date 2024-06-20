@@ -226,6 +226,14 @@ module.exports = {
             opacity: "1",
           },
         },
+        "flip-right-to-left": {
+          "0%": {
+            transform: "scaleX(-1)",
+          },
+          "100%": {
+            transform: "scaleX(1)",
+          }
+        },
       },
 
       animation: {
@@ -248,7 +256,7 @@ module.exports = {
         "fade-out-bottom-top": "fade-out-bottom-top 2s forwards",
         "left-right": "left-right 2s forwards",
         "right-left": "right-left 2s forwards",
-
+        "flip-right-to-left": "flip-right-to-left 2s ",
 
 
       },

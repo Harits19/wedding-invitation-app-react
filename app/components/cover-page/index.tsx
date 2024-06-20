@@ -30,6 +30,17 @@ export default function CoverPage() {
     );
   };
 
+  const Flower = ({ className = "" }: { className?: string }) => {
+    return (
+      <Image
+        alt=""
+        width={100}
+        height={100}
+        src={kPublic.sideFlower2}
+        className={` h-[150px] left-0 right-0 self-center w-mobile object-contain absolute z-auto ${className}`}
+      />
+    );
+  };
   return (
     <div
       className={`bg-white overflow-hidden absolute top-0 h-screen z-10 left-0 right-0 ${!showCover ? "animate-fade-out-bottom-top" : ""}`}
@@ -42,9 +53,9 @@ export default function CoverPage() {
         src={kPublic.container1}
         className="top-0 bottom-0 self-center p-0"
       />
-      <Background1 src={kPublic.sideFlower2} className="w-[150px] h-[150px] right-0 object-cover" />
-      <Background1 src={kPublic.sideFlower2} className="w-[150px] h-[150px] bottom-0 left-0 rotate-180 object-cover" />
 
+      <Flower className="-mt-8" />
+      <Flower className="rotate-180 -mb-10 bottom-0" />
 
       <div className="absolute text-primary-color top-0 bottom-0 left-0 right-0 flex flex-col justify-center items-center">
         <div className="animate-top-bottom-fade flex flex-col items-center">

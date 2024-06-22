@@ -3,28 +3,38 @@ import Background2 from "../background-2";
 import Image from "next/image";
 import { kPublic } from "@/app/constans/public";
 import InViewWrapper from "../inview-wrapper";
+import { CSSProperties } from "react";
 
 export default function GalleryPage() {
   const text = useText();
-  const GalleryImage = ({ className = "" }: { className?: string }) => (
+  const GalleryImage = ({
+    className = "",
+    style,
+  }: {
+    className?: string;
+    style?: CSSProperties;
+  }) => (
     <Image
-      className={`w-full rounded-md h-full flex flex-1 ${className}`}
+      className={`w-full rounded-md h-full flex flex-1 object-cover ${className}`}
       alt=""
       src={kPublic.brideGroom1}
       width={100}
+      style={style}
       height={50}
     />
   );
 
   const GalleryContainer = ({ className = "" }: { className?: string }) => (
-    <InViewWrapper className={`flex flex-row  gap-x-4 h-1/3 ${className}`}>
+    <InViewWrapper className={`flex flex-row  gap-x-4 h-[200px] ${className}`}>
       <div className="flex flex-col gap-y-4  h-full flex-1 ">
         {[1, 1].map((_, index) => (
-          <GalleryImage key={index} className="h-1/6" />
+          <GalleryImage key={index} className="h-[50px]" style={{
+            objectPosition: '20% 20%'
+          }} />
         ))}
       </div>
       <div className="flex flex-1">
-        <GalleryImage />
+        <GalleryImage className="h-[100px]" />
       </div>
     </InViewWrapper>
   );

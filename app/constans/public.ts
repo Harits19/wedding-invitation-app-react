@@ -1,3 +1,5 @@
+import { kEnv } from "./env";
+
 export const kPublic = {
   image1: "/images/image1.jpg",
   flower3: "/images/flower3.png",
@@ -5,10 +7,10 @@ export const kPublic = {
   flower4: "/images/flower4.png",
   flower5: "/images/flower5.png",
 
-
   backgroundMusic: "/audio/background-music.webm",
-  // brideGroom1: "/images/bride-groom1.jpeg",
-  brideGroom1: "/images/bride-groom1-dummy.jpeg",
+  brideGroom1: kEnv.developeMode
+    ? "/images/bride-groom1-dummy.jpeg"
+    : "/images/bride-groom1.jpeg",
   sideFlower1: "/images/side-flower1.png",
   sideFlower2: "/images/side-flower2.png",
   background1: "/images/background1.png",

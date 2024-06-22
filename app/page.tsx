@@ -10,13 +10,13 @@ import IntroductionPage from "./components/introduction-page";
 import SchedulePage from "./components/schedule-page";
 import GalleryPage from "./components/gallery-page";
 import StoryPage from "./components/story-page";
+import { kEnv } from "./constans/env";
 
 export default function Page() {
   const [showCover, setShowCover] = useState(true);
   const [musicIsPlaying, setMusicIsPlaying] = useState(false);
   const audio = useMemo(() => {
-    return undefined;
-    // eslint-disable-next-line no-unreachable
+    if (kEnv.developeMode) return undefined;
     try {
       return new Audio(kPublic.backgroundMusic ?? "");
     } catch (error) {
@@ -67,12 +67,12 @@ export default function Page() {
           className={`flex flex-col relative w-mobile ${showCover ? "overflow-y-hidden" : "overflow-y-scroll"} h-screen`}
         >
           <div id={topComponent} />
-          <StoryPage />
           <CoverPage />
           <WelcomePage />
           <IntroductionPage />
           <SchedulePage />
           <GalleryPage />
+          <StoryPage />
 
           {!showCover && (
             <div className="fixed w-min mb-20  flex flex-row justify-end self-end bottom-0">

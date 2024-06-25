@@ -52,7 +52,7 @@ export default function GreetingPage() {
             <InViewWrapper className=" h-[400px] shadow overflow-y-scroll rounded-lg gap-y-4 flex flex-col p-4 mx-4  bg-wedbackground-color">
               {new Array(20).fill(undefined).map((_, index) => (
                 <InViewWrapper
-                  className="animate-left-right shadow-lg bg-white text-left rounded-lg flex flex-col p-4 items-stretch w-fit"
+                  className="animate-fade-in-bottom-top shadow-lg bg-white text-left rounded-lg flex flex-col p-4 items-stretch w-fit"
                   key={index}
                 >
                   <div className="text-wedDriftwood">Nama</div>

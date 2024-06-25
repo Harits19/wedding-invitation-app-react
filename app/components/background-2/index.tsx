@@ -17,6 +17,8 @@ export default function Background2({ children }: { children: ReactNode }) {
     <div className="min-h-screen w-full relative bg-white-linen font-cardo text-center ">
       <Background />
       <Background className="rotate-180 top-0" />
+      <Background className="rotate-180 top-0" />
+
       <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col z-auto  m-4 ">
         {children}
       </div>

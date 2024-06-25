@@ -16,7 +16,7 @@ export default function GalleryPage() {
   }) => (
     <Image
       className={`w-full rounded-md h-full flex flex-1 object-cover ${className}`}
-      alt=""
+      alt="asad"
       src={kPublic.brideGroom1}
       width={100}
       style={style}
@@ -25,12 +25,12 @@ export default function GalleryPage() {
   );
 
   const GalleryContainer = ({ className = "" }: { className?: string }) => (
-    <InViewWrapper className={`flex flex-row  gap-x-4 h-[200px] ${className}`}>
-      <div className="flex flex-col gap-y-4  h-full flex-1 ">
+    <InViewWrapper className={`flex flex-row  gap-x-4 h-[300px] ${className}`}>
+      <div className="flex flex-col gap-y-4  flex-1 h-full ">
         {[1, 1].map((_, index) => (
-          <GalleryImage key={index} className="h-[50px]" style={{
-            objectPosition: '20% 20%'
-          }} />
+          <div key={index} className="flex flex-1 overflow-hidden ">
+            <GalleryImage style={{ objectPosition: "20% 20%" }} />
+          </div>
         ))}
       </div>
       <div className="flex flex-1">

@@ -7,7 +7,7 @@ export default function StoryPage() {
   const text = useText();
   return (
     <Background2>
-      <div className="flex flex-col h-full items-center justify-center font-cardo text-black">
+      <div className="flex flex-col h-full items-center justify-center font-cardo text-black py-10">
         <InViewWrapper className="text-[37px] animate-fade-in-bottom-top">{text.loveStory.title}</InViewWrapper>
         {text.loveStory.value.map((item, index) => {
           const Line = () => <div className="bg-black h-0.5 flex flex-1" />;
@@ -19,7 +19,7 @@ export default function StoryPage() {
             </div>
           );
           return (
-            <div key={index}>
+            <div key={index} className="w-full">
               {index !== 0 ? <Separator /> : <div />}
               <InViewWrapper className="font-poppins text-[10px] my-4 animate-fade-in-top-bottom">
                 <div className="font-cardo font-bold">{item.date}</div>

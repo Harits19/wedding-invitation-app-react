@@ -3,10 +3,8 @@ import moment from "moment";
 import { kEnv } from "../constans/env";
 
 export const useText = () => {
-  const date = new Date();
+  const date = new Date("13-December-2024");
   const formatedDate = moment(date).format("dddd, DD MMMM YYYY");
-  const dummyLoveStory =
-    "Hai Mei, Terima kasih telah menjadi bulan bahagia yang mempertemukan saya dan dia. Di sebuah ruangan, bos saya memperkenalkannya sebagai karyawan baru di perusahaan kami. Ya, itulah pertama kali kami bertemu. Tidak ada yang istimewa dengan ini. Biasa aja di awal.";
 
   const dummyData = {
     brideAndGroom: "Fulan & Fulanah",
@@ -56,10 +54,36 @@ export const useText = () => {
     gallery: "Gallery",
     loveStory: {
       title: "Love Story",
-      value: [1, 1, 1, 1].map(() => ({
-        date: formatedDate,
-        text: dummyLoveStory,
-      })),
+      value: [
+        {
+          date: "16 Februari 2019",
+          text: "Pertama kali bertemu di acara TR I RKIM UB. Harits sebagai panitia dan Fia sebagai peserta TR",
+        },
+        {
+          date: "18 Agustus 2019",
+          text: "Bertemu kembali pada acara kunjungan dan upgrading RKIM di Yogyakarta",
+        },
+        {
+          date: "Oktober 2019",
+          text: "Setelah kegiatan di Yogyakarta, Fia dan Harits mulai menjalin komunikasi dan mulai mengikuti beberapa lomba team bersama",
+        },
+        {
+          date: "Februari 2020",
+          text: "Memutuskan untuk saling berkomitmen satu dengan yang lain",
+        },
+        {
+          date: "13 April 2024",
+          text: "Keluarga Harits silaturahmi ke kediaman keluarga Fia",
+        },
+        {
+          date: "29 Juni 2024",
+          text: "Keluarga Fia silaturahmi ke kediaman keluarga Harits",
+        },
+        {
+          date: moment(date).format("DD MMMM YYYY"),
+          text: "Dengan mengucap Bissmillahirrahmanirrahim, InSyaa Allah atas restu kedua orang tua dan keluarga besar, kami mengucapkan ikrar janji suci melaksanakan sunnah Rasul untuk menikah agar selalu bersama hingga ke surga-Nya. Mohon do’anya agar rumah tangga kami selalu dalam lindungan Allah, Aamiin",
+        },
+      ],
     },
   };
 

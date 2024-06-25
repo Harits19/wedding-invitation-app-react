@@ -4,13 +4,14 @@ import { useText } from "@/app/hooks/useText";
 import { useWeddingState } from "@/app/hooks/useWeddingProvider";
 import Image from "next/image";
 import { FaRegEnvelopeOpen } from "react-icons/fa";
+import ButtonBrown from "../button-brown";
 
 export default function CoverPage() {
   const { weddingDate, ...kText } = useText();
   const guest = useGuest();
   const { setShowCover, showCover } = useWeddingState();
   const RenderName = ({ text }: { text: string }) => {
-    return <span className="font-cardo text-3xl text-303333 ">{text}</span>;
+    return <span className="font-cardo text-3xl text-a303333 ">{text}</span>;
   };
   const Background1 = ({
     className = "",
@@ -57,7 +58,7 @@ export default function CoverPage() {
       <Flower className="-mt-8" />
       <Flower className="rotate-180 -mb-10 bottom-0" />
 
-      <div className="absolute text-primary-color top-0 bottom-0 left-0 right-0 flex flex-col justify-center items-center">
+      <div className="absolute text-aprimary-color top-0 bottom-0 left-0 right-0 flex flex-col justify-center items-center">
         <div className="animate-top-bottom-fade flex flex-col items-center">
           <span className="font-arizona  text-xl">{kText.theWeddingOf}</span>
           <RenderName text={kText.brideName} />
@@ -72,19 +73,18 @@ export default function CoverPage() {
           <div className="animate-fade-in-bottom-top">
             {kText.bapakIbuSaudara}
           </div>
-          <div className="my-2 animate-fade-in-bottom-top font-poppins font-extrabold text-xl text-303333 ">
+          <div className="my-2 animate-fade-in-bottom-top font-poppins font-extrabold text-xl text-a303333 ">
             {guest.name}
           </div>
           <div className="h-2" />
-          <button
+          <ButtonBrown
             onClick={() => {
               setShowCover(false);
             }}
-            className="border animate-fade-in-bottom-top border-none bg-primary-color text-white px-3 py-1 font-cardo rounded-lg flex flex-row items-center gap-x-2"
           >
             <FaRegEnvelopeOpen />
             {kText.bukaUndangan}
-          </button>
+          </ButtonBrown>
         </div>
       </div>
     </div>

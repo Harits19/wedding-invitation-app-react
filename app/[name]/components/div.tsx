@@ -15,7 +15,7 @@ export default function Div({
       <div
         key={`${inView}`}
         {...props}
-        className={`text-303333 ${props.className}`}
+        className={`text-a303333 ${props.className}`}
         style={{
           fontFamily: kFontFamily[family],
           lineHeight: 1.7,

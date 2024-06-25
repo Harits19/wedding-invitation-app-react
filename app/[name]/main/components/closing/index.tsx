@@ -20,7 +20,7 @@ export default function Closing() {
 
         <Image
           alt="closing photo"
-          className="border-driftwood border-4 rounded-md w-[219px] h-[219px] animate-fade-zoom"
+          className="border-aDriftwood border-4 rounded-md w-[219px] h-[219px] animate-fade-zoom"
           width={219}
           height={219}
           src={concatBaseUrl(data?.photo?.gallery.at(0))}
@@ -32,7 +32,7 @@ export default function Closing() {
         <div className="h-10" />
         <div className="text-sm animate-fade-zoom">{kText.terimaKasih}</div>
       </Div>
-      <div ref={ref} className="bg-driftwood relative flex flex-col">
+      <div ref={ref} className="bg-aDriftwood relative flex flex-col">
         <button
           onClick={() => {
             window.open(`https://www.instagram.com/${kText.instagramId}`);

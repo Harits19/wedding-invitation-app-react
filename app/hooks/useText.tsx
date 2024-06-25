@@ -113,6 +113,11 @@ export const useText = () => {
       sonOrder: "Putri kedua dari",
       parentName: "Muhariyadi & Mother Name",
     },
+    reservasi: "Reservasi",
+    sayaAkanDatang: "Saya Akan Datang",
+    sayaMasihRagu: "Saya Masih Ragu",
+    maafSayaTidakBisaDatang: "Maaf, Saya Tidak Bisa Datang",
+    silahkanIsiNamaAnda: "Silahkan Isi Nama Anda",
     ...(kEnv.developeMode ? dummyData : {}),
   };
 };

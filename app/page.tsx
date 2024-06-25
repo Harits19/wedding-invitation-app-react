@@ -11,6 +11,7 @@ import SchedulePage from "./components/schedule-page";
 import GalleryPage from "./components/gallery-page";
 import StoryPage from "./components/story-page";
 import { kEnv } from "./constans/env";
+import AttendancePage from "./components/attendance-page";
 
 export default function Page() {
   const [showCover, setShowCover] = useState(true);
@@ -68,6 +69,7 @@ export default function Page() {
         >
           <div id={topComponent} />
           <CoverPage />
+          <AttendancePage />
           <WelcomePage />
           <IntroductionPage />
           <SchedulePage />

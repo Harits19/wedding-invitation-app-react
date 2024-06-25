@@ -22,19 +22,19 @@ export default function Cover({ children }: { children: ReactNode }) {
   const Body = () => {
     return (
       <div className="flex flex-col items-center">
-        <Div family="averia" className="text-xl text-303333">
+        <Div family="averia" className="text-xl text-a303333">
           {kText.theWedding}
         </Div>
         <div className="h-6" />
         <Image
-          className="rounded-full w-[216px] h-[216px] bg-303333"
+          className="rounded-full w-[216px] h-[216px] bg-a303333"
           src={concatBaseUrl(data?.photo?.cover)}
           alt="image"
           width={216}
           height={216}
         />
         <br />
-        <Div className="text-3xl text-303333" family="berkshire">
+        <Div className="text-3xl text-a303333" family="berkshire">
           {data?.initial}
         </Div>
         <br />
@@ -47,7 +47,7 @@ export default function Cover({ children }: { children: ReactNode }) {
             setShowCover(false);
             setPlaying();
           }}
-          className="bg-driftwood py-2 px-12 rounded-sm"
+          className="bg-aDriftwood py-2 px-12 rounded-sm"
         >
           <Div family="averia" className="text-white">
             {kText.bukaUndangan}

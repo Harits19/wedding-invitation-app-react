@@ -15,7 +15,7 @@ export default function People() {
     return (
       <div className="rounded-xl text-center relative flex flex-col flex-1 overflow-hidden   items-center px-5 py-14 shadow-2xl mx-4">
         <Background className="-z-10 h-screen w-screen -scale-y-100" />
-        <div className="w-[160px] h-[160px] bg-driftwood rounded-full  p-1 overflow-hidden">
+        <div className="w-[160px] h-[160px] bg-aDriftwood rounded-full  p-1 overflow-hidden">
           <Image
             alt="mempelai 1"
             src={concatBaseUrl(item?.photo)}

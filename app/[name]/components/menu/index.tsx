@@ -41,7 +41,7 @@ export default function Menu() {
   const { setPlaying, playing } = useInvitationDetailProvider();
 
   return (
-    <div className=" bg-aDriftwood flex flex-row rounded-full p-2 justify-between px-5 flex-1 bg-opacity-80 shadow-2xl  w-[296px]">
+    <div className=" bg-wedDriftwood flex flex-row rounded-full p-2 justify-between px-5 flex-1 bg-opacity-80 shadow-2xl  w-[296px]">
       {[
         menus.map((e, index) => {
           const selectedMenu = state.activeMenu === e.name;

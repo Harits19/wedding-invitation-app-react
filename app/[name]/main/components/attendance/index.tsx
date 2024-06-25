@@ -27,7 +27,7 @@ export default function Attendance() {
       </Select>
       <div className="h-3" />
       <div className="flex flex-row">
-        <button className="bg-aDriftwood w-fit px-7 py-2 rounded-md">
+        <button className="bg-wedDriftwood w-fit px-7 py-2 rounded-md">
           <Div className="text-white">{kText.kirim}</Div>
         </button>
       </div>

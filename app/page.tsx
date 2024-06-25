@@ -17,6 +17,7 @@ export default function Page() {
   const [showCover, setShowCover] = useState(true);
   const [musicIsPlaying, setMusicIsPlaying] = useState(false);
   const audio = useMemo(() => {
+    return undefined;
     if (kEnv.developeMode) return undefined;
     try {
       return new Audio(kPublic.backgroundMusic ?? "");

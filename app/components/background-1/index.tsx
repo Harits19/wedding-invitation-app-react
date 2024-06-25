@@ -14,7 +14,7 @@ export default function Background1({ children }: { children: ReactNode }) {
   );
 
   return (
-    <div className=" min-h-screen relative overflow-hidden flex flex-col bg-abackground-color-light font-cardo text-aprimary-color">
+    <div className=" min-h-screen relative overflow-hidden flex flex-col bg-wedbackground-color-light font-cardo text-wedprimary-color">
       <Image
         alt=""
         src={kPublic.background1}

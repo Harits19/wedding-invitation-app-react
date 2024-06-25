@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export const kColor = {
-  a303333: "#303333",
-  aDriftwood: "#ae814c",
-  "aE97777C7": "#E97777C7",
-  "aprimary-color": "#B48570",
-  "abackground-color": "#DBC0AD",
-  "abackground-color-light": "#F1E7E0",
-  "awhite-linen": "#FAEFEB"
+  wed303333: "#303333",
+  wedDriftwood: "#ae814c",
+  "wedE97777C7": "#E97777C7",
+  "wedprimary-color": "#B48570",
+  "wedbackground-color": "#DBC0AD",
+  "wedbackground-color-light": "#F1E7E0",
+  "wedwhite-linen": "#FAEFEB"
 };
 module.exports = {
   darkMode: ["class"],

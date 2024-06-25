@@ -11,7 +11,7 @@ export default function CoverPage() {
   const guest = useGuest();
   const { setShowCover, showCover } = useWeddingState();
   const RenderName = ({ text }: { text: string }) => {
-    return <span className="font-cardo text-3xl text-a303333 ">{text}</span>;
+    return <span className="font-cardo text-3xl text-wed303333 ">{text}</span>;
   };
   const Background1 = ({
     className = "",
@@ -58,7 +58,7 @@ export default function CoverPage() {
       <Flower className="-mt-8" />
       <Flower className="rotate-180 -mb-10 bottom-0" />
 
-      <div className="absolute text-aprimary-color top-0 bottom-0 left-0 right-0 flex flex-col justify-center items-center">
+      <div className="absolute text-wedprimary-color top-0 bottom-0 left-0 right-0 flex flex-col justify-center items-center">
         <div className="animate-top-bottom-fade flex flex-col items-center">
           <span className="font-arizona  text-xl">{kText.theWeddingOf}</span>
           <RenderName text={kText.brideName} />
@@ -73,7 +73,7 @@ export default function CoverPage() {
           <div className="animate-fade-in-bottom-top">
             {kText.bapakIbuSaudara}
           </div>
-          <div className="my-2 animate-fade-in-bottom-top font-poppins font-extrabold text-xl text-a303333 ">
+          <div className="my-2 animate-fade-in-bottom-top font-poppins font-extrabold text-xl text-wed303333 ">
             {guest.name}
           </div>
           <div className="h-2" />

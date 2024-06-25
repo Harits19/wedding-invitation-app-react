@@ -40,7 +40,7 @@ export default function SchedulePage() {
               onClick={() => {
                 window.open(linkLocation);
               }}
-              className="bg-aprimary-color text-white rounded-md font-cardo text-[12px] items-center justify-center px-2 py-1 flex flex-row"
+              className="bg-wedprimary-color text-white rounded-md font-cardo text-[12px] items-center justify-center px-2 py-1 flex flex-row"
             >
               <FaLocationArrow width={12} height={12} size={"12px"} />
               <div className="w-2" />

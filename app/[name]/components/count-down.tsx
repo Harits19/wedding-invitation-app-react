@@ -26,7 +26,7 @@ export default function CountDown() {
       {Object.entries(diff).map((e, i) => (
         <Div
           family="poppins"
-          className="h-[70px] bg-aDriftwood text-xl w-[70px] text-white rounded-lg items-center justify-center flex flex-col"
+          className="h-[70px] bg-wedDriftwood text-xl w-[70px] text-white rounded-lg items-center justify-center flex flex-col"
           key={i}
         >
           {e[1]}

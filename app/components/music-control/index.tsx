@@ -12,9 +12,9 @@ export default function MusicControl() {
     iconType: IconType;
     onClick: () => void;
   }) => (
-    <div className="border-2 border-#aE97777C7 bg-white rounded p-1 flex flex-col h-min">
+    <div className="border-2 border-#wedE97777C7 bg-white rounded p-1 flex flex-col h-min">
       <RenderIconType
-        className=" text-[16px]  text-#aE97777C7"
+        className=" text-[16px]  text-#wedE97777C7"
         onClick={onClick}
       />
     </div>

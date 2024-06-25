@@ -97,7 +97,7 @@ export const useText = () => {
     theWeddingOf: "The Wedding Of",
     brideName: "Harits",
     groomName: "Fia",
-    and: "dan",
+    and: "and",
     kepadaYth: "Kepada Yth.",
     bapakIbuSaudara: "Bapak/Ibu/Saudara/i",
     assalamualaikum: "Assalamu’alaikum Wr. Wb.",

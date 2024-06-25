@@ -9,6 +9,12 @@ export default function GreetingPage() {
   const { name } = useGuest();
   const inputClassName =
     "w-full px-4 py-3 rounded-lg bg-white outline-none shadow-lg";
+
+  const Gradient = ({ className = "" }: { className?: string }) => (
+    <div
+      className={`bg-gradient-to-b from-wedbackground-color to-transparent left-0 bottom-0 right-0 h-8  absolute z-auto mx-4 rounded-lg ${className}`}
+    />
+  );
   return (
     <Background2 className="mx-0">
       <div className="flex flex-1 justify-center flex-col w-full items-center font-cardo text-black">
@@ -42,19 +48,25 @@ export default function GreetingPage() {
         <div className="h-12" />
 
         <div className="w-full mx-4">
-          <InViewWrapper className=" h-[400px] rounded-lg overflow-hidden shadow overflow-y-scroll gap-y-4 flex flex-col p-4 mx-4  bg-wedbackground-color">
-            {new Array(20).fill(undefined).map((_, index) => (
-              <InViewWrapper
-                className="animate-left-right shadow-lg bg-white text-left rounded-lg flex flex-col p-4 items-stretch w-full"
-                key={index}
-              >
-                <div className="text-wedDriftwood">Nama</div>
-                <div className="font-poppins">
-                  Semoga Sakinah Mawadah Warahmah
-                </div>
-              </InViewWrapper>
-            ))}
-          </InViewWrapper>
+          <div className="relative rounded-lg overflow-hidden">
+            <InViewWrapper className=" h-[400px] shadow overflow-y-scroll rounded-lg gap-y-4 flex flex-col p-4 mx-4  bg-wedbackground-color">
+              {new Array(20).fill(undefined).map((_, index) => (
+                <InViewWrapper
+                  className="animate-left-right shadow-lg bg-white text-left rounded-lg flex flex-col p-4 items-stretch w-fit"
+                  key={index}
+                >
+                  <div className="text-wedDriftwood">Nama</div>
+                  <div className="font-poppins">
+                    Semoga Sakinah Mawadah Warahmah
+                  </div>
+                </InViewWrapper>
+              ))}
+            </InViewWrapper>
+            <Gradient className="top-0" />
+            <Gradient className="bottom-0 rotate-180" />
+            <Gradient className="top-0" />
+            <Gradient className="bottom-0 rotate-180" />
+          </div>
         </div>
       </div>
     </Background2>

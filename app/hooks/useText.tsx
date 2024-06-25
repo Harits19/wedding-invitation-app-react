@@ -105,7 +105,7 @@ export const useText = () => {
       "Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta’ala, insyaaAllah kami akan menyelenggarakan acara pernikahan :",
     groom: {
       fullName: "Abdullah Harits S.Kom",
-      sonOrder: "Putra pertama dari",
+      sonOrder: "Putra kedua dari",
       parentName:
         "Bpk. H. Wharnomo Fauzy, S.E., M.M dan Ibu Hj. Jatisari Rahmawati",
     },

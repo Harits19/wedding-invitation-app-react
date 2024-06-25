@@ -19,7 +19,7 @@ export default function SchedulePage() {
     };
     align?: "left" | "right";
   }) => (
-    <div className=" w-full border border-white p-2 h-fit bg-white rounded-xl bg-opacity-50">
+    <div className=" w-full border border-white p-2 bg-white rounded-xl bg-opacity-50">
       <div
         className={` w-full flex flex-col shadow-xl rounded-xl p-2 font-poppins text-black `}
       >
@@ -54,7 +54,7 @@ export default function SchedulePage() {
 
   return (
     <Background1>
-      <div className="flex flex-col p-4  h-full justify-center items-center ">
+      <div className="flex flex-col p-4 justify-center items-center ">
         <RenderCard value={text.akad} align="right" />
         <div className="h-4" />
         <RenderCard value={text.resepsi} />

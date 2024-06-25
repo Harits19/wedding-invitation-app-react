@@ -14,19 +14,20 @@ export default function Background1({ children }: { children: ReactNode }) {
   );
 
   return (
-    <div className=" min-h-screen relative overflow-hidden flex flex-col bg-wedbackground-color-light font-cardo text-wedprimary-color">
-      <Image
-        alt=""
-        src={kPublic.background1}
-        width={100}
-        height={100}
-        className="h-full w-full object-cover absolute top-0 bottom-0 left-0 right-0"
-      />
-      <SideFlower />
-      <SideFlower className="top-0 rotate-180 left-0 -ml-10 -mt-20" />
-      <div className="flex flex-col absolute top-0 bottom-0 left-0 right-0 z-auto">
-        {children}
-      </div>
+    <div className="relative w-full bg-wedbackground-color-light  font-cardo text-wedprimary-color">
+      {/* <div className="absolute z-auto h-full w-full">
+        <Image
+          alt=""
+          src={kPublic.background1}
+          width={100}
+          height={100}
+          className=" object-cover  w-full h-full"
+        />
+      </div> */}
+      <SideFlower className="z-auto" />
+      <SideFlower className="top-0 rotate-180 left-0  z-auto" />
+
+      <div className={`z-50 py-[320px]`}>{children}</div>
     </div>
   );
 }

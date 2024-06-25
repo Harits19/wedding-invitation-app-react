@@ -1,9 +1,9 @@
 import { useText } from "@/app/hooks/useText";
-import Background2 from "../background-2";
 import InViewWrapper from "../inview-wrapper";
 import { FaChevronDown } from "react-icons/fa";
 import { useGuest } from "@/app/hooks/useGuest";
 import { useState } from "react";
+import Background1 from "../background-1";
 
 export default function AttendancePage() {
   const text = useText();
@@ -14,8 +14,8 @@ export default function AttendancePage() {
   const [, setCurrentName] = useState<string>(name);
   const [attendance, setAttendance] = useState("datang");
   return (
-    <Background2>
-      <div className="flex flex-1 justify-center flex-col items-center font-cardo text-black ">
+    <Background1>
+      <div className="flex flex-1 justify-center flex-col items-center font-cardo text-black px-8">
         <InViewWrapper className="animate-fade-zoom text-[37px]">
           {text.reservasi}
         </InViewWrapper>
@@ -68,7 +68,10 @@ export default function AttendancePage() {
             Simpan
           </button>
         </InViewWrapper>
+
+        <div className="h-16" />
+
       </div>
-    </Background2>
+    </Background1>
   );
 }

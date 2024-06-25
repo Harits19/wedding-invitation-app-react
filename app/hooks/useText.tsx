@@ -114,6 +114,8 @@ export const useText = () => {
       parentName: "Muhariyadi & Mother Name",
     },
     reservasi: "Reservasi",
+    doaDanUcapan: "Doa & Ucapan",
+    kirimkanUcapan: "Kirimkan Ucapan",
     sayaAkanDatang: "Saya Akan Datang",
     sayaMasihRagu: "Saya Masih Ragu",
     maafSayaTidakBisaDatang: "Maaf, Saya Tidak Bisa Datang",

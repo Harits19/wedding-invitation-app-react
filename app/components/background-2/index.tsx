@@ -2,7 +2,13 @@ import { kPublic } from "@/app/constans/public";
 import Image from "next/image";
 import { ReactNode } from "react";
 
-export default function Background2({ children }: { children: ReactNode }) {
+export default function Background2({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   const Background = ({ className = "" }: { className?: string }) => (
     <Image
       alt=""
@@ -19,7 +25,9 @@ export default function Background2({ children }: { children: ReactNode }) {
       <Background className="rotate-180 top-0" />
       <Background className="rotate-180 top-0" />
 
-      <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col z-auto  m-4 ">
+      <div
+        className={`absolute top-0 bottom-0 left-0 right-0 flex flex-col z-auto  m-4 ${className}`}
+      >
         {children}
       </div>
     </div>

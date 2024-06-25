@@ -44,7 +44,7 @@ export default function CoverPage() {
   };
   return (
     <div
-      className={`bg-white overflow-hidden absolute top-0 h-screen z-10 left-0 right-0 ${!showCover ? "animate-fade-out-bottom-top" : ""}`}
+      className={`bg-white overflow-hidden absolute top-0 min-h-screen z-10 left-0 right-0 ${!showCover ? "animate-fade-out-bottom-top" : ""}`}
     >
       <Background1
         src={kPublic.background2}

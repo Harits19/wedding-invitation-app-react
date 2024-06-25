@@ -41,7 +41,7 @@ export default function IntroductionPage() {
 
   return (
     <Background2>
-      <div className="bg-opacity-50 bg-white rounded-xl p-4 justify-center items-center flex flex-col flex-1">
+      <div className="my-[100px] bg-opacity-50 bg-white rounded-xl p-4 justify-center items-center flex flex-col">
         <InViewWrapper className="font-semibold text-[20px] animate-fade-in-top-bottom">
           {text.assalamualaikum}
         </InViewWrapper>

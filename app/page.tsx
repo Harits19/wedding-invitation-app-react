@@ -13,6 +13,7 @@ import StoryPage from "./components/story-page";
 import { kEnv } from "./constans/env";
 import AttendancePage from "./components/attendance-page";
 import GreetingPage from "./components/greeting-page";
+import GiftPage from "./components/gift-page";
 
 export default function Page() {
   const [showCover, setShowCover] = useState(true);
@@ -70,6 +71,7 @@ export default function Page() {
           className={`flex flex-col relative w-mobile ${showCover ? "overflow-y-hidden" : "overflow-y-scroll"} h-screen`}
         >
           <div id={topComponent} />
+          <GiftPage />
           <CoverPage />
           <WelcomePage />
           <IntroductionPage />

@@ -20,16 +20,11 @@ export default function Background2({
   );
 
   return (
-    <div className="min-h-screen w-full relative bg-wedwhite-linen font-cardo text-center ">
+    <div className="w-full relative bg-wedwhite-linen font-cardo text-center">
       <Background />
       <Background className="rotate-180 top-0" />
       <Background className="rotate-180 top-0" />
-
-      <div
-        className={`absolute top-0 bottom-0 left-0 right-0 flex flex-col z-auto  m-4 ${className}`}
-      >
-        {children}
-      </div>
+      <div className={`z-auto m-4 ${className}`}>{children}</div>
     </div>
   );
 }

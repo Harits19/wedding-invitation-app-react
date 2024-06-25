@@ -24,7 +24,7 @@ export default function Background2({
       <Background />
       <Background className="rotate-180 top-0" />
       <Background className="rotate-180 top-0" />
-      <div className={`z-auto m-4 ${className}`}>{children}</div>
+      <div className={`z-auto  py-[160px] m-4 ${className}`}>{children}</div>
     </div>
   );
 }

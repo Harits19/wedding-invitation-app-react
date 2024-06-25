@@ -73,10 +73,16 @@ export default function CoverPage() {
           <div className="animate-fade-in-bottom-top">
             {kText.bapakIbuSaudara}
           </div>
-          <div className="my-2 animate-fade-in-bottom-top font-poppins font-extrabold text-xl text-wed303333 ">
+          <div className="text-[11px] font-normal px-4 leading">
+            {kText.mohonMaafJikaAdaKesalahanPenulisanNama}
+          </div>
+          <div className="h-4" />
+
+          <div className="my-2 animate-fade-in-bottom-top font-poppins font-extrabold text-xl text-center text-wed303333 ">
             {guest.name}
           </div>
-          <div className="h-2" />
+
+          <div className="h-4" />
           <ButtonBrown
             onClick={() => {
               setShowCover(false);

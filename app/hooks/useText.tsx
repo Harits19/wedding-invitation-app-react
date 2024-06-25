@@ -31,7 +31,7 @@ export const useText = () => {
     theWeddingOf: "The Wedding Of",
     brideName: "Fulan",
     groomName: "Fulanah",
-    and: "dan",
+    and: "And",
     kepadaYth: "Kepada Yth.",
     bapakIbuSaudara: "Bapak/Ibu/Saudara/i",
     assalamualaikum: "Assalamu’alaikum Wr. Wb.",
@@ -104,15 +104,18 @@ export const useText = () => {
     denganMemohonRahmat:
       "Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta’ala, insyaaAllah kami akan menyelenggarakan acara pernikahan :",
     groom: {
-      fullName: "Abdullah Harits",
+      fullName: "Abdullah Harits S.Kom",
       sonOrder: "Putra pertama dari",
-      parentName: "Wharnomo Fauzy & Jatisari Rahmawati",
+      parentName:
+        "Bpk. H. Wharnomo Fauzy, S.E., M.M dan Ibu Hj. Jatisari Rahmawati",
     },
     bride: {
-      fullName: "Mahardien Luthfiyah Nuradenia",
+      fullName: "Mahardien Luthfiyah N, A.Md",
       sonOrder: "Putri kedua dari",
-      parentName: "Muhariyadi & Mother Name",
+      parentName: "Bpk (Alm) H. Muhariyadi, S.T dan Ibu Romi Sumalia",
     },
+    mohonMaafJikaAdaKesalahanPenulisanNama:
+      "*Mohon maaf jika ada kesalahan penulisan nama/gelar",
     reservasi: "Reservasi",
     doaDanUcapan: "Doa & Ucapan",
     kirimkanUcapan: "Kirimkan Ucapan",

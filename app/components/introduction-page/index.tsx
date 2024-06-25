@@ -15,10 +15,25 @@ export default function IntroductionPage() {
       parentName: string;
     };
   }) => (
-    <div className="font-poppins">
-      <div className="font-cardo text-[20px] font-bold">{fullName}</div>
-      <div className="text-[16px]">{sonOrder}</div>
-      <div className="text-[12px]">{parentName}</div>
+    <div className="flex flex-col items-center">
+      <InViewWrapper className="animate-fade-in-bottom-top">
+        <Image
+          alt=""
+          src={kPublic.brideGroom1}
+          width={260}
+          height={101}
+          className="overflow-hidden border-2 border-white w-[260px] h-[181px] object-cover shadow-3xl"
+          style={{
+            objectPosition: "50% 20%",
+          }}
+        />
+      </InViewWrapper>
+      <div className="h-8" />
+      <div className="font-poppins">
+        <div className="font-cardo text-[20px] font-bold">{fullName}</div>
+        <div className="text-[16px]">{sonOrder}</div>
+        <div className="text-[12px]">{parentName}</div>
+      </div>
     </div>
   );
 
@@ -34,19 +49,6 @@ export default function IntroductionPage() {
           {text.denganMemohonRahmat}
         </div>
         <div className="h-4" />
-        <InViewWrapper className="animate-fade-in-bottom-top">
-          <Image
-            alt=""
-            src={kPublic.brideGroom1}
-            width={260}
-            height={101}
-            className="overflow-hidden border-2 border-white w-[260px] h-[181px] object-cover -rotate-3 shadow-3xl"
-            style={{
-              objectPosition: "50% 20%",
-            }}
-          />
-        </InViewWrapper>
-        <div className="h-8" />
 
         <InViewWrapper className="animate-left-right">
           <RenderCoupleName value={text.groom} />

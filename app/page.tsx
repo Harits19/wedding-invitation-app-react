@@ -12,6 +12,7 @@ import GalleryPage from "./components/gallery-page";
 import StoryPage from "./components/story-page";
 import { kEnv } from "./constans/env";
 import AttendancePage from "./components/attendance-page";
+import GreetingPage from "./components/greeting-page";
 
 export default function Page() {
   const [showCover, setShowCover] = useState(true);
@@ -70,12 +71,13 @@ export default function Page() {
         >
           <div id={topComponent} />
           <CoverPage />
-          <AttendancePage />
           <WelcomePage />
           <IntroductionPage />
           <SchedulePage />
           <GalleryPage />
           <StoryPage />
+          <AttendancePage />
+          <GreetingPage />
 
           {!showCover && (
             <div className="fixed w-min mb-20  flex flex-row justify-end self-end bottom-0">

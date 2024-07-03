@@ -123,6 +123,24 @@ export const useText = () => {
     sayaMasihRagu: "Saya Masih Ragu",
     maafSayaTidakBisaDatang: "Maaf, Saya Tidak Bisa Datang",
     silahkanIsiNamaAnda: "Silahkan Isi Nama Anda",
+    weddingGift: "Wedding Gift",
+    tanpaMengurangiRasaHormat:
+      "Tanpa mengurangi rasa hormat kami bagi tamu yang ingin mengirimkan hadiah kepada kedua mempelai dapat mengirimkannya melalui : ",
+    noRekening: "No. Rekening",
+    copy: "Copy",
+    konfirmasiViaWA: "Konfirmasi Via WA",
+    atasNama: "Atas Nama",
+    andaJugaBisaMengirim:
+      "Anda Juga Bisa Mengirim Kado Fisik Ke Alamat Berikut",
+    alamatTerimaKado: "Perumahan Bekasi",
+    copy_alamat: "Copy Alamat",
+    bank: {
+      bankName: "Mandiri",
+      noRekening: "12345678",
+      whatsapp: "6283840493135",
+      atasNama: "Fulan Saputra",
+
+    },
     ...(kEnv.developeMode ? dummyData : {}),
   };
 };

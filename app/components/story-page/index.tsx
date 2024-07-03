@@ -2,13 +2,14 @@ import { useText } from "@/app/hooks/useText";
 import Background2 from "../background-2";
 import { FaRegHeart } from "react-icons/fa";
 import InViewWrapper from "../inview-wrapper";
+import Title from "../title";
 
 export default function StoryPage() {
   const text = useText();
   return (
     <Background2>
       <div className="flex flex-col h-full items-center justify-center font-cardo text-black">
-        <InViewWrapper className="text-[37px] animate-fade-in-bottom-top">{text.loveStory.title}</InViewWrapper>
+        <Title title={text.loveStory.title} />
         {text.loveStory.value.map((item, index) => {
           const Line = () => <div className="bg-black h-0.5 flex flex-1" />;
           const Separator = () => (

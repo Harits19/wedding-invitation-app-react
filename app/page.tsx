@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 "use client";
 
 import { useEffect, useMemo, useState } from "react";

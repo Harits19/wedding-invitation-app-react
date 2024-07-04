@@ -17,10 +17,10 @@ import GreetingPage from "./components/greeting-page";
 import GiftPage from "./components/gift-page";
 
 export default function Page() {
-  const [showCover, setShowCover] = useState(true);
+  const defaultShowCover = kEnv.developeMode ? false : true;
+  const [showCover, setShowCover] = useState(defaultShowCover);
   const [musicIsPlaying, setMusicIsPlaying] = useState(false);
   const audio = useMemo(() => {
-    return undefined;
     if (kEnv.developeMode) return undefined;
     try {
       return new Audio(kPublic.backgroundMusic ?? "");

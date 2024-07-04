@@ -13,9 +13,10 @@ import "@fontsource/berkshire-swash"; // Defaults to weight 400
 import "@fontsource/berkshire-swash/400.css"; // Specify weight
 import QueryProvider from "./[name]/components/query-provider";
 import { ReactNode } from "react";
+import { kEnv } from "./constans/env";
 
 export const metadata: Metadata = {
-  title: "The Wedding of Harits & Fia",
+  title: kEnv.developeMode ? "Dummy" : "The Wedding of Harits & Fia",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

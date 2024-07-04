@@ -145,6 +145,12 @@ export const useText = () => {
       "Hai, Saya mau mengkonfirmasi pengiriman kado pernikahan berupa",
     uang: "uang",
     kado: "kado",
+    merupakanSuatuKebahagiaan:
+      "Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i, berkenan hadir dan memberikan do’a restu kepada kami.",
+    waalaikumussalam: "Wassalamu’alaikum Wr. Wb.",
+    kamiYangBerbahagia: "Kami Yang Berbahagia",
+    madeWith: "Made With",
+    byBrideAndGroom: " by Fia and Harits",
     ...(kEnv.developeMode ? dummyData : {}),
   };
 };

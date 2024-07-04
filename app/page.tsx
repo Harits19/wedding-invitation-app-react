@@ -15,6 +15,7 @@ import AttendancePage from "./components/attendance-page";
 import GreetingPage from "./components/greeting-page";
 import GiftPage from "./components/gift-page";
 import CoverPage from "./components/cover-page";
+import ClosingPage from "./components/closing-page";
 
 export default function Page() {
   const defaultShowCover = kEnv.developeMode ? false : true;
@@ -81,6 +82,7 @@ export default function Page() {
           <AttendancePage />
           <GreetingPage />
           <GiftPage />
+          <ClosingPage />
 
           {!showCover && (
             <div className="fixed w-min mb-20  flex flex-row justify-end self-end bottom-0">

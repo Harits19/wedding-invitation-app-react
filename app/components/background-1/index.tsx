@@ -1,9 +1,15 @@
 import { kPublic } from "@/app/constans/public";
 import Image from "next/image";
 import { ReactNode } from "react";
-import Gradient from "../gradient";
+import Decoration, { DecorationProps } from "../decoration";
 
-export default function Background1({ children }: { children: ReactNode }) {
+export default function Background1({
+  children,
+  divider,
+}: {
+  children: ReactNode;
+  divider?: DecorationProps;
+}) {
   const SideFlower = ({ className = "" }: { className?: string }) => (
     <Image
       className={`w-1/2 h-fit right-0 absolute object-contain bottom-0 z-auto ${className}`}
@@ -21,7 +27,7 @@ export default function Background1({ children }: { children: ReactNode }) {
       <div className="absolute z-auto h-full w-full">
         <Image
           alt=""
-          src={kPublic.background1}
+          src={kPublic.background2}
           width={100}
           height={100}
           className=" object-cover  w-full h-full"
@@ -32,10 +38,7 @@ export default function Background1({ children }: { children: ReactNode }) {
       <div className="opacity-0">
         <RenderChildren />
       </div>
-      <Gradient position="top" />
-      <Gradient position="bottom" />
-      {/* <DividerCurly position="top" />
-      <DividerCurly position="bottom" /> */}
+      <Decoration {...divider} />
 
       <div className="absolute top-0 bottom-0 h-full w-full z-auto">
         <RenderChildren />

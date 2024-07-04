@@ -1,14 +1,16 @@
 import { kPublic } from "@/app/constans/public";
 import Image from "next/image";
 import { ReactNode } from "react";
-import Gradient from "../gradient";
+import Decoration, { DecorationProps } from "../decoration";
 
 export default function Background2({
   children,
   className,
+  divider,
 }: {
   children: ReactNode;
   className?: string;
+  divider?: DecorationProps;
 }) {
   const Flower = ({ position = "top" }: { position?: "top" | "bottom" }) => {
     const isTop = position === "top";
@@ -44,10 +46,8 @@ export default function Background2({
       </div>
       <Flower />
       <Flower position="bottom" />
-      <Gradient position="top" />
-      <Gradient position="bottom" />
-      {/* <DividerCurly position="top" />
-      <DividerCurly position="bottom" /> */}
+      <Decoration {...divider} />
+
       <div className="absolute z-auto w-full h-full top-0 bottom-0 ">
         <RenderChildren />
       </div>

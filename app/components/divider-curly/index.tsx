@@ -1,15 +1,23 @@
 import { kColor } from "@/tailwind.config";
+import { twMerge } from "tailwind-merge";
 
 export default function DividerCurly({
   position = "top",
+  className,
+  color: baseColor,
 }: {
   position?: "top" | "bottom";
+  className?: string;
+  color?: string;
 }) {
   const isTop = position === "top";
-  const color = kColor["wedprimary-color"];
+  const color = baseColor || kColor["wedprimary-color"];
   return (
     <div
-      className={`absolute left-0 border-none right-0 w-full ${isTop ? "top-0" : "bottom-0 rotate-180"}`}
+      className={twMerge(
+        `absolute left-0 border-none right-0 w-full ${isTop ? "top-0" : "bottom-0 rotate-180"}`,
+        className,
+      )}
     >
       <div
         className="h-4 border-none w-full"

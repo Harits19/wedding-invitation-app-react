@@ -133,14 +133,18 @@ export const useText = () => {
     andaJugaBisaMengirim:
       "Anda Juga Bisa Mengirim Kado Fisik Ke Alamat Berikut",
     alamatTerimaKado: "Perumahan Bekasi",
-    copy_alamat: "Copy Alamat",
+    whatsappPenerimaKado: "6283840493135",
+    copyAlamat: "Copy Alamat",
     bank: {
       bankName: "Mandiri",
       noRekening: "12345678",
       whatsapp: "6283840493135",
       atasNama: "Fulan Saputra",
-
     },
+    whatsappConfirmationText:
+      "Hai, Saya mau mengkonfirmasi pengiriman kado pernikahan berupa",
+    uang: "uang",
+    kado: "kado",
     ...(kEnv.developeMode ? dummyData : {}),
   };
 };

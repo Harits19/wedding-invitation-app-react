@@ -2,7 +2,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import CoverPage from "./components/cover-page";
 import WelcomePage from "./components/welcome-page";
 import { WeddingContext } from "./hooks/useWeddingProvider";
 import MusicControl from "./components/music-control";
@@ -15,6 +14,7 @@ import { kEnv } from "./constans/env";
 import AttendancePage from "./components/attendance-page";
 import GreetingPage from "./components/greeting-page";
 import GiftPage from "./components/gift-page";
+import CoverPage from "./components/cover-page";
 
 export default function Page() {
   const defaultShowCover = kEnv.developeMode ? false : true;

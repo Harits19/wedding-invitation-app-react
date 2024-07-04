@@ -4,7 +4,6 @@ import Title from "../title";
 import Card from "../card";
 import { FaCopy, FaWallet, FaWhatsapp } from "react-icons/fa";
 import { ReactNode } from "react";
-import { IconContext } from "react-icons/lib";
 
 export default function GiftPage() {
   const text = useText();
@@ -19,17 +18,15 @@ export default function GiftPage() {
     icon: ReactNode;
   }) => {
     return (
-      <IconContext.Provider value={{ className: "text-white" }}>
-        <button
-          type="button"
-          aria-label="small button"
-          onClick={onClick}
-          className="p-1 rounded bg-wedE97777C7 flex flex-row items-center justify-center text-white text-sm"
-        >
-          {icon}
-          {title}
-        </button>
-      </IconContext.Provider>
+      <button
+        type="button"
+        aria-label="small button"
+        onClick={onClick}
+        className="px-4 gap-x-2 py-1 rounded-xl text-[10px] bg-wedE97777C7 flex flex-row items-center justify-center text-white text-sm"
+      >
+        {icon}
+        <div className="text-[10px]">{title}</div>
+      </button>
     );
   };
 
@@ -44,17 +41,33 @@ export default function GiftPage() {
     whatsapp: string;
     atasNama: string;
   }) => {
+    const Description = ({
+      subtitle,
+      title,
+    }: {
+      title: string;
+      subtitle: string;
+    }) => {
+      return (
+        <>
+          <div className="font-cormorant text-sm">{title}</div>
+          <div>{subtitle}</div>
+        </>
+      );
+    };
+
     return (
       <Card>
         <div className="flex flex-col p-3">
           <div className="flex flex-row w-full justify-between items-center">
-            <div>{text.weddingGift}</div>
-            <div className="border-b-2 border-b-black">{bankName}</div>
+            <div className="font-cardo">{text.weddingGift}</div>
+            <div className="border-b-2 border-b-black pl-8">{bankName}</div>
           </div>
+          <div className="h-1" />
           <div className="flex flex-row items-center w-full justify-between">
             <div className="flex flex-col">
-              <div>{text.noRekening}</div>
-              <div>{noRekening}</div>
+              <Description title={text.noRekening} subtitle={noRekening} />
+              <div className="h-3" />
               <SmallButton
                 icon={<FaCopy />}
                 title={text.copy}
@@ -62,6 +75,7 @@ export default function GiftPage() {
                   navigator.clipboard.writeText(noRekening);
                 }}
               />
+              <div className="h-1" />
               <SmallButton
                 icon={<FaWhatsapp />}
                 title={text.konfirmasiViaWA}
@@ -71,12 +85,12 @@ export default function GiftPage() {
                   );
                 }}
               />
+              <div className="h-3" />
 
-              <div>{text.atasNama}</div>
-              <div>{atasNama}</div>
+              <Description title={text.atasNama} subtitle={atasNama} />
             </div>
 
-            <FaWallet />
+            <FaWallet className="text-[80px] text-wedE97777C7" />
           </div>
         </div>
       </Card>

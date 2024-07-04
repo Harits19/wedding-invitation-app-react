@@ -72,7 +72,6 @@ export default function Page() {
           className={`flex flex-col relative w-mobile ${showCover ? "overflow-y-hidden" : "overflow-y-scroll"} h-screen`}
         >
           <div id={topComponent} />
-          <GiftPage />
           <CoverPage />
           <WelcomePage />
           <IntroductionPage />
@@ -81,6 +80,7 @@ export default function Page() {
           <StoryPage />
           <AttendancePage />
           <GreetingPage />
+          <GiftPage />
 
           {!showCover && (
             <div className="fixed w-min mb-20  flex flex-row justify-end self-end bottom-0">

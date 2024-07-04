@@ -19,7 +19,7 @@ export default function SchedulePage() {
     };
     align?: "left" | "right";
   }) => (
-    <Card>
+    <Card align={align}>
       <div className="font-cardo text-[18px] font-bold">{title}</div>
       <div className="text-[12px]">{date}</div>
       <div className="text-[12px]">{time}</div>

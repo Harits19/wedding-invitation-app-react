@@ -34,9 +34,8 @@ export default function Background1({ children }: { children: ReactNode }) {
       </div>
       <Gradient position="top" />
       <Gradient position="bottom" />
-      {/* <div className="absolute bottom-0 rotate-180 left-0 right-0 w-full">
-        <DividerCurly />
-      </div> */}
+      {/* <DividerCurly position="top" />
+      <DividerCurly position="bottom" /> */}
 
       <div className="absolute top-0 bottom-0 h-full w-full z-auto">
         <RenderChildren />

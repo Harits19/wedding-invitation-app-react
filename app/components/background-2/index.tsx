@@ -46,6 +46,8 @@ export default function Background2({
       <Flower position="bottom" />
       <Gradient position="top" />
       <Gradient position="bottom" />
+      {/* <DividerCurly position="top" />
+      <DividerCurly position="bottom" /> */}
       <div className="absolute z-auto w-full h-full top-0 bottom-0 ">
         <RenderChildren />
       </div>

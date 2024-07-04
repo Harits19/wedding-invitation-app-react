@@ -13,9 +13,11 @@ export default function Background1({ children }: { children: ReactNode }) {
     />
   );
 
+  const RenderChildren = () => <div className={`py-[320px]`}>{children}</div>;
+
   return (
     <div className="relative w-full bg-wedbackground-color-light  font-cardo text-wedprimary-color">
-      {/* <div className="absolute z-auto h-full w-full">
+      <div className="absolute z-auto h-full w-full">
         <Image
           alt=""
           src={kPublic.background1}
@@ -23,11 +25,15 @@ export default function Background1({ children }: { children: ReactNode }) {
           height={100}
           className=" object-cover  w-full h-full"
         />
-      </div> */}
+      </div>
       <SideFlower className="z-auto" />
       <SideFlower className="top-0 rotate-180 left-0  z-auto" />
-
-      <div className={`z-50 py-[320px]`}>{children}</div>
+      <div className="opacity-0">
+        <RenderChildren />
+      </div>
+      <div className="absolute top-0 bottom-0 h-full w-full z-auto">
+        <RenderChildren />
+      </div>
     </div>
   );
 }

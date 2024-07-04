@@ -30,23 +30,21 @@ export default function Background2({
 
   const RenderChildren = () => {
     return (
-      <div className={` relative w-full  py-[160px] p-4 ${className ?? ''}`}>
+      <div className={` relative w-full  py-[160px] p-4 ${className ?? ""}`}>
         {children}
       </div>
     );
   };
 
   return (
-    <div
-      className={`w-full relative font-cardo text-center bg-wedwhite-linen`}
-    >
-      <Flower />
-      <Flower position="bottom" />
-
+    <div className={`w-full relative font-cardo text-center bg-wedwhite-linen`}>
       <div className="opacity-0">
         <RenderChildren />
       </div>
-      <div className="absolute z-50 w-full h-full top-0 bottom-0 ">
+      <Flower />
+      <Flower position="bottom" />
+
+      <div className="absolute z-auto w-full h-full top-0 bottom-0 ">
         <RenderChildren />
       </div>
     </div>

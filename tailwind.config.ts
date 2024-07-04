@@ -2,19 +2,20 @@
 export const kColor = {
   wed303333: "#303333",
   wedDriftwood: "#ae814c",
-  "wedE97777C7": "#E97777C7",
+  wedE97777C7: "#E97777C7",
+  wedRed: "#E97777C7",
   "wedprimary-color": "#B48570",
   "wedbackground-color": "#DBC0AD",
   "wedbackground-color-light": "#F1E7E0",
-  "wedwhite-linen": "#FAEFEB"
+  "wedwhite-linen": "#FAEFEB",
 };
-module.exports = {
+const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -25,15 +26,13 @@ module.exports = {
   prefix: "",
   theme: {
     fontFamily: {
-      brittany: ["Brittany", 'sans-serif'],
-      italiana: ["Italiana", 'sans-serif'],
-      cormorant: ["Cormorant", 'sans-serif'],
-      gallery: ["Gallery", 'sans-serif'],
-      arizona: ["Arizona", 'sans-serif'],
-      cardo: ["Cardo", 'sans-serif'],
-      poppins: ["Poppins", 'sans-serif']
-
-
+      brittany: ["Brittany", "sans-serif"],
+      italiana: ["Italiana", "sans-serif"],
+      cormorant: ["Cormorant", "sans-serif"],
+      gallery: ["Gallery", "sans-serif"],
+      arizona: ["Arizona", "sans-serif"],
+      cardo: ["Cardo", "sans-serif"],
+      poppins: ["Poppins", "sans-serif"],
     },
     container: {
       center: true,
@@ -44,7 +43,7 @@ module.exports = {
     },
     extend: {
       boxShadow: {
-        '3xl': '13px 7px 10px 0px rgba(0,0,0,0.5)',
+        "3xl": "13px 7px 10px 0px rgba(0,0,0,0.5)",
       },
       maxWidth: {
         360: "360px",
@@ -54,11 +53,10 @@ module.exports = {
       },
       height: {
         100: "100px",
-        "mobile": "760px"
-
+        mobile: "760px",
       },
       width: {
-        "mobile": "412px",
+        mobile: "412px",
       },
       colors: {
         ...kColor,
@@ -148,13 +146,17 @@ module.exports = {
         },
         "fade-in-top-bottom": {
           "0%": {
-            opacity: "0", top: "-10%", position: "relative"
+            opacity: "0",
+            top: "-10%",
+            position: "relative",
           },
           "100%": { opacity: "1", top: "0%", position: "relative" },
         },
         "fade-in-bottom-top": {
           "0%": {
-            opacity: "0", top: "10%", position: "relative"
+            opacity: "0",
+            top: "10%",
+            position: "relative",
           },
           "100%": { opacity: "1", top: "0%", position: "relative" },
         },
@@ -231,7 +233,7 @@ module.exports = {
           },
           "100%": {
             transform: "scaleX(1)",
-          }
+          },
         },
       },
 
@@ -256,8 +258,6 @@ module.exports = {
         "left-right": "left-right 2s forwards",
         "right-left": "right-left 2s forwards",
         "flip-right-to-left": "flip-right-to-left 2s ",
-
-
       },
       backgroundImage: {
         "background-picture-1": `url(/background-picture-1.webp)`,
@@ -265,4 +265,6 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
+
+export default config;

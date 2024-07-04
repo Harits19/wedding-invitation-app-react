@@ -3,34 +3,12 @@ import Background2 from "../background-2";
 import Title from "../title";
 import Card from "../card";
 import { FaCopy, FaGift, FaWallet, FaWhatsapp } from "react-icons/fa";
-import { ReactNode } from "react";
 import { confirmWhatsapp, copyText } from "@/app/utils/text";
 import InViewWrapper from "../inview-wrapper";
+import SmallButton from "../small-button";
 
 export default function GiftPage() {
   const text = useText();
-
-  const SmallButton = ({
-    onClick,
-    title,
-    icon,
-  }: {
-    title: string;
-    onClick: () => void;
-    icon: ReactNode;
-  }) => {
-    return (
-      <button
-        type="button"
-        aria-label="small button"
-        onClick={onClick}
-        className="px-4 gap-x-2 my-1 py-1 rounded-xl text-[10px] bg-wedE97777C7 flex flex-row items-center justify-center text-white text-sm"
-      >
-        {icon}
-        <div className="text-[10px]">{title}</div>
-      </button>
-    );
-  };
 
   const RenderCard = ({
     bankName,

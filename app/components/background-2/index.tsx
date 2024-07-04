@@ -1,6 +1,7 @@
 import { kPublic } from "@/app/constans/public";
 import Image from "next/image";
 import { ReactNode } from "react";
+import Gradient from "../gradient";
 
 export default function Background2({
   children,
@@ -43,7 +44,8 @@ export default function Background2({
       </div>
       <Flower />
       <Flower position="bottom" />
-
+      <Gradient position="top" />
+      <Gradient position="bottom" />
       <div className="absolute z-auto w-full h-full top-0 bottom-0 ">
         <RenderChildren />
       </div>

@@ -151,6 +151,9 @@ export const useText = () => {
     kamiYangBerbahagia: "Kami Yang Berbahagia",
     madeWith: "Made With",
     byBrideAndGroom: " by Fia and Harits",
+    googleCalendarLink:
+      "https://calendar.google.com/calendar/u/0/r/eventedit/MXJ1MjkyYWpzM2Z1MG5jNGNtdmVqc2p1djMgaGFyaXRzLmFiZHVsbGFoMTlAbQ",
+    saveToCalendar: "Save To Calendar",
     ...(kEnv.developeMode ? dummyData : {}),
   };
 };

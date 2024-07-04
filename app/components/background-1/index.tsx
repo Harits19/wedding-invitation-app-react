@@ -1,6 +1,7 @@
 import { kPublic } from "@/app/constans/public";
 import Image from "next/image";
 import { ReactNode } from "react";
+import Gradient from "../gradient";
 
 export default function Background1({ children }: { children: ReactNode }) {
   const SideFlower = ({ className = "" }: { className?: string }) => (
@@ -31,6 +32,12 @@ export default function Background1({ children }: { children: ReactNode }) {
       <div className="opacity-0">
         <RenderChildren />
       </div>
+      <Gradient position="top" />
+      <Gradient position="bottom" />
+      {/* <div className="absolute bottom-0 rotate-180 left-0 right-0 w-full">
+        <DividerCurly />
+      </div> */}
+
       <div className="absolute top-0 bottom-0 h-full w-full z-auto">
         <RenderChildren />
       </div>

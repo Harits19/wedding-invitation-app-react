@@ -1,9 +1,9 @@
-import { AttendanceValidator } from "@/app/models/attendance-model";
+import { GreetingValidator } from "@/app/models/greeting-model";
 import { ResponseUtil } from "@/app/utils/response-util";
 
 export const GET = () => {
   return ResponseUtil.json({
-    errorMessage: "Error when getting list of attendance",
+    errorMessage: "Error when getting list of greeting",
     callback: async () => {
       return {
         message: "success get data",
@@ -15,15 +15,15 @@ export const GET = () => {
 
 export const POST = async (request: Request) => {
   return ResponseUtil.json({
-    errorMessage: "Error when post attendance",
+    errorMessage: "Error when post greeting",
     callback: async () => {
       const body = await request.json();
 
-      const attendance = AttendanceValidator.parse(body);
+      const greeting = GreetingValidator.parse(body);
 
       return {
-        message: "Success post attendance model",
-        data: attendance,
+        message: "Success post greeting model",
+        data: greeting,
       };
     },
   });

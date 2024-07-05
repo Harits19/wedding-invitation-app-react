@@ -9,5 +9,7 @@ export const AttendanceValidator = zod.object({
   attendance: zod.enum(attendanceTypeList),
 });
 
-export interface AttendanceModel
-  extends zod.infer<typeof AttendanceValidator> {}
+export interface AttendanceModel extends zod.infer<typeof AttendanceValidator> {
+  id?: string;
+  createdAt?: Date;
+}

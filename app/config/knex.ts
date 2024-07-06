@@ -1,12 +1,14 @@
 import { Knex, knex } from "knex";
 
 const config: Knex.Config = {
-  client: "sqlite3",
+  client: "better-sqlite3",
   connection: {
-    host: "localhost",
-    port: 4001,
+    filename: "./database",
   },
+  useNullAsDefault: true,
 };
-export const knexInstance = knex(config);
 
-
+export const knexConnection = () => {
+  const connection = knex(config);
+  return connection;
+};

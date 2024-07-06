@@ -1,12 +1,30 @@
-import { AttendanceModel } from "../models/attendance-model";
+// import { knex } from "knex";
+// import {
+//   AttendanceModel,
+//   attendanceTypeList,
+// } from "../models/attendance-model";
 
-export class AttendanceRepository {
+// export class AttendanceRepository {
+//   name = "attendance";
+//   db = knex<AttendanceModel>(this.name);
 
-  static async insert(value: AttendanceModel){
+//   async init() {
+//     this.db.schema.createTable(this.name, (table) => {
+//       table.increments("id");
+//       table.string("name");
+//       table.enum("attendance", attendanceTypeList);
+//       table.timestamp("createdAt");
+//     });
+//   }
 
-  }
+//   async insert(value: AttendanceModel) {
+//     return this.db.insert({
+//       ...value,
+//       createdAt: new Date(),
+//     });
+//   }
 
-  static async getAll(){
-    
-  }
-}
+//   async getAll() {
+//     return this.db.select();
+//   }
+// }

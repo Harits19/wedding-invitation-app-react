@@ -2,5 +2,5 @@
 
 export interface BaseResponse<T> {
   message: string;
-  data: T,
+  data?: T,
 }

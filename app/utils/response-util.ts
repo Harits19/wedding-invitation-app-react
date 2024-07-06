@@ -3,11 +3,11 @@ import { BaseResponse } from "../models/base-response";
 
 export class ResponseUtil {
   static async json<T>({
-    callback,
     errorMessage,
+    callback,
   }: {
-    callback: () => Promise<BaseResponse<T>>;
     errorMessage: string;
+    callback: () => Promise<BaseResponse<T>>;
   }) {
     try {
       return Response.json(await callback());
@@ -30,6 +30,8 @@ export class ResponseUtil {
       } else {
         errorResponse.data = `${error || JSON.stringify(error)}`;
       }
+
+      console.log("ERROR : ", error);
 
       return Response.json(errorResponse);
     }

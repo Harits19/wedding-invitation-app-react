@@ -8,6 +8,7 @@ const config: Knex.Config = {
   useNullAsDefault: true,
 };
 
+export const knexConnectionV2 = () => knex(config);
 export const knexConnection = async <T>({
   callback,
 }: {

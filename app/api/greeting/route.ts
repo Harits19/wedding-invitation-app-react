@@ -1,4 +1,5 @@
 import { GreetingValidator } from "@/app/models/greeting-model";
+import { GreetingRepository } from "@/app/repository/greeting-repository";
 import { ResponseUtil } from "@/app/utils/response-util";
 
 export const GET = () => {
@@ -7,7 +8,7 @@ export const GET = () => {
     callback: async () => {
       return {
         message: "success get data",
-        data: [],
+        data: await GreetingRepository.getAll(),
       };
     },
   });
@@ -21,6 +22,8 @@ export const POST = async (request: Request) => {
 
       const greeting = GreetingValidator.parse(body);
 
+      await GreetingRepository.insert(greeting);
+
       return {
         message: "Success post greeting model",
         data: greeting,
@@ -28,4 +31,3 @@ export const POST = async (request: Request) => {
     },
   });
 };
-

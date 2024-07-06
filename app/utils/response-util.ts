@@ -26,12 +26,12 @@ export class ResponseUtil {
           .join(" \n");
         errorResponse.data = parsedError;
       } else if (error instanceof Error && error.message) {
+        console.log("ERROR : ", error);
         errorResponse.data = error.message;
       } else {
+        console.log("ERROR : ", error);
         errorResponse.data = `${error || JSON.stringify(error)}`;
       }
-
-      console.log("ERROR : ", error);
 
       return Response.json(errorResponse);
     }

@@ -8,7 +8,19 @@ const config: Knex.Config = {
   useNullAsDefault: true,
 };
 
-export const knexConnection = () => {
+export const knexConnection = async <T>({
+  callback,
+}: {
+  // eslint-disable-next-line no-unused-vars
+  callback(db: Knex): Promise<T>;
+}) => {
   const connection = knex(config);
-  return connection;
+
+  try {
+    const result = await callback(connection);
+    return result;
+  } finally {
+    console.log("destroy connection");
+    await connection.destroy();
+  }
 };

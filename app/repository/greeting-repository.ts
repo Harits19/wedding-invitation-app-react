@@ -1,50 +1,44 @@
-import { knex } from "knex";
 import { GreetingModel } from "../models/greeting-model";
 import { knexConnection } from "../config/knex";
 
 export class GreetingRepository {
-  name = "greeting";
-  rawDb: knex.Knex | undefined;
-  knexInstance: knex.Knex | undefined;
-
-  constructor() {
-    console.log("initialize constructor");
-    this.knexInstance = knexConnection();
-    this.rawDb = knex<GreetingModel>(this.name);
-  }
-
-  get db() {
-    if (!this.knexInstance) {
-      throw new Error("undefined db");
-    }
-    return this.knexInstance;
-  }
-
-  async checkConnection() {
-    const result = await this.knexInstance?.raw("SELECT 1");
-    console.log("Database connected", result);
-  }
-
-  async initialize() {
-    await this.checkConnection();
-    const result = await this.db.schema.createTable(this.name, (table) => {
-      table.increments("id");
-      table.string("name");
-      table.string("message");
-      table.timestamp("createdAt");
-    });
-
-    console.log("success initialize greeting table", result);
-  }
-
-  async insert(value: GreetingModel) {
-    await this.db.insert({
-      ...value,
-      createdAt: new Date(),
+  static tableName = "greeting";
+  static async initialize() {
+    await knexConnection({
+      callback: async (db) => {
+        const result = await db.schema.createTable(
+          GreetingRepository.tableName,
+          (table) => {
+            table.increments("id");
+            table.string("name");
+            table.string("message");
+            table.timestamp("createdAt");
+          },
+        );
+        console.log("success initialize greeting table", result);
+      },
     });
   }
 
-  async getAll() {
-    return this.db.select();
+  static async insert(value: GreetingModel) {
+    return knexConnection({
+      callback: async (db) => {
+        const result = await db.table(GreetingRepository.tableName).insert({
+          ...value,
+          createdAt: new Date(),
+        });
+        console.log("success insert greeting table", result);
+      },
+    });
+  }
+
+  static async getAll() {
+    return knexConnection({
+      callback: async (db) => {
+        const result = await db.table(GreetingRepository.tableName).select();
+        console.log("success select greeting table", result);
+        return result;
+      },
+    });
   }
 }

@@ -6,8 +6,7 @@ export const GET = () => {
     errorMessage: "Error when initialize greeting database",
     callback: async () => {
       console.log("start initialize database");
-      const repository = new GreetingRepository()
-      await repository.initialize();
+      await GreetingRepository.initialize();
       return {
         message: "success create greeting database",
       };

@@ -6,9 +6,10 @@ export const GET = () => {
   return ResponseUtil.json({
     errorMessage: "Error when getting list of greeting",
     callback: async () => {
+      const result = await GreetingRepository.getAll();
       return {
         message: "success get data",
-        data: await GreetingRepository.getAll(),
+        data: result,
       };
     },
   });

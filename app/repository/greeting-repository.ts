@@ -36,7 +36,7 @@ export class GreetingRepository {
     return knexConnection({
       callback: async (db) => {
         const result = await db.table(GreetingRepository.tableName).select();
-        console.log("success select greeting table", result);
+        console.log("success select greeting table");
         return result;
       },
     });

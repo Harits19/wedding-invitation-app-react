@@ -3,10 +3,14 @@ import Background2 from "../background-2";
 import InViewWrapper from "../inview-wrapper";
 import { useGuest } from "@/app/hooks/useGuest";
 import ButtonBrown from "../button-brown";
+import { useGetGreeting } from "@/app/hooks/use-get-greeting";
+import moment from "moment";
 
 export default function GreetingPage() {
   const text = useText();
   const { name } = useGuest();
+  const { data, isLoading } = useGetGreeting();
+  const greeting = data?.data ?? [];
   const inputClassName =
     "w-full px-4 py-3 rounded-lg bg-white outline-none shadow-lg";
 
@@ -50,17 +54,20 @@ export default function GreetingPage() {
         <div className="w-full mx-4">
           <div className="relative rounded-lg overflow-hidden">
             <InViewWrapper className=" h-[400px] shadow overflow-y-scroll rounded-lg gap-y-4 flex flex-col p-4 mx-4  bg-wedbackground-color">
-              {new Array(20).fill(undefined).map((_, index) => (
-                <InViewWrapper
-                  className="animate-fade-in-bottom-top shadow-lg bg-white text-left rounded-lg flex flex-col p-4 items-stretch w-fit"
-                  key={index}
-                >
-                  <div className="text-wedDriftwood">Nama</div>
-                  <div className="font-poppins">
-                    Semoga Sakinah Mawadah Warahmah
-                  </div>
-                </InViewWrapper>
-              ))}
+              {isLoading
+                ? "Loading"
+                : greeting.map((item) => (
+                    <InViewWrapper
+                      className="animate-fade-in-bottom-top shadow-lg bg-white text-left rounded-lg flex flex-col p-4 items-stretch w-fit"
+                      key={item.id}
+                    >
+                      <div className="text-wedDriftwood">{item.name}</div>
+                      <div className="h-1" />
+                      <div className="font-poppins">{item.message}</div>
+                      <div className="h-4" />
+                      <div className="text-xs opacity-30 text-right">{moment(item.createdAt).format("DD/MM/YYYY")}</div>
+                    </InViewWrapper>
+                  ))}
             </InViewWrapper>
             <Gradient className="top-0" />
             <Gradient className="bottom-0 rotate-180" />

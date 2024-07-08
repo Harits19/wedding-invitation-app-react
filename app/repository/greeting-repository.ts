@@ -32,7 +32,7 @@ export class GreetingRepository {
     });
   }
 
-  static async getAll() {
+  static async getAll(): Promise<GreetingModel[]> {
     return knexConnection({
       callback: async (db) => {
         const result = await db.table(GreetingRepository.tableName).select();

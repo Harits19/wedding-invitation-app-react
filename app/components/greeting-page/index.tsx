@@ -3,14 +3,21 @@ import Background2 from "../background-2";
 import InViewWrapper from "../inview-wrapper";
 import { useGuest } from "@/app/hooks/use-guest";
 import ButtonBrown from "../button-brown";
-import { useGetGreeting } from "@/app/hooks/use-get-greeting";
+import { useGreeting } from "@/app/hooks/use-greeting";
 import moment from "moment";
+import { Controller, useForm } from "react-hook-form";
+import { GreetingModel } from "@/app/models/greeting-model";
 
 export default function GreetingPage() {
+  const { handleSubmit, control } = useForm<GreetingModel>();
   const text = useText();
   const { name } = useGuest();
-  const { data, isLoading } = useGetGreeting();
+  const { get, post } = useGreeting();
+  const { data, isLoading } = get;
+  const { trigger, isMutating } = post;
+
   const greeting = data?.data ?? [];
+
   const inputClassName =
     "w-full px-4 py-3 rounded-lg bg-white outline-none shadow-lg";
 
@@ -19,6 +26,13 @@ export default function GreetingPage() {
       className={`bg-gradient-to-b from-wedbackground-color to-transparent left-0 bottom-0 right-0 h-8  absolute z-auto mx-4 rounded-lg ${className}`}
     />
   );
+
+  const RenderError = ({ message }: { message?: string }) => {
+    if (!message) return undefined;
+    return (
+      <div className="text-[12px] w-full text-left text-wedRed">{message}</div>
+    );
+  };
   return (
     <Background2 className="mx-0">
       <div className="flex flex-1 justify-center flex-col w-full items-center font-cardo text-black">
@@ -29,22 +43,55 @@ export default function GreetingPage() {
         <div className="h-10" />
 
         <InViewWrapper className="animate-fade-in-bottom-top w-full font-poppins px-4">
-          <input
-            placeholder={text.silahkanIsiNamaAnda}
-            defaultValue={name}
-            className={inputClassName}
+          <Controller
+            control={control}
+            name="name"
+            rules={{
+              required: { value: true, message: "Required" },
+            }}
+            render={(nameForm) => (
+              <>
+                <input
+                  value={nameForm.field.value}
+                  placeholder={text.silahkanIsiNamaAnda}
+                  defaultValue={name}
+                  onChange={nameForm.field.onChange}
+                  className={inputClassName}
+                />
+                <RenderError message={nameForm.fieldState.error?.message} />
+              </>
+            )}
           />
           <div className="h-4" />
 
-          <textarea
-            placeholder={text.silahkanIsiNamaAnda}
-            defaultValue={name}
-            className={inputClassName}
+          <Controller
+            control={control}
+            name="message"
+            rules={{
+              required: { value: true, message: "Required" },
+            }}
+            render={(messageForm) => (
+              <>
+                <textarea
+                  value={messageForm.field.value}
+                  placeholder={text.silahkanIsiPesanAnda}
+                  defaultValue={name}
+                  onChange={messageForm.field.onChange}
+                  className={inputClassName}
+                />
+                <RenderError message={messageForm.fieldState.error?.message} />
+              </>
+            )}
           />
           <div className="h-8" />
           <ButtonBrown
+            isLoading={isMutating}
             className="w-full px-4 py-3 flex flex-col items-center justify-center"
-            onClick={() => {}}
+            onClick={() => {
+              handleSubmit((value) => {
+                trigger(value);
+              })();
+            }}
           >
             {text.kirimkanUcapan}
           </ButtonBrown>
@@ -65,7 +112,9 @@ export default function GreetingPage() {
                       <div className="h-1" />
                       <div className="font-poppins">{item.message}</div>
                       <div className="h-4" />
-                      <div className="text-xs opacity-30 text-right">{moment(item.createdAt).format("DD/MM/YYYY")}</div>
+                      <div className="text-xs opacity-30 text-right">
+                        {moment(item.createdAt).format("DD/MM/YYYY")}
+                      </div>
                     </InViewWrapper>
                   ))}
             </InViewWrapper>

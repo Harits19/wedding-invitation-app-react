@@ -123,6 +123,7 @@ export const useText = () => {
     sayaMasihRagu: "Saya Masih Ragu",
     maafSayaTidakBisaDatang: "Maaf, Saya Tidak Bisa Datang",
     silahkanIsiNamaAnda: "Silahkan Isi Nama Anda",
+    silahkanIsiPesanAnda: "Silahkan Isi Pesan Anda",
     weddingGift: "Wedding Gift",
     tanpaMengurangiRasaHormat:
       "Tanpa mengurangi rasa hormat kami bagi tamu yang ingin mengirimkan hadiah kepada kedua mempelai dapat mengirimkannya melalui : ",

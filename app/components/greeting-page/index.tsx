@@ -7,11 +7,18 @@ import { useGreeting } from "@/app/hooks/use-greeting";
 import moment from "moment";
 import { Controller, useForm } from "react-hook-form";
 import { GreetingModel } from "@/app/models/greeting-model";
+import RenderError from "../render-error";
+import Input from "../input";
 
 export default function GreetingPage() {
-  const { handleSubmit, control } = useForm<GreetingModel>();
-  const text = useText();
   const { name } = useGuest();
+
+  const { handleSubmit, control, reset } = useForm<GreetingModel>({
+    defaultValues: {
+      name,
+    },
+  });
+  const text = useText();
   const { get, post } = useGreeting();
   const { data, isLoading } = get;
   const { trigger, isMutating } = post;
@@ -27,12 +34,6 @@ export default function GreetingPage() {
     />
   );
 
-  const RenderError = ({ message }: { message?: string }) => {
-    if (!message) return undefined;
-    return (
-      <div className="text-[12px] w-full text-left text-wedRed">{message}</div>
-    );
-  };
   return (
     <Background2 className="mx-0">
       <div className="flex flex-1 justify-center flex-col w-full items-center font-cardo text-black">
@@ -50,16 +51,14 @@ export default function GreetingPage() {
               required: { value: true, message: "Required" },
             }}
             render={(nameForm) => (
-              <>
-                <input
-                  value={nameForm.field.value}
-                  placeholder={text.silahkanIsiNamaAnda}
-                  defaultValue={name}
-                  onChange={nameForm.field.onChange}
-                  className={inputClassName}
-                />
-                <RenderError message={nameForm.fieldState.error?.message} />
-              </>
+              <Input
+                value={nameForm.field.value}
+                placeholder={text.silahkanIsiNamaAnda}
+                defaultValue={name}
+                onChange={nameForm.field.onChange}
+                className={inputClassName}
+                info={nameForm.fieldState.error?.message}
+              />
             )}
           />
           <div className="h-4" />
@@ -75,7 +74,6 @@ export default function GreetingPage() {
                 <textarea
                   value={messageForm.field.value}
                   placeholder={text.silahkanIsiPesanAnda}
-                  defaultValue={name}
                   onChange={messageForm.field.onChange}
                   className={inputClassName}
                 />
@@ -88,8 +86,9 @@ export default function GreetingPage() {
             isLoading={isMutating}
             className="w-full px-4 py-3 flex flex-col items-center justify-center"
             onClick={() => {
-              handleSubmit((value) => {
-                trigger(value);
+              handleSubmit(async (value) => {
+                await trigger(value);
+                reset();
               })();
             }}
           >

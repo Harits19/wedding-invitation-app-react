@@ -36,4 +36,23 @@ export class ResponseUtil {
       return Response.json(errorResponse);
     }
   }
+
+  static async responseInitTable({
+    runInitDatabase,
+    tableName,
+  }: {
+    tableName: string;
+    runInitDatabase: () => Promise<void>;
+  }) {
+    return ResponseUtil.json({
+      errorMessage: `Error when initialize ${tableName} table`,
+      callback: async () => {
+        console.log(`start initialize ${tableName} table`);
+        await runInitDatabase();
+        return {
+          message: `success create ${tableName} database`,
+        };
+      },
+    });
+  }
 }

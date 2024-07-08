@@ -2,29 +2,16 @@ import {
   AttendanceModel,
   attendanceTypeList,
 } from "../models/attendance-model";
-import { knexConnection } from "../config/knex";
+import { initTable, knexConnection } from "../config/knex";
 
 export class AttendanceRepository {
   static tableName = "attendance";
   static async initialize() {
-    await knexConnection({
-      callback: async (db) => {
-        const isExist = await db.schema.hasTable(this.tableName);
-        if (isExist) {
-          console.log(`table ${this.tableName} is exist`);
-          return;
-        }
-        const result = await db.schema.createTable(
-          AttendanceRepository.tableName,
-          (table) => {
-            table.increments("id");
-            table.string("name");
-            table.enum("attendance", attendanceTypeList);
-            table.timestamp("createdAt");
-          },
-        );
-        console.log("success initialize attendance table", result);
-      },
+    await initTable(AttendanceRepository.tableName, (table) => {
+      table.increments("id");
+      table.string("name");
+      table.enum("attendance", attendanceTypeList);
+      table.timestamp("createdAt");
     });
   }
 

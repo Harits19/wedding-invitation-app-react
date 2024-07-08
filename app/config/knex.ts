@@ -25,3 +25,19 @@ export const knexConnection = async <T>({
     await connection.destroy();
   }
 };
+
+export const initTable = async (
+  tableName: string,
+  // eslint-disable-next-line no-unused-vars
+  createTableCallback: (table: Knex.CreateTableBuilder) => void,
+) => {
+  await knexConnection({
+    callback: async (db) => {
+      const result = await db.schema.createTable(
+        tableName,
+        createTableCallback,
+      );
+      console.log(`success initialize ${tableName} table ${result}`);
+    },
+  });
+};

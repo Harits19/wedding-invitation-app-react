@@ -1,24 +1,14 @@
 import { GreetingModel } from "../models/greeting-model";
-import { knexConnection } from "../config/knex";
+import { initTable, knexConnection } from "../config/knex";
 
 export class GreetingRepository {
   static tableName = "greeting";
   static async initialize() {
-    await knexConnection({
-      callback: async (db) => {
-        const isExist = await db.schema.hasTable(this.tableName);
-        if (isExist) {
-          console.log(`table ${this.tableName} is exist`);
-          return;
-        }
-        const result = await db.schema.createTable(this.tableName, (table) => {
-          table.increments("id");
-          table.string("name");
-          table.string("message");
-          table.timestamp("createdAt");
-        });
-        console.log("success initialize greeting table", result);
-      },
+    await initTable(GreetingRepository.tableName, (table) => {
+      table.increments("id");
+      table.string("name");
+      table.string("message");
+      table.timestamp("createdAt");
     });
   }
 

@@ -31,13 +31,17 @@ export const initTable = async (
   // eslint-disable-next-line no-unused-vars
   createTableCallback: (table: Knex.CreateTableBuilder) => void,
 ) => {
-  await knexConnection({
+  return knexConnection({
     callback: async (db) => {
-      const result = await db.schema.createTable(
-        tableName,
-        createTableCallback,
-      );
-      console.log(`success initialize ${tableName} table ${result}`);
+      try {
+        const result = await db.schema.createTable(
+          tableName,
+          createTableCallback,
+        );
+        console.log(`success initialize ${tableName} table ${result}`);
+      } catch (error) {
+        console.error("error when create table", error);
+      }
     },
   });
 };

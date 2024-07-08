@@ -7,6 +7,7 @@ export const useText = () => {
   const formatedDate = moment(date).format("dddd, DD MMMM YYYY");
 
   const dummyData = {
+    rawWeddingDate: date,
     brideAndGroom: "Fulan & Fulanah",
     weddingDate: formatedDate,
     resepsi: {

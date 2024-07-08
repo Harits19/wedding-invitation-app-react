@@ -12,7 +12,7 @@ import "@fontsource/averia-serif-libre/400-italic.css"; // Specify weight and st
 import "@fontsource/berkshire-swash"; // Defaults to weight 400
 import "@fontsource/berkshire-swash/400.css"; // Specify weight
 import QueryProvider from "./[name]/components/query-provider";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import { kEnv } from "./constans/env";
 
 export const metadata: Metadata = {
@@ -24,7 +24,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body>
         <QueryProvider>
-          <div>{children}</div>
+          <Suspense>
+            <div>{children}</div>
+          </Suspense>
         </QueryProvider>
       </body>
     </html>

@@ -3,7 +3,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import WelcomePage from "./components/welcome-page";
-import { WeddingContext } from "./hooks/useWeddingProvider";
+import { WeddingContext } from "./hooks/use-wedding-provider";
 import MusicControl from "./components/music-control";
 import { kPublic } from "./constans/public";
 import IntroductionPage from "./components/introduction-page";

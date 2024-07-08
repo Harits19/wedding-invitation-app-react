@@ -1,4 +1,4 @@
-import { useText } from "@/app/hooks/useText";
+import { useText } from "@/app/hooks/use-text";
 import Background2 from "../background-2";
 import Image from "next/image";
 import { kPublic } from "@/app/constans/public";

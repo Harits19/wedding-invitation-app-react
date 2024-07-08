@@ -1,4 +1,4 @@
-import { useText } from "@/app/hooks/useText";
+import { useText } from "@/app/hooks/use-text";
 import Background1 from "../background-1";
 import { FaHeart } from "react-icons/fa";
 import InViewWrapper from "../inview-wrapper";

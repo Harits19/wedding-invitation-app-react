@@ -1,4 +1,4 @@
-import { useText } from "@/app/hooks/useText";
+import { useText } from "@/app/hooks/use-text";
 import Background2 from "../background-2";
 import Title from "../title";
 import Card from "../card";

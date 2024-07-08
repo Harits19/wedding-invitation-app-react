@@ -1,5 +1,5 @@
 import { kPublic } from "@/app/constans/public";
-import { useText } from "@/app/hooks/useText";
+import { useText } from "@/app/hooks/use-text";
 import Image from "next/image";
 import InViewWrapper from "../inview-wrapper";
 import Background2 from "../background-2";

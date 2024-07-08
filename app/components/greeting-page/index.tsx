@@ -1,7 +1,7 @@
-import { useText } from "@/app/hooks/useText";
+import { useText } from "@/app/hooks/use-text";
 import Background2 from "../background-2";
 import InViewWrapper from "../inview-wrapper";
-import { useGuest } from "@/app/hooks/useGuest";
+import { useGuest } from "@/app/hooks/use-guest";
 import ButtonBrown from "../button-brown";
 import { useGetGreeting } from "@/app/hooks/use-get-greeting";
 import moment from "moment";

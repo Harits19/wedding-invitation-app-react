@@ -1,4 +1,4 @@
-import { useText } from "@/app/hooks/useText";
+import { useText } from "@/app/hooks/use-text";
 import Background1 from "../background-1";
 import SmallButton from "../small-button";
 import { FaCalendar } from "react-icons/fa";

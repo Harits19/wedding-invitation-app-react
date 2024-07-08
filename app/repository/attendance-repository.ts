@@ -9,6 +9,11 @@ export class AttendanceRepository {
   static async initialize() {
     await knexConnection({
       callback: async (db) => {
+        const isExist = await db.schema.hasTable(this.tableName);
+        if (isExist) {
+          console.log(`table ${this.tableName} is exist`);
+          return;
+        }
         const result = await db.schema.createTable(
           AttendanceRepository.tableName,
           (table) => {

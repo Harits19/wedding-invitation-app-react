@@ -1,4 +1,4 @@
-import { useWeddingState } from "@/app/hooks/useWeddingProvider";
+import { useWeddingState } from "@/app/hooks/use-wedding-provider";
 import { FaArrowUp, FaMicrophoneAltSlash, FaMusic } from "react-icons/fa";
 import { IconType } from "react-icons/lib";
 

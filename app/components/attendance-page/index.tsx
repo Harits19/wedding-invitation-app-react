@@ -1,7 +1,7 @@
-import { useText } from "@/app/hooks/useText";
+import { useText } from "@/app/hooks/use-text";
 import InViewWrapper from "../inview-wrapper";
 import { FaChevronDown } from "react-icons/fa";
-import { useGuest } from "@/app/hooks/useGuest";
+import { useGuest } from "@/app/hooks/use-guest";
 import { useState } from "react";
 import Background1 from "../background-1";
 

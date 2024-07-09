@@ -2,6 +2,7 @@ import { kPublic } from "@/app/core/constans/public";
 import Image from "next/image";
 import { ReactNode } from "react";
 import Decoration, { DecorationProps } from "../decoration";
+import { cn } from "@/app/core/utils/utils";
 
 export default function Background2({
   children,
@@ -33,7 +34,7 @@ export default function Background2({
 
   const RenderChildren = () => {
     return (
-      <div className={` relative w-full  py-[160px] p-4 ${className ?? ""}`}>
+      <div className={cn([" relative w-full  py-[160px] px-4 ", className])}>
         {children}
       </div>
     );

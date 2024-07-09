@@ -33,6 +33,21 @@ export class WhitelistRepository {
     });
   }
 
+  static async findByName(name: string) {
+    return knexConnection({
+      callback: async (db) => {
+        const result: WhitelistModel = await db
+          .table(WhitelistRepository.tableName)
+          .where({
+            name,
+          })
+          .select()
+          .first();
+        return result;
+      },
+    });
+  }
+
   static async insert(value: WhitelistModel) {
     return knexConnection({
       callback: async (db) => {

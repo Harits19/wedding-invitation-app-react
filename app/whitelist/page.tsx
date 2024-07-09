@@ -10,9 +10,11 @@ import {
 } from "@/app/components/ui/table";
 import { useWhitelist } from "../core/hooks/use-whitelist";
 import AddWhitelistModal from "./components/add-whitelist-modal";
+import { Button } from "../components/ui/button";
+import { FaTrash } from "react-icons/fa";
 
 export default function Page() {
-  const { get } = useWhitelist();
+  const { get, delete: deleteMethod } = useWhitelist();
   const whitelist = get.data?.data ?? [];
 
   return (
@@ -22,12 +24,23 @@ export default function Page() {
         <TableHeader>
           <TableRow>
             <TableHead>Name</TableHead>
+            <TableHead>Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {whitelist.map((item) => (
             <TableRow key={item.id}>
               <TableCell>{item.name}</TableCell>
+              <TableCell className="">
+                <Button
+                  variant={"destructive"}
+                  onClick={async () => {
+                    await deleteMethod.trigger(item);
+                  }}
+                >
+                  <FaTrash />
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

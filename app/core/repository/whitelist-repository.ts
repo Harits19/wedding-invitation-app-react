@@ -1,7 +1,6 @@
 import { initTable, knexConnection } from "../config/knex";
 import { WhitelistModel } from "../models/whitelist-model";
 
-
 export class WhitelistRepository {
   static tableName = "whitelist";
   static async initialize() {
@@ -42,6 +41,19 @@ export class WhitelistRepository {
           createdAt: new Date(),
         });
         console.log("success insert whitelist table", result);
+      },
+    });
+  }
+
+  static async delete(id: number) {
+    return knexConnection({
+      callback: async (db) => {
+        await db
+          .table(WhitelistRepository.tableName)
+          .where({
+            id,
+          })
+          .del();
       },
     });
   }

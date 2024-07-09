@@ -1,4 +1,4 @@
-import { useText } from "@/app/hooks/use-text";
+import { useText } from "@/app/core/hooks/use-text";
 import Background1 from "../background-1";
 import { FaLocationArrow } from "react-icons/fa";
 import Card from "../card";

@@ -3,14 +3,14 @@
 
 import { useEffect, useMemo, useState } from "react";
 import WelcomePage from "./components/welcome-page";
-import { WeddingContext } from "./hooks/use-wedding-provider";
+import { WeddingContext } from "./core/hooks/use-wedding-provider";
 import MusicControl from "./components/music-control";
-import { kPublic } from "./constans/public";
+import { kPublic } from "./core/constans/public";
 import IntroductionPage from "./components/introduction-page";
 import SchedulePage from "./components/schedule-page";
 import GalleryPage from "./components/gallery-page";
 import StoryPage from "./components/story-page";
-import { kEnv } from "./constans/env";
+import { kEnv } from "./core/constans/env";
 import AttendancePage from "./components/attendance-page";
 import GreetingPage from "./components/greeting-page";
 import GiftPage from "./components/gift-page";

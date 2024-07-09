@@ -1,5 +1,5 @@
-import { GreetingRepository } from "@/app/repository/greeting-repository";
-import { ResponseUtil } from "@/app/utils/response-util";
+import { GreetingRepository } from "@/app/core/repository/greeting-repository";
+import { ResponseUtil } from "@/app/core/utils/response-util";
 
 export const GET = () => {
   return ResponseUtil.json({

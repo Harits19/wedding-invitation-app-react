@@ -1,6 +1,6 @@
-import { GreetingValidator } from "@/app/models/greeting-model";
-import { GreetingRepository } from "@/app/repository/greeting-repository";
-import { ResponseUtil } from "@/app/utils/response-util";
+import { GreetingValidator } from "@/app/core/models/greeting-model";
+import { GreetingRepository } from "@/app/core/repository/greeting-repository";
+import { ResponseUtil } from "@/app/core/utils/response-util";
 
 export const GET = () => {
   return ResponseUtil.json({

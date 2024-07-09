@@ -12,7 +12,7 @@ import "@fontsource/averia-serif-libre/400-italic.css"; // Specify weight and st
 import "@fontsource/berkshire-swash"; // Defaults to weight 400
 import "@fontsource/berkshire-swash/400.css"; // Specify weight
 import { ReactNode, Suspense } from "react";
-import { kEnv } from "./constans/env";
+import { kEnv } from "./core/constans/env";
 
 export const metadata: Metadata = {
   title: kEnv.developeMode ? "Dummy" : "The Wedding of Harits & Fia",

@@ -1,9 +1,9 @@
-import { useText } from "@/app/hooks/use-text";
+import { useText } from "@/app/core/hooks/use-text";
 import Background1 from "../background-1";
 import SmallButton from "../small-button";
 import { FaCalendar } from "react-icons/fa";
 import { useEffect, useMemo, useState } from "react";
-import { timeBetweenDates } from "@/app/utils/date-util";
+import { timeBetweenDates } from "@/app/core/utils/date-util";
 
 export default function WelcomePage() {
   const text = useText();

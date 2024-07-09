@@ -1,4 +1,4 @@
-import { kPublic } from "@/app/constans/public";
+import { kPublic } from "@/app/core/constans/public";
 import Image from "next/image";
 import { ReactNode } from "react";
 import Decoration, { DecorationProps } from "../decoration";

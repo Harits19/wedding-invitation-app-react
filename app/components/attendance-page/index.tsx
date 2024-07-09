@@ -1,12 +1,12 @@
-import { useText } from "@/app/hooks/use-text";
+import { useText } from "@/app/core/hooks/use-text";
 import InViewWrapper from "../inview-wrapper";
 import { FaChevronDown } from "react-icons/fa";
-import { useGuest } from "@/app/hooks/use-guest";
+import { useGuest } from "@/app/core/hooks/use-guest";
 import Background1 from "../background-1";
 import { Controller, useForm } from "react-hook-form";
-import { AttendanceModel, AttendanceType } from "@/app/models/attendance-model";
+import { AttendanceModel, AttendanceType } from "@/app/core/models/attendance-model";
 import Input from "../input";
-import { useAttendance } from "@/app/hooks/use-attendance";
+import { useAttendance } from "@/app/core/hooks/use-attendance";
 
 export default function AttendancePage() {
   const text = useText();

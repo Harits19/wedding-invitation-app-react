@@ -1,7 +1,7 @@
-import { kPublic } from "@/app/constans/public";
-import { useGuest } from "@/app/hooks/use-guest";
-import { useText } from "@/app/hooks/use-text";
-import { useWeddingState } from "@/app/hooks/use-wedding-provider";
+import { kPublic } from "@/app/core/constans/public";
+import { useGuest } from "@/app/core/hooks/use-guest";
+import { useText } from "@/app/core/hooks/use-text";
+import { useWeddingState } from "@/app/core/hooks/use-wedding-provider";
 import Image from "next/image";
 import { FaRegEnvelopeOpen } from "react-icons/fa";
 import ButtonBrown from "../button-brown";

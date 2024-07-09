@@ -1,5 +1,5 @@
-import { AttendanceRepository } from "@/app/repository/attendance-repository";
-import { ResponseUtil } from "@/app/utils/response-util";
+import { AttendanceRepository } from "@/app/core/repository/attendance-repository";
+import { ResponseUtil } from "@/app/core/utils/response-util";
 
 export const GET = () => {
   return ResponseUtil.json({

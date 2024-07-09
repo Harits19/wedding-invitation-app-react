@@ -1,9 +1,9 @@
-import { useText } from "@/app/hooks/use-text";
+import { useText } from "@/app/core/hooks/use-text";
 import Background1 from "../background-1";
 import { FaHeart } from "react-icons/fa";
 import InViewWrapper from "../inview-wrapper";
 import Image from "next/image";
-import { kPublic } from "@/app/constans/public";
+import { kPublic } from "@/app/core/constans/public";
 
 export default function ClosingPage() {
   const text = useText();

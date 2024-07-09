@@ -1,6 +1,6 @@
-import { WhitelistValidator } from "@/app/models/whitelist-model";
-import { WhitelistRepository } from "@/app/repository/whitelist-repository";
-import { ResponseUtil } from "@/app/utils/response-util";
+import { WhitelistValidator } from "@/app/core/models/whitelist-model";
+import { WhitelistRepository } from "@/app/core/repository/whitelist-repository";
+import { ResponseUtil } from "@/app/core/utils/response-util";
 
 export const GET = () => {
   return ResponseUtil.json({

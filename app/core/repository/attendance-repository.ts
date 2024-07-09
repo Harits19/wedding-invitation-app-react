@@ -1,8 +1,8 @@
-import {
-  AttendanceModel,
-  attendanceTypeList,
-} from "../models/attendance-model";
 import { initTable, knexConnection } from "../config/knex";
+import {
+  attendanceTypeList,
+  AttendanceModel,
+} from "../models/attendance-model";
 
 export class AttendanceRepository {
   static tableName = "attendance";

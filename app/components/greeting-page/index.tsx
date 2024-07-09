@@ -1,12 +1,12 @@
-import { useText } from "@/app/hooks/use-text";
+import { useText } from "@/app/core/hooks/use-text";
 import Background2 from "../background-2";
 import InViewWrapper from "../inview-wrapper";
-import { useGuest } from "@/app/hooks/use-guest";
+import { useGuest } from "@/app/core/hooks/use-guest";
 import ButtonBrown from "../button-brown";
-import { useGreeting } from "@/app/hooks/use-greeting";
+import { useGreeting } from "@/app/core/hooks/use-greeting";
 import moment from "moment";
 import { Controller, useForm } from "react-hook-form";
-import { GreetingModel } from "@/app/models/greeting-model";
+import { GreetingModel } from "@/app/core/models/greeting-model";
 import RenderError from "../render-error";
 import Input from "../input";
 

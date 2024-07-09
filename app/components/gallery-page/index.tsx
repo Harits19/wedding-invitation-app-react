@@ -1,7 +1,7 @@
-import { useText } from "@/app/hooks/use-text";
+import { useText } from "@/app/core/hooks/use-text";
 import Background2 from "../background-2";
 import Image from "next/image";
-import { kPublic } from "@/app/constans/public";
+import { kPublic } from "@/app/core/constans/public";
 import InViewWrapper from "../inview-wrapper";
 import { CSSProperties } from "react";
 

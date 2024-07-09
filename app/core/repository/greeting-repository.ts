@@ -1,5 +1,5 @@
-import { GreetingModel } from "../models/greeting-model";
 import { initTable, knexConnection } from "../config/knex";
+import { GreetingModel } from "../models/greeting-model";
 
 export class GreetingRepository {
   static tableName = "greeting";

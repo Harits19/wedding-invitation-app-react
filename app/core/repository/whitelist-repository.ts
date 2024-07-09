@@ -1,6 +1,7 @@
 import { initTable, knexConnection } from "../config/knex";
 import { WhitelistModel } from "../models/whitelist-model";
 
+
 export class WhitelistRepository {
   static tableName = "whitelist";
   static async initialize() {

@@ -1,21 +1,21 @@
 import axios from "axios";
+import useSWRMutation from "swr/mutation";
 import useSWR from "swr";
 import { BaseResponse } from "../models/base-response";
-import { GreetingModel } from "../models/greeting-model";
-import useSWRMutation from "swr/mutation";
+import { AttendanceModel } from "../models/attendance-model";
 
-export const useGreeting = () => {
-  const url = "/api/greeting";
+export const useAttendance = () => {
+  const url = "/api/attendance";
   const post = useSWRMutation(
     url,
-    function (_, { arg }: { arg: GreetingModel }) {
+    function (_, { arg }: { arg: AttendanceModel }) {
       return axios.post(url, arg);
     },
   );
 
   const get = useSWR(url, () => {
     return axios
-      .get<BaseResponse<GreetingModel[]>>(url)
+      .get<BaseResponse<AttendanceModel[]>>(url)
       .then((value) => value.data);
   });
 

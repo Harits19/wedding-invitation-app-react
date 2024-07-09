@@ -1,9 +1,9 @@
-import { useText } from "@/app/hooks/use-text";
+import { useText } from "@/app/core/hooks/use-text";
 import Background2 from "../background-2";
 import Title from "../title";
 import Card from "../card";
 import { FaCopy, FaGift, FaWallet, FaWhatsapp } from "react-icons/fa";
-import { confirmWhatsapp, copyText } from "@/app/utils/text";
+import { confirmWhatsapp, copyText } from "@/app/core/utils/text";
 import InViewWrapper from "../inview-wrapper";
 import SmallButton from "../small-button";
 

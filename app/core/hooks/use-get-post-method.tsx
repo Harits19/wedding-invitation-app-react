@@ -2,6 +2,7 @@ import axios from "axios";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import { BaseResponse } from "../models/base-response";
+import { useAxios } from "../config/axios";
 
 export const useGetAndPostMethod = <
   BaseModel extends {
@@ -12,9 +13,18 @@ export const useGetAndPostMethod = <
 }: {
   url: string;
 }) => {
-  const post = useSWRMutation(url, function (_, { arg }: { arg: BaseModel }) {
-    return axios.post(url, arg);
-  });
+  const wedAxios = useAxios();
+
+  const post = useSWRMutation(
+    url,
+    async function (_, { arg }: { arg: BaseModel }) {
+      try {
+        await wedAxios({ url, data: arg, method: "POST" });
+      } catch (error) {
+        console.error("asdasd", error);
+      }
+    },
+  );
 
   const get = useSWR(url, () => {
     return axios

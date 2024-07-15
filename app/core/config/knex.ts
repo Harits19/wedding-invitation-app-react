@@ -21,7 +21,6 @@ export const knexConnection = async <T>({
     const result = await callback(connection);
     return result;
   } finally {
-    console.log("destroy connection");
     await connection.destroy();
   }
 };

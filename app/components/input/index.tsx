@@ -7,11 +7,13 @@ export interface InputProps
     HTMLInputElement
   > {
   info?: string;
+  label?: string;
 }
 
-export default function Input({ info, ...props }: InputProps) {
+export default function Input({ info, label, ...props }: InputProps) {
   return (
     <>
+      <h3>{label}</h3>
       <input {...props} />
       <RenderError message={info} />
     </>

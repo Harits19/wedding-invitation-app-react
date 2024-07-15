@@ -1,6 +1,7 @@
 import Input from "@/app/components/input";
 import { Button } from "@/app/components/ui/button";
 import { Dialog } from "@/app/components/ui/dialog";
+import { useToast } from "@/app/components/ui/use-toast";
 import { useWhitelist } from "@/app/core/hooks/use-whitelist";
 import { WhitelistRequest } from "@/app/core/models/whitelist-model";
 import { useState } from "react";
@@ -10,6 +11,8 @@ export default function AddWhitelistModal() {
   const { post } = useWhitelist();
 
   const { control, handleSubmit } = useForm<WhitelistRequest>({});
+
+  const { toast } = useToast();
 
   const [showModal, setShowModal] = useState(false);
 
@@ -27,7 +30,11 @@ export default function AddWhitelistModal() {
             },
           }}
           render={({ field, fieldState }) => (
-            <Input {...field} info={fieldState.error?.message} />
+            <Input
+              placeholder="Name"
+              {...field}
+              info={fieldState.error?.message}
+            />
           )}
         />
 
@@ -41,7 +48,11 @@ export default function AddWhitelistModal() {
             },
           }}
           render={({ field, fieldState }) => (
-            <Input {...field} info={fieldState.error?.message} />
+            <Input
+              placeholder="Token"
+              {...field}
+              info={fieldState.error?.message}
+            />
           )}
         />
 

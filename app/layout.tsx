@@ -14,6 +14,7 @@ import "@fontsource/berkshire-swash/400.css"; // Specify weight
 import { ReactNode, Suspense } from "react";
 import { kEnv } from "./core/constans/env";
 import { Toaster } from "./components/ui/toaster";
+import { TokenProvider } from "./core/hooks/use-token";
 
 export const metadata: Metadata = {
   title: kEnv.developeMode ? "Dummy" : "The Wedding of Harits & Fia",
@@ -23,10 +24,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <Suspense>
-          <div>{children}</div>
-        </Suspense>
-        <Toaster />
+        <TokenProvider>
+          <Suspense>
+            <div>{children}</div>
+          </Suspense>
+          <Toaster />
+        </TokenProvider>
       </body>
     </html>
   );

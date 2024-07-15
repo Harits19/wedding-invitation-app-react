@@ -7,7 +7,7 @@ import { FaTrash } from "react-icons/fa";
 import WedTable from "../components/table";
 
 export default function Page() {
-  const { get, delete: deleteMethod } = useWhitelist();
+  const { get, del } = useWhitelist();
   const whitelist = get.data?.data ?? [];
 
   return (
@@ -29,7 +29,7 @@ export default function Page() {
               <Button
                 variant={"destructive"}
                 onClick={async () => {
-                  await deleteMethod.trigger(item);
+                  await del.trigger(item);
                 }}
               >
                 <FaTrash />

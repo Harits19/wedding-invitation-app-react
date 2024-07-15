@@ -1,4 +1,3 @@
-import axios from "axios";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import { BaseResponse } from "../models/base-response";
@@ -7,42 +6,47 @@ import { useAxios } from "../config/axios";
 export const useGetAndPostMethod = <
   BaseModel extends {
     id?: number;
+    token?: string;
   },
 >({
   url,
 }: {
   url: string;
 }) => {
-  const wedAxios = useAxios();
+  const { fetch } = useAxios();
 
   const post = useSWRMutation(
     url,
     async function (_, { arg }: { arg: BaseModel }) {
-      try {
-        await wedAxios({ url, data: arg, method: "POST" });
-      } catch (error) {
-        console.error("asdasd", error);
-      }
+      return fetch({
+        url,
+        data: arg,
+        method: "POST",
+        headers: {
+          token: arg.token,
+        },
+      });
     },
   );
 
   const get = useSWR(url, () => {
-    return axios
-      .get<BaseResponse<BaseModel[]>>(url)
-      .then((value) => value.data);
+    return fetch<unknown, BaseResponse<BaseModel[]>>({
+      url,
+      method: "GET",
+    }).then((value) => value.data);
   });
 
-  const deleteMethod = useSWRMutation(
-    url,
-    function (_, { arg }: { arg: BaseModel }) {
-      if (!arg.id) throw Error("Empty id");
-      return axios.delete(`${url}/${arg.id}`);
-    },
-  );
+  const del = useSWRMutation(url, function (_, { arg }: { arg: BaseModel }) {
+    if (!arg.id) throw Error("Empty id");
+    return fetch({
+      url: `${url}/${arg.id}`,
+      method: "DELETE",
+    });
+  });
 
   return {
     post,
     get,
-    delete: deleteMethod,
+    del,
   };
 };

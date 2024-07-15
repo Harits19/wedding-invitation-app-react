@@ -9,7 +9,7 @@ export function useCatchError() {
       if (error instanceof AxiosError) {
         toast({
           title: "AxiosError",
-          description: JSON.stringify(error.toJSON()),
+          description: JSON.stringify(error.response?.data),
         });
         return;
       }
@@ -21,16 +21,19 @@ export function useCatchError() {
 
 export function useAxios() {
   const { handleError } = useCatchError();
-  const fetch = <Data, Response>(params: AxiosRequestConfig<Data>) => {
+  const fetch = async <Data = unknown, Response = unknown>(
+    params: AxiosRequestConfig<Data>,
+  ) => {
     const instance = axios.create();
     try {
-      return instance<Response>(params);
+      const result = await instance<Response>(params);
+
+      return result;
     } catch (error) {
-      console.log("Error useAxios", error);
       handleError(error);
-      // throw error;
+      throw error;
     }
   };
 
-  return fetch;
+  return { fetch };
 }

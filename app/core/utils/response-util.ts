@@ -1,5 +1,6 @@
 import { ZodError } from "zod";
 import { BaseResponse } from "../models/base-response";
+import { HttpStatusCode } from "axios";
 
 export class ResponseUtil {
   static async json<T>({
@@ -12,19 +13,26 @@ export class ResponseUtil {
     try {
       return Response.json(await callback());
     } catch (error) {
-      const errorResponse: BaseResponse<unknown> = {
+      const errorResponse: BaseResponse<string> = {
         message: errorMessage,
         data: "Unexpected error",
       };
 
+      let errorCode = HttpStatusCode.InternalServerError;
+
       if (error instanceof ZodError) {
+        console.error("ZodError : ", error);
         const parsedError = error.issues
           .map((issue) => {
             const path = issue.path.join(".");
-            return `${path} : ${issue.message}`;
+            if (path) {
+              return `${path} : ${issue.message}`;
+            }
+            return issue.message;
           })
           .join(" \n");
         errorResponse.data = parsedError;
+        errorCode = HttpStatusCode.BadRequest;
       } else if (error instanceof Error && error.message) {
         console.log("ERROR : ", error);
         errorResponse.data = error.message;
@@ -33,7 +41,7 @@ export class ResponseUtil {
         errorResponse.data = `${error || JSON.stringify(error)}`;
       }
 
-      return Response.json(errorResponse);
+      return Response.json(errorResponse, { status: errorCode });
     }
   }
 

@@ -1,6 +1,7 @@
 export const kEnv = (() => {
   const env = {
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL!,
+    TOKEN: process.env.TOKEN,
     developeMode: true,
   };
   const emptyKey = Object.entries(env).filter((key) => {

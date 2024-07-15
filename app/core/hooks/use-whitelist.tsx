@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { WhitelistModel } from "../models/whitelist-model";
+import { WhitelistModel, WhitelistRequest } from "../models/whitelist-model";
 import { useGetAndPostMethod } from "./use-get-post-method";
 import axios from "axios";
 import { BaseResponse } from "../models/base-response";
@@ -7,7 +7,7 @@ import { BaseResponse } from "../models/base-response";
 const url = "/api/whitelist";
 
 export const useWhitelist = () => {
-  const base = useGetAndPostMethod<WhitelistModel>({
+  const base = useGetAndPostMethod<WhitelistRequest>({
     url,
   });
 

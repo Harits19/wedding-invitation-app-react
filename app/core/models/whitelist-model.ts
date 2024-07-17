@@ -4,11 +4,14 @@ export const WhitelistValidator = zod.object({
   name: zod.string(),
 });
 
+export const WhitelistArrayValidator = zod.array(WhitelistValidator);
+
 export interface WhitelistModel extends zod.infer<typeof WhitelistValidator> {
   createdAt?: Date;
   id?: number;
 }
 
-export interface WhitelistRequest extends WhitelistModel {
+export interface WhitelistRequest {
   token?: string;
+  data?: WhitelistModel[];
 }

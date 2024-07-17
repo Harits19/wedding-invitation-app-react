@@ -8,23 +8,23 @@ import {
 } from "@/app/components/ui/table";
 import { ReactNode } from "react";
 
-interface TableObject {
-  key?: string | number;
-  render?: ReactNode;
-}
-
-export default function WedTable({
+export default function WedTable<T extends { id?: string | number }>({
   add,
+  list = [],
   items = {},
 }: {
   add?: ReactNode;
+  list?: T[];
   items?: {
     [key: string]: {
       title: ReactNode;
-      cell: TableObject[];
+      // eslint-disable-next-line no-unused-vars
+      cell: (value: T) => ReactNode;
     };
   };
 }) {
+  const headers = Object.entries(items);
+
   return (
     <div className="m-4">
       {add && add}
@@ -37,21 +37,15 @@ export default function WedTable({
           </TableRow>
         </TableHeader>
         <TableBody>
-          {Object.entries(items)
-            .at(0)?.[1]
-            .cell.map((cell, index) => {
-              return (
-                <TableRow key={cell.key}>
-                  {Object.entries(items).map((item) => {
-                    return (
-                      <TableCell key={item[0]}>
-                        {item[1].cell.at(index)?.render}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
+          {list.map((cell) => {
+            return (
+              <TableRow key={cell.id}>
+                {headers.map(([key, value]) => {
+                  return <TableCell key={key}>{value.cell(cell)}</TableCell>;
+                })}
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </div>

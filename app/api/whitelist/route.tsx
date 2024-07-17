@@ -1,4 +1,4 @@
-import { WhitelistValidator } from "@/app/core/models/whitelist-model";
+import { WhitelistArrayValidator } from "@/app/core/models/whitelist-model";
 import { WhitelistRepository } from "@/app/core/repository/whitelist-repository";
 import { ResponseUtil } from "@/app/core/utils/response-util";
 import { checkToken } from "@/app/core/utils/token";
@@ -22,7 +22,60 @@ export const POST = async (request: Request) => {
     callback: async () => {
       checkToken(request);
       const body = await request.json();
-      const whitelist = WhitelistValidator.parse(body);
+
+      // const listWhiteList = [
+      //   "Pakde Misbah",
+      //   "Pakde Pramono",
+      //   "Mas Naufal",
+      //   "Mas Wahyu",
+      //   "Mba Ayu",
+      //   "Mbah Jito",
+      //   "Om Rozi",
+      //   "Om Rakha",
+      //   "Bulek Rahma",
+      //   "Om Robbi",
+      //   "Om Rendra",
+      //   "Bude Ari",
+      //   "Pakde Sutris",
+      //   "Mas Deris",
+      //   "Pakde Jangi",
+      //   "Pakde Tatok",
+      //   "Mba Erni",
+      //   "Koko",
+      //   "Pakde Aris",
+      //   "Keluarga Jakarta",
+      //   "Keluarga Cilacap",
+      //   "Tante Putri",
+      //   "Mbah Mus",
+      //   "Bude tin",
+      //   "Bude Prapti",
+      //   "Keluarga Inti",
+      //   "Mas Sauki",
+      //   "Mas Imam",
+      //   "Mas Furqon",
+      //   "Mamah fi",
+      //   "Bude Endang",
+      //   "Mba Arum",
+      //   "Bulek Lis",
+      //   "Mba Ayu Madiun",
+      //   "Om Agus",
+      //   "Enggar",
+      //   "Om Bambang",
+      //   "Bude Nining",
+      //   "Bu Amiyati",
+      //   "Tante Iil",
+      //   "Om Adi",
+      //   "Tante Nana",
+      //   "Tante Putri",
+      //   "Trisila",
+      //   "Nur Hanim",
+      //   "Nur Hasanah",
+      //   "Basuki",
+      // ].map((item) => ({
+      //   name: item,
+      // }));
+
+      const whitelist = WhitelistArrayValidator.parse(body);
 
       await WhitelistRepository.insert(whitelist);
 

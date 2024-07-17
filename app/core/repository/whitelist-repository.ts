@@ -48,14 +48,28 @@ export class WhitelistRepository {
     });
   }
 
-  static async insert(value: WhitelistModel) {
+  static async insert(value: WhitelistModel[]) {
     return knexConnection({
       callback: async (db) => {
-        const result = await db.table(WhitelistRepository.tableName).insert({
-          ...value,
-          createdAt: new Date(),
-        });
+        const result = await db.table(WhitelistRepository.tableName).insert(
+          value.map((item) => ({
+            ...item,
+            createdAt: new Date(),
+          })),
+        );
         console.log("success insert whitelist table", result);
+      },
+    });
+  }
+
+  static async update(value: WhitelistModel & { id: number }) {
+    return knexConnection({
+      callback: async (db) => {
+        const result = await db
+          .table(WhitelistRepository.tableName)
+          .where({ id: value.id })
+          .update(value);
+        console.log("success update whitelist table", result);
       },
     });
   }

@@ -19,7 +19,7 @@ export default function AddWhitelistModal() {
       <Dialog open={showModal} onOpenChange={setShowModal}>
         <Controller
           control={control}
-          name="name"
+          name="data.0.name"
           rules={{
             required: {
               value: true,

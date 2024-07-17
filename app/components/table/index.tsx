@@ -9,11 +9,9 @@ import {
 import { ReactNode } from "react";
 
 export default function WedTable<T extends { id?: string | number }>({
-  add,
   list = [],
   items = {},
 }: {
-  add?: ReactNode;
   list?: T[];
   items?: {
     [key: string]: {
@@ -26,28 +24,25 @@ export default function WedTable<T extends { id?: string | number }>({
   const headers = Object.entries(items);
 
   return (
-    <div className="m-4">
-      {add && add}
-      <Table>
-        <TableHeader>
-          <TableRow>
-            {Object.entries(items).map((item) => {
-              return <TableHead key={item[0]}>{item[1].title}</TableHead>;
-            })}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {list.map((cell) => {
-            return (
-              <TableRow key={cell.id}>
-                {headers.map(([key, value]) => {
-                  return <TableCell key={key}>{value.cell(cell)}</TableCell>;
-                })}
-              </TableRow>
-            );
+    <Table>
+      <TableHeader>
+        <TableRow>
+          {Object.entries(items).map((item) => {
+            return <TableHead key={item[0]}>{item[1].title}</TableHead>;
           })}
-        </TableBody>
-      </Table>
-    </div>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {list.map((cell) => {
+          return (
+            <TableRow key={cell.id}>
+              {headers.map(([key, value]) => {
+                return <TableCell key={key}>{value.cell(cell)}</TableCell>;
+              })}
+            </TableRow>
+          );
+        })}
+      </TableBody>
+    </Table>
   );
 }

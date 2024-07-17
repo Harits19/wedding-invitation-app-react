@@ -13,6 +13,7 @@
     "@fontsource/berkshire-swash": "^5.0.15",
     "@fontsource/poppins": "^5.0.8",
     "@hookform/resolvers": "^3.3.4",
+    "@radix-ui/react-alert-dialog": "^1.1.1",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.1.0",

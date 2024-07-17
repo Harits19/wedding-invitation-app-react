@@ -7,7 +7,6 @@ export const WhitelistValidator = zod.object({
 export const WhitelistArrayValidator = zod.array(WhitelistValidator);
 
 export interface WhitelistModel extends zod.infer<typeof WhitelistValidator> {
-  createdAt?: Date;
-  id?: number;
+  createdAt: Date;
+  id: number;
 }
-

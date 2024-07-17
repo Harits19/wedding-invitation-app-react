@@ -1,10 +1,10 @@
 "use client";
 
-import { useWhitelist } from "../core/hooks/use-whitelist";
+import { useWhitelist } from "../../core/hooks/use-whitelist";
 import AddWhitelistModal from "./components/add-whitelist-modal";
-import { Button } from "../components/ui/button";
+import { Button } from "../../components/ui/button";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import WedTable from "../components/table";
+import WedTable from "../../components/table";
 
 export default function Page() {
   const { get, del, update } = useWhitelist();

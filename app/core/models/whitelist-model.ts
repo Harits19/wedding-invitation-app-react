@@ -12,6 +12,5 @@ export interface WhitelistModel extends zod.infer<typeof WhitelistValidator> {
 }
 
 export interface WhitelistRequest {
-  token?: string;
   data?: WhitelistModel[];
 }

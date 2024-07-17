@@ -8,7 +8,6 @@ import { useAxios } from "../config/axios";
 const url = "/api/whitelist";
 
 interface WhitelistUpdateDeleteRequest {
-  token?: string;
   data: WhitelistModel;
 }
 
@@ -22,9 +21,6 @@ export const useWhitelist = () => {
         url,
         data: arg.data,
         method: "POST",
-        headers: {
-          token: arg.token,
-        },
       });
     },
   );
@@ -43,9 +39,6 @@ export const useWhitelist = () => {
       return fetch({
         url: `${url}/${arg.data.id}`,
         method: "DELETE",
-        headers: {
-          token: arg.token,
-        },
       });
     },
   );
@@ -57,9 +50,6 @@ export const useWhitelist = () => {
         url: `${url}/${arg.data.id}`,
         data: arg.data,
         method: "PUT",
-        headers: {
-          token: arg.token,
-        },
       });
     },
   );

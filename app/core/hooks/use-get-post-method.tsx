@@ -22,9 +22,6 @@ export const useGetAndPostMethod = <
         url,
         data: arg,
         method: "POST",
-        headers: {
-          token: arg.token,
-        },
       });
     },
   );

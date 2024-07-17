@@ -1,5 +1,6 @@
 import { useToast } from "@/app/components/ui/use-toast";
 import axios, { AxiosError, AxiosRequestConfig } from "axios";
+import { useTokenState } from "../hooks/use-token";
 
 export function useCatchError() {
   const { toast } = useToast();
@@ -21,12 +22,19 @@ export function useCatchError() {
 
 export function useAxios() {
   const { handleError } = useCatchError();
+  const { token } = useTokenState();
   const fetch = async <Data = unknown, Response = unknown>(
     params: AxiosRequestConfig<Data>,
   ) => {
     const instance = axios.create();
     try {
-      const result = await instance<Response>(params);
+      const result = await instance<Response>({
+        ...params,
+        headers: {
+          token,
+          ...params.headers,
+        },
+      });
 
       return result;
     } catch (error) {

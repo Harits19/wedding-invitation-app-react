@@ -26,17 +26,14 @@ export default function Page() {
               <Button
                 variant={"destructive"}
                 onClick={async () => {
-                  await del.trigger({ token: "123", data: item });
+                  await del.trigger(item);
                 }}
               >
                 <FaTrash />
               </Button>
               <Button
                 onClick={async () => {
-                  await update.trigger({
-                    token: "123",
-                    data: { ...item, name: "Test Update" },
-                  });
+                  await update.trigger(item);
                 }}
               >
                 <FaEdit />

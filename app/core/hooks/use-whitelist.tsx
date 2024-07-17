@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { WhitelistModel, WhitelistRequest } from "../models/whitelist-model";
+import { WhitelistModel } from "../models/whitelist-model";
 import axios from "axios";
 import { BaseResponse } from "../models/base-response";
 import useSWRMutation from "swr/mutation";
@@ -7,19 +7,15 @@ import { useAxios } from "../config/axios";
 
 const url = "/api/whitelist";
 
-interface WhitelistUpdateDeleteRequest {
-  data: WhitelistModel;
-}
-
 export const useWhitelist = () => {
   const { fetch } = useAxios();
 
   const post = useSWRMutation(
     url,
-    async function (_, { arg }: { arg: WhitelistRequest }) {
+    async function (_, { arg }: { arg: WhitelistModel[] }) {
       return fetch({
         url,
-        data: arg.data,
+        data: arg,
         method: "POST",
       });
     },
@@ -34,10 +30,10 @@ export const useWhitelist = () => {
 
   const del = useSWRMutation(
     url,
-    function (_, { arg }: { arg: WhitelistUpdateDeleteRequest }) {
-      if (!arg.data.id) throw Error("Empty id");
+    function (_, { arg }: { arg: WhitelistModel }) {
+      if (!arg.id) throw Error("Empty id");
       return fetch({
-        url: `${url}/${arg.data.id}`,
+        url: `${url}/${arg.id}`,
         method: "DELETE",
       });
     },
@@ -45,10 +41,10 @@ export const useWhitelist = () => {
 
   const update = useSWRMutation(
     url,
-    async function (_, { arg }: { arg: WhitelistUpdateDeleteRequest }) {
+    async function (_, { arg }: { arg: WhitelistModel }) {
       return fetch({
-        url: `${url}/${arg.data.id}`,
-        data: arg.data,
+        url: `${url}/${arg.id}`,
+        data: arg,
         method: "PUT",
       });
     },

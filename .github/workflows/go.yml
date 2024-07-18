@@ -29,6 +29,6 @@ jobs:
             git branch --set-upstream-to=origin/master master
             git pull origin master
             git status
-            npm run build
-            npm run start
+            # npm run build
+            # npm run start
             sudo ufw allow 3000

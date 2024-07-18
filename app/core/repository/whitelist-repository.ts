@@ -62,7 +62,7 @@ export class WhitelistRepository {
     });
   }
 
-  static async update(value: WhitelistModel & { id: number }) {
+  static async update(value: Partial<WhitelistModel> & { id: number }) {
     return knexConnection({
       callback: async (db) => {
         const result = await db

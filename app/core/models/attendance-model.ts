@@ -10,6 +10,6 @@ export const AttendanceValidator = zod.object({
 });
 
 export interface AttendanceModel extends zod.infer<typeof AttendanceValidator> {
-  id?: string;
+  id?: number;
   createdAt?: Date;
 }

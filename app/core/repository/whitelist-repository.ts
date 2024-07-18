@@ -48,7 +48,7 @@ export class WhitelistRepository {
     });
   }
 
-  static async insert(value: WhitelistModel[]) {
+  static async insert(value: Partial<WhitelistModel>[]) {
     return knexConnection({
       callback: async (db) => {
         const result = await db.table(WhitelistRepository.tableName).insert(

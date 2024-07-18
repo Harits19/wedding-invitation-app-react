@@ -29,5 +29,6 @@ jobs:
             nvm install 20
             node -v 
             npm -v
+            sudo apt remove git && sudo apt install git
 
 

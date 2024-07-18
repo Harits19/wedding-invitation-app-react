@@ -1,0 +1,30 @@
+name: cd
+
+on:
+  push:
+    branches:
+      - install
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+    environment: SSH
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Deploy Using ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: 34.125.84.45
+          username: harits
+          password: ${{ secrets.PASSWORD }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          port: 22
+          script: |
+            
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+            nvm install 20
+            node -v 
+            npm -v
+
+

@@ -31,6 +31,8 @@ jobs:
             npm -v
             sudo apt remove git && echo y | sudo apt install git
             echo y | sudo apt install ufw
+            # init ssh for github
+            # npm install -g nodemon 
  
 
 

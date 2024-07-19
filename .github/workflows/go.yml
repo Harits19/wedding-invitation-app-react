@@ -22,6 +22,8 @@ jobs:
           port: 22
           script: |
             mkdir -p ~/app/invitation-frontend
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
             cd ~/app/invitation-frontend
             git init
             git clone https://github.com/Harits19/wedding-invitation-app-react.git .

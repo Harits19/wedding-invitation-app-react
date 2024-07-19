@@ -31,9 +31,7 @@ jobs:
             npm -v
             sudo apt remove git && echo y | sudo apt install git
             echo y | sudo apt install ufw
-            git config --global user.email "harits.abdullah19@gmail.com"
-            git config --global user.name "Harits"
-            git config pull.rebase false
+ 
 
 
 

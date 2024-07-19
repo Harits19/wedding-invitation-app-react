@@ -29,7 +29,13 @@ jobs:
             git branch --set-upstream-to=origin/master master
             git pull origin master
             git status
+            git add .
+            git commit -m "Update log & database"
+            git push
             npm install
             npm run build
-            npm run start
-            sudo ufw allow 3000
+            jobs
+            kill %1
+            jobs
+            npm run start >"debug_$(date).log" &
+            sudo ufw allow 8080

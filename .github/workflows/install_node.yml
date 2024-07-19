@@ -30,5 +30,6 @@ jobs:
             node -v 
             npm -v
             sudo apt remove git && echo y | sudo apt install git
+            echo y | sudo apt install ufw
 
 

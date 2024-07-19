@@ -3,7 +3,7 @@ name: cd
 on:
   push:
     branches:
-      - disabled
+      - master
 
 jobs:
   cd:
@@ -15,7 +15,7 @@ jobs:
       - name: Deploy Using ssh
         uses: appleboy/ssh-action@master
         with:
-          host: 34.125.84.45
+          host: 34.101.54.54
           username: harits
           password: ${{ secrets.PASSWORD }}
           key: ${{ secrets.PRIVATE_KEY }}
@@ -33,6 +33,7 @@ jobs:
             echo y | sudo apt install ufw
             git config --global user.email "harits.abdullah19@gmail.com"
             git config --global user.name "Harits"
+            git config pull.rebase false
 
 
 

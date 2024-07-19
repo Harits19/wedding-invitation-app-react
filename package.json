@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ssh": "ssh -i '/Users/abdullah.harits/.ssh/id_google' harits@34.101.54.54 "
   },
   "dependencies": {
     "@fontsource/averia-serif-libre": "^5.0.15",

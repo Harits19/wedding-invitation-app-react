@@ -18,11 +18,11 @@ import CoverPage from "./components/cover-page";
 import ClosingPage from "./components/closing-page";
 
 export default function Page() {
-  const defaultShowCover = kEnv.developeMode ? false : true;
+  const defaultShowCover = kEnv.DEVELOPE_MODE ? false : true;
   const [showCover, setShowCover] = useState(defaultShowCover);
   const [musicIsPlaying, setMusicIsPlaying] = useState(false);
   const audio = useMemo(() => {
-    if (kEnv.developeMode) return undefined;
+    if (kEnv.DEVELOPE_MODE) return undefined;
     try {
       return new Audio(kPublic.backgroundMusic ?? "");
     } catch (error) {
